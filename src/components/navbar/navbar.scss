@@ -1,0 +1,42 @@
+$nav_text_color:red;
+
+nav{
+    // width: 85vw;
+    margin: 20px auto 0;
+    .logo {
+        color:$nav_text_color !important;
+        font-size: 1.5em !important;
+        font-weight: 600;
+        letter-spacing: 2px;
+        &:hover{
+            color:$nav_text_color;
+        }
+    };
+}
+.nav-item{
+    margin-left:35px; 
+    font-size: 0.8em !important;
+    .nav-link{
+        color:$nav_text_color !important;
+        text-align: center;
+        &:hover{
+            color:$nav_text_color;
+        }
+    }
+};
+.icon{
+    width: 1.5em;
+    margin-right: 20px;
+    cursor: pointer;
+}
+form{
+    position: relative;
+    input{
+        border:1px solid $nav_text_color !important;
+        border-radius: 20px !important;
+    }
+    .group{
+        position:absolute;
+        right:0px;
+    }
+}
