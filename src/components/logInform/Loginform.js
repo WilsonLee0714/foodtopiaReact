@@ -48,7 +48,6 @@ class Loginform extends Component {
         );
     }
     componentDidMount() {
-
     }
 }
 

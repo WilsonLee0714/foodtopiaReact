@@ -56,7 +56,6 @@ class Nav extends Component {
     );
   }
   componentDidMount() {
-
   }
 }
 
