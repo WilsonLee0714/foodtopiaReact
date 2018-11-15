@@ -1,0 +1,37 @@
+$mainColor : #FF4343;
+
+.register {
+    overflow: hidden;
+    font-family: '微軟正黑體';
+    color: #707070;
+    h3 {
+        font-size: 2em;
+    }
+    .btn1 {
+        background: $mainColor !important;
+    }
+    img {
+        transform: translateY(120px);
+    }
+}
+@keyframes rotateIn {
+    from {
+      -webkit-transform-origin: center;
+      transform-origin: center;
+      -webkit-transform: rotate3d(0, 0, 1, -200deg);
+      transform: rotate3d(0, 0, 1, -200deg);
+      opacity: 0;
+    }
+  
+    to {
+      -webkit-transform-origin: center;
+      transform-origin: center;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+  }
+  
+  .rotateIn {
+    animation: 1s rotateIn;
+  }
