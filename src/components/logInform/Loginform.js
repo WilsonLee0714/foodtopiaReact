@@ -18,6 +18,7 @@ class Loginform extends Component {
                 <div id='lightBox' class="lightBox">
                     <div id='close' class='close' onClick={this.clickHandler}>×</div>
 
+
                     {/* form */}
                     <div className='d-flex'>
                         <div>
