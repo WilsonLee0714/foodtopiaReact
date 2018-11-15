@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import Nav from "./components/nav/Nav.js";
 import Loginform from './components/logInform/Loginform.js';
+import Register from './components/register/Register.js';
 
 
 class App extends Component {
@@ -13,6 +14,7 @@ class App extends Component {
         <React.Fragment>
           <Nav />
           <Loginform />
+          <Route path="/register" component={Register} />
         </React.Fragment>
       </BrowserRouter>
     );
