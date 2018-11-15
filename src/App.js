@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Link } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle";
+import Nav from "./components/nav/Nav.js";
+import Register from './components/register/Register.js';
+import RegisterSuccessful from './components/registerSuccessful/RegisterSuccessful.js';
+import MemberCenter from './components/memberCenter/MemberCenter.js';
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <BrowserRouter>
+        <React.Fragment>
+          <Nav />
+          <Route path="/register" component={Register} />
+          <Route path="/registerSuccessful" component={RegisterSuccessful} />
+          <div className="container">
+            <Route path="/memberCenter" component={MemberCenter} />
+          </div>
+        </React.Fragment>
+      </BrowserRouter>
     );
   }
 }
