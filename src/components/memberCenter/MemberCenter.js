@@ -11,8 +11,8 @@ class MemberCenter extends Component {
             <React.Fragment>
                 <div className='centerWrap mt-3 d-flex flex-column p-4'>
                     <div>
-                        <img className='my-2 mr-3' src={require('./images/Group158.png')} />
-                        Hi User Name
+                        <img className='my-2 mr-2' style={{ width: '45px' }} src={require('./images/Group158.png')} />
+                        Hi UserName
                     </div>
                     <div>
                         <h3 className='py-3'>帳號管理</h3>

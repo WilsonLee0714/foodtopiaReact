@@ -17,7 +17,7 @@ class Nav extends Component {
   render() {
     return (
       <React.Fragment>
-        <nav className="navbar navbar-expand-lg navbar-light bg-transparent">
+        <nav className="navbar navbar-expand-lg navbar-light bg-transparent fixed-top">
           <div className="container">
             <Link className="navbar-brand" to="/">Foodtopia</Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,6 +52,7 @@ class Nav extends Component {
             </div>
           </div>
         </nav>
+        <div className='p-5'></div>
       </React.Fragment>
     );
   }

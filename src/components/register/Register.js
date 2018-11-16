@@ -12,7 +12,7 @@ class Register extends Component {
             <React.Fragment>
                 
                 <div className='container'>
-                    <div className='d-flex justify-content-center align-items-center my-5 register flex-md-row flex-column-reverse'>
+                    <div className='d-flex justify-content-center align-items-center mt-3 mb-5 register flex-md-row flex-column-reverse'>
                         <div className='d-flex fadeInLeft'>
                             <img className='' src={require('./images/steakPlated.png')} />
                         </div>
