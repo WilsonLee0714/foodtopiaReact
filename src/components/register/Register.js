@@ -13,10 +13,10 @@ class Register extends Component {
                 
                 <div className='container'>
                     <div className='d-flex justify-content-center align-items-center my-5 register flex-md-row flex-column-reverse'>
-                        <div className='d-flex rotateIn'>
+                        <div className='d-flex fadeInLeft'>
                             <img className='' src={require('./images/steakPlated.png')} />
                         </div>
-                        <div class="formPattern" style={{ width: '300px' }}>
+                        <div class="formPattern fadeInRight" style={{ width: '300px' }}>
                             <h3 className='pb-4 text-center'>註冊會員</h3>
                             <form>
                                 <div class="form-group d-flex justify-content-between py-1">
@@ -38,7 +38,7 @@ class Register extends Component {
                                 <Link to='/registerSuccessful'><button type="submit" class="btn btn-primary w-100 py-2 btn1">註冊</button></Link>
                                 <small className="text-center">繼續進行代表你同意<span className="text-primary">服務條款</span></small>
                                 <hr />
-                                <Link to='/memberCenter'><button type="submit" class="btn btn-primary py-2 w-100">登入</button></Link>
+                                <Link to='/memberCenter/basicInfo'><button type="submit" class="btn btn-primary py-2 w-100">登入</button></Link>
                             </form>
                         </div>
                     </div>

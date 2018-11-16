@@ -6,6 +6,7 @@ import Nav from "./components/nav/Nav.js";
 import Register from './components/register/Register.js';
 import RegisterSuccessful from './components/registerSuccessful/RegisterSuccessful.js';
 import MemberCenter from './components/memberCenter/MemberCenter.js';
+import BasicInfo from './components/basicInfo/BasicInfo.js';
 
 
 class App extends Component {
@@ -16,8 +17,9 @@ class App extends Component {
           <Nav />
           <Route path="/register" component={Register} />
           <Route path="/registerSuccessful" component={RegisterSuccessful} />
-          <div className="container">
+          <div className="container d-flex">
             <Route path="/memberCenter" component={MemberCenter} />
+            <Route path="/memberCenter/BasicInfo" component={BasicInfo} />
           </div>
         </React.Fragment>
       </BrowserRouter>
