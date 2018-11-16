@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './BasicInfo.scss';
-import { LINK } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class BasicInfo extends Component {
     constructor(prop) {
@@ -63,19 +63,19 @@ class BasicInfo extends Component {
                                 </tr>
                                 <tr>
                                     <td>郵遞區號</td>
-                                    <td><input className='' size='80' type='text'></input></td>
+                                    <td><input className='' size='70' type='text'></input></td>
                                 </tr>
                                 <tr>
                                     <td>郵件地址</td>
-                                    <td><input className='' size='80' type='text'></input></td>
+                                    <td><input className='' size='70' type='text'></input></td>
                                 </tr>
                                 <tr>
                                     <td>個人簡介 </td>
-                                    <td><textarea cols="80" rows="5"></textarea></td>
+                                    <td><textarea cols="70" rows="5"></textarea></td>
                                 </tr>
                                 <tr>
                                     <td>部落格網址</td>
-                                    <td><input className='' size='50' type='text'></input></td>
+                                    <td><input className='' size='70' type='text'></input></td>
                                 </tr>
                             </table>
                             <div className='text-center my-3'>

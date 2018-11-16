@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import { LINK } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './MemberCenter.scss';
 
 class MemberCenter extends Component {
     constructor(prop) {
         super(prop)
+    }
+    clickHandler(){
+        // this.classList.remove("active");
     }
     render() {
         return (
@@ -19,11 +22,11 @@ class MemberCenter extends Component {
                     </div>
                     <div>
                         <ul>
-                            <li>基本資料</li>
-                            <li>訂閱通知</li>
-                            <li>收藏清單</li>
-                            <li>我的訂單</li>
-                            <li>客服系統</li>
+                            <li><Link className='a active' to='/memberCenter/basicInfo'>基本資料</Link></li>
+                            <li><Link className='a' to='/memberCenter/'>訂閱通知</Link></li>
+                            <li><Link className='a' to='/memberCenter/'>收藏清單</Link></li>
+                            <li><Link className='a' to='/memberCenter/'>我的訂單</Link></li>
+                            <li><Link className='a' to='/memberCenter/'>客服系統</Link></li>
                         </ul>
                     </div>
                     <div className='mt-5'>

@@ -18,4 +18,14 @@ $mainColor : #FF4343;
             padding: 10px 0;
         }
     }
+    .a {
+        color: #707070;
+    }
+    .a:hover {
+        text-decoration: none;
+    }
+    .active {
+        font-weight: 600;
+        
+    }
 }
