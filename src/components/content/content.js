@@ -20,9 +20,9 @@ class Content extends Component {
 }
 
 componentDidMount() {
-    this.getMembers();
+    this.getMenu();
 }
-getMembers() {
+getMenu() {
     fetch("http://localhost:3000/foodtopia/menu")
         .then(res => res.json())
         .then(menus => this.setState({ 
@@ -30,8 +30,7 @@ getMembers() {
             menu:this.initState,
             type:'add'
         }))
-        // .then(members => { return members })
-}
+};
 
     render() {
         return (

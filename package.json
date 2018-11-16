@@ -8,6 +8,9 @@
     "popper.js": "^1.14.5",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
+    "react-flags": "^0.1.17",
+    "react-js-pagination": "^3.0.2",
+    "react-paginating": "^1.0.3-react16.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1"
   },
