@@ -19,6 +19,7 @@ class App extends Component {
           <Route path="/register" component={Register} />
           <Route path="/registerSuccessful" component={RegisterSuccessful} />
           <div className="container d-flex">
+          
             <Route path="/memberCenter" component={MemberCenter} />
             <Route path="/memberCenter/BasicInfo" component={BasicInfo} />
             <Route path="/memberCenter/subscription" component={Subscription} />
