@@ -1,14 +1,16 @@
 $mainColor : #FF4343;
 
 .cart {
+  z-index: 9999;
     font-family: 'Roboto','Noto sans CJK TC';
     width: 300px;
     height: 100vh;
     position: fixed;
     top: 0px;
-    right: 0px;
+    right: -300px;
     background-color: #777777;
     color: #fff;
+    transition: 0.5s;
     
     .title{
         line-height: 62px;
@@ -53,6 +55,9 @@ $mainColor : #FF4343;
       color:#fff;
       font-size: 1rem;
     }
+}
+.openCart{
+  right: 0px;
 }
 @keyframes fadeInLeft {
     from {

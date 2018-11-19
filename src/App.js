@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import Nav from "./components/nav/Nav.js";
-import Cart from "./components/cart/Cart.js";
+import Order from "./components/order/Order.js";
 import Register from './components/register/Register.js';
 import RegisterSuccessful from './components/registerSuccessful/RegisterSuccessful.js';
 import MemberCenter from './components/memberCenter/MemberCenter.js';
@@ -16,11 +16,10 @@ class App extends Component {
       <BrowserRouter>
         <React.Fragment>
           <Nav />
-          <Cart />
           <Route path="/register" component={Register} />
           <Route path="/registerSuccessful" component={RegisterSuccessful} />
           <div className="container d-flex">
-          
+          <Route path="/order" component={Order} />
             <Route path="/memberCenter" component={MemberCenter} />
             <Route path="/memberCenter/BasicInfo" component={BasicInfo} />
           </div>

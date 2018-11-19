@@ -5,11 +5,24 @@ import "./Cart.scss";
 class Cart extends Component {
   constructor(props) {
     super(props);
+    this.initState = {
+      name: "",
+      note: "",
+      img: "",
+      price: "",
+      id: ""
+  }
+
+  this.state = {
+      products: [],
+      product: this.initState,
+      type: 'add'
+  }
   }
   render() {
     return (
       <React.Fragment>
-        <div className='cart'>
+        <div id='cart' className='cart'>
           <div className='title'>購物車</div>
           <div id='products'>
             <div className='row my-2'>
