@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import "./navbar.scss";
+import "./Nav.scss";
 
 
 class Nav extends Component {
@@ -40,14 +40,14 @@ class Nav extends Component {
                 </li>
 
               </ul>
-              <img src={require('./icon/heart.png')} />
+              <img src={require('./icons/like.png')} />
               <Link to="/register">
-                <img id='members' onClick={this.clickHandler} src={require('./icon/profile.png')} />
+                <img id='members' onClick={this.clickHandler} src={require('./icons/profile.png')} />
               </Link>
-              <img src={require('./icon/shopping-bag.png')} />
+              <img src={require('./icons/shopping-bag.png')} />
               <form className="form-inline my-2 my-lg-0">
                 <input className="form-control mr-sm-2" type="search" placeholder="" aria-label="Search" />
-                <img src={require('./icon/Group 13.png')} />
+                <img src={require('./icons/Group 13.png')} />
               </form>
             </div>
           </div>
