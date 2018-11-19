@@ -4,7 +4,6 @@ import "./Nav.scss";
 import Cart from "../cart/Cart.js";
 
 
-
 class Nav extends Component {
   constructor(props) {
     super(props);
@@ -25,7 +24,7 @@ class Nav extends Component {
       <React.Fragment>
         <nav className="navbar navbar-expand-lg navbar-light bg-transparent fixed-top">
           <div className="container">
-            <Link className="navbar-brand" to="/">Foodtopia</Link>
+            <Link className="navbar-brand" to="/homePage">Foodtopia</Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
@@ -33,7 +32,7 @@ class Nav extends Component {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item active">
-                  <Link class="nav-link" to="/">首頁<span class="sr-only">(current)</span></Link>
+                  <Link class="nav-link" to="/homePage">首頁<span class="sr-only">(current)</span></Link>
                 </li>
                 <li className="nav-item">
                   <Link class="nav-link" to="/">美味食譜</Link>
