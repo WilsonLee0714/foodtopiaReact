@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import "./Nav.scss";
+import Cart from "../cart/Cart.js";
 
 
 class Nav extends Component {
@@ -14,6 +15,10 @@ class Nav extends Component {
   //       lightBox.style.opacity = '1';
   //     },100)
   // }
+  cartToggle() {
+    let cart = document.querySelector('#cart');
+    cart.classList.toggle("openCart");
+  }
   render() {
     return (
       <React.Fragment>
@@ -44,7 +49,7 @@ class Nav extends Component {
               <Link to="/register">
                 <img id='members' onClick={this.clickHandler} src={require('./icons/profile.png')} />
               </Link>
-              <img src={require('./icons/shopping-bag.png')} />
+              <img src={require('./icons/shopping-bag.png')} onClick={this.cartToggle} />
               <form className="form-inline my-2 my-lg-0">
                 <input className="form-control mr-sm-2" type="search" placeholder="" aria-label="Search" />
                 <img src={require('./icons/Group 13.png')} />
@@ -52,6 +57,7 @@ class Nav extends Component {
             </div>
           </div>
         </nav>
+        <Cart />
         <div className='p-5'></div>
       </React.Fragment>
     );
