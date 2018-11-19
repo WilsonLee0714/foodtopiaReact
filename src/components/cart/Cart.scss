@@ -1,0 +1,92 @@
+$mainColor : #FF4343;
+
+.cart {
+    font-family: 'Roboto','Noto sans CJK TC';
+    width: 300px;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    background-color: #777777;
+    color: #fff;
+    
+    .title{
+        line-height: 62px;
+        font-size: 1.5rem;
+        text-align: center;
+        background-color: #555555;
+    }
+    .productImg{
+        text-align: center;
+        line-height: 60px;
+        img{
+            height: 60px;
+        }
+    }
+    .productName{
+        font-size: 1rem;
+        text-align: left;
+        line-height: 30px;
+    }
+    .productNum{
+      text-align: center;
+      line-height: 30px;
+      span{
+        padding: 0 5px;
+      }
+    }
+    .productPrice{
+      line-height: 30px;
+    }
+    .line1{
+      border-top: 1px solid #fff;
+      border-radius: 5px;
+    }
+    .totalPrice{
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+    .btnCheckOut{
+      margin: 10px auto;
+      background: $mainColor !important;
+      color:#fff;
+      font-size: 1rem;
+    }
+}
+@keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(-100%, 0, 0);
+      transform: translate3d(-100%, 0, 0);
+    }
+  
+    to {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  .fadeInLeft {
+    animation: 1s fadeInLeft;
+  }
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(100%, 0, 0);
+      transform: translate3d(100%, 0, 0);
+    }
+  
+    to {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  .fadeInRight {
+    animation:1s fadeInRight;
+  }
+  
+  
