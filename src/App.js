@@ -14,6 +14,8 @@ import MyOrder from './components/myOrder/myOrder.js';
 import MyService from './components/myService/MyService.js';
 import Footer from './components/footer/Footer.js';
 import HomePage from './components/homePage/HomePage.js';
+import Recipe_list from './components/recipe_list/recipe_list.js';
+import Recipe_page from './components/recipe_page/recipe_page';
 
 
 class App extends Component {
@@ -22,6 +24,8 @@ class App extends Component {
       <BrowserRouter>
         <React.Fragment>
           <Navbar />
+            <Route path="/recipe_list" component={Recipe_list} />
+            <Route path="/recipe_page" component={Recipe_page} />
             <Route path="/blog" component={Content} />
             <Route path="/homePage" component={HomePage} />
             <Route path="/register" component={Register} />
@@ -33,7 +37,6 @@ class App extends Component {
               <Route path="/memberCenter/favorite" component={Favorite} />
               <Route path="/memberCenter/myOrder" component={MyOrder} />
               <Route path="/memberCenter/myService" component={MyService} />
-              
             </div>
             <Footer/>
         </React.Fragment>
