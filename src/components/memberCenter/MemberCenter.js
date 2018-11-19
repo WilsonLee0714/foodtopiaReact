@@ -24,9 +24,9 @@ class MemberCenter extends Component {
                         <ul>
                             <li><Link className='a' to='/memberCenter/basicInfo'>基本資料</Link></li>
                             <li><Link className='a' to='/memberCenter/subscription'>訂閱通知</Link></li>
-                            <li><Link className='a' to='/memberCenter/'>收藏清單</Link></li>
-                            <li><Link className='a' to='/memberCenter/'>我的訂單</Link></li>
-                            <li><Link className='a' to='/memberCenter/'>客服系統</Link></li>
+                            <li><Link className='a' to='/memberCenter/favorite'>收藏清單</Link></li>
+                            <li><Link className='a' to='/memberCenter/myOrder'>我的訂單</Link></li>
+                            <li><Link className='a' to='/memberCenter/myService'>客服系統</Link></li>
                         </ul>
                     </div>
                     <div className='mt-5'>
