@@ -12,6 +12,7 @@ import Favorite from './components/favorite/Favorite.js';
 import MyOrder from './components/myOrder/myOrder.js';
 import MyService from './components/myService/MyService.js';
 import Footer from './components/footer/Footer.js';
+import HomePage from './components/homePage/HomePage.js';
 
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
       <BrowserRouter>
         <React.Fragment>
           <Nav />
+          <Route path="/homePage" component={HomePage} />
           <Route path="/register" component={Register} />
           <Route path="/registerSuccessful" component={RegisterSuccessful} />
           <div className="container d-flex">
