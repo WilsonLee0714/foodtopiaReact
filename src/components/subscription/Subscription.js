@@ -15,11 +15,11 @@ class Subscription extends Component {
                         <table className='w-100'>
                             <tr>
                                 <td>跟著做</td>
-                                <td><input type='checkbox' />我的食譜有人跟著做</td>
+                                <td><input className='mr-2' type='checkbox'/>我的食譜有人跟著做</td>
                             </tr>
                             <tr>
                                 <td></td>
-                                <td><input type='checkbox' />食譜作者回應我跟者做的照片</td>
+                                <td><input className='mr-2' type='checkbox' />食譜作者回應我跟者做的照片</td>
                             </tr>
                             <tr>
                                 <td><hr className='w-100'></hr></td>
@@ -27,11 +27,11 @@ class Subscription extends Component {
                             </tr>
                             <tr>
                                 <td>留言</td>
-                                <td><input type='checkbox' />我的食譜有新留言</td>
+                                <td><input className='mr-2' type='checkbox' />我的食譜有新留言</td>
                             </tr>
                             <tr>
                                 <td></td>
-                                <td><input type='checkbox' />食譜作者回覆我的留言</td>
+                                <td><input className='mr-2' type='checkbox' />食譜作者回覆我的留言</td>
                             </tr>
                             <tr>
                                 <td><hr className='w-100'></hr></td>
@@ -39,7 +39,7 @@ class Subscription extends Component {
                             </tr>
                             <tr>
                                 <td>追蹤</td>
-                                <td><input type='checkbox' />我訂閱的使用者發表新食譜</td>
+                                <td><input className='mr-2' type='checkbox' />我訂閱的使用者發表新食譜</td>
                             </tr>
                             <tr>
                                 <td><hr className='w-100'></hr></td>
@@ -47,7 +47,7 @@ class Subscription extends Component {
                             </tr>
                             <tr>
                                 <td>粉絲</td>
-                                <td><input type='checkbox' />我有新的粉絲
+                                <td><input className='mr-2' type='checkbox' />我有新的粉絲
                                     </td>
                             </tr>
                             <tr>
@@ -57,7 +57,7 @@ class Subscription extends Component {
                             <tr>
                                 <td>電子報</td>
                                 <td>
-                                    <input type='checkbox' />訂閱電子報
+                                    <input className='mr-2' type='checkbox' />訂閱電子報
                                     </td>
                             </tr>
                         </table>
