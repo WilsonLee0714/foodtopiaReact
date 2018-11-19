@@ -11,6 +11,7 @@ import Subscription from './components/subscription/Subscription.js';
 import Favorite from './components/favorite/Favorite.js';
 import MyOrder from './components/myOrder/myOrder.js';
 import MyService from './components/myService/MyService.js';
+import Footer from './components/footer/Footer.js';
 
 
 class App extends Component {
@@ -22,7 +23,6 @@ class App extends Component {
           <Route path="/register" component={Register} />
           <Route path="/registerSuccessful" component={RegisterSuccessful} />
           <div className="container d-flex">
-          
             <Route path="/memberCenter" component={MemberCenter} />
             <Route path="/memberCenter/BasicInfo" component={BasicInfo} />
             <Route path="/memberCenter/subscription" component={Subscription} />
@@ -30,6 +30,7 @@ class App extends Component {
             <Route path="/memberCenter/myOrder" component={MyOrder} />
             <Route path="/memberCenter/myService" component={MyService} />
           </div>
+          <Footer/>
         </React.Fragment>
       </BrowserRouter>
     );
