@@ -20,7 +20,7 @@ class Register extends Component {
                             <img className='' src={require('./images/steakPlated.png')} />
                         </div>
                         <div class="formPattern fadeInRight" style={{ width: '300px' }}>
-                            <h3 className='pb-4 text-center'>註冊會員</h3>
+                            <h3 className='pb-4 text-center'>會員註冊</h3>
                             <form id='registerFrom' action='http://localhost:3000/api/members' method='post'>
                                 <div class="form-group d-flex justify-content-between py-1">
                                     <label>暱稱</label>
@@ -39,11 +39,11 @@ class Register extends Component {
                                     <input id='pw2' type="password" class="form-control w-75"  placeholder="請確認密碼" />
                                 </div>
                                 {/* <Link to='/registerSuccessful'> */}
-                                <button id='registerBtn' onClick={this.checkOut} type="submit" class="btn btn-primary w-100 py-2 btn1">註冊</button>
+                                <button id='registerBtn' onClick={this.checkOut} type="submit" class="btn btn-sm btn-primary w-100 py-2 btn1">註冊</button>
                                 {/* </Link> */}
                                 <small className="text-center">繼續進行代表你同意<span className="text-primary">服務條款</span></small>
                                 <hr />
-                                <Link to='/memberCenter/basicInfo'><button type="submit" class="btn btn-primary py-2 w-100">登入</button></Link>
+                                <Link to='/login'><button type="submit" class="btn btn-sm btn-primary py-2 w-100">登入</button></Link>
                             </form>
                         </div>
                     </div>

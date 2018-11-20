@@ -53,7 +53,7 @@ class Nav extends Component {
               <a href='http://localhost/foodtopia/ab_list.php'>
                 <img src={require('./icons/like.png')} />
               </a>
-              <Link to="/register">
+              <Link to="/login">
                 <img
                   id='members'
                   onClick={this.clickHandler}
