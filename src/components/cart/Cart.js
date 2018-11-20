@@ -6,26 +6,22 @@ import Products from "./Cart.json";
 class Cart extends Component {
   constructor(props) {
     super(props);
-    this.initState = {
-      id: "",
-      name: "",
-      note: "",
-      num: "",
-      img: "",
-      perPrice: ""
-  }
 
   this.state = {
-      products: [Products],
-      product: this.initState,
-      amout:'',
-      type: 'add'
-  }
-  // this.price = (this.state.product.num)*(this.state.product.perPrice);
+      products: Products,
+      product: {
+        id: "",
+        name: "",
+        note: "",
+        num: "",
+        img: "",
+        perPrice: ""
+      },
+      amout: 0
+    }
+  
   }
   render() {
-    var productImg = "require(.${product.img})"
-    
     return (
       <React.Fragment>
         <div id='cart' className='cart'>
@@ -34,7 +30,7 @@ class Cart extends Component {
           {this.state.products.map(product =>
             <div className='row my-2'>
               <div className='col-5 productImg'>
-                <img src={productImg}/>
+                <img src={require(`${product.img}`)}/>
               </div>
               <div className='col-7 productName'>
                 <span>{product.name}</span><br/>
@@ -50,7 +46,7 @@ class Cart extends Component {
                 </span>
               </div>
               <div className='col-7 productPrice'>
-                <span>NT$ </span><span>{this.price}</span>
+                <span>NT$ </span><span>{product.perPrice*product.num}</span>
               </div>
             </div>
           )}
@@ -59,7 +55,7 @@ class Cart extends Component {
           <hr className='line1'/>
           </div>
           <div className='totalPrice'>
-          <span>總計: NT$</span><span>1,573</span>
+          <span>總計: NT$ </span><span>{this.state.products.reduce((amout, product) => (amout += product.perPrice*product.num), 0)}</span>
           </div>
           <Link to='/order'><button onClick='' type="submit" class="btn btnCheckOut d-flex px-5">開始結帳</button></Link>
         </div>
@@ -67,7 +63,7 @@ class Cart extends Component {
     );
   }
   componentDidMount() {
-    // console.log(this.state.product);
+    console.log(this.initState);
   }
 }
 
