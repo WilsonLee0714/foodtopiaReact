@@ -10,8 +10,8 @@ class Nav extends Component {
   // clickHandler(){   var lightBox = document.getElementById('lightBox');
   // lightBox.style.display = 'flex';     setTimeout(function(){
   // lightBox.style.opacity = '1';     },100) }
-  cartToggle() {
-    let cart = document.querySelector('#cart');
+  cartToggle = () => {
+    const cart = document.querySelector('#cart');
     cart
       .classList
       .toggle("openCart");
@@ -71,7 +71,7 @@ class Nav extends Component {
             </div>
           </div>
         </nav>
-        <Cart />
+        <Cart cartToggle={this.cartToggle} />
         <div className='p-5'></div>
       </React.Fragment>
     );

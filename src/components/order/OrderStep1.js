@@ -2,17 +2,20 @@ import React, {Component} from 'react';
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import "./Order.scss";
 
-class Order extends Component {
+class OrderStep1 extends Component {
   constructor(props) {
     super(props);
   }
   render() {
     return (
       <React.Fragment>
-        
+        <div>
+        <h1>step1</h1>
+
+        </div>
       </React.Fragment>
     )
   }
 }
 
-export default Order;
+export default OrderStep1;
