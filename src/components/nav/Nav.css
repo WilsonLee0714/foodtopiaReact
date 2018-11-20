@@ -1,0 +1,49 @@
+@charset "UTF-8";
+nav {
+  font-family: '微軟正黑體';
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+nav .navbar-brand {
+  font-weight: 600 !important;
+  font-size: 1.5em !important;
+}
+
+nav .navbar-toggler {
+  border: 0px solid #FF4343 !important;
+  border-radius: 50% !important;
+  padding: 5px;
+}
+
+nav .navbar-toggler .navbar-toggler-icon {
+  color: #FF4343 !important;
+}
+
+nav li {
+  margin-left: 35px;
+  font-size: .9em;
+}
+
+nav a {
+  color: #FF4343 !important;
+}
+
+nav img {
+  width: 1.5em;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+nav form input {
+  border: 1px solid #FF4343 !important;
+  border-radius: 20px !important;
+}
+
+nav form img {
+  -webkit-transform: translateX(-50px);
+          transform: translateX(-50px);
+}
+/*# sourceMappingURL=Nav.css.map */
