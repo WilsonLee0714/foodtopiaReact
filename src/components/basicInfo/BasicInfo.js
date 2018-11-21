@@ -6,6 +6,27 @@ class BasicInfo extends Component {
     constructor(prop) {
         super(prop);
     }
+    componentDidMount(){
+        // var nickname = document.getElementById('nickname');
+        // var name = document.getElementById('name');
+        // var email = document.getElementById('email');
+        // fetch('http://localhost:3000/api/members', {
+        //     method: 'GET',
+        //     mode:'cors',
+        //     headers: {
+        //       'Content-Type': 'application/json'
+        //     },
+        //   }).then(function (res) {
+        //     return res.json();
+        //   }).then(function (a) {
+        //     a = a[4];     
+        //     nickname.value = a.nick_name;
+        //     name.value = a.name ;
+        //     email.value = a.email ;
+        //   }).catch(function (err) {
+        //     alert(err);
+        //   })
+    }
     render() {
         return (
             <React.Fragment>
@@ -23,10 +44,10 @@ class BasicInfo extends Component {
                             <table className=''>
                                 <tr>
                                     <td><span className='text-danger'>*</span>顯示暱稱</td>
-                                    <td><input className='' size='50' type='text'></input></td>
+                                    <td><input id='nickname' className='' size='50' type='text'></input></td>
                                 </tr>
                                 <tr>
-                                    <td>帳號</td>
+                                    <td >帳號</td>
                                     <td><input className='' size='50' type='text'></input></td>
                                 </tr>
                                 <tr>
@@ -35,11 +56,11 @@ class BasicInfo extends Component {
                                 </tr>
                                 <tr>
                                     <td>真實姓名</td>
-                                    <td><input className='' size='50' type='text'></input></td>
+                                    <td><input id='name' className='' size='50' type='text'></input></td>
                                 </tr>
                                 <tr>
                                     <td>Email</td>
-                                    <td><input className='' size='50' type='text'></input></td>
+                                    <td><input id='email' className='' size='50' type='text'></input></td>
                                 </tr>
                                 <tr>
                                     <td>性別</td>

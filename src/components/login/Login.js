@@ -8,7 +8,11 @@ class Login extends Component {
         super(props);
     }
     checkOut(e){
-        
+        let email = document.getElementById('email');
+        let pw1 = document.getElementById('pw1');
+        if(email.value == '' || pw1.value ==''){
+            alert('信箱或密碼不正確')
+        } 
     }
     render() {
         return (
@@ -20,11 +24,11 @@ class Login extends Component {
                             <img className='' src={require('./images/steakPlated.png')} />
                         </div> */}
                         <div class="formPattern fadeIn" style={{ width: '300px' }}>
-                            <form id='registerFrom' action='http://localhost:3000/api/login' method='post'>
+                            <form id='registerFrom' action='http://localhost:3000/users/login' method='post'>
                             <h3 className='pb-4 text-center'>會員登入</h3>
                                 <div class="form-group d-flex justify-content-between py-1">
                                     <label>Email</label>
-                                    <input id='eamil' name='email' type="email" class="form-control w-75"  aria-describedby="emailHelp" placeholder="請輸入信箱" />
+                                    <input id='email' name='email' type="email" class="form-control w-75"  aria-describedby="emailHelp" placeholder="請輸入信箱" />
                                 </div>
                                 <div class="form-group d-flex justify-content-between py-1">
                                     <label>密碼</label>
