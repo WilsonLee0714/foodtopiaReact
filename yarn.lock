@@ -9400,6 +9400,11 @@ tunnel-agent@^0.6.0:
   dependencies:
     safe-buffer "^5.0.1"
 
+tw-city-selector@^1.0.12:
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/tw-city-selector/-/tw-city-selector-1.0.12.tgz#ebbd7bc313f389038ef847d88b14c6b6f6336e60"
+  integrity sha512-/An2wgmh8LOi8H40ibJfxgULP34lMnItsnzSXtUSDxMl22IP/ysozPl8Tpu2mDqxTrDkMx4K1YqOhdTxUWv0Dw==
+
 tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   version "0.14.5"
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-0.14.5.tgz#5ae68177f192d4456269d108afa93ff8743f4f64"

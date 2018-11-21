@@ -12,24 +12,24 @@ class Order extends Component {
     return (
       <BrowserRouter>
       <React.Fragment>
-        <div className='container'>
+        <div className='container orderPage'>
         <div className='orderStep d-flex'>
           <div className='stepTitle'>購買流程</div>
-          <div className='step active'>
+          <div className='step done'>
             <div className='stepNum'>1</div>
-            <div className='stepContent'>填寫資料</div>
+            <div className='stepText'>填寫資料</div>
             <div className='stepIcon'><i class="fas fa-edit"></i></div>
           </div>
-          <div className='stepLine'></div>
-          <div className='step'>
+          <div className='stepLine active'></div>
+          <div className='step active'>
             <div className='stepNum'>2</div>
-            <div className='stepContent'>資料確認</div>
+            <div className='stepText'>資料確認</div>
             <div className='stepIcon'><i class="fas fa-money-check"></i></div>
           </div>
           <div className='stepLine'></div>
           <div className='step'>
             <div className='stepNum'>3</div>
-            <div className='stepContent'>訂購完成</div>
+            <div className='stepText'>訂購完成</div>
             <div className='stepIcon'><i class="fas fa-truck"></i></div>
           </div>
         </div>
