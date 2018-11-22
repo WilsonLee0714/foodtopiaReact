@@ -12,7 +12,8 @@ class MemberCenter extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className='centerWrap mt-3 d-flex flex-column p-4 sticky-top'>
+                <div className='mt-3 p-4' style={{width:'250px'}}></div>
+                <div className='centerWrap mt-3 d-flex flex-column p-4 '>
                     <div>
                         <img className='my-2 mr-2' style={{ width: '45px' }} src={require('./images/Group158.png')} />
                         Hi UserName
@@ -27,9 +28,10 @@ class MemberCenter extends Component {
                             <li><Link className='a' to='/memberCenter/favorite'>收藏清單</Link></li>
                             <li><Link className='a' to='/memberCenter/myOrder'>我的訂單</Link></li>
                             <li><Link className='a' to='/memberCenter/myService'>客服系統</Link></li>
+                            <li><Link className='a' to='/memberCenter/myService'>部落格</Link></li>
                         </ul>
                     </div>
-                    <div className='mt-5'>
+                    <div className='mt-2'>
                         <img className='my-2 mr-3' style={{ width: '15px' }} src={require('./images/Group162.png')} />
                         登出
                     </div>

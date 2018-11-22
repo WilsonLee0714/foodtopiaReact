@@ -1,6 +1,6 @@
 $mainColor : #FF4343;
 .centerWrap:hover {
-    height: 550px;
+    height: 500px;
 }
 .centerWrap {
     background: #E8E8E8;
@@ -12,7 +12,9 @@ $mainColor : #FF4343;
     user-select: none;
     transition: .5s;
     border-radius: 5px;
-    transform: translateY(80px);
+    // transform: translateY(80px);
+    position: fixed;
+    top:100px;
     h3 {
         color:$mainColor;
         border-bottom: 1px solid #FF4343;
