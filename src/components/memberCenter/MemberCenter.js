@@ -12,7 +12,7 @@ class MemberCenter extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className='centerWrap mt-3 d-flex flex-column p-4'>
+                <div className='centerWrap mt-3 d-flex flex-column p-4 sticky-top'>
                     <div>
                         <img className='my-2 mr-2' style={{ width: '45px' }} src={require('./images/Group158.png')} />
                         Hi UserName
