@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import "./Nav.scss";
 import Cart from "../cart/Cart.js";
+import $ from 'jquery';
 
 class Nav extends Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class Nav extends Component {
   render() {
     return (
       <React.Fragment>
-        <nav className="navbar navbar-expand-lg navbar-light bg-transparent fixed-top">
+        <nav id='nav' className="navbar navbar-expand-lg navbar-light bg-transparent fixed-top">
           <div className="container">
             <Link className="navbar-brand" to="/homePage">Foodtopia</Link>
             <button
@@ -76,7 +77,35 @@ class Nav extends Component {
       </React.Fragment>
     );
   }
-  componentDidMount() { }
+  componentDidMount() {
+    // var scrollLast = 0;
+    $(window).scroll(function () {
+      let scrollNow = $(this).scrollTop();
+      console.log(scrollNow)
+      if (scrollNow != 0) {
+        $('nav').addClass('bg-light');
+        $('nav').removeClass('bg-transparent');
+        // $('.progress').addClass('hide_nav');
+      } else {
+        $('nav').addClass('bg-transparent');
+        $('nav').removeClass('bg-light');
+      }
+      //   } else {
+      //     $('nav').addClass('bg-transparent');
+      //     $('nav').removeClass('bg-light');
+      //     // $('.progress').removeClass('hide_nav');
+      // }
+      // scrollLast = scrollNow
+    })
+    $('nav').mouseover(function () {
+      $('nav').addClass('bg-light');
+      $('nav').removeClass('bg-transparent');
+    })
+    $('nav').mouseout(function () {
+      $('nav').addClass('bg-transparent');
+      $('nav').removeClass('bg-light');
+    })
+  }
 }
 
 export default Nav;

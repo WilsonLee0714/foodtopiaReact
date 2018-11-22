@@ -74,8 +74,9 @@ class Register extends Component {
                                     {/* <Link to='/registerSuccessful'> */}
                                     <button id='registerBtn' onClick={this.checkOut} type="submit" class="btn btn-sm btn-primary w-100 py-2 btn1">註冊</button>
                                     {/* </Link> */}
-                                    <small className="text-center">繼續進行代表你同意<span className="text-primary">服務條款</span></small>
+                                    {/* <small className="text-center">繼續進行代表你同意<span className="text-primary">服務條款</span></small> */}
                                     <hr />
+                                    <small className="text-center"><span className="text-secondary">已經有帳號了嗎?</span></small>
                                     <Link to='/login'><button type="submit" class="btn btn-sm btn-primary py-2 w-100">登入</button></Link>
                                 </form>
                             </div>
