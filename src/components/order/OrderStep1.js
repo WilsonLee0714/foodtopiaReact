@@ -14,8 +14,8 @@ class OrderStep1 extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: new Date(),
-      time: new Date(),
+      date: '',
+      time: '',
       today: true
     };
   }
@@ -75,34 +75,80 @@ class OrderStep1 extends Component {
                 checked/>
               <span className='wayName'>宅配到府</span>
             </div>
-              <div class="d-flex">
-                <label className='inputTitle4' htmlFor="shipTime">送達時間 :</label>
-                <DatePicker
-                  className="selectDate"
-                  selected={this.state.date}
-                  onChange={this.dateChange}
-                  dateFormat="yyyy/MM/dd"
-                  minDate={new Date()}
-                  maxDate={addDays(new Date(), 7)}
-                  todayButton={"今天"}
-                  withPortal
-                  id="startDate"/>
-                <DatePicker
-                  className="selectTime"
-                  selected={this.state.time}
-                  onChange={this.timeChange}
-                  showTimeSelect
-                  showTimeSelectOnly
-                  timeIntervals={60}
-                  minTime={this.state.today === true
-                  ? setHours(setMinutes(new Date(), 0), getHours(addHours(new Date(), 2)))
-                  : setHours(setMinutes(new Date(), 0), 10)}
-                  maxTime={setHours(setMinutes(new Date(), 0), 20)}
-                  dateFormat="h:mm aa"
-                  withPortal
-                  timeCaption="Time"/>
-              </div>
-            
+            <div class="d-flex">
+              <label className='inputTitle4' htmlFor="shipTime">送達時間 :</label>
+              <DatePicker
+                className="selectDate"
+                selected={this.state.date}
+                onChange={this.dateChange}
+                dateFormat="yyyy/MM/dd"
+                minDate={getHours(new Date()) > 17
+                ? addDays(new Date(), 1)
+                : new Date()}
+                maxDate={addDays(new Date(), 7)}
+                withPortal
+                id="startDate"
+                placeholderText="選擇日期"/>
+              <DatePicker
+                className="selectTime"
+                selected={this.state.time}
+                onChange={this.timeChange}
+                showTimeSelect
+                showTimeSelectOnly
+                timeIntervals={60}
+                minTime={this.state.today === true
+                ? setHours(setMinutes(new Date(), 0), getHours(addHours(new Date(), 2)))
+                : setHours(setMinutes(new Date(), 0), 10)}
+                maxTime={setHours(setMinutes(new Date(), 0), 20)}
+                dateFormat="h:mm aa"
+                withPortal
+                timeCaption="Time"
+                placeholderText="選擇時間"/>
+            </div>
+            <div class="d-flex">
+              <label className='inputTitle4 shipNoteTitle' htmlFor="shipNote">備註事項 :</label>
+              <textarea class="shipNote" id="shipNote" rows="2"></textarea>
+            </div>
+          </form>
+        </div>
+        <div className='stepContent'>
+          <div className='contentTitle'>付款方式</div>
+          <div className='titleBackground'></div>
+          <form className='orderForm'>
+            <div class="form-check">
+              <input
+                class="form-check-input shipWay"
+                type="radio"
+                name="payWay"
+                id="creditCard"
+                value="信用卡"
+                checked/>
+              <label class="form-check-label" for="creditCard">
+                信用卡
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input shipWay"
+                type="radio"
+                name="payWay"
+                id="atmPay"
+                value="ATM轉帳"/>
+              <label class="form-check-label" for="atmPay">
+                ATM轉帳
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input shipWay"
+                type="radio"
+                name="payWay"
+                id="payAfter"
+                value="貨到付款"/>
+              <label class="form-check-label" for="payAfter">
+                貨到付款
+              </label>
+            </div>
           </form>
         </div>
       </React.Fragment>

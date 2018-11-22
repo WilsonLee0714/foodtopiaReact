@@ -160,4 +160,21 @@ $bgColor: #707070;
         -moz-appearance: button;
         appearance: button;
     }
+    .shipNoteTitle{
+        line-height: 48px;
+    }
+    .shipNote{
+        width: 191px;
+        background-color: #fff;
+        margin: 4px 5px 4px 0;
+        border: 1px solid #707070;
+        border-radius: 5px;
+        outline-color: #ff4343;
+        padding: 5px 10px;
+        color: #707070;
+        -webkit-appearance: button;
+        -moz-appearance: button;
+        appearance: button;
+        resize: none;
+    }
 }
