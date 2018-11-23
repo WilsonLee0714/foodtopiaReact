@@ -41,6 +41,7 @@ class OrderStep1 extends Component {
       el: '.my-selector-c', elCounty: '.county', // 在 el 裡查找 dom
       elDistrict: '.district', // 在 el 裡查找 dom
     });
+    console.log(this.state)
   }
   render() {
     return (
@@ -73,7 +74,7 @@ class OrderStep1 extends Component {
                 id="express"
                 value="宅配到府"
                 checked/>
-              <span className='wayName'>宅配到府</span>
+              <label className='wayName'>宅配到府</label>
             </div>
             <div class="d-flex">
               <label className='inputTitle4' htmlFor="shipTime">送達時間 :</label>
@@ -86,7 +87,6 @@ class OrderStep1 extends Component {
                 ? addDays(new Date(), 1)
                 : new Date()}
                 maxDate={addDays(new Date(), 7)}
-                withPortal
                 id="startDate"
                 placeholderText="選擇日期"/>
               <DatePicker
@@ -101,7 +101,6 @@ class OrderStep1 extends Component {
                 : setHours(setMinutes(new Date(), 0), 10)}
                 maxTime={setHours(setMinutes(new Date(), 0), 20)}
                 dateFormat="h:mm aa"
-                withPortal
                 timeCaption="Time"
                 placeholderText="選擇時間"/>
             </div>
@@ -115,37 +114,37 @@ class OrderStep1 extends Component {
           <div className='contentTitle'>付款方式</div>
           <div className='titleBackground'></div>
           <form className='orderForm'>
-            <div class="form-check">
+            <div className="">
               <input
-                class="form-check-input shipWay"
+                className="shipWay"
                 type="radio"
                 name="payWay"
                 id="creditCard"
                 value="信用卡"
                 checked/>
-              <label class="form-check-label" for="creditCard">
+              <label className="wayName" for="creditCard">
                 信用卡
               </label>
             </div>
-            <div class="form-check">
+            <div className="">
               <input
-                class="form-check-input shipWay"
+                className="shipWay"
                 type="radio"
                 name="payWay"
                 id="atmPay"
                 value="ATM轉帳"/>
-              <label class="form-check-label" for="atmPay">
+              <label className="wayName" for="atmPay">
                 ATM轉帳
               </label>
             </div>
-            <div class="form-check">
+            <div className="">
               <input
-                class="form-check-input shipWay"
+                className="shipWay"
                 type="radio"
                 name="payWay"
                 id="payAfter"
                 value="貨到付款"/>
-              <label class="form-check-label" for="payAfter">
+              <label className="wayName" for="payAfter">
                 貨到付款
               </label>
             </div>
