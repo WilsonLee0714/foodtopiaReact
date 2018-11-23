@@ -5,20 +5,27 @@ import { Link } from 'react-router-dom';
 class BasicInfo extends Component {
     constructor(prop) {
         super(prop);
+
+        this.state={
+            nickname:'',
+            name:'',
+            email:'',
+        }
     }
     componentDidMount() {
         var name = document.getElementById('name');
         var email = document.getElementById('email');
-        var test = document.getElementById('test');
+        var nickname = document.getElementById('nickname');
         fetch('http://localhost:3000/session/info', {
             method: 'GET',
             credentials: 'include',
-            mode:'cors',
         }).then(function (res) {
             console.log(res);
-            return res.text();
+            return res.json();
         }).then(function (a) {
-            name.value = a;
+            email.value = a.email;
+            name.value = a.name;
+            nickname.value = a.nickname;
         }).catch(function (err) {
             console.log(err);
             //alert(err);

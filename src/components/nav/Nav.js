@@ -51,9 +51,9 @@ class Nav extends Component {
                 </li>
 
               </ul>
-              <a href='http://localhost/foodtopia/ab_list.php'>
+              {/* <a href=''> */}
                 <img src={require('./icons/like.png')} />
-              </a>
+              {/* </a> */}
               <a href="http://localhost:3000/session/login">
                 <img
                   id='members'
