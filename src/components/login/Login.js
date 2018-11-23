@@ -29,7 +29,7 @@ class Login extends Component {
                             <img className='' src={require('./images/steakPlated.png')} />
                         </div> */}
                             <div class="formPattern fadeIn" style={{ width: '300px' }}>
-                                <form id='registerFrom' action='http://localhost:3000/users/login' method='post'>
+                                <form id='registerFrom' action='http://localhost:3000/session/user' method='post'>
                                     <h3 className='pb-4 text-center'>會員登入</h3>
                                     <div class="form-group  py-1">
                                         <label>Email :</label>

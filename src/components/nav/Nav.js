@@ -54,12 +54,12 @@ class Nav extends Component {
               <a href='http://localhost/foodtopia/ab_list.php'>
                 <img src={require('./icons/like.png')} />
               </a>
-              <Link to="/login">
+              <a href="http://localhost:3000/session/login">
                 <img
                   id='members'
                   onClick={this.clickHandler}
                   src={require('./icons/profile.png')} />
-              </Link>
+              </a>
               <img src={require('./icons/shopping-bag.png')} onClick={this.cartToggle} />
               <form className="form-inline my-2 my-lg-0">
                 <input

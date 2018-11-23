@@ -6,13 +6,18 @@ class MemberCenter extends Component {
     constructor(prop) {
         super(prop)
     }
-    clickHandler(){
+    clickHandler() {
         // this.classList.remove("active");
+    }
+    logout() {
+        fetch('http://localhost:3000/session/logout', {
+            method: 'GET',
+        })
     }
     render() {
         return (
             <React.Fragment>
-                <div className='mt-3 p-4' style={{width:'250px'}}></div>
+                <div className='mt-3 p-4' style={{ width: '250px' }}></div>
                 <div className='centerWrap mt-3 d-flex flex-column p-4 '>
                     <div>
                         <img className='my-2 mr-2' style={{ width: '45px' }} src={require('./images/Group158.png')} />
@@ -31,10 +36,11 @@ class MemberCenter extends Component {
                             <li><Link className='a' to='/memberCenter/myService'>部落格</Link></li>
                         </ul>
                     </div>
-                    <div className='mt-2'>
+                    <a href='http://localhost:3000/session/logout' style={{ textDecoration: 'none' }}>
+                    <div id='logout' className='mt-2 logout' onClick={this.logout} style={{ cursor: 'pointer' }}>
                         <img className='my-2 mr-3' style={{ width: '15px' }} src={require('./images/Group162.png')} />
                         登出
-                    </div>
+                    </div></a>
                 </div>
             </React.Fragment>
         )

@@ -7,25 +7,20 @@ class BasicInfo extends Component {
         super(prop);
     }
     componentDidMount(){
-        // var nickname = document.getElementById('nickname');
-        // var name = document.getElementById('name');
-        // var email = document.getElementById('email');
-        // fetch('http://localhost:3000/api/members', {
-        //     method: 'GET',
-        //     mode:'cors',
-        //     headers: {
-        //       'Content-Type': 'application/json'
-        //     },
-        //   }).then(function (res) {
-        //     return res.json();
-        //   }).then(function (a) {
-        //     a = a[4];     
-        //     nickname.value = a.nick_name;
-        //     name.value = a.name ;
-        //     email.value = a.email ;
-        //   }).catch(function (err) {
-        //     alert(err);
-        //   })
+        var name = document.getElementById('name');
+        var email = document.getElementById('email');
+        var test = document.getElementById('test');
+        fetch('http://localhost:3000/session/info', {
+            method: 'GET',
+            credentials: 'include',
+          }).then(function (res) {
+              console.log(res);
+              return  res.text();
+            }).then(function (a) {
+              name.value = a;
+          }).catch(function (err) {
+            alert(err);
+          })
     }
     render() {
         return (
