@@ -6,21 +6,23 @@ class BasicInfo extends Component {
     constructor(prop) {
         super(prop);
     }
-    componentDidMount(){
+    componentDidMount() {
         var name = document.getElementById('name');
         var email = document.getElementById('email');
         var test = document.getElementById('test');
         fetch('http://localhost:3000/session/info', {
             method: 'GET',
             credentials: 'include',
-          }).then(function (res) {
-              console.log(res);
-              return  res.text();
-            }).then(function (a) {
-              name.value = a;
-          }).catch(function (err) {
-            alert(err);
-          })
+            mode:'cors',
+        }).then(function (res) {
+            console.log(res);
+            return res.text();
+        }).then(function (a) {
+            name.value = a;
+        }).catch(function (err) {
+            console.log(err);
+            //alert(err);
+        })
     }
     render() {
         return (
@@ -70,7 +72,7 @@ class BasicInfo extends Component {
                                 <tr>
                                     <td>生日</td>
                                     <td>
-                                    <input type='date'></input>
+                                        <input type='date'></input>
                                     </td>
                                 </tr>
                                 <tr>
