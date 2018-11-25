@@ -7,8 +7,7 @@ import OrderStep2 from "./OrderStep2";
 class Order extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
+    this.state = {};
   }
   render() {
     return (
@@ -52,9 +51,9 @@ class Order extends Component {
   componentDidMount() {
     let step1 = document.querySelector('#step1'),
       step1Num = document.querySelector('#step1Num'),
-      step2Num = document.querySelector('#step2Num'),
       step2Line = document.querySelector('#step2Line'),
       step2 = document.querySelector('#step2'),
+      step2Num = document.querySelector('#step2Num'),
       step3Line = document.querySelector('#step3Line'),
       step3 = document.querySelector('#step3');
     if (window.location.href == 'http://localhost:3000/order/step1') {
@@ -93,7 +92,6 @@ class Order extends Component {
         .classList
         .add('active');
     }
-    // this.urlCheck();
     console.log(this.state)
     console.log(window.location.href)
 

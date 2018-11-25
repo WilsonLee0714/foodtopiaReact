@@ -27,11 +27,10 @@ $bgColor: #707070;
                 background-color: #707070;
                 color: #fff;
                 line-height: 44px;
-                
             }
             .doneIcon {
-                    color: #ff4343;
-                }
+                color: #ff4343;
+            }
             .stepText {
                 margin: 10px 0;
                 font-size: 1.25rem;
@@ -85,33 +84,99 @@ $bgColor: #707070;
             }
         }
     }
-    .stepContent {
+    .formContent {
+        padding: 30px 60px;
         margin: 30px 0;
         border: 2px solid #707070;
         border-radius: 10px;
         background-color: #F8F8F8;
         position: relative;
-    }
-    .contentTitle {
-        z-index: 99;
-        font-size: 1.25rem;
-        line-height: 1.25rem;
-        font-weight: bold;
-        position: absolute;
-        color: #ff4343;
-        top: -10px;
-        left: 40px;
-    }
-    .titleBackground {
-        position: absolute;
-        width: 100px;
-        height: 5px;
-        top: -2px;
-        left: 30px;
-        background-color: #f8f8f8;
-    }
-    .orderForm {
-        margin: 30px 60px;
+        .contentTitle {
+            z-index: 99;
+            font-size: 1.25rem;
+            line-height: 1.25rem;
+            font-weight: bold;
+            position: absolute;
+            color: #ff4343;
+            top: -10px;
+            left: 40px;
+        }
+        .titleBackground {
+            position: absolute;
+            width: 100px;
+            height: 5px;
+            top: -2px;
+            left: 30px;
+            background-color: #f8f8f8;
+        }
+        .inputLabel {
+            padding-left: 0px;
+            font-weight: bold;
+            text-align: right;
+        }
+        .inputLabel4 {
+            font-weight: bold;
+            margin: 10px 10px 10px 0;
+        }
+        .colPadding {
+            padding: 0;
+        }
+        .inputContent {
+            width: 200px;
+            border-color: #707070;
+            border-radius: 5px;
+            color: #707070;
+            &:focus {
+                box-shadow: 0 0 0 0.2rem rgba(255, 67, 67, 0.25);
+                border-color: rgba(255, 255, 255, 0);
+            }
+        }
+        .noteContent{
+            width: 400px;
+        resize: none;
+
+        }
+        .noteLabel{
+            line-height: 48px;
+        }
+        .addressSelect {
+            select {
+                background-color: #fff;
+                margin: 0 5px 0 0;
+                border-color: #707070;
+                border-radius: 5px;
+                color: #707070; // -webkit-appearance: none;
+                // -moz-appearance: none;
+                // appearance: none;
+                &:focus {
+                    outline: 0px;
+                    box-shadow: 0 0 0 .25rem rgba(255, 67, 67, 0.25);
+                    border-color: rgba(255, 255, 255, 0);
+                }
+            }
+        }
+            .timeSelect {
+                width: 120px;
+                margin: 0px 5px 0px 0;
+                border: 1px solid;
+                border-color: #707070;
+                border-radius: 5px;
+                padding: 6px 12px;
+                color: #707070;
+                &:focus {
+                    outline: 0px;
+                    box-shadow: 0 0 0 .25rem rgba(255, 67, 67, 0.25);
+                    border-color: rgba(255, 255, 255, 0);
+                }
+            }
+            .shipMod {
+                margin-left: -1rem;
+                transform: translateY(-2px);
+            }
+            .payMod {
+                
+                transform: translateY(-2px);
+            }
     }
     .inputTitle2 {
         font-weight: bold;
@@ -122,17 +187,17 @@ $bgColor: #707070;
         margin: 10px 10px 10px 0;
     }
     .inputBorder {
-        border: 1px solid ;
+        border: 1px solid;
         border-color: #707070;
         border-radius: 5px;
         outline-color: #ff4343;
         padding: 5px 10px;
         color: #707070;
-        :focus{
-        border-color: rgba(255,255,255,0);
+        :focus {
+            border-color: rgba(255, 255, 255, 0);
         }
     }
-    .addressSelect {
+    .addressSelect2 {
         select {
             background-color: #fff;
             font-size: 16px;
@@ -168,10 +233,10 @@ $bgColor: #707070;
         -moz-appearance: button;
         appearance: button;
     }
-    .shipNoteTitle{
+    .shipNoteTitle {
         line-height: 48px;
     }
-    .shipNote{
+    .shipNote {
         width: 387px;
         background-color: #fff;
         margin: 4px 5px 4px 0;
