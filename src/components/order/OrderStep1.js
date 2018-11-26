@@ -36,7 +36,8 @@ class OrderStep1 extends Component {
       date: '',
       time: '',
       note: '',
-      pay: ''
+      pay: '',
+      // today: 'false'
     };
   }
   handleChange = (evt) => {
@@ -61,14 +62,30 @@ class OrderStep1 extends Component {
     let choose = evt.target.value;
     this.setState({pay: choose})
   }
+  checkForm = (evt) => {
+    evt.preventDefault();
+  }
 
   render() {
-    var today
-    if (this.state.date == getDate(new Date())) {
-      today = true;
-    } else {
-      today = false;
+
+    const minHours = () => {
+      var today
+      if (getDate(this.state.date) == getDate(new Date())) {
+        today = true;
+      } else {
+        today = false;
+      }
+      if (today) {
+        if (getHours(new Date()) > 7) {
+          return setHours(setMinutes(new Date(), 0), getHours(addHours(new Date(), 2)))
+        } else {
+          return setHours(setMinutes(new Date(), 0), 10);
+        }
+      } else {
+        return setHours(setMinutes(new Date(), 0), 10);
+      }
     }
+
     return (
       <React.Fragment>
         <Form className='orderForm'>
@@ -77,7 +94,7 @@ class OrderStep1 extends Component {
             <div className='titleBackground'></div>
 
             <FormGroup row>
-              <Label for='name' className='inputLabel' sm={2}>姓名 :</Label>
+              <Label for='name' className='inputLabel' sm={2}>*姓名 :</Label>
               <Col className='colPadding' sm={10}>
                 <Input
                   id='name'
@@ -96,12 +113,13 @@ class OrderStep1 extends Component {
                   className='inputContent'
                   type='text'
                   onChange={this.handleChange}
-                  value={this.state.tel}/>
+                  value={this.state.tel}
+                  placeholder=''/>
               </Col>
             </FormGroup>
 
             <FormGroup row>
-              <Label for='phone' className='inputLabel' sm={2}>手機 :</Label>
+              <Label for='phone' className='inputLabel' sm={2}>*手機 :</Label>
               <Col className='colPadding' sm={10}>
                 <Input
                   id='phone'
@@ -113,7 +131,7 @@ class OrderStep1 extends Component {
             </FormGroup>
 
             <FormGroup className='my-selector-c addressSelect' row>
-              <Label for='city' className='inputLabel' sm={2}>地址 :</Label>
+              <Label for='city' className='inputLabel' sm={2}>*地址 :</Label>
               <Input
                 id='city'
                 className='county'
@@ -135,7 +153,7 @@ class OrderStep1 extends Component {
             </FormGroup>
 
             <FormGroup row>
-              <Label className='inputLabel' sm={2}>寄送方式 :</Label>
+              <Label className='inputLabel' sm={2}>*寄送方式 :</Label>
               <Label className='' check sm={10}>
                 <Input
                   id="home"
@@ -149,7 +167,7 @@ class OrderStep1 extends Component {
             </FormGroup>
 
             <FormGroup className='' row>
-              <Label for="shipTime" className='inputLabel' sm={2}>送達時間 :</Label>
+              <Label for="shipTime" className='inputLabel' sm={2}>*送達時間 :</Label>
               <Col className='colPadding' sm={10}>
                 <DatePicker
                   className="timeSelect"
@@ -168,12 +186,10 @@ class OrderStep1 extends Component {
                   showTimeSelect
                   showTimeSelectOnly
                   timeIntervals={60}
-                  minTime={today === true
-                  ? setHours(setMinutes(new Date(), 0), getHours(addHours(new Date(), 2)))
-                  : setHours(setMinutes(new Date(), 0), 10)}
+                  minTime={minHours()}
                   maxTime={setHours(setMinutes(new Date(), 0), 20)}
                   dateFormat="h:mm aa"
-                  timeCaption="Time"
+                  timeCaption="時間"
                   placeholderText="選擇時間"/>
               </Col>
             </FormGroup>
@@ -196,8 +212,10 @@ class OrderStep1 extends Component {
             <div className='titleBackground'></div>
 
             <FormGroup row className='my-0'>
-            <Col sm={1}></Col>
-              <Label className='' check sm={11}>
+              <Label className='payName' check sm={{
+              size: 10,
+              offset: 2
+            }}>
                 <Input
                   className='payMod'
                   type="radio"
@@ -206,8 +224,10 @@ class OrderStep1 extends Component {
                   onChange={this.payChange}
                   checked={this.state.pay === 'card'}/>
                 信用卡</Label>
-                <Col sm={1}></Col>
-              <Label className='' check sm={11}>
+              <Label className='payName' check sm={{
+              size: 10,
+              offset: 2
+            }}>
                 <Input
                   className='payMod'
                   type="radio"
@@ -216,8 +236,10 @@ class OrderStep1 extends Component {
                   onChange={this.payChange}
                   checked={this.state.pay === 'atm'}/>
                 ATM轉帳</Label>
-                <Col sm={1}></Col>
-              <Label className='' check sm={11}>
+              <Label className='payName' check sm={{
+              size: 10,
+              offset: 2
+            }}>
                 <Input
                   className='payMod'
                   type="radio"
@@ -229,6 +251,14 @@ class OrderStep1 extends Component {
             </FormGroup>
 
           </div>
+          <FormGroup row>
+            <Col sm={{
+              size: 3,
+              offset: 9
+            }}>
+              <Button className='btnNext' color='danger' onClick={this.checkForm}>下一步</Button>
+            </Col>
+          </FormGroup>
         </Form>
       </React.Fragment>
     )
