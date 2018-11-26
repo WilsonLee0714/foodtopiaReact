@@ -6,6 +6,35 @@ import "./Register.scss";
 class Register extends Component {
     constructor(props) {
         super(props);
+        this.state ={
+            email:'',
+        }
+    }
+    handleChange = (event) => {
+        var wrong = document.getElementById('wrong');
+        var ok = document.getElementById('ok');
+        var email = document.getElementById('email').value;
+        // var email = this.state.email;
+        console.log(email);
+        this.setState({email:event.target.value});
+        console.log(email);
+        fetch('http://localhost:3000/users/login',{method:'POST',mode:'cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            email: email,
+        })}).then(function(res){
+            return res.text();
+        }).then(function(res){
+            if(res=='此Email信箱已經有人註冊了!!' || res=='Email格式不正確!!'){
+                wrong.innerHTML = res;
+                ok.innerHTML = '';
+            } else {
+                ok.innerHTML = res;
+                wrong.innerHTML = '';
+            }
+        })
     }
     checkOut(e) {
         e.preventDefault();
@@ -16,7 +45,7 @@ class Register extends Component {
             } else {
                 return true;
             }
-        }
+        };
         var nickName = document.getElementById('nickName');
         var email = document.getElementById('email');
         var pw1 = document.getElementById('pw1');
@@ -35,13 +64,14 @@ class Register extends Component {
             pw1.value = '';
             pw2.value = '';
         } else if (!IsEmail(email.value)) {
-            alert('信箱格式不正確')
+            alert('信箱格式不正確');
             console.log(IsEmail(email.value))
         } else {
             console.log(IsEmail(email.value))
             registerFrom.submit();
-        }
-    }
+        };
+    };
+   
     render() {
         return (
             <React.Fragment>
@@ -61,7 +91,7 @@ class Register extends Component {
                                     </div>
                                     <div class="form-group d-flex justify-content-between py-1">
                                         <label>Email</label>
-                                        <input id='email' name='email' type="email" class="form-control w-75" aria-describedby="emailHelp" placeholder="請輸入信箱" />
+                                        <input id='email' onChange={this.handleChange} value={this.state.email} name='email' type="email" class="form-control w-75" aria-describedby="emailHelp" placeholder="請輸入信箱" />
                                     </div>
                                     <div class="form-group d-flex justify-content-between py-1">
                                         <label>密碼</label>
@@ -71,6 +101,9 @@ class Register extends Component {
                                         <label>密碼確認</label>
                                         <input id='pw2' type="password" class="form-control w-75" placeholder="請確認密碼" />
                                     </div>
+                                    <div class='text-center text-danger p-0' id='wrong'></div>
+                                    <div class='text-center text-primary p-0' id='ok'></div>
+
                                     {/* <Link to='/registerSuccessful'> */}
                                     <button id='registerBtn' onClick={this.checkOut} type="submit" class="btn btn-sm btn-primary w-100 py-2 btn1">註冊</button>
                                     {/* </Link> */}

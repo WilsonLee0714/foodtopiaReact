@@ -59,8 +59,8 @@ class BasicInfo extends Component {
                         <img src={require('./images/profile.png')} />
                     </div>
                     <div className='text-center'>
-                        <label className='mr-3'>上傳大頭貼</label>
-                        <button className='btn btn-btn-secondary btn-sm' type='button'>選擇檔案</button>
+                        {/* <label className='mr-3'>上傳大頭貼</label> */}
+                        <input style={{border:'none'}} className='text-center w-25' type='file'/>
                     </div>
                     <div className='infoWrap m-5 p-3'>
                         <form action='http://localhost:3000/session/info' method='post'>
