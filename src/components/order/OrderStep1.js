@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {BrowserRouter, Route, Link} from "react-router-dom";
 import "./Order.scss";
 import {
   Button,
@@ -26,51 +25,127 @@ class OrderStep1 extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      tel: '',
-      phone: '',
-      city: '',
-      dist: '',
-      address: '',
-      mod: 'home',
-      date: '',
-      time: '',
-      note: '',
-      pay: '',
-      // today: 'false'
+      fields: {
+        name: '',
+        tel: '',
+        phone: '',
+        city: '',
+        dist: '',
+        address: '',
+        mod: 'home',
+        date: '',
+        time: '',
+        note: '',
+        pay: 'card'
+      },
+      errors: {}
     };
   }
   handleChange = (evt) => {
     let key = evt.target.id;
     let data = evt.target.value;
-    this.setState({[key]: data});
+    let fields = this.state.fields;
+    fields[key] = data;
+    this.setState({fields});
     console.log(this.state);
   }
   modChange = (evt) => {
     let choose = evt.target.value;
-    this.setState({mod: choose})
+    let fields = this.state.fields;
+    fields["mod"] = choose;
+    this.setState({fields});
   }
   dateChange = (date) => {
-    this.setState({date: date});
-    // if (getDate(date) == getDate(new Date())) {   this.setState({today: true}); }
-    // else {   this.setState({today: false}); }
+    let fields = this.state.fields;
+    fields["date"] = date;
+    this.setState({fields});
+
   }
   timeChange = (time) => {
-    this.setState({time: time});
+    let fields = this.state.fields;
+    fields["time"] = time;
+    this.setState({fields});
   }
   payChange = (evt) => {
     let choose = evt.target.value;
-    this.setState({pay: choose})
+    let fields = this.state.fields;
+    fields["pay"] = choose;
+    this.setState({fields});
   }
-  checkForm = (evt) => {
+
+  handleValidation = () => {
+    let fields = this.state.fields;
+    let errors = {};
+    let formIsValid = true;
+
+    //Name
+    if (!fields["name"]) {
+      formIsValid = false;
+      errors["name"] = "姓名為必填欄位";
+    }
+
+    //Tel
+    if (fields["tel"] !== "") {
+      if (!fields["tel"].match(/^(0\d{8,10})(?:(?:#)(\d+))?$/)) {
+        formIsValid = false;
+        errors["tel"] = "請輸入正確格式，例 0223456789#123";
+      }
+    }
+
+    //Phone
+    if (!fields["phone"]) {
+      formIsValid = false;
+      errors["phone"] = "手機為必填欄位";
+    } else if (typeof fields["phone"] !== "undefined") {
+      if (!fields["phone"].match(/^09\d{8}/)) {
+        formIsValid = false;
+        errors["phone"] = "請輸入正確格式，例 0912345678";
+      }
+    }
+
+    //Address
+    if (!fields["city"]) {
+      formIsValid = false;
+      errors["address"] = "地址為必填欄位";
+    } else if (!fields["dist"]) {
+      formIsValid = false;
+      errors["address"] = "地址為必填欄位";
+    } else if (!fields["address"]) {
+      formIsValid = false;
+      errors["address"] = "地址為必填欄位";
+    }
+
+    //Date
+    if (!fields["date"]) {
+      formIsValid = false;
+      errors["date"] = "送達時間為必選欄位";
+    } else if (!fields["time"]) {
+      formIsValid = false;
+      errors["date"] = "送達時間為必選欄位";
+    }
+
+    this.setState({errors: errors});
+    return formIsValid;
+  }
+
+  contactSubmit = (evt) => {
     evt.preventDefault();
+
+    if (this.handleValidation()) {
+      window
+        .location
+        .assign('/order/step2');
+    } else {
+      return
+    }
+
   }
 
   render() {
 
     const minHours = () => {
       var today
-      if (getDate(this.state.date) == getDate(new Date())) {
+      if (getDate(this.state.fields.date) == getDate(new Date())) {
         today = true;
       } else {
         today = false;
@@ -88,7 +163,7 @@ class OrderStep1 extends Component {
 
     return (
       <React.Fragment>
-        <Form className='orderForm'>
+        <Form>
           <div className='formContent'>
             <div className='contentTitle'>收件資訊</div>
             <div className='titleBackground'></div>
@@ -101,7 +176,15 @@ class OrderStep1 extends Component {
                   className='inputContent'
                   type='text'
                   onChange={this.handleChange}
-                  value={this.state.name}/>
+                  value={this.state.fields.name}/>
+              </Col>
+              <Col
+                className='colPadding'
+                sm={{
+                size: 10,
+                offset: 2
+              }}>
+                <span className='errorTip'>{this.state.errors["name"]}</span>
               </Col>
             </FormGroup>
 
@@ -113,8 +196,15 @@ class OrderStep1 extends Component {
                   className='inputContent'
                   type='text'
                   onChange={this.handleChange}
-                  value={this.state.tel}
-                  placeholder=''/>
+                  value={this.state.fields.tel}/>
+              </Col>
+              <Col
+                className='colPadding'
+                sm={{
+                size: 10,
+                offset: 2
+              }}>
+                <span className='errorTip'>{this.state.errors["tel"]}</span>
               </Col>
             </FormGroup>
 
@@ -126,7 +216,15 @@ class OrderStep1 extends Component {
                   className='inputContent'
                   type='text'
                   onChange={this.handleChange}
-                  value={this.state.phone}/>
+                  value={this.state.fields.phone}/>
+              </Col>
+              <Col
+                className='colPadding'
+                sm={{
+                size: 10,
+                offset: 2
+              }}>
+                <span className='errorTip'>{this.state.errors["phone"]}</span>
               </Col>
             </FormGroup>
 
@@ -137,19 +235,27 @@ class OrderStep1 extends Component {
                 className='county'
                 type='select'
                 onChange={this.handleChange}
-                value={this.state.city}/>
+                value={this.state.fields.city}/>
               <Input
                 id='dist'
                 className='district'
                 type='select'
                 onChange={this.handleChange}
-                value={this.state.dist}/>
+                value={this.state.fields.dist}/>
               <Input
                 id='address'
                 className='inputContent'
                 type='text'
                 onChange={this.handleChange}
-                value={this.state.address}/>
+                value={this.state.fields.address}/>
+              <Col
+                className='colPadding'
+                sm={{
+                size: 10,
+                offset: 2
+              }}>
+                <span className='errorTip'>{this.state.errors["address"]}</span>
+              </Col>
             </FormGroup>
 
             <FormGroup row>
@@ -162,7 +268,7 @@ class OrderStep1 extends Component {
                   name="shipMod"
                   value="home"
                   onChange={this.modChange}
-                  checked={this.state.mod === 'home'}/>
+                  checked={this.state.fields.mod === 'home'}/>
                 宅配到府</Label>
             </FormGroup>
 
@@ -171,7 +277,7 @@ class OrderStep1 extends Component {
               <Col className='colPadding' sm={10}>
                 <DatePicker
                   className="timeSelect"
-                  selected={this.state.date}
+                  selected={this.state.fields.date}
                   onChange={this.dateChange}
                   dateFormat="yyyy/MM/dd"
                   minDate={getHours(new Date()) > 17
@@ -181,7 +287,7 @@ class OrderStep1 extends Component {
                   placeholderText="選擇日期"/>
                 <DatePicker
                   className="timeSelect"
-                  selected={this.state.time}
+                  selected={this.state.fields.time}
                   onChange={this.timeChange}
                   showTimeSelect
                   showTimeSelectOnly
@@ -191,6 +297,14 @@ class OrderStep1 extends Component {
                   dateFormat="h:mm aa"
                   timeCaption="時間"
                   placeholderText="選擇時間"/>
+              </Col>
+              <Col
+                className='colPadding'
+                sm={{
+                size: 10,
+                offset: 2
+              }}>
+                <span className='errorTip'>{this.state.errors["date"]}</span>
               </Col>
             </FormGroup>
 
@@ -202,7 +316,7 @@ class OrderStep1 extends Component {
                   className='inputContent noteContent'
                   type='textarea'
                   onChange={this.handleChange}
-                  value={this.state.note}/>
+                  value={this.state.fields.note}/>
               </Col>
             </FormGroup>
           </div>
@@ -212,41 +326,50 @@ class OrderStep1 extends Component {
             <div className='titleBackground'></div>
 
             <FormGroup row className='my-0'>
-              <Label className='payName' check sm={{
-              size: 10,
-              offset: 2
-            }}>
+              <Label
+                className='payName'
+                check
+                sm={{
+                size: 10,
+                offset: 2
+              }}>
                 <Input
                   className='payMod'
                   type="radio"
                   name="payWay"
                   value="card"
                   onChange={this.payChange}
-                  checked={this.state.pay === 'card'}/>
+                  checked={this.state.fields.pay === 'card'}/>
                 信用卡</Label>
-              <Label className='payName' check sm={{
-              size: 10,
-              offset: 2
-            }}>
+              <Label
+                className='payName'
+                check
+                sm={{
+                size: 10,
+                offset: 2
+              }}>
                 <Input
                   className='payMod'
                   type="radio"
                   name="payWay"
                   value="atm"
                   onChange={this.payChange}
-                  checked={this.state.pay === 'atm'}/>
+                  checked={this.state.fields.pay === 'atm'}/>
                 ATM轉帳</Label>
-              <Label className='payName' check sm={{
-              size: 10,
-              offset: 2
-            }}>
+              <Label
+                className='payName'
+                check
+                sm={{
+                size: 10,
+                offset: 2
+              }}>
                 <Input
                   className='payMod'
                   type="radio"
                   name="payWay"
                   value="payAfter"
                   onChange={this.payChange}
-                  checked={this.state.pay === 'payAfter'}/>
+                  checked={this.state.fields.pay === 'payAfter'}/>
                 貨到付款</Label>
             </FormGroup>
 
@@ -256,7 +379,7 @@ class OrderStep1 extends Component {
               size: 3,
               offset: 9
             }}>
-              <Button className='btnNext' color='danger' onClick={this.checkForm}>下一步</Button>
+              <Button className='btnNext' color='danger' onClick={this.contactSubmit}>下一步</Button>
             </Col>
           </FormGroup>
         </Form>

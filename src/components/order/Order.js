@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Container, Row, Col} from 'reactstrap';
 import {BrowserRouter, Route, Link} from "react-router-dom";
 import "./Order.scss";
 import OrderStep1 from "./OrderStep1";
@@ -14,7 +15,7 @@ class Order extends Component {
 
       <BrowserRouter>
         <React.Fragment>
-          <div className='container orderPage'>
+          <Container className='orderPage'>
             <div className='orderStep d-flex'>
               <div className='stepTitle'>購買流程</div>
               <div className='step' id='step1'>
@@ -43,7 +44,7 @@ class Order extends Component {
             </div>
             <Route path="/order/step1" component={OrderStep1}/>
             <Route path="/order/step2" component={OrderStep2}/>
-          </div>
+          </Container>
         </React.Fragment>
       </BrowserRouter>
     )
