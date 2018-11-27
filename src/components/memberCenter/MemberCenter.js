@@ -7,7 +7,7 @@ class MemberCenter extends Component {
         super(prop);
         this.state = {
             userName: '',
-            profile: '',
+            profile: 'Group158.png',
             source: 'http://localhost:3000/upload/',
         }
     }
@@ -21,7 +21,11 @@ class MemberCenter extends Component {
             return res.json();
         }).then((a) => {
             this.setState({ userName: a.nickname });
-            this.setState({ profile: a.profile });
+            if(a.profile!=''){
+                this.setState({ profile: a.profile });
+            } else {
+                this.setState({ profile: 'Group158.png' });
+            }
         })
             .catch(function (err) {
                 console.log(err);
