@@ -21,7 +21,6 @@ import {
   addDays
 } from 'date-fns';
 
-
 class OrderStep1 extends Component {
   constructor(props) {
     super(props);
@@ -41,7 +40,7 @@ class OrderStep1 extends Component {
       },
       errors: {}
     };
-    
+
   }
   handleChange = (evt) => {
     let key = evt.target.id;
@@ -49,10 +48,6 @@ class OrderStep1 extends Component {
     let fields = this.state.fields;
     fields[key] = data;
     this.setState({fields});
-
-
-   
-
     console.log(this.state);
   }
   modChange = (evt) => {
@@ -137,11 +132,14 @@ class OrderStep1 extends Component {
   save = (evt) => {
     evt.preventDefault();
     if (this.handleValidation()) {
-      this.props.save(this.state.fields);
-      this.props.history.push('/order/step2');
-      // window
-      // .location
-      // .assign('/order/step2');
+      this
+        .props
+        .save(this.state.fields);
+      this
+        .props
+        .step(2);
+      // this.props.history.push('/order/step2');
+      // window.location.assign('/order/step2');
     } else {
       return
     }
@@ -398,9 +396,9 @@ class OrderStep1 extends Component {
       el: '.my-selector-c', elCounty: '.county', // 在 el 裡查找 dom
       elDistrict: '.district', // 在 el 裡查找 dom
     });
+    window.scrollTo(0, 0);
+    console.log(this.state)
   }
-  componentDidUpdate(){
-    
-  }
+  componentDidUpdate() {}
 }
 export default OrderStep1;

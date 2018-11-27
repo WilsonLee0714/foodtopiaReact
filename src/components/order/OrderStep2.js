@@ -7,21 +7,19 @@ import "./Order.scss";
 class OrderStep2 extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-    }
+    this.state = {}
   }
 
   lastStep = (evt) => {
     evt.preventDefault();
     this
       .props
-      .history
-      .push('/order/step1');
+      .step(1);
 
   }
 
   render() {
-    const ymt = () => {
+    const ymd = () => {
       let day = this.props.fields.date,
         time = this.props.fields.time,
         year = getYear(day),
@@ -31,28 +29,23 @@ class OrderStep2 extends Component {
       return `${year}/${month}/${date} ${hours}:00 前送達`
     }
 
-    const shipWay = () =>{
-      switch(this.props.fields.mod) {
+    const shipWay = () => {
+      switch (this.props.fields.mod) {
         case 'home':
-            return `宅配到府`
-            break;
+          return `宅配到府`
       }
     }
 
     const payWay = () => {
-      switch(this.props.fields.pay) {
+      switch (this.props.fields.pay) {
         case 'card':
-            return `信用卡`
-            break;
+          return `信用卡`
         case 'atm':
-            return `ATM轉帳`
-            break;
+          return `ATM轉帳`
         case 'payAfter':
-            return `貨到付款`
-            break;
+          return `貨到付款`
       }
     }
-
 
     return (
       <React.Fragment>
@@ -90,7 +83,7 @@ class OrderStep2 extends Component {
 
           <Row className='checkInfo'>
             <Col xs={2} className='inputLabel'>收件時間 :</Col>
-            <Col xs={10} className='colPadding'>{ymt()}</Col>
+            <Col xs={10} className='colPadding'>{ymd()}</Col>
           </Row>
 
           <Row className='checkInfo'>
@@ -117,7 +110,8 @@ class OrderStep2 extends Component {
       </React.Fragment>
     )
   }
-  componentDidMount(){
+  componentDidMount() {
+    window.scrollTo(0, 0);
     console.log(this.state)
   }
 }
