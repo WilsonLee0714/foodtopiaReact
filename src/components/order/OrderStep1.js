@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import "./Order.scss";
 import {
   Button,
@@ -21,6 +21,7 @@ import {
   addDays
 } from 'date-fns';
 
+
 class OrderStep1 extends Component {
   constructor(props) {
     super(props);
@@ -40,6 +41,7 @@ class OrderStep1 extends Component {
       },
       errors: {}
     };
+    this.save = this.save.bind(this);
   }
   handleChange = (evt) => {
     let key = evt.target.id;
@@ -47,6 +49,10 @@ class OrderStep1 extends Component {
     let fields = this.state.fields;
     fields[key] = data;
     this.setState({fields});
+
+
+   
+
     console.log(this.state);
   }
   modChange = (evt) => {
@@ -128,16 +134,13 @@ class OrderStep1 extends Component {
     return formIsValid;
   }
 
-  contactSubmit = (evt) => {
+  save = (evt) => {
     evt.preventDefault();
-
-    if (this.handleValidation()) {
-      window
-        .location
-        .assign('/order/step2');
-    } else {
-      return
-    }
+    this.props.save(this.state.fields);
+    // if (this.handleValidation()) {
+    // } else {
+    //   return
+    // }
 
   }
 
@@ -379,7 +382,7 @@ class OrderStep1 extends Component {
               size: 3,
               offset: 9
             }}>
-              <Button className='btnNext' color='danger' onClick={this.contactSubmit}>下一步</Button>
+              <Button className='btnNext' color='danger' onClick={this.save}>下一步</Button>
             </Col>
           </FormGroup>
         </Form>

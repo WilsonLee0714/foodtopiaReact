@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import {Container, Row, Col} from 'reactstrap';
 import {BrowserRouter, Route, Link} from "react-router-dom";
 import "./Order.scss";
@@ -8,7 +8,21 @@ import OrderStep2 from "./OrderStep2";
 class Order extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      fields: {}
+    };
+    this.save = this.save.bind(this);
+  }
+
+  save = (data) => {
+    // let fields = this.state.fields;
+    // fields = data;
+    console.log(data)
+    this.setState({data});
+    console.log(this.state)
+    // window
+    //   .location
+    //   .assign('/order/step2');
   }
   render() {
     return (
@@ -42,8 +56,9 @@ class Order extends Component {
                 </div>
               </div>
             </div>
-            <Route path="/order/step1" component={OrderStep1}/>
-            <Route path="/order/step2" component={OrderStep2}/>
+            <Route path="/order/step1"  component={(props) => <OrderStep1 {...props} save={this.save}/>}/>
+            <Route path="/order/step2"  component={(props) => <OrderStep2 {...props} formData={this.state.fields}/>}/>
+            {/* <Route path="/order/step2" formData={this.state.fields} component={OrderStep2}/> */}
           </Container>
         </React.Fragment>
       </BrowserRouter>
