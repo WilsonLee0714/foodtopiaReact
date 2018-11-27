@@ -18,6 +18,11 @@ class Register extends Component {
         console.log(email);
         this.setState({email:event.target.value});
         console.log(email);
+        if(email==''){
+            wrong.style.display = 'none';
+        } else {
+            wrong.style.display = 'block';
+        }
         fetch('http://localhost:3000/users/login',{method:'POST',mode:'cors',
         headers: {
           'Content-Type': 'application/json'
@@ -46,6 +51,8 @@ class Register extends Component {
                 return true;
             }
         };
+        var wrong = document.getElementById('wrong');
+        var ok = document.getElementById('ok');
         var nickName = document.getElementById('nickName');
         var email = document.getElementById('email');
         var pw1 = document.getElementById('pw1');
@@ -57,19 +64,35 @@ class Register extends Component {
             email.value = '';
             pw1.value = '';
             pw2.value = '';
+            wrong.textContent ='';
+            ok.textContent ='';
         } else if (pw1.value != pw2.value) {
             alert('密碼輸入不一致')
             nickName.value = '';
             email.value = '';
             pw1.value = '';
             pw2.value = '';
+            wrong.textContent ='';
+            ok.textContent ='';
         } else if (!IsEmail(email.value)) {
             alert('信箱格式不正確');
+            nickName.value = '';
+            pw1.value = '';
+            pw2.value = '';
+            wrong.textContent ='';
+            ok.textContent ='';
             console.log(IsEmail(email.value))
+        } else if( wrong.textContent == '此Email信箱已經有人註冊了!!') {
+            alert('信箱重複');
+            nickName.value = '';
+            pw1.value = '';
+            pw2.value = '';
+            wrong.textContent ='';
+            ok.textContent ='';
         } else {
             console.log(IsEmail(email.value))
             registerFrom.submit();
-        };
+        }
     };
    
     render() {
