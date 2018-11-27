@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {Container, Row, Col} from 'reactstrap';
-import {BrowserRouter, Route, Link} from "react-router-dom";
+import {BrowserRouter, Route, Link, withRouter} from "react-router-dom";
 import "./Order.scss";
 import OrderStep1 from "./OrderStep1";
 import OrderStep2 from "./OrderStep2";
@@ -9,17 +9,17 @@ class Order extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fields: {}
     };
-    this.save = this.save.bind(this);
   }
 
   save = (data) => {
-    // let fields = this.state.fields;
-    // fields = data;
-    console.log(data)
-    this.setState({data});
-    console.log(this.state)
+    let fields = this.state.fields;
+    fields = data;
+    console.log(fields)
+    this.setState({fields});
+    console.log(this.state);
+    // this.props.history.push('/order/step2/');
+
     // window
     //   .location
     //   .assign('/order/step2');
@@ -56,8 +56,8 @@ class Order extends Component {
                 </div>
               </div>
             </div>
-            <Route path="/order/step1"  component={(props) => <OrderStep1 {...props} save={this.save}/>}/>
-            <Route path="/order/step2"  component={(props) => <OrderStep2 {...props} formData={this.state.fields}/>}/>
+            <Route path="/order/step1"  component={(props) => <OrderStep1 {...props} fields={this.state.fields} save={this.save}/>}/>
+            <Route path="/order/step2"  component={(props) => <OrderStep2 {...props} fields={this.state.fields}/>}/>
             {/* <Route path="/order/step2" formData={this.state.fields} component={OrderStep2}/> */}
           </Container>
         </React.Fragment>
@@ -110,7 +110,51 @@ class Order extends Component {
     }
     console.log(this.state)
     console.log(window.location.href)
-
+  }
+  componentDidUpdate(){
+    let step1 = document.querySelector('#step1'),
+      step1Num = document.querySelector('#step1Num'),
+      step2Line = document.querySelector('#step2Line'),
+      step2 = document.querySelector('#step2'),
+      step2Num = document.querySelector('#step2Num'),
+      step3Line = document.querySelector('#step3Line'),
+      step3 = document.querySelector('#step3');
+    if (window.location.href == 'http://localhost:3000/order/step1') {
+      step1
+        .classList
+        .add('active');
+    }
+    if (window.location.href == 'http://localhost:3000/order/step2') {
+      step1
+        .classList
+        .add('done');
+      step1Num.innerHTML = `<i class="fas fa-check doneIcon"></i>`;
+      step2Line
+        .classList
+        .add('active');
+      step2
+        .classList
+        .add('active');
+    }
+    if (window.location.href == 'http://localhost:3000/order/step3') {
+      step1
+        .classList
+        .add('done');
+      step1Num.innerHTML = `<i class="fas fa-check doneIcon"></i>`;
+      step2Line
+        .classList
+        .add('done');
+      step2
+        .classList
+        .add('done');
+      step2Num.innerHTML = `<i class="fas fa-check doneIcon"></i>`;
+      step3Line
+        .classList
+        .add('active');
+      step3
+        .classList
+        .add('active');
+    }
   }
 }
 

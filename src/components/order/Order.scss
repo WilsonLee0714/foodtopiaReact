@@ -6,6 +6,7 @@ $bgColor: #707070;
     color: #707070;
     .orderStep {
         text-align: center;
+        transition: .5s;
         .stepTitle {
             width: 150px;
             font-size: 1.5rem;
@@ -188,5 +189,9 @@ $bgColor: #707070;
     }
     .rowHeight{
         height: 1.5rem;
+    }
+    .checkInfo{
+        font-weight: bold;
+        padding: 5px 0;
     }
 }

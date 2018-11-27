@@ -41,7 +41,7 @@ class OrderStep1 extends Component {
       },
       errors: {}
     };
-    this.save = this.save.bind(this);
+    
   }
   handleChange = (evt) => {
     let key = evt.target.id;
@@ -136,11 +136,15 @@ class OrderStep1 extends Component {
 
   save = (evt) => {
     evt.preventDefault();
-    this.props.save(this.state.fields);
-    // if (this.handleValidation()) {
-    // } else {
-    //   return
-    // }
+    if (this.handleValidation()) {
+      this.props.save(this.state.fields);
+      this.props.history.push('/order/step2');
+      // window
+      // .location
+      // .assign('/order/step2');
+    } else {
+      return
+    }
 
   }
 
@@ -394,6 +398,9 @@ class OrderStep1 extends Component {
       el: '.my-selector-c', elCounty: '.county', // 在 el 裡查找 dom
       elDistrict: '.district', // 在 el 裡查找 dom
     });
+  }
+  componentDidUpdate(){
+    
   }
 }
 export default OrderStep1;

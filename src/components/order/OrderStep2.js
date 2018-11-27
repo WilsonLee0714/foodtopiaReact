@@ -1,84 +1,125 @@
 import React, {Component} from 'react';
 import {Button, Container, Row, Col} from 'reactstrap';
+import {getYear, getMonth, getDate, getHours} from 'date-fns';
+
 import "./Order.scss";
 
 class OrderStep2 extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+    }
   }
 
   lastStep = (evt) => {
     evt.preventDefault();
+    this
+      .props
+      .history
+      .push('/order/step1');
 
-    window
-      .location
-      .assign('/order/step1');
   }
 
-render() {
-  return (
-    <React.Fragment>
-      <div className='formContent'>
-        <div className='contentTitle'>訂單詳情</div>
-        <div className='titleBackground'></div>
-      </div>
-      <div className='formContent'>
-        <div className='contentTitle'>訂單資訊</div>
-        <div className='titleBackground'></div>
-        <Row className='rowHeight'>
-          <Col xs={2} className='inputLabel rowHeight'>姓名 :</Col>
-          <Col xs={10} className='colPadding'>{this.props.name}</Col>
-        </Row>
+  render() {
+    const ymt = () => {
+      let day = this.props.fields.date,
+        time = this.props.fields.time,
+        year = getYear(day),
+        month = getMonth(day),
+        date = getDate(day),
+        hours = getHours(time);
+      return `${year}/${month}/${date} ${hours}:00 前送達`
+    }
 
-        <Row>
-          <Col xs={2} className='inputLabel'>市話 :</Col>
-          <Col xs={10} className='colPadding'>{this.props.tel}</Col>
-        </Row>
+    const shipWay = () =>{
+      switch(this.props.fields.mod) {
+        case 'home':
+            return `宅配到府`
+            break;
+      }
+    }
 
-        <Row>
-          <Col xs={2} className='inputLabel'>手機 :</Col>
-          <Col xs={10} className='colPadding'>{this.props.phone}</Col>
-        </Row>
+    const payWay = () => {
+      switch(this.props.fields.pay) {
+        case 'card':
+            return `信用卡`
+            break;
+        case 'atm':
+            return `ATM轉帳`
+            break;
+        case 'payAfter':
+            return `貨到付款`
+            break;
+      }
+    }
 
-        <Row>
-          <Col xs={2} className='inputLabel'>地址 :</Col>
-          <Col xs={10} className='colPadding'>{`${this.props.city} ${this.props.dist} ${this.props.address}`}</Col>
-        </Row>
 
-        <Row>
-          <Col xs={2} className='inputLabel'>寄送方式 :</Col>
-          <Col xs={10} className='colPadding'>{this.props.mod}</Col>
-        </Row>
+    return (
+      <React.Fragment>
+        <div className='formContent'>
+          <div className='contentTitle'>訂單詳情</div>
+          <div className='titleBackground'></div>
+        </div>
+        <div className='formContent'>
+          <div className='contentTitle'>訂單資訊</div>
+          <div className='titleBackground'></div>
+          <Row className='checkInfo'>
+            <Col xs={2} className='inputLabel'>姓名 :</Col>
+            <Col xs={10} className='colPadding'>{this.props.fields.name}</Col>
+          </Row>
 
-        <Row>
-          <Col xs={2} className='inputLabel'>收件時間 :</Col>
-          <Col xs={10} className='colPadding'>{`${this.props.date} ${this.props.time}`}</Col>
-        </Row>
+          <Row className='checkInfo'>
+            <Col xs={2} className='inputLabel'>市話 :</Col>
+            <Col xs={10} className='colPadding'>{this.props.fields.tel}</Col>
+          </Row>
 
-        <Row>
-          <Col xs={2} className='inputLabel'>備註事項 :</Col>
-          <Col xs={10} className='colPadding'>{this.props.note}</Col>
-        </Row>
+          <Row className='checkInfo'>
+            <Col xs={2} className='inputLabel'>手機 :</Col>
+            <Col xs={10} className='colPadding'>{this.props.fields.phone}</Col>
+          </Row>
 
+          <Row className='checkInfo'>
+            <Col xs={2} className='inputLabel'>地址 :</Col>
+            <Col xs={10} className='colPadding'>{`${this.props.fields.city} ${this.props.fields.dist} ${this.props.fields.address}`}</Col>
+          </Row>
+
+          <Row className='checkInfo'>
+            <Col xs={2} className='inputLabel'>寄送方式 :</Col>
+            <Col xs={10} className='colPadding'>{shipWay()}</Col>
+          </Row>
+
+          <Row className='checkInfo'>
+            <Col xs={2} className='inputLabel'>收件時間 :</Col>
+            <Col xs={10} className='colPadding'>{ymt()}</Col>
+          </Row>
+
+          <Row className='checkInfo'>
+            <Col xs={2} className='inputLabel'>備註事項 :</Col>
+            <Col xs={10} className='colPadding'>{this.props.fields.note}</Col>
+          </Row>
+
+          <Row className='checkInfo'>
+            <Col xs={2} className='inputLabel'>付款方式 :</Col>
+            <Col xs={10} className='colPadding'>{payWay()}</Col>
+          </Row>
+        </div>
         <Row>
-          <Col xs={2} className='inputLabel'>付款方式 :</Col>
-          <Col xs={10} className='colPadding'>{this.props.mod}</Col>
+          <Col sm={3}>
+            <Button className='btnNext' color='primary' onClick={this.lastStep}>上一步</Button>
+          </Col>
+          <Col sm={{
+            size: 3,
+            offset: 6
+          }}>
+            <Button className='btnNext' color='danger' onClick=''>確認結帳</Button>
+          </Col>
         </Row>
-      </div>
-      <Row>
-        <Col sm={3}>
-          <Button className='btnNext' color='primary' onClick={this.lastStep}>上一步</Button>
-        </Col>
-        <Col sm={{
-          size: 3,
-          offset: 6
-        }}>
-          <Button className='btnNext' color='danger' onClick=''>確認結帳</Button>
-        </Col>
-      </Row>
-    </React.Fragment>
-  )
-}
+      </React.Fragment>
+    )
+  }
+  componentDidMount(){
+    console.log(this.state)
+  }
 }
 
 export default OrderStep2;
