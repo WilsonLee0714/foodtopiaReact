@@ -13,10 +13,26 @@ class Login extends Component {
         let pw1 = document.getElementById('pw1');
         let registerFrom = document.getElementById('registerFrom');
         if (email.value == '' || pw1.value == '') {
-            alert('信箱或密碼不正確')
-        } else {
-            registerFrom.submit();
-        }
+            alert('請確認欄位是否有填寫')
+            return false;
+        } ;
+        fetch('http://localhost:3000/users/account',{method:'POST',mode:'cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            email: email.value,
+            password: pw1.value,
+        })}).then(function(res){
+            return res.text();
+        }).then(function(res){
+            if(res=='wrong'){
+                alert('此帳號不存在或密碼不正確');
+            } else {
+                registerFrom.submit();
+            }
+        })
+        
     }
     render() {
         return (
@@ -46,7 +62,7 @@ class Login extends Component {
                                     <hr />
                                     <div className=''>
                                         <small className="text-center py-3"><span className="text-dark">還不是會員嗎?</span></small>
-                                        <br/>
+                                        <br />
                                         <Link to='/register'><button type="submit" class="btn btn-primary btn-sm py-2 w-100">立即註冊</button></Link>
                                     </div>
                                 </form>
