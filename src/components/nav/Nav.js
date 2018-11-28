@@ -7,6 +7,9 @@ import $ from 'jquery';
 class Nav extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      userName:'',
+    }
   }
   // clickHandler(){   var lightBox = document.getElementById('lightBox');
   // lightBox.style.display = 'flex';     setTimeout(function(){
@@ -16,6 +19,37 @@ class Nav extends Component {
     cart
       .classList
       .toggle("openCart");
+  }
+  handleHover = () => {
+    // alert('ok')
+    fetch('http://localhost:3000/session/info', {
+      method: 'GET',
+      credentials: 'include'
+  }).then(function (res) {
+      console.log(res);
+      return res.json();
+    }).then((a) => {
+      if(a.login==1){
+        console.log(a.nickname);
+        var sMenu = document.getElementById('sMenu');
+        sMenu.style.height = '90px';
+        this.setState({ userName: a.nickname });
+        console.log(this.state.userName);
+      } else {
+          return false;
+      }
+  })
+      .catch(function (err) {
+          console.log(err);
+          //alert(err);
+      })
+    // var sMenu = document.getElementById('sMenu');
+    // sMenu.style.height = '60px';
+  }
+  handleOut() {
+    // alert('ok')
+    var sMenu = document.getElementById('sMenu');
+    sMenu.style.height = '0px';
   }
   render() {
     return (
@@ -52,14 +86,22 @@ class Nav extends Component {
 
               </ul>
               {/* <a href=''> */}
-                <img src={require('./icons/like.png')} />
+              <img src={require('./icons/like.png')} />
               {/* </a> */}
-              <a href="http://localhost:3000/session/login">
-                <img
-                  id='members'
-                  onClick={this.clickHandler}
-                  src={require('./icons/profile.png')} />
-              </a>
+              <div>
+                <a href="http://localhost:3000/session/login">
+                  <img
+                    id='members'
+                    // onClick={this.clickHandler}
+                    src={require('./icons/profile.png')} onMouseOver={this.handleHover} onMouseOut={this.handleOut} />
+                </a>
+                <div className='sMenu' id='sMenu' onMouseOver={this.handleHover} onMouseOut={this.handleOut}>
+                  <p>{this.state.userName+' 歡迎回來'}</p>
+                  <p><a href="http://localhost:3000/session/login" >會員中心</a></p>
+                  <p><a href='http://localhost:3000/session/logout' >登出</a></p>
+                  </div>
+              </div>
+
               <img src={require('./icons/shopping-bag.png')} onClick={this.cartToggle} />
               <form className="form-inline my-2 my-lg-0">
                 <input
@@ -78,6 +120,21 @@ class Nav extends Component {
     );
   }
   componentDidMount() {
+    // session 使否已經登入判斷 用來讀取資料用
+  //   fetch('http://localhost:3000/session/info', {
+  //     method: 'GET',
+  //     credentials: 'include'
+  // }).then(function (res) {
+  //     console.log(res);
+  //     return res.json();
+  //   }).then((a) => {
+  //     if(a.login==1){
+  //       console.log('已經登入');
+  //     } else {
+  //       console.log('未登入');
+  //     }
+  // })
+    // 
     // var scrollLast = 0;
     $(window).scroll(function () {
       let scrollNow = $(this).scrollTop();

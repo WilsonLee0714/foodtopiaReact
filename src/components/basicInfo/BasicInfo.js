@@ -61,6 +61,9 @@ class BasicInfo extends Component {
     return (
       <React.Fragment>
         <div className='basicWrap'>
+         <div className='bgWrap ml-5 mt-3 pl-1'>
+                    <img src={require('./images/photo1.jpg')}/>
+                </div>
           {/* <div className='profileImg mx-auto my-3'>
             <img src={require('./images/profile.png')}/>
           </div>
@@ -77,7 +80,7 @@ class BasicInfo extends Component {
             <form action='http://localhost:3000/session/info' method='post'>
             <input name='sid' value={this.state.sid} className='d-none'/>
             {/* sid用來給後端的 不要刪掉 */}
-              <h4 className='infoTitle p-3'>基本資料</h4>
+              <h4 className='infoTitle p-3 text-dark'>基本資料</h4>
               <table className=''>
                 <tr>
                   <td><span className='text-danger'>*</span>Email</td>
@@ -89,15 +92,15 @@ class BasicInfo extends Component {
                 </tr>
                 <tr>
                   <td>
-                    顯示暱稱</td>
+                    暱稱</td>
                   <td>
                     <input
                       id='nickname'
                       name='nick_name'
                       value={this.state.nickname}
                       onChange={this.handleChange}
-                      className=''
-                      size='20'
+                      className='text-center'
+                      size='10'
                       type='text'></input>
                   </td>
                 </tr>
@@ -163,12 +166,12 @@ class BasicInfo extends Component {
                   </td>
                 </tr> */}
               </table>
-              <div className='text-center my-3'>
+              {/* <div className='text-center my-3'> */}
                 <button
                   type='submit'
                 //   onClick={this.handleClick}
                   className='btn btn-success w-25'>儲存變更</button>
-              </div>
+              {/* </div> */}
             </form>
           </div>
         </div>
