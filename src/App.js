@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {BrowserRouter, Route, Link} from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import Nav from "./components/nav/Nav.js";
+import Order from "./components/order/Order.js";
 import Register from './components/register/Register.js';
 import RegisterSuccessful from './components/registerSuccessful/RegisterSuccessful.js';
 import MemberCenter from './components/memberCenter/MemberCenter.js';
@@ -25,13 +26,14 @@ class App extends Component {
           <Route path="/login" component={Login}/>
           <Route path="/register" component={Register}/>
           <Route path="/registerSuccessful" component={RegisterSuccessful}/>
+          <Route path="/order" component={Order} />
           <div className="container d-flex">
-            <Route path="/memberCenter" component={MemberCenter}/>
-            <Route path="/memberCenter/BasicInfo" component={BasicInfo}/>
-            <Route path="/memberCenter/subscription" component={Subscription}/>
-            <Route path="/memberCenter/favorite" component={Favorite}/>
-            <Route path="/memberCenter/myOrder" component={MyOrder}/>
-            <Route path="/memberCenter/myService" component={MyService}/>
+            <Route path="/memberCenter" component={MemberCenter} />
+            <Route path="/memberCenter/BasicInfo" component={BasicInfo} />
+            <Route path="/memberCenter/subscription" component={Subscription} />
+            <Route path="/memberCenter/favorite" component={Favorite} />
+            <Route path="/memberCenter/myOrder" component={MyOrder} />
+            <Route path="/memberCenter/myService" component={MyService} />
           </div>
           <Footer/>
         </React.Fragment>

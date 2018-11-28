@@ -76,21 +76,7 @@ class Cart extends Component {
     );
   }
   componentDidMount() {
-    // console.log(this.initState);
-    // session 使否已經登入判斷 用來讀取資料用
-    fetch('http://localhost:3000/session/info', {
-      method: 'GET',
-      credentials: 'include'
-  }).then(function (res) {
-      console.log(res);
-      return res.json();
-    }).then((a) => {
-      if(a.login==1){
-        console.log('已經登入');
-      } else {
-        console.log('未登入');
-      }
-  })
+    console.log(this.initState);
   }
 }
 
