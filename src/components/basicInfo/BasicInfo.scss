@@ -1,15 +1,11 @@
 $secondColor:#707070;
 $thirdColor:#EFEDE8;
-.bgWrap {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    z-index: -10;
-    img {
-        filter: brightness(250%);
-    }
-}
-.basicWrap{
+// .bgWrap {
+    //     height: 100%;
+    //     width: 100%;
+    // }
+    .basicWrap{
+       
     overflow: hidden;
     width: 80%;
     height: 100vh;
@@ -30,8 +26,19 @@ $thirdColor:#EFEDE8;
             }
     }
     .infoWrap{
+        position: relative;
         border: 10px solid $thirdColor;
         height: 520px;
+        img {
+            position: absolute;
+            z-index: -1;
+            filter: brightness(250%);
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;
+            }
     }
     .infoTitle{
         background: $thirdColor;

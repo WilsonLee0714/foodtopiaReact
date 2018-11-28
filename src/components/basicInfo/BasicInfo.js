@@ -61,22 +61,22 @@ class BasicInfo extends Component {
     return (
       <React.Fragment>
         <div className='basicWrap'>
-         <div className='bgWrap ml-5 mt-3 pl-1'>
-                    <img src={require('./images/photo1.jpg')}/>
-                </div>
+         {/* <div className='bgWrap ml-5 mt-3 pl-1'> */}
+                {/* </div> */}
           {/* <div className='profileImg mx-auto my-3'>
             <img src={require('./images/profile.png')}/>
-          </div>
-          <div className='text-center'>
+            </div>
+            <div className='text-center'>
             <label className='mr-3'>上傳大頭貼</label>
             <input
-              style={{
+            style={{
               border: 'none'
             }}
-              className='text-center w-25'
-              type='file'/>
+            className='text-center w-25'
+            type='file'/>
           </div> */}
           <div className='infoWrap mt-3 mx-5 p-3 '>
+          <img src={require('./images/photo1.jpg')}/>
             <form action='http://localhost:3000/session/info' method='post'>
             <input name='sid' value={this.state.sid} className='d-none'/>
             {/* sid用來給後端的 不要刪掉 */}
