@@ -18,13 +18,23 @@ $mainColor : #FF4343;
     // top:100px;
     h3 {
         color:$mainColor;
+        text-align: center;
+    }
+    .bb{
         border-bottom: 1px solid #FF4343;
+        margin-bottom: 10px; 
+
     }
     ul {
         padding-left: 0;
         li {
             list-style-type: none;
             padding: 10px 0;
+            transition: .5s;
+        }
+        li:hover {
+            transform: scale(1.3,1.3) translateX(10px);
+            transform-origin: left center ;
         }
     }
     .a {
@@ -37,4 +47,50 @@ $mainColor : #FF4343;
         font-weight: 600;
         
     }
+    .logout {
+        transition: .5s;
+    }
+    .logout:hover {
+        // filter: brightness(120%);
+    }
 }
+@keyframes rubberBand {
+    from {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+  
+    30% {
+      -webkit-transform: scale3d(1.25, 0.75, 1);
+      transform: scale3d(1.25, 0.75, 1);
+    }
+  
+    40% {
+      -webkit-transform: scale3d(0.75, 1.25, 1);
+      transform: scale3d(0.75, 1.25, 1);
+    }
+  
+    50% {
+      -webkit-transform: scale3d(1.15, 0.85, 1);
+      transform: scale3d(1.15, 0.85, 1);
+    }
+  
+    65% {
+      -webkit-transform: scale3d(0.95, 1.05, 1);
+      transform: scale3d(0.95, 1.05, 1);
+    }
+  
+    75% {
+      -webkit-transform: scale3d(1.05, 0.95, 1);
+      transform: scale3d(1.05, 0.95, 1);
+    }
+  
+    to {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+  }
+  
+  .rubberBand {
+    animation: 1s rubberBand;
+  }

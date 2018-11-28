@@ -56,6 +56,9 @@ class Nav extends Component {
     // alert('ok')
     var sMenu = document.getElementById('sMenu');
     sMenu.style.height = '0px';
+    // setTimeout(function(){
+    //   sMenu.style.height = '0px';
+    // },500)
   }
   render() {
     return (
