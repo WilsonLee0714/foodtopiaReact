@@ -15,10 +15,22 @@ class Nav extends Component {
   // lightBox.style.display = 'flex';     setTimeout(function(){
   // lightBox.style.opacity = '1';     },100) }
   cartToggle = () => {
-    const cart = document.querySelector('#cart');
-    cart
-      .classList
-      .toggle("openCart");
+    // session 使否已經登入判斷 用來讀取資料用
+    fetch('http://localhost:3000/session/info', {
+      method: 'GET',
+      credentials: 'include'
+  }).then(function (res) {
+      console.log(res);
+      return res.json();
+    }).then((a) => {
+      if(a.login==1){
+        const cart = document.querySelector('#cart');
+        cart.classList.toggle("openCart");
+      } else {
+      window.location.assign('/login');
+      }
+  })
+    
   }
   handleHover = () => {
     // alert('ok')
@@ -148,7 +160,7 @@ class Nav extends Component {
     // var scrollLast = 0;
     $(window).scroll(function () {
       let scrollNow = $(this).scrollTop();
-      console.log(scrollNow)
+      // console.log(scrollNow)
       if (scrollNow != 0) {
         $('nav').addClass('bg-light');
         $('nav').removeClass('bg-transparent');
