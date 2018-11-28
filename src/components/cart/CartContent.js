@@ -30,7 +30,7 @@ class Cart extends Component {
             {this
               .state
               .products
-              .map(product,index => <div className='row my-2'>
+              .map(product => <div className='row my-2'>
                 <div className='col-5 productImg'>
                   <img src={require(`${product.img}`)}/>
                 </div>
