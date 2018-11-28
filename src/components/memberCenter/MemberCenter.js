@@ -52,7 +52,7 @@ class MemberCenter extends Component {
                 <div className='centerWrap mt-3 mb-3 d-flex flex-column p-4 '>
                     <div className='text-center'>
                         <form id='uploadForm' enctype="multipart/form-data" action='http://localhost:3000/upload' method='post'>
-                            <input name='file' onChange={this.handleChange} type='file' style={{ position: 'absolute', height: '60px', width: '200px', opacity: '0',cursor:'pointer' }}></input>
+                            <input name='file' onChange={this.handleChange} type='file' style={{ position: 'absolute', height: '60px',transform:'transLateX(-100px)', width: '200px', opacity: '0',cursor:'pointer' }}></input>
                         </form>
                         <img className='my-2 mr-2' style={{ width: '60px',height:'60px',borderRadius:'50%' }} src={this.state.source+this.state.profile}/>
                         <span id='userName' className='text-primary' style={{ fontWeight: '600' }}>{this.state.userName}</span>
