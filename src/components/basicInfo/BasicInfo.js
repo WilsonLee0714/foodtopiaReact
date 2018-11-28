@@ -76,14 +76,14 @@ class BasicInfo extends Component {
             type='file'/>
           </div> */}
           <div className='infoWrap mt-3 mx-5 p-3 '>
+              <h4 className='infoTitle p-3 text-dark'>基本資料</h4>
           <img src={require('./images/photo1.jpg')}/>
-            <form action='http://localhost:3000/session/info' method='post'>
+            <form id='infoForm' className='infoForm' action='http://localhost:3000/session/info' method='post'>
             <input name='sid' value={this.state.sid} className='d-none'/>
             {/* sid用來給後端的 不要刪掉 */}
-              <h4 className='infoTitle p-3 text-dark'>基本資料</h4>
               <table className=''>
                 <tr>
-                  <td><span className='text-danger'>*</span>Email</td>
+                  <td className='text-center'><span className='text-danger text-center w-100'></span>信箱 : </td>
                   <td>
                     <span>                     
                       {this.state.email}
@@ -92,7 +92,7 @@ class BasicInfo extends Component {
                 </tr>
                 <tr>
                   <td>
-                    暱稱</td>
+                    暱稱 : </td>
                   <td>
                     <input
                       id='nickname'
@@ -106,9 +106,9 @@ class BasicInfo extends Component {
                 </tr>
 
                 <tr>
-                  <td>密碼</td>
+                  <td>密碼 : </td>
                   <td>
-                      <input name='password' type='password' id='rPw' onChange={this.handleChange2} value={this.state.password} className={this.state.display}>                     
+                      <input name='password' size='10' type='password' id='rPw' onChange={this.handleChange2} value={this.state.password} className={this.state.display}>                     
                       </input><button type='button' id='rBtn' onClick={this.handleClick} style={{borderRadius:'5px'}}>修改密碼</button></td>
                 </tr>
                 {/* <tr>
@@ -166,12 +166,12 @@ class BasicInfo extends Component {
                   </td>
                 </tr> */}
               </table>
-              {/* <div className='text-center my-3'> */}
+              <div className='text-center my-1 w-100'>
                 <button
                   type='submit'
                 //   onClick={this.handleClick}
-                  className='btn btn-success w-25'>儲存變更</button>
-              {/* </div> */}
+                  className='btn btn-success w-100'>儲存變更</button>
+              </div>
             </form>
           </div>
         </div>
