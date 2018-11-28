@@ -35,8 +35,14 @@ class Nav extends Component {
         sMenu.style.height = '90px';
         this.setState({ userName: a.nickname });
         console.log(this.state.userName);
+        var q = document.getElementById('q');
+        q.style.display = 'none';
       } else {
-          return false;
+        var sMenu = document.getElementById('sMenu');
+        var q = document.getElementById('q');
+        q.style.display = 'block';
+        sMenu.style.height = '60px';
+          // return false;
       }
   })
       .catch(function (err) {
@@ -96,6 +102,10 @@ class Nav extends Component {
                     src={require('./icons/profile.png')} onMouseOver={this.handleHover} onMouseOut={this.handleOut} />
                 </a>
                 <div className='sMenu' id='sMenu' onMouseOver={this.handleHover} onMouseOut={this.handleOut}>
+                  <div id='q'>
+                  <p>尚未登入</p>
+                  <p ><a href="http://localhost:3000/session/login" >登入 / 註冊</a></p>
+                  </div>
                   <p>{this.state.userName+' 歡迎回來'}</p>
                   <p><a href="http://localhost:3000/session/login" >會員中心</a></p>
                   <p><a href='http://localhost:3000/session/logout' >登出</a></p>
