@@ -1,9 +1,11 @@
 $mainColor : #FF4343;
 
+.bg-xxx {
+    // background: linear-gradient(to top,rgba(255, 255, 255, 0), rgba(255, 255, 255, .3),rgba(255, 255, 255, .4), rgba(255, 255, 255, .6) );
+}
 nav {
     font-family: '微軟正黑體';
     user-select: none;
-
     .navbar-brand {
         font-weight: 600 !important;
         font-size: 1.5em !important;
@@ -36,6 +38,26 @@ nav {
         }
         img {
             transform: translateX(-50px);
+        }
+    }
+   
+    .sMenu {
+        position: absolute;
+        top: 50px;
+        border-radius: 10px;
+        width: 180px;
+        height: 0;
+        transition: .5s;
+        overflow: hidden;
+        background: #cccccc;
+        ul li {
+            list-style: none;
+        }
+        p {
+            margin: 0;
+            margin-left: 10px;
+            margin-top: 5px;
+            font-weight: 600;
         }
     }
 } 

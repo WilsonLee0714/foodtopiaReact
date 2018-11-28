@@ -1,0 +1,50 @@
+$mainColor : #FF4343;
+.wrapLogin {
+  height: 110vh;
+  margin-top: -150px;
+  overflow: hidden;
+  .bgtable {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    filter: blur(2px) brightness(50%);
+  }
+}
+.login {
+  overflow: hidden;
+  font-family: '微軟正黑體';
+  color: #333;
+  font-weight: 600;
+  transform: translateY(-85vh);
+  form {
+    // border: 1px solid #707070;
+    background: rgba(255, 255, 255, .5);
+      padding:20px ;
+      border-radius: 5px;
+    }
+    h3 {
+        font-size: 2em;
+        letter-spacing: 5px;
+    }
+    .btn1 {
+        background: $mainColor !important;
+    }
+    img {
+        transform: translateY(120px);
+    }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation: .5s fadeIn;
+}
+  
+  

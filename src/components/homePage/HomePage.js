@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import './HomePage.scss';
 import { Link } from 'react-router-dom';
+import $ from 'jquery'; 
 
 class HomePage extends Component {
     constructor(prop) {
         super(prop)
+    }
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
+    smoothscroll() {
+            $("html, body").animate({ scrollTop: 0 }, "slow");
     }
     render() {
         return (
@@ -26,16 +33,19 @@ class HomePage extends Component {
                         <img className='mx-5' src={require('./images/Group71.png')} />
                     </div>
                     <div className='my-5 py-4 text-center'>
-                        <img className='mx-5' style={{width:'1000px'}} src={require('./images/Web111.png')} />
+                        <img className='mx-5' style={{ width: '1000px' }} src={require('./images/Web111.png')} />
                     </div>
                     <div className='sFotter d-flex justify-content-center align-items-center'>
                         <div className='smallBox1 '>
-                            <div className='text-center pt-4 pb-3'>最齊全的食譜種類<br/>最便捷的食材採買服務</div>
+                            <div className='text-center pt-4 pb-3'>最齊全的食譜種類<br />最便捷的食材採買服務</div>
                             <div className='text-center'>
-                                <button type='button' style={{borderRadius:'20px'}} className='w-50 btn btn-danger'>前往食譜</button>
+                                <button type='button' style={{ borderRadius: '20px' }} className='w-50 btn btn-danger'>前往食譜</button>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div className='toTop' onClick={this.smoothscroll}>
+                    <img src={require('./images/toTop.png')}/>
                 </div>
             </React.Fragment>
         )

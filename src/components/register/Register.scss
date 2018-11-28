@@ -1,11 +1,29 @@
 $mainColor : #FF4343;
-
+.wrapRe {
+  height: 110vh;
+  margin-top: -150px;
+  overflow: hidden;
+  .tree {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    // opacity: .9;
+  }
+}
 .register {
     overflow: hidden;
     font-family: '微軟正黑體';
     color: #707070;
+  transform: translateY(-90vh);
+    form {
+      border: 1px dashed #707070;
+      background: #fff;
+      border-radius: 5px;
+      padding: 20px;
+    }
     h3 {
         font-size: 2em;
+        letter-spacing: 5px;
     }
     .btn1 {
         background: $mainColor !important;
@@ -16,9 +34,8 @@ $mainColor : #FF4343;
 }
 @keyframes fadeInLeft {
     from {
-      opacity: 0;
-      -webkit-transform: translate3d(-100%, 0, 0);
-      transform: translate3d(-100%, 0, 0);
+      opacity: 1;
+      transform: translate3d(-20%, 0, 0);
     }
   
     to {
@@ -33,9 +50,8 @@ $mainColor : #FF4343;
   }
   @keyframes fadeInRight {
     from {
-      opacity: 0;
-      -webkit-transform: translate3d(100%, 0, 0);
-      transform: translate3d(100%, 0, 0);
+      opacity: 1;
+      transform: translate3d(20%, 0, 0);
     }
   
     to {
@@ -48,5 +64,4 @@ $mainColor : #FF4343;
   .fadeInRight {
     animation:1s fadeInRight;
   }
-  
-  
+ 
