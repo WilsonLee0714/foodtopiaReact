@@ -8,6 +8,19 @@ class HomePage extends Component {
         super(prop)
     }
     componentDidMount() {
+        var random = ['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg','6.jpg'];
+        var shuffle = random.sort(function (a, b) {
+            return Math.random() - .5
+        });
+        var header = document.getElementById('header');
+        console.log(shuffle[0])
+        var i = Math.floor(Math.random()*6);
+        // alert(i)
+        header.style.background = `url('./images/${shuffle[i]}')`
+        header.style.backgroundRepeat = `no-repeat`
+        header.style.backgroundPosition = `center`
+        header.style.backgroundSize = `cover`
+
         window.scrollTo(0, 0);
         setTimeout(function () {
             $('.i1').css('opacity', '1').css('transform', 'translateY(0)');
@@ -51,7 +64,7 @@ class HomePage extends Component {
     render() {
         return (
             <React.Fragment>
-                <header>
+                <header id='header'>
                     <div className='foodTitle'>
                         <h2 className='rubberBand' style={{opacity:'0'}}>依照食譜</h2>
                         <h2 className='rubberBand2' style={{opacity:'0'}}>輕鬆買齊所有食材</h2>

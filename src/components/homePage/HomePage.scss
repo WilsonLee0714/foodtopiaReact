@@ -45,9 +45,12 @@ header {
         color: #393939;
         left: 30%;
         top:30%;
+        background: rgba(255,255,255,.5);
+        padding: 20px;
+        border-radius: 20px;
     }
     height: 100vh;
-    background: url('images/Group178.png') no-repeat center;
+    background: url('images/3.png') no-repeat center;
     background-size: cover;
     transform: translateY(-150px);
     .firstMenu{

@@ -1,6 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './BasicInfo.scss';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import $ from 'jquery';
 
 class BasicInfo extends Component {
   constructor(prop) {
@@ -12,7 +13,7 @@ class BasicInfo extends Component {
       sid: '',
       password: '',
       profile: '',
-      display:'d-none',
+      display: 'd-none',
     }
   }
   componentDidMount = () => {
@@ -20,31 +21,79 @@ class BasicInfo extends Component {
     var email = document.getElementById('email');
     var nickname = document.getElementById('nickname');
     fetch('http://localhost:3000/session/info', {
-        method: 'GET',
-        credentials: 'include'
-      }).then(function (res) {
+      method: 'GET',
+      credentials: 'include'
+    }).then(function (res) {
       console.log(res);
       return res.json();
     }).then((a) => {
-      this.setState({nickname: a.nickname});
-      this.setState({sid: a.sid});
-      this.setState({email: a.email});
-      this.setState({name: a.name});
-      this.setState({password: a.password});
-      this.setState({profile: a.profile});
+      this.setState({ nickname: a.nickname });
+      this.setState({ sid: a.sid });
+      this.setState({ email: a.email });
+      this.setState({ name: a.name });
+      this.setState({ password: a.password });
+      this.setState({ profile: a.profile });
       console.log(a.profile)
     })
       .catch(function (err) {
         console.log(err);
         //alert(err);
       })
+
+      // 3d
+      var i = 0
+      var ii = -100
+      window.addEventListener('keydown', function (event) {
+          console.log(event.keyCode)
+          switch (event.keyCode) {
+              case 37:
+                  console.log('left')
+                  i += 90
+                  $('.wrap91').css('transform', `translateZ(${ii}px) rotateY(${i}deg)`)
+                  $('.controlLeft').css('transform', 'scale(1.2,1.2)')
+                  setTimeout(function () {
+                      $('.controlLeft').css('transform', 'scale(1,1)')
+                  }, 100)
+                  break;
+              case 39:
+                  console.log('right')
+                  i -= 90
+                  $('.wrap91').css('transform', `translateZ(${ii}px) rotateY(${i}deg)`)
+                  $('.controlRight').css('transform', 'scale(1.2,1.2)')
+                  setTimeout(function () {
+                      $('.controlRight').css('transform', 'scale(1,1)')
+                  }, 100)
+                  break;
+              case 32:
+                  $('.box91').toggleClass('opacity1')
+                  break;
+              case 38:
+                  ii -= 90
+                  $('.wrap91').css('transform', `translateZ(${ii}px)`)
+                  break;
+              case 40:
+                  if(ii>=0) return false
+                  ii += 90
+                  $('.wrap91').css('transform', `translateZ(${ii}px)`)
+                  break;
+          }
+      })
+      $('.controlLeft').click(function () {
+          i += 90
+          $('.wrap91').css('transform', `rotateY(${i}deg)`)
+      })
+      $('.controlRight').click(function () {
+          i -= 90
+          $('.wrap91').css('transform', `rotateY(${i}deg)`)
+      })
+      // 3d
   }
 
   handleChange = (event) => {
-    this.setState({nickname: event.target.value});
+    this.setState({ nickname: event.target.value });
   }
   handleChange2 = (event) => {
-    this.setState({password: event.target.value});
+    this.setState({ password: event.target.value });
   }
   // handleClick = (event) => {     // alert(this.state.nickname);
   // event.preventDefault();     fetch('http://localhost:3000/session/info', {
@@ -54,15 +103,16 @@ class BasicInfo extends Component {
   //      })     }); }
   handleClick = (e) => {
     //   var rPw = document.getElementById('rPw');
-      this.setState({display:''})
+    this.setState({ display: '' })
     //   rPw.style.display = 'block !important';
   }
   render() {
     return (
       <React.Fragment>
         <div className='basicWrap'>
-         {/* <div className='bgWrap ml-5 mt-3 pl-1'> */}
-                {/* </div> */}
+       
+          {/* <div className='bgWrap ml-5 mt-3 pl-1'> */}
+          {/* </div> */}
           {/* <div className='profileImg mx-auto my-3'>
             <img src={require('./images/profile.png')}/>
             </div>
@@ -76,18 +126,23 @@ class BasicInfo extends Component {
             type='file'/>
           </div> */}
           <div className='infoWrap mt-3 mx-5 p-3 '>
-              <h4 className='infoTitle p-3 text-dark'>基本資料</h4>
-          <img src={require('./images/photo1.jpg')}/>
-            <form id='infoForm' className='infoForm' action='http://localhost:3000/session/info' method='post'>
-            <input name='sid' value={this.state.sid} className='d-none'/>
-            {/* sid用來給後端的 不要刪掉 */}
+            <h4 className='infoTitle p-3 text-dark'>基本資料</h4>
+            <img src={require('./images/photo1.jpg')} />
+             {/* 3d */}
+          <div class="bodyWrap pt-4">
+            <div class="wrap91">
+              <div class="box91 front91">
+              {/* form */}
+              <form id='infoForm' className='infoForm mt-3' action='http://localhost:3000/session/info' method='post'>
+              <input name='sid' value={this.state.sid} className='d-none' />
+              {/* sid用來給後端的 不要刪掉 */}
               <table className=''>
                 <tr>
                   <td className='text-center'><span className='text-danger text-center w-100'></span>信箱 : </td>
                   <td>
-                    <span>                     
+                    <span>
                       {this.state.email}
-                      </span>
+                    </span>
                   </td>
                 </tr>
                 <tr>
@@ -108,8 +163,8 @@ class BasicInfo extends Component {
                 <tr>
                   <td>密碼 : </td>
                   <td>
-                      <input name='password' size='10' type='password' id='rPw' onChange={this.handleChange2} value={this.state.password} className={this.state.display}>                     
-                      </input><button type='button' id='rBtn' onClick={this.handleClick} style={{borderRadius:'5px'}}>修改密碼</button></td>
+                    <input name='password' size='10' type='password' id='rPw' onChange={this.handleChange2} value={this.state.password} className={this.state.display}>
+                    </input><button type='button' id='rBtn' onClick={this.handleClick} style={{ borderRadius: '5px' }}>修改密碼</button></td>
                 </tr>
                 {/* <tr>
                   <td>真實姓名</td>
@@ -166,13 +221,26 @@ class BasicInfo extends Component {
                   </td>
                 </tr> */}
               </table>
-              <div className='text-center my-1 w-100'>
+              <div className='text-center mt-1 w-100'>
                 <button
                   type='submit'
-                //   onClick={this.handleClick}
+                  //   onClick={this.handleClick}
                   className='btn btn-success w-100'>儲存變更</button>
               </div>
             </form>
+            {/* form */}
+              </div>
+              <div class="box91 back91"></div>
+              <div class="box91 left91"></div>
+              <div class="box91 right91"></div>
+            </div>
+            <div class="container d-flex justify-content-around mt-3">
+              <div class="controlLeft">←</div>
+              <div class="controlRight ">→</div>
+            </div>
+          </div>
+          {/* 3d */}
+            
           </div>
         </div>
       </React.Fragment>
