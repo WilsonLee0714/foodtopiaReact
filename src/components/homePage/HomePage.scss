@@ -1,6 +1,25 @@
 $mainColor : #FF4343;
 $secondColor : #707070;
-
+.mainWrap {
+    opacity: 0;
+    transition: 1s;
+    transform: translateX(-200px);
+}
+.secondWrap {
+    opacity: 0;
+    transition: 1s;
+    transform: translateX(200px);
+}
+.thirdWrap {
+    opacity: 0;
+    transition: 3s;
+    transform: translateY(0px);
+}
+.i {
+    opacity: 0;
+    transition: 1s;
+    transform: translateY(-200px);
+}
 .toTop {
     width: 50px;
     height: 50px;
@@ -17,6 +36,15 @@ $secondColor : #707070;
     }
 }
 header {
+    .foodTitle{
+        width: 600px;
+        text-align: center;
+        font-family: '微軟正黑體';
+        position: absolute;
+        color: #393939;
+        left: 30%;
+        top:30%;
+    }
     height: 100vh;
     background: url('images/Group178.png') no-repeat center;
     background-size: cover;
@@ -51,3 +79,52 @@ header {
         }
     }
 }
+@keyframes rubberBand {
+    from {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+  
+    30% {
+      -webkit-transform: scale3d(1.25, 0.75, 1);
+      transform: scale3d(1.25, 0.75, 1);
+    }
+  
+    40% {
+      -webkit-transform: scale3d(0.75, 1.25, 1);
+      transform: scale3d(0.75, 1.25, 1);
+    }
+  
+    50% {
+      -webkit-transform: scale3d(1.15, 0.85, 1);
+      transform: scale3d(1.15, 0.85, 1);
+    }
+  
+    65% {
+      -webkit-transform: scale3d(0.95, 1.05, 1);
+      transform: scale3d(0.95, 1.05, 1);
+    }
+  
+    75% {
+      -webkit-transform: scale3d(1.05, 0.95, 1);
+      transform: scale3d(1.05, 0.95, 1);
+    }
+  
+    to {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+  }
+  
+  .rubberBand {
+    animation: 1s rubberBand;
+    animation-delay:1.2s;
+  }
+  .rubberBand2 {
+    animation: 1s rubberBand;
+    animation-delay:1.5s;
+  }
+  .rubberBand3 {
+    animation: 1s rubberBand;
+    animation-delay:1.8s;
+  }
