@@ -11,13 +11,13 @@ class HomePage extends Component {
         window.scrollTo(0, 0);
         setTimeout(function () {
             $('.i1').css('opacity', '1').css('transform', 'translateY(0)');
-        }, 300)
+        }, 1200)
         setTimeout(function () {
             $('.i2').css('opacity', '1').css('transform', 'translateY(0)');
-        }, 600)
+        }, 1500)
         setTimeout(function () {
             $('.i3').css('opacity', '1').css('transform', 'translateY(0)');
-        }, 900)
+        }, 1800)
         $(window).scroll(function () {
             let scrollNow = $(this).scrollTop();
             console.log(scrollNow);
@@ -53,9 +53,9 @@ class HomePage extends Component {
             <React.Fragment>
                 <header>
                     <div className='foodTitle'>
-                        <h2 className='rubberBand'>依照食譜</h2>
-                        <h2 className='rubberBand2'>輕鬆買齊所有食材</h2>
-                        <h3 className='rubberBand3'>Foodtopia 服務最便利的線上超市</h3>
+                        <h2 className='rubberBand' style={{opacity:'0'}}>依照食譜</h2>
+                        <h2 className='rubberBand2' style={{opacity:'0'}}>輕鬆買齊所有食材</h2>
+                        <h3 className='rubberBand3' style={{opacity:'0'}}>Foodtopia 服務最便利的線上超市</h3>
                     </div>
                     <div className='firstMenu d-flex justify-content-center'>
                         <img className='i i1' src={require('./images/Group125.png')} />
