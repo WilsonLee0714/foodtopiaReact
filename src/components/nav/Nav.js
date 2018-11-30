@@ -96,7 +96,7 @@ class Nav extends Component {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link class="nav-link" to="/">美味食譜</Link>
+                  <Link class="nav-link" to="/recipe_head/recipe_list">美味食譜</Link>
                 </li>
                 <li className="nav-item">
                   <Link class="nav-link" to="/ingridient_hompage">生鮮食材</Link>
