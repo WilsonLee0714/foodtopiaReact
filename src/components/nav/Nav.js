@@ -102,7 +102,7 @@ class Nav extends Component {
                   <Link class="nav-link" to="/ingridient_hompage">生鮮食材</Link>
                 </li>
                 <li className="nav-item">
-                  <Link class="nav-link" to="/">關於我們</Link>
+                  <Link class="nav-link" to="/new_blog">食譜部落格</Link>
                 </li>
 
               </ul>

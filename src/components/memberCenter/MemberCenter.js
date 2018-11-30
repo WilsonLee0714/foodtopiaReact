@@ -8,7 +8,7 @@ class MemberCenter extends Component {
         this.state = {
             userName: '',
             profile: 'Group158.png',
-            source: 'http://localhost:3000/upload/',
+            source: 'http://localhost:3000/uploads/',
         }
     }
     componentDidMount = () => {
