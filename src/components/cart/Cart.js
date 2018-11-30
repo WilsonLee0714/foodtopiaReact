@@ -1,3 +1,9 @@
+import React, {Component} from 'react';
+import {Link} from "react-router-dom";
+import {Button, Container, Row, Col} from 'reactstrap';
+import "./Cart.scss";
+// import Products from "./Cart.json";
+
 class Cart extends Component {
   constructor(props) {
     super(props);
