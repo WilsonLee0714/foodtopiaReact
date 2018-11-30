@@ -157,7 +157,7 @@ class BasicInfo extends Component {
               <div class="wrap91">
                 <div class="box91 front91">
                   {/* form */}
-                  <form id='infoForm' className='infoForm mt-3' action='http://localhost:3000/session/info' method='post'>
+                  <form id='infoForm' className='infoForm' action='http://localhost:3000/session/info' method='post'>
                     <h3 className='p-0 m-0'>基本資料</h3>
                     <input name='sid' value={this.state.sid} className='d-none' />
                     {/* sid用來給後端的 不要刪掉 */}
@@ -196,7 +196,7 @@ class BasicInfo extends Component {
                       <button
                         type='submit'
                         // onClick={this.handleClick2}
-                        className='btn btn-success w-100'>儲存變更</button>
+                        className='btn btn-success w-50'>儲存變更</button>
                     </div>
                   </form>
                   {/* form */}
@@ -205,7 +205,7 @@ class BasicInfo extends Component {
                 <div class="box91 left91"></div>
                 <div class="box91 right91">
                   {/* form */}
-                  <form id='infoForm2' className='infoForm mt-3 text-left' action='http://localhost:3000/session/info' method='post'>
+                  <form id='infoForm2' className='infoForm text-left' action='http://localhost:3000/session/info' method='post'>
                     <h3 className='p-0 m-0'>收件資訊</h3>
                     <input name='sid' value={this.state.sid} className='d-none' />
                     {/* sid用來給後端的 不要刪掉 */}
@@ -251,7 +251,7 @@ class BasicInfo extends Component {
                       <button
                         type='submit'
                         // onClick={this.handleClick2}
-                        className='btn btn-danger w-100'>儲存變更</button>
+                        className='btn btn-danger w-50'>儲存變更</button>
                     </div>
                   </form>
                   {/* form */}
