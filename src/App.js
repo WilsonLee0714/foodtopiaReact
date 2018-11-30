@@ -15,6 +15,15 @@ import MyService from './components/myService/MyService.js';
 import Footer from './components/footer/Footer.js';
 import HomePage from './components/homePage/HomePage.js';
 import Login from './components/login/Login.js';
+//食材元件匯入
+import Ingridient_homepage from './components2/homepage/Ingridient_homepage';
+import Ingridient_listpage from './components2/listpage/Ingridient_listpage';
+import Fruit from "./components2/listpage/Fruit/Fruit";
+import Meat from "./components2/listpage/Meat/Meat";
+import Vegetable from "./components2/listpage/Vegetable/Vegetable";
+import Seafood from "./components2/listpage/Seafood/Seafood";
+import Dairy from "./components2/listpage/Dairy/Dairy";
+import Other from "./components2/listpage/Other/Other";
 
 class App extends Component {
   render() {
@@ -35,6 +44,15 @@ class App extends Component {
             <Route path="/memberCenter/myOrder" component={MyOrder} />
             <Route path="/memberCenter/myService" component={MyService} />
           </div>
+          {/* 食材 */}
+          <Route path="/ingridient_hompage" component={Ingridient_homepage} />
+          <Route path="/ingridient_listpage" component={Ingridient_listpage} />
+          <Route path="/ingridient_listpage/fruit" component={Fruit} />
+          <Route path="/ingridient_listpage/meat" component={Meat} />
+          <Route path="/ingridient_listpage/vegetable" component={Vegetable} />
+          <Route path="/ingridient_listpage/other" component={Other} />
+          <Route path="/ingridient_listpage/seafood" component={Seafood} />
+          <Route path="/ingridient_listpage/dairy" component={Dairy} />
           <Footer/>
         </React.Fragment>
       </BrowserRouter>
