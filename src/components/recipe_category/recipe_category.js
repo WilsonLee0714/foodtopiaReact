@@ -31,7 +31,7 @@ class Recipe_category extends Component {
                 {this.state.menus.map(menu =>  
                     <div className="p_card">
                         <div className="upper_card">
-                            <img className="card_pic" src ={require(`../recipe_list/product_slider/images/${menu.menu_img}.png`)} alt="" />
+                            <img className="card_pic" src ={require(`../recipe_list/product_slider/images/${menu.menu_img}.jpg`)} alt="" />
                             <div className="rate title1">4.2</div>
                         </div>
                         <div className="lower_card">

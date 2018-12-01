@@ -111,7 +111,6 @@ class Order extends Component {
       }
     }
     return (
-
       <BrowserRouter>
         <React.Fragment>
           <Container className='orderPage'>
@@ -150,22 +149,6 @@ class Order extends Component {
     )
   }
   componentDidMount() {
-    // let step1 = document.querySelector('#step1'),   step1Num =
-    // document.querySelector('#step1Num'),   step2Line =
-    // document.querySelector('#step2Line'),   step2 =
-    // document.querySelector('#step2'),   step2Num =
-    // document.querySelector('#step2Num'),   step3Line =
-    // document.querySelector('#step3Line'),   step3 =
-    // document.querySelector('#step3'); if (this.state.step==1) {   step1
-    // .classList     .add('active'); } if (this.state.step==2) {   step1
-    // .classList     .add('done');   step1Num.innerHTML = `<i class="fas fa-check
-    // doneIcon"></i>`;   step2Line     .classList     .add('active');   step2
-    // .classList     .add('active'); } if (this.state.step==3) {   step1
-    // .classList     .add('done');   step1Num.innerHTML = `<i class="fas fa-check
-    // doneIcon"></i>`;   step2Line     .classList     .add('done');   step2
-    // .classList     .add('done');   step2Num.innerHTML = `<i class="fas fa-check
-    // doneIcon"></i>`;   step3Line     .classList     .add('active');   step3
-    // .classList     .add('active'); }
   }
   componentDidUpdate() {
     console.log(this.state)

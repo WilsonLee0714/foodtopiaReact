@@ -13,7 +13,7 @@ class Cart extends Component {
       email: '',
       product: {
         sid: "",
-        qty: "",
+        qty: ""
       }
     }
   }
@@ -43,6 +43,69 @@ class Cart extends Component {
     })
   }
 
+  modify = (evt) => {
+    evt.preventDefault();
+    let sid = evt.target.dataset.sid,
+        type = evt.target.dataset.type;
+    switch (type) {
+      case "min":
+        fetch("http://localhost:3000/cart/cart/" + sid, {
+          method: 'GET'
+        }).then(res => res.json())
+          .then(data => {
+            let oldQty = data[0].qty;
+            if (oldQty > 1) {
+              let qty = oldQty - 1
+              fetch("http://localhost:3000/cart/cart/" + sid, {
+                method: 'PUT',
+                mode: "cors",
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({qty: qty})
+              }).then(res => this.getCart())
+            }
+          });
+        break;
+      case "plus":
+        fetch("http://localhost:3000/cart/cart/" + sid, {
+          method: 'GET'
+        }).then(res => res.json())
+          .then(data => {
+            let oldQty = data[0].qty,
+              qty = oldQty + 1
+            fetch("http://localhost:3000/cart/cart/" + sid, {
+              method: 'PUT',
+              mode: "cors",
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({qty: qty})
+            }).then( res => this.getCart())
+          });
+        break;
+      case "del":
+        fetch("http://localhost:3000/cart/cart/" + sid, {
+          method: 'DELETE'
+        }).then(res => this.getCart())
+        break;
+    }
+  }
+
+  update = (member) => {
+    fetch('http://localhost:3000/api/members/' + member.id, {
+      method: 'PUT',
+      body: JSON.stringify(member),
+        headers: new Headers({'Content-Type': 'application/json'})
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert(data.message);
+        this.getMembers();
+
+      })
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -60,12 +123,22 @@ class Cart extends Component {
                       src={require(`./images/${product.product_img}.jpeg`)}/>
                   </Col>
                   <Col className='productQty'>
-                    <Button color='danger' className='btnMP' data-id={product.sid} data-type="min" onClick={this.handler}>
-                      <i className="fas fa-minus"></i>
+                    <Button
+                      color='danger'
+                      className='btnMP'
+                      data-sid={product.sid}
+                      data-type="min"
+                      onClick={this.modify}>
+                      <i className="fas fa-minus" data-sid={product.sid} data-type="min"></i>
                     </Button>
-                      {product.qty}
-                    <Button color='danger' className='btnMP' data-id={product.sid} data-type="plus" onClick={this.handler}>
-                      <i className="fas fa-plus"></i>
+                    {product.qty}
+                    <Button
+                      color='danger'
+                      className='btnMP'
+                      data-sid={product.sid}
+                      data-type="plus"
+                      onClick={this.modify}>
+                      <i className="fas fa-plus" data-sid={product.sid} data-type="plus"></i>
                     </Button>
                   </Col>
                 </Col>
@@ -74,10 +147,18 @@ class Cart extends Component {
                   <Col className='productSpec'>{product.spec}</Col>
                   <Col className='productPrice'>NT$ {product.price * product.qty}</Col>
                 </Col>
-                <Col className='btnDelete' sm={2}>
-                <span>
-                <i className="fas fa-trash-alt"></i>
-                </span>
+                <Col
+                  className='btnDelete'
+                  sm={2}
+                  data-sid={product.sid}
+                  data-type="del"
+                  onClick={this.modify}>
+                  <span>
+                    <i 
+                    className="fas fa-trash-alt"
+                    data-sid={product.sid}
+                    data-type="del"></i>
+                  </span>
                 </Col>
 
               </Row>)}

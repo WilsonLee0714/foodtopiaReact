@@ -37,7 +37,7 @@ class Product_slider extends Component {
                                     <div className="p_card">
                                         {/* <Link to='/recipe_page'> */}
                                             <div className="upper_card">
-                                                <img className="card_pic" src ={require(`./images/${menu.menu_img}.png`)} alt="" />
+                                                <img className="card_pic" src ={require(`./images/${menu.menu_img}.jpg`)} alt="" />
                                                 <div className="rate title1">4.2</div>
                                             </div>
                                             
