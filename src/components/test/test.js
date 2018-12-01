@@ -15,7 +15,7 @@ class Test extends Component {
         this.state = {
             menus: [],
             menu: this.initState,
-            type: 'add',
+            type: 'add',    
         }
     }
 

@@ -11,6 +11,7 @@
                 height: 200px;
                 cursor: pointer;
                 transition: opacity .3s ease-in-out;
+                object-fit: cover;
             }
             .food_btn{
                 text-decoration: none;

@@ -1,6 +1,6 @@
 .filter{
     width: 70%;
-    margin: 5% auto 0;
+    margin: 5% auto 0%;
     .filter_option{
         text-align: center;
         cursor: pointer;
@@ -68,6 +68,10 @@
                 margin: 0 auto;
                 padding: 0;
                 transition: .5s;
+                a{
+                    text-decoration: none;
+                    color: #000;
+                }
                 li{
                     cursor: pointer;
                     font-size: 1.2em;

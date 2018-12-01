@@ -12,11 +12,11 @@ class Footer extends Component {
                 <div className="footer_background">
                     <div className="blog_footer_icon container d-flex">
                         <div className="footer_icon d-flex justify-content-between">
-                            <a className="link_black" href={(``)}><i class="icon fab fa-facebook col-2"></i></a>
-                            <a className="link_black" href={(``)}><i class="icon fab fa-instagram col-2"></i></a>
-                            <a className="link_black" href={(``)}><i class="icon fab fa-google-plus-g col-2"></i></a>
-                            <a className="link_black" href={(``)}><i class="icon fab fa-youtube col-2"></i></a>
-                            <a className="link_black" href={(``)}><i class="icon far fa-envelope col-2"></i></a>
+                            <a className="link_black" href={(``)}><i className="icon fab fa-facebook col-2"></i></a>
+                            <a className="link_black" href={(``)}><i className="icon fab fa-instagram col-2"></i></a>
+                            <a className="link_black" href={(``)}><i className="icon fab fa-google-plus-g col-2"></i></a>
+                            <a className="link_black" href={(``)}><i className="icon fab fa-youtube col-2"></i></a>
+                            <a className="link_black" href={(``)}><i className="icon far fa-envelope col-2"></i></a>
                         </div>
                     </div>
                 </div>

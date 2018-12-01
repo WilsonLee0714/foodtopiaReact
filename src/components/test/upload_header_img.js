@@ -14,20 +14,19 @@ class Upload_header_img2 extends Component {
         return (
             <React.Fragment>
                 {this.props.menus.map(menu =>      
-                    <div className="container d-flex">
-                    <div className="upload_header container">
-                        <from>
-                            <input className="header" placeholder="食譜名稱"/>
-                            <img className="chicken_img" src={require(`./img/${menu.menu_img}.jpg`)} alt="" />
-                            <input type="file" className="upload_img" />
-                        </from>
+                    <div key={menu.id} className="container d-flex">
+                        <div className="upload_header container">
+                            <from>
+                                <input className="header" placeholder="食譜名稱"/>
+                                <img className="chicken_img" src={require(`./img/${menu.menu_img}.jpg`)} alt="" />
+                            </from>
+                        </div>
+                        <div className="upload_Introduction container">
+                            <p>
+                                123456
+                            </p>
+                        </div>
                     </div>
-                    <div className="upload_Introduction container">
-                        <p>
-                            123456
-                        </p>
-                    </div>
-                </div>
                 )}
             </React.Fragment>
         );

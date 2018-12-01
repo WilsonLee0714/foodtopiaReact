@@ -32,7 +32,6 @@ import Recipe_head from './components/recipe_head/recipe_head';
 // import SimpleSlider from './components/SimpleSlider/simpleSlider';
 // import React_search from './components/recipe_list/search_bar/react-search';
 //部落格匯入
-// import Content from "./components/content/content";
 import Up_load from "./components/up_load/up_load";
 import Test from "./components/test/test";
 import New_blog from "./components/new_blog/new_blog";
@@ -72,10 +71,9 @@ class App extends Component {
           <Route path="/recipe_head/recipe_category" component={Recipe_category} />
           <Route path="/recipe_page" component={Recipe_page} />
           {/* 部落格 */}
-          <Route exact path="/up_load" component={Up_load} />
-          
-          <Route exact path="/page/:id" component={Test} />
-          <Route exact path="/new_blog" component={New_blog} />
+          <Route path="/up_load" component={Up_load} />
+          <Route path="/page/:id" component={Test} />
+          <Route path="/new_blog" component={New_blog} />
           <Footer/>
         </React.Fragment>
       </BrowserRouter>

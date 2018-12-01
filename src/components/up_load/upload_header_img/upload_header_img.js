@@ -241,22 +241,24 @@ componentDidMount(){
     bubblyButtons[i].addEventListener('click', animateButton, false);
     }
 
+    
+
     //新增欄位
     var i =2;
     $("#new_step").on('click',function(){
-        var newitem = `<div class="upload_step">
-                            <div class="step_number_step d-flex">
-                                <from class="input_step_form col-4">
-                                    <i class="fas fa-camera-retro camera_icon"></i>
-                                    <div class="upload_camera"></div>
-                                    <input type="file" class="step_img" />
+        var newitem = `<div className="upload_step">
+                            <div className="step_number_step d-flex">
+                                <from className="input_step_form col-4">
+                                    <i className="fas fa-camera-retro camera_icon"></i>
+                                    <div className="upload_camera"></div>
+                                    <input type="file" className="step_img" />
                                 </from>
-                                <div class="upload_number_step d-flex col-8 ">
-                                    <p class="step_number">${i}</p>
-                                    <div class="step_icons">
-                                        <i class="step_icon far fa-trash-alt"></i>
+                                <div className="upload_number_step d-flex col-8 ">
+                                    <p className="step_number">${i}</p>
+                                    <div className="step_icons">
+                                        <i className="step_icon far fa-trash-alt"></i>
                                         <br />
-                                        <textarea class="step_introduction" placeholder="步驟敘述..."/>
+                                        <textarea className="step_introduction" placeholder="步驟敘述..."/>
                                     </div>
                                 </div>
                             </div>
@@ -264,43 +266,6 @@ componentDidMount(){
         if (i<=9) {
             $('.recipe_step').append(newitem);
             i=i+1
-        } else {
-            return false;
-        }
-    })
-    var n =5;
-    //新增食材
-    $("#new_ingredient").on('click',function(){
-        var newitem1 = `<label id="img_category_label"class="field field${n}"for="img_category"data-value="" style="opacity: 1;">
-                            <span>食材類別</span>
-                            <div id="img_category"class="psuedo_select"name="img_category">
-                                <span class="selected"></span>
-                                <ul id="img_category_options"class="options">
-                                    <li class="option"data-value="opt_1">肉類</li>
-                                    <li class="option"data-value="opt_2">奶蛋類</li>
-                                    <li class="option"data-value="opt_3">海鮮</li>
-                                    <li class="option"data-value="opt_3">調料</li>
-                                </ul>
-                            </div>
-                        </label>`
-        var newitem2 = `<label id="img_category_label"class="field field${n}"for="img_category"data-value="" style="opacity: 1;">
-                            <span></span>
-                            <div id="img_category"class="psuedo_select"name="img_category">
-                                <span class="selected"></span>
-                                <ul id="img_category_options"class="options">
-                                    <li class="option"data-value="opt_1"></li>
-                                    <li class="option"data-value="opt_2"></li>
-                                    <li class="option"data-value="opt_3"></li>
-                                    <li class="option"data-value="opt_4"></li>
-                                </ul>
-                            </div>
-                        </label>`
-        var newitem3 = `<input type="text"></input><img src="./static/media/delete.f45cd336.jpg" class="delete_icon" alt="" /><br />`
-        if (n<=9) {
-            $('.ingredients_left ').append(newitem1);
-            $('.ingredients_right .input_option').append(newitem2);
-            $('.upload_ingredients .input_option').append(newitem3);
-            n=n+1
         } else {
             return false;
         }
@@ -320,38 +285,38 @@ componentDidMount(){
                             <input type="file" className="recipe_header_img" />
                             {/* 食譜時間,份量,難度 */}
                             <div className="recipe_dropdowns d-flex">
-                                <label id="img_category_label"class="field field1"for="img_category"data-value="">
+                                <label id="img_category_label"className="field field1"for="img_category"data-value="">
                                     <span>烹飪時間</span>
-                                    <div id="img_category"class="psuedo_select"name="img_category">
-                                        <span class="selected"></span>
-                                        <ul id="img_category_options"class="options">
-                                            <li class="option"data-value="opt_1">15分鐘</li>
-                                            <li class="option"data-value="opt_2">30分鐘</li>
-                                            <li class="option"data-value="opt_3">45分鐘</li>
-                                            <li class="option"data-value="opt_4">60分鐘</li>
+                                    <div id="img_category"className="psuedo_select"name="img_category">
+                                        <span className="selected"></span>
+                                        <ul id="img_category_options"className="options">
+                                            <li className="option"data-value="opt_1">15分鐘</li>
+                                            <li className="option"data-value="opt_2">30分鐘</li>
+                                            <li className="option"data-value="opt_3">45分鐘</li>
+                                            <li className="option"data-value="opt_4">60分鐘</li>
                                         </ul>
                                     </div>
                                 </label>
-                                <label id="img_category_label"class="field field2"for="img_category"data-value="">
+                                <label id="img_category_label"className="field field2"for="img_category"data-value="">
                                     <span>份量</span>
-                                    <div id="img_category"class="psuedo_select"name="img_category">
-                                        <span class="selected"></span>
-                                        <ul id="img_category_options"class="options">
-                                            <li class="option"data-value="opt_1">1人份</li>
-                                            <li class="option"data-value="opt_2">2人份</li>
-                                            <li class="option"data-value="opt_3">3人份</li>
-                                            <li class="option"data-value="opt_4">4人份</li>
+                                    <div id="img_category"className="psuedo_select"name="img_category">
+                                        <span className="selected"></span>
+                                        <ul id="img_category_options"className="options">
+                                            <li className="option"data-value="opt_1">1人份</li>
+                                            <li className="option"data-value="opt_2">2人份</li>
+                                            <li className="option"data-value="opt_3">3人份</li>
+                                            <li className="option"data-value="opt_4">4人份</li>
                                         </ul>
                                     </div>
                                 </label>
-                                <label id="img_category_label"class="field field3"for="img_category"data-value="">
+                                <label id="img_category_label"className="field field3"for="img_category"data-value="">
                                     <span>難度</span>
-                                    <div id="img_category"class="psuedo_select"name="img_category">
-                                        <span class="selected"></span>
-                                        <ul id="img_category_options"class="options">
-                                            <li class="option"data-value="opt_1">簡單</li>
-                                            <li class="option"data-value="opt_2">中等</li>
-                                            <li class="option"data-value="opt_3">困難</li>
+                                    <div id="img_category"className="psuedo_select"name="img_category">
+                                        <span className="selected"></span>
+                                        <ul id="img_category_options"className="options">
+                                            <li className="option"data-value="opt_1">簡單</li>
+                                            <li className="option"data-value="opt_2">中等</li>
+                                            <li className="option"data-value="opt_3">困難</li>
                                         </ul>
                                     </div>
                                 </label>
@@ -366,99 +331,99 @@ componentDidMount(){
                             <div className="recipe_ingredients ingredients_left">
                                 <p>類別</p>
                                 <div className="input_option">
-                                    <label id="img_category_label"class="field field1"for="img_category"data-value="">
+                                    <label id="img_category_label"className="field field1"for="img_category"data-value="">
                                         <span>食材類別</span>
-                                        <div id="img_category"class="psuedo_select"name="img_category">
-                                            <span class="selected"></span>
-                                            <ul id="img_category_options"class="options">
-                                                <li class="option"data-value="opt_1">肉類</li>
-                                                <li class="option"data-value="opt_2">奶蛋類</li>
-                                                <li class="option"data-value="opt_3">海鮮</li>
-                                                <li class="option"data-value="opt_3">調料</li>
+                                        <div id="img_category"className="psuedo_select"name="img_category">
+                                            <span className="selected"></span>
+                                            <ul id="img_category_options"className="options">
+                                                <li className="option"data-value="opt_1">肉類</li>
+                                                <li className="option"data-value="opt_2">奶蛋類</li>
+                                                <li className="option"data-value="opt_3">海鮮</li>
+                                                <li className="option"data-value="opt_3">調料</li>
                                             </ul>
                                         </div>
                                     </label>
-                                    <label id="img_category_label"class="field field2"for="img_category"data-value="">
+                                    <label id="img_category_label"className="field field2"for="img_category"data-value="">
                                         <span>食材類別</span>
-                                        <div id="img_category"class="psuedo_select"name="img_category">
-                                            <span class="selected"></span>
-                                            <ul id="img_category_options"class="options">
-                                                <li class="option"data-value="opt_1">肉類</li>
-                                                <li class="option"data-value="opt_2">奶蛋類</li>
-                                                <li class="option"data-value="opt_3">海鮮</li>
-                                                <li class="option"data-value="opt_3">調料</li>
+                                        <div id="img_category"className="psuedo_select"name="img_category">
+                                            <span className="selected"></span>
+                                            <ul id="img_category_options"className="options">
+                                                <li className="option"data-value="opt_1">肉類</li>
+                                                <li className="option"data-value="opt_2">奶蛋類</li>
+                                                <li className="option"data-value="opt_3">海鮮</li>
+                                                <li className="option"data-value="opt_3">調料</li>
                                             </ul>
                                         </div>
                                     </label>
-                                    <label id="img_category_label"class="field field3"for="img_category"data-value="">
+                                    <label id="img_category_label"className="field field3"for="img_category"data-value="">
                                         <span>食材類別</span>
-                                        <div id="img_category"class="psuedo_select"name="img_category">
-                                            <span class="selected"></span>
-                                            <ul id="img_category_options"class="options">
-                                                <li class="option"data-value="opt_1">肉類</li>
-                                                <li class="option"data-value="opt_2">奶蛋類</li>
-                                                <li class="option"data-value="opt_3">海鮮</li>
-                                                <li class="option"data-value="opt_3">調料</li>
+                                        <div id="img_category"className="psuedo_select"name="img_category">
+                                            <span className="selected"></span>
+                                            <ul id="img_category_options"className="options">
+                                                <li className="option"data-value="opt_1">肉類</li>
+                                                <li className="option"data-value="opt_2">奶蛋類</li>
+                                                <li className="option"data-value="opt_3">海鮮</li>
+                                                <li className="option"data-value="opt_3">調料</li>
                                             </ul>
                                         </div>
                                     </label>
-                                    <label id="img_category_label"class="field field4"for="img_category"data-value="">
+                                    <label id="img_category_label"className="field field4"for="img_category"data-value="">
                                         <span>食材類別</span>
-                                        <div id="img_category"class="psuedo_select"name="img_category">
-                                            <span class="selected"></span>
-                                            <ul id="img_category_options"class="options">
-                                                <li class="option"data-value="opt_1">肉類</li>
-                                                <li class="option"data-value="opt_2">奶蛋類</li>
-                                                <li class="option"data-value="opt_3">海鮮</li>
-                                                <li class="option"data-value="opt_3">調料</li>
+                                        <div id="img_category"className="psuedo_select"name="img_category">
+                                            <span className="selected"></span>
+                                            <ul id="img_category_options"className="options">
+                                                <li className="option"data-value="opt_1">肉類</li>
+                                                <li className="option"data-value="opt_2">奶蛋類</li>
+                                                <li className="option"data-value="opt_3">海鮮</li>
+                                                <li className="option"data-value="opt_3">調料</li>
                                             </ul>
                                         </div>
                                     </label>
-                                    <label id="img_category_label"class="field field5"for="img_category"data-value="">
+                                    <label id="img_category_label"className="field field5"for="img_category"data-value="">
                                         <span>食材類別</span>
-                                        <div id="img_category"class="psuedo_select"name="img_category">
-                                            <span class="selected"></span>
-                                            <ul id="img_category_options"class="options">
-                                                <li class="option"data-value="opt_1">肉類</li>
-                                                <li class="option"data-value="opt_2">奶蛋類</li>
-                                                <li class="option"data-value="opt_3">海鮮</li>
-                                                <li class="option"data-value="opt_3">調料</li>
+                                        <div id="img_category"className="psuedo_select"name="img_category">
+                                            <span className="selected"></span>
+                                            <ul id="img_category_options"className="options">
+                                                <li className="option"data-value="opt_1">肉類</li>
+                                                <li className="option"data-value="opt_2">奶蛋類</li>
+                                                <li className="option"data-value="opt_3">海鮮</li>
+                                                <li className="option"data-value="opt_3">調料</li>
                                             </ul>
                                         </div>
                                     </label>
-                                    <label id="img_category_label"class="field field6"for="img_category"data-value="">
+                                    <label id="img_category_label"className="field field6"for="img_category"data-value="">
                                         <span>食材類別</span>
-                                        <div id="img_category"class="psuedo_select"name="img_category">
-                                            <span class="selected"></span>
-                                            <ul id="img_category_options"class="options">
-                                                <li class="option"data-value="opt_1">肉類</li>
-                                                <li class="option"data-value="opt_2">奶蛋類</li>
-                                                <li class="option"data-value="opt_3">海鮮</li>
-                                                <li class="option"data-value="opt_3">調料</li>
+                                        <div id="img_category"className="psuedo_select"name="img_category">
+                                            <span className="selected"></span>
+                                            <ul id="img_category_options"className="options">
+                                                <li className="option"data-value="opt_1">肉類</li>
+                                                <li className="option"data-value="opt_2">奶蛋類</li>
+                                                <li className="option"data-value="opt_3">海鮮</li>
+                                                <li className="option"data-value="opt_3">調料</li>
                                             </ul>
                                         </div>
                                     </label>
-                                    <label id="img_category_label"class="field field7"for="img_category"data-value="">
+                                    <label id="img_category_label"className="field field7"for="img_category"data-value="">
                                         <span>食材類別</span>
-                                        <div id="img_category"class="psuedo_select"name="img_category">
-                                            <span class="selected"></span>
-                                            <ul id="img_category_options"class="options">
-                                                <li class="option"data-value="opt_1">肉類</li>
-                                                <li class="option"data-value="opt_2">奶蛋類</li>
-                                                <li class="option"data-value="opt_3">海鮮</li>
-                                                <li class="option"data-value="opt_3">調料</li>
+                                        <div id="img_category"className="psuedo_select"name="img_category">
+                                            <span className="selected"></span>
+                                            <ul id="img_category_options"className="options">
+                                                <li className="option"data-value="opt_1">肉類</li>
+                                                <li className="option"data-value="opt_2">奶蛋類</li>
+                                                <li className="option"data-value="opt_3">海鮮</li>
+                                                <li className="option"data-value="opt_3">調料</li>
                                             </ul>
                                         </div>
                                     </label>
-                                    <label id="img_category_label"class="field field8"for="img_category"data-value="">
+                                    <label id="img_category_label"className="field field8"for="img_category"data-value="">
                                         <span>食材類別</span>
-                                        <div id="img_category"class="psuedo_select"name="img_category">
-                                            <span class="selected"></span>
-                                            <ul id="img_category_options"class="options">
-                                                <li class="option"data-value="opt_1">肉類</li>
-                                                <li class="option"data-value="opt_2">奶蛋類</li>
-                                                <li class="option"data-value="opt_3">海鮮</li>
-                                                <li class="option"data-value="opt_3">調料</li>
+                                        <div id="img_category"className="psuedo_select"name="img_category">
+                                            <span className="selected"></span>
+                                            <ul id="img_category_options"className="options">
+                                                <li className="option"data-value="opt_1">肉類</li>
+                                                <li className="option"data-value="opt_2">奶蛋類</li>
+                                                <li className="option"data-value="opt_3">海鮮</li>
+                                                <li className="option"data-value="opt_3">調料</li>
                                             </ul>
                                         </div>
                                     </label>
@@ -467,98 +432,98 @@ componentDidMount(){
                             <div className="recipe_ingredients ingredients_right">
                                 <p>品項</p>
                                 <div className="input_option">
-                                    <label id="img_category_label"class="field field1"for="img_category"data-value="">
+                                    <label id="img_category_label"className="field field1"for="img_category"data-value="">
                                         <span></span>
-                                        <div id="img_category"class="psuedo_select"name="img_category">
-                                            <span class="selected"></span>
-                                            <ul id="img_category_options"class="options">
-                                                <li class="option"data-value="opt_1"></li>
-                                                <li class="option"data-value="opt_2"></li>
-                                                <li class="option"data-value="opt_3"></li>
-                                                <li class="option"data-value="opt_4"></li>
+                                        <div id="img_category"className="psuedo_select"name="img_category">
+                                            <span className="selected"></span>
+                                            <ul id="img_category_options"className="options">
+                                                <li className="option"data-value="opt_1"></li>
+                                                <li className="option"data-value="opt_2"></li>
+                                                <li className="option"data-value="opt_3"></li>
+                                                <li className="option"data-value="opt_4"></li>
                                             </ul>
                                         </div>
                                     </label>
-                                    <label id="img_category_label"class="field field2"for="img_category"data-value="">
+                                    <label id="img_category_label"className="field field2"for="img_category"data-value="">
                                         <span></span>
-                                        <div id="img_category"class="psuedo_select"name="img_category">
-                                            <span class="selected"></span>
-                                            <ul id="img_category_options"class="options">
-                                                <li class="option"data-value="opt_1"></li>
-                                                <li class="option"data-value="opt_2"></li>
-                                                <li class="option"data-value="opt_3"></li>
-                                                <li class="option"data-value="opt_4"></li>
+                                        <div id="img_category"className="psuedo_select"name="img_category">
+                                            <span className="selected"></span>
+                                            <ul id="img_category_options"className="options">
+                                                <li className="option"data-value="opt_1"></li>
+                                                <li className="option"data-value="opt_2"></li>
+                                                <li className="option"data-value="opt_3"></li>
+                                                <li className="option"data-value="opt_4"></li>
                                             </ul>
                                         </div>
                                     </label>
-                                    <label id="img_category_label"class="field field3"for="img_category"data-value="">
+                                    <label id="img_category_label"className="field field3"for="img_category"data-value="">
                                         <span></span>
-                                        <div id="img_category"class="psuedo_select"name="img_category">
-                                            <span class="selected"></span>
-                                            <ul id="img_category_options"class="options">
-                                                <li class="option"data-value="opt_1"></li>
-                                                <li class="option"data-value="opt_2"></li>
-                                                <li class="option"data-value="opt_3"></li>
+                                        <div id="img_category"className="psuedo_select"name="img_category">
+                                            <span className="selected"></span>
+                                            <ul id="img_category_options"className="options">
+                                                <li className="option"data-value="opt_1"></li>
+                                                <li className="option"data-value="opt_2"></li>
+                                                <li className="option"data-value="opt_3"></li>
                                             </ul>
                                         </div>
                                     </label>
-                                    <label id="img_category_label"class="field field4"for="img_category"data-value="">
+                                    <label id="img_category_label"className="field field4"for="img_category"data-value="">
                                         <span></span>
-                                        <div id="img_category"class="psuedo_select"name="img_category">
-                                            <span class="selected"></span>
-                                            <ul id="img_category_options"class="options">
-                                                <li class="option"data-value="opt_1"></li>
-                                                <li class="option"data-value="opt_2"></li>
-                                                <li class="option"data-value="opt_3"></li>
-                                                <li class="option"data-value="opt_4"></li>
+                                        <div id="img_category"className="psuedo_select"name="img_category">
+                                            <span className="selected"></span>
+                                            <ul id="img_category_options"className="options">
+                                                <li className="option"data-value="opt_1"></li>
+                                                <li className="option"data-value="opt_2"></li>
+                                                <li className="option"data-value="opt_3"></li>
+                                                <li className="option"data-value="opt_4"></li>
                                             </ul>
                                         </div>
                                     </label>
-                                    <label id="img_category_label"class="field field5"for="img_category"data-value="">
+                                    <label id="img_category_label"className="field field5"for="img_category"data-value="">
                                         <span></span>
-                                        <div id="img_category"class="psuedo_select"name="img_category">
-                                            <span class="selected"></span>
-                                            <ul id="img_category_options"class="options">
-                                                <li class="option"data-value="opt_1"></li>
-                                                <li class="option"data-value="opt_2"></li>
-                                                <li class="option"data-value="opt_3"></li>
-                                                <li class="option"data-value="opt_4"></li>
+                                        <div id="img_category"className="psuedo_select"name="img_category">
+                                            <span className="selected"></span>
+                                            <ul id="img_category_options"className="options">
+                                                <li className="option"data-value="opt_1"></li>
+                                                <li className="option"data-value="opt_2"></li>
+                                                <li className="option"data-value="opt_3"></li>
+                                                <li className="option"data-value="opt_4"></li>
                                             </ul>
                                         </div>
                                     </label>
-                                    <label id="img_category_label"class="field field6"for="img_category"data-value="">
+                                    <label id="img_category_label"className="field field6"for="img_category"data-value="">
                                         <span></span>
-                                        <div id="img_category"class="psuedo_select"name="img_category">
-                                            <span class="selected"></span>
-                                            <ul id="img_category_options"class="options">
-                                                <li class="option"data-value="opt_1"></li>
-                                                <li class="option"data-value="opt_2"></li>
-                                                <li class="option"data-value="opt_3"></li>
-                                                <li class="option"data-value="opt_4"></li>
+                                        <div id="img_category"className="psuedo_select"name="img_category">
+                                            <span className="selected"></span>
+                                            <ul id="img_category_options"className="options">
+                                                <li className="option"data-value="opt_1"></li>
+                                                <li className="option"data-value="opt_2"></li>
+                                                <li className="option"data-value="opt_3"></li>
+                                                <li className="option"data-value="opt_4"></li>
                                             </ul>
                                         </div>
                                     </label>
-                                    <label id="img_category_label"class="field field7"for="img_category"data-value="">
+                                    <label id="img_category_label"className="field field7"for="img_category"data-value="">
                                         <span></span>
-                                        <div id="img_category"class="psuedo_select"name="img_category">
-                                            <span class="selected"></span>
-                                            <ul id="img_category_options"class="options">
-                                                <li class="option"data-value="opt_1"></li>
-                                                <li class="option"data-value="opt_2"></li>
-                                                <li class="option"data-value="opt_3"></li>
-                                                <li class="option"data-value="opt_4"></li>
+                                        <div id="img_category"className="psuedo_select"name="img_category">
+                                            <span className="selected"></span>
+                                            <ul id="img_category_options"className="options">
+                                                <li className="option"data-value="opt_1"></li>
+                                                <li className="option"data-value="opt_2"></li>
+                                                <li className="option"data-value="opt_3"></li>
+                                                <li className="option"data-value="opt_4"></li>
                                             </ul>
                                         </div>
                                     </label>
-                                    <label id="img_category_label"class="field field8"for="img_category"data-value="">
+                                    <label id="img_category_label"className="field field8"for="img_category"data-value="">
                                         <span></span>
-                                        <div id="img_category"class="psuedo_select"name="img_category">
-                                            <span class="selected"></span>
-                                            <ul id="img_category_options"class="options">
-                                                <li class="option"data-value="opt_1"></li>
-                                                <li class="option"data-value="opt_2"></li>
-                                                <li class="option"data-value="opt_3"></li>
-                                                <li class="option"data-value="opt_4"></li>
+                                        <div id="img_category"className="psuedo_select"name="img_category">
+                                            <span className="selected"></span>
+                                            <ul id="img_category_options"className="options">
+                                                <li className="option"data-value="opt_1"></li>
+                                                <li className="option"data-value="opt_2"></li>
+                                                <li className="option"data-value="opt_3"></li>
+                                                <li className="option"data-value="opt_4"></li>
                                             </ul>
                                         </div>
                                     </label>
@@ -567,14 +532,14 @@ componentDidMount(){
                             <div className="upload_ingredients">
                                 <p>份量</p>
                                 <div className="input_option">
-                                    <input type="text"></input><img src={require("./img/delete.jpg")} class="delete_icon" alt="" /><br />
-                                    <input type="text"></input><img src={require("./img/delete.jpg")} class="delete_icon" alt="" /><br />
-                                    <input type="text"></input><img src={require("./img/delete.jpg")} class="delete_icon" alt="" /><br />
-                                    <input type="text"></input><img src={require("./img/delete.jpg")} class="delete_icon" alt="" /><br />
-                                    <input type="text"></input><img src={require("./img/delete.jpg")} class="delete_icon" alt="" /><br />
-                                    <input type="text"></input><img src={require("./img/delete.jpg")} class="delete_icon" alt="" /><br />
-                                    <input type="text"></input><img src={require("./img/delete.jpg")} class="delete_icon" alt="" /><br />
-                                    <input type="text"></input><img src={require("./img/delete.jpg")} class="delete_icon" alt="" /><br />
+                                    <input type="text"></input><img src={require("./img/delete.jpg")} className="delete_icon" alt="" /><br />
+                                    <input type="text"></input><img src={require("./img/delete.jpg")} className="delete_icon" alt="" /><br />
+                                    <input type="text"></input><img src={require("./img/delete.jpg")} className="delete_icon" alt="" /><br />
+                                    <input type="text"></input><img src={require("./img/delete.jpg")} className="delete_icon" alt="" /><br />
+                                    <input type="text"></input><img src={require("./img/delete.jpg")} className="delete_icon" alt="" /><br />
+                                    <input type="text"></input><img src={require("./img/delete.jpg")} className="delete_icon" alt="" /><br />
+                                    <input type="text"></input><img src={require("./img/delete.jpg")} className="delete_icon" alt="" /><br />
+                                    <input type="text"></input><img src={require("./img/delete.jpg")} className="delete_icon" alt="" /><br />
                                 </div>
                             </div>
                         </div>
@@ -590,14 +555,14 @@ componentDidMount(){
                         <div className="step_number_step d-flex">
                             {/* 步驟圖片上傳 */}
                             <from className="input_step_form col-4">
-                                <i class="fas fa-camera-retro camera_icon"></i>
+                                <i className="fas fa-camera-retro camera_icon"></i>
                                 <div className="upload_camera"></div>
                                 <input type="file" className="step_img" />
                             </from>
                             <div className="upload_number_step d-flex col-8 ">
                                 <p className="step_number">1</p>
                                 <div className="step_icons">
-                                    <i class="step_icon far fa-trash-alt"></i>
+                                    <i className="step_icon far fa-trash-alt"></i>
                                     <br />
                                     <textarea className="step_introduction" placeholder="步驟敘述..."/>
                                 </div>
@@ -611,8 +576,8 @@ componentDidMount(){
                 </div>
                 {/* 上傳/取消 */}
                 <div className="send_buttom">
-                    <button type="button" class="btn btn-outline-danger btn_mr">上傳</button>
-                    <button type="button" class="btn btn-outline-dark">取消</button>
+                    <button type="button" className="btn btn-outline-danger btn_mr">上傳</button>
+                    <button type="button" className="btn btn-outline-dark">取消</button>
                 </div>
             </React.Fragment>
         );

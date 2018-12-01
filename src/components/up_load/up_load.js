@@ -9,6 +9,10 @@ class Up_load extends Component {
     constructor(props) {
       super(props)
 }
+componentDidMount(){
+    // window.location.replace("http://localhost:3001/up_load");
+    // window.stop();
+}
     render() {
         return (
             <React.Fragment>
