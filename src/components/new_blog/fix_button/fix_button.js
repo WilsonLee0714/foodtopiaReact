@@ -49,8 +49,11 @@ fileSelectedHandler = evt => {
     this.setState({
         img_name:evt.target.files[0].name
     })
+
 }
-//onclick上傳圖片
+//修改會員圖片
+
+//onclick上傳圖片   圖片上傳卡會員sid輸入
 fileUploadHandler = () =>{
     const formdata = new FormData();
     formdata.append('image',this.state.selectedFile,this.state.selectedFile.name);
@@ -59,10 +62,18 @@ fileUploadHandler = () =>{
         body:formdata
     }).then(function(res){
         return res.json();
-    }).then(function(data){
-        alert("更新成功")
     })
-    //上傳圖片檔名
+    // //上傳圖片檔名
+    // fetch('http://localhost:3000/imgup/upload_name', { //+sid
+    //     method: 'PUT',
+    //     body: JSON.stringify({img_name:this.state.img_name}),
+    //     headers: new Headers({
+    //         'Content-Type': 'application/json'
+    //     })
+    // }).then(res => res.json())
+    // .then(//刷新頁面
+    //     window.location.replace('http://localhost:3001/new_blog')
+    // )
     fetch('http://localhost:3000/imgup/upload_name', {
         method: 'POST',
         body: JSON.stringify({img_name:this.state.img_name}),
@@ -70,10 +81,9 @@ fileUploadHandler = () =>{
             'Content-Type': 'application/json'
         })
     }).then(res => res.json())
-    .then(res => {
+    .then(
         window.location.replace('http://localhost:3001/new_blog')
-        //刷新頁面
-    })
+    )
 }
 //修改個人社群連結
 handleChange = (evt) => {
@@ -83,27 +93,27 @@ handleChange = (evt) => {
         [key]: data
     })
 }
-update = (evt) => {
-    // this.props.update(this.state);
-    evt.preventDefault();
-}
-add = (evt) => {
-    // this.props.add(this.state);
-    evt.preventDefault();
-}
-// static getDerivedStateFromProps(props, state) {
-//     if (props.modifyData.id !== state.id) {
-//         return {
-//             id: props.modifyData.id,
-//             facebook: props.modifyData.facebook,
-//             instagram: props.modifyData.instagram,
-//             google_plus: props.modifyData.google_plus,
-//             youtube: props.modifyData.youtube,
-//             email: props.modifyData.email
-//         }
-//     }
-//     return null;
+// update = (evt) => {
+//     // this.props.update(this.state);
+//     evt.preventDefault();
 // }
+// add = (evt) => {
+//     // this.props.add(this.state);
+//     evt.preventDefault();
+// }
+// // static getDerivedStateFromProps(props, state) {
+// //     if (props.modifyData.id !== state.id) {
+// //         return {
+// //             id: props.modifyData.id,
+// //             facebook: props.modifyData.facebook,
+// //             instagram: props.modifyData.instagram,
+// //             google_plus: props.modifyData.google_plus,
+// //             youtube: props.modifyData.youtube,
+// //             email: props.modifyData.email
+// //         }
+// //     }
+// //     return null;
+// // }
 
     render() {
         return (

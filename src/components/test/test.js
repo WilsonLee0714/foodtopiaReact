@@ -6,16 +6,8 @@ import Upload_header_img2 from "./upload_header_img";
 class Test extends Component {
     constructor(props) {
         super(props)
-        this.initState = {
-            id:"",
-            menu:"",
-            menu_img:"",
-            Introduction:"",
-        }
         this.state = {
-            menus: [],
-            menu: this.initState,
-            type: 'add',    
+            menus: [], 
         }
     }
 
@@ -32,8 +24,6 @@ class Test extends Component {
             .then(res => res.json())
             .then(menus => this.setState({
                 menus: menus,
-                menu:this.initState,
-                type:"add"
             }))
     };
     

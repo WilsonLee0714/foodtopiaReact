@@ -241,24 +241,22 @@ componentDidMount(){
     bubblyButtons[i].addEventListener('click', animateButton, false);
     }
 
-    
-
     //新增欄位
     var i =2;
     $("#new_step").on('click',function(){
-        var newitem = `<div className="upload_step">
-                            <div className="step_number_step d-flex">
-                                <from className="input_step_form col-4">
-                                    <i className="fas fa-camera-retro camera_icon"></i>
-                                    <div className="upload_camera"></div>
-                                    <input type="file" className="step_img" />
+        var newitem = `<div class="upload_step">
+                            <div class="step_number_step d-flex">
+                                <from class="input_step_form col-4">
+                                    <i class="fas fa-camera-retro camera_icon"></i>
+                                    <div class="upload_camera"></div>
+                                    <input type="file" class="step_img" />
                                 </from>
-                                <div className="upload_number_step d-flex col-8 ">
-                                    <p className="step_number">${i}</p>
-                                    <div className="step_icons">
-                                        <i className="step_icon far fa-trash-alt"></i>
+                                <div class="upload_number_step d-flex col-8 ">
+                                    <p class="step_number">${i}</p>
+                                    <div class="step_icons">
+                                        <i class="step_icon far fa-trash-alt"></i>
                                         <br />
-                                        <textarea className="step_introduction" placeholder="步驟敘述..."/>
+                                        <textarea class="step_introduction" placeholder="步驟敘述..."/>
                                     </div>
                                 </div>
                             </div>
