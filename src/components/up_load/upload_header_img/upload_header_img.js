@@ -270,43 +270,6 @@ componentDidMount(){
             return false;
         }
     })
-    // var n =5;
-    // //新增食材
-    // $("#new_ingredient").on('click',function(){
-    //     var newitem1 = `<label id="img_category_label"className="field field${n}"for="img_category"data-value="" style="opacity: 1;">
-    //                         <span>食材類別</span>
-    //                         <div id="img_category"className="psuedo_select"name="img_category">
-    //                             <span className="selected"></span>
-    //                             <ul id="img_category_options"className="options">
-    //                                 <li className="option"data-value="opt_1">肉類</li>
-    //                                 <li className="option"data-value="opt_2">奶蛋類</li>
-    //                                 <li className="option"data-value="opt_3">海鮮</li>
-    //                                 <li className="option"data-value="opt_3">調料</li>
-    //                             </ul>
-    //                         </div>
-    //                     </label>`
-    //     var newitem2 = `<label id="img_category_label"className="field field${n}"for="img_category"data-value="" style="opacity: 1;">
-    //                         <span></span>
-    //                         <div id="img_category"className="psuedo_select"name="img_category">
-    //                             <span className="selected"></span>
-    //                             <ul id="img_category_options"className="options">
-    //                                 <li className="option"data-value="opt_1"></li>
-    //                                 <li className="option"data-value="opt_2"></li>
-    //                                 <li className="option"data-value="opt_3"></li>
-    //                                 <li className="option"data-value="opt_4"></li>
-    //                             </ul>
-    //                         </div>
-    //                     </label>`
-    //     var newitem3 = `<input type="text"></input><img src="./static/media/delete.f45cd336.jpg" className="delete_icon" alt="" /><br />`
-    //     if (n<=9) {
-    //         $('.ingredients_left ').append(newitem1);
-    //         $('.ingredients_right .input_option').append(newitem2);
-    //         $('.upload_ingredients .input_option').append(newitem3);
-    //         n=n+1
-    //     } else {
-    //         return false;
-    //     }
-    // })
 }
     render() {
         return (    
