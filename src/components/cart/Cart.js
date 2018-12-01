@@ -160,7 +160,6 @@ class Cart extends Component {
                     data-type="del"></i>
                   </span>
                 </Col>
-
               </Row>)}
           </div>
           <Container>

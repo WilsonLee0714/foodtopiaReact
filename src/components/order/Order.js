@@ -1,6 +1,6 @@
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
 import {Container, Row, Col} from 'reactstrap';
-import {BrowserRouter, Route, Link, withRouter} from "react-router-dom";
+import {BrowserRouter, Route, Link} from "react-router-dom";
 import "./Order.scss";
 import OrderStep1 from "./OrderStep1";
 import OrderStep2 from "./OrderStep2";
@@ -114,8 +114,9 @@ class Order extends Component {
       <BrowserRouter>
         <React.Fragment>
           <Container className='orderPage'>
-            <div className='orderStep d-flex'>
-              <div className='stepTitle'>購買流程</div>
+            <Row className='orderStep'>
+              <Col xs={2} className='stepTitle'>購買流程</Col>
+            <Col xs={10} className='px-0 d-flex justify-content-center'>
               <div className={step1Class()} id='step1'>
                 <div className='stepNum' id='step1Num'>{step1NumClass()}</div>
                 <div className='stepText'>填寫資料</div>
@@ -139,7 +140,9 @@ class Order extends Component {
                   <i class="fas fa-truck"></i>
                 </div>
               </div>
-            </div>
+            </Col>
+
+            </Row>
             {step()}
             {/* <Route path="/order/step1"  component={(props) => <OrderStep1 {...props} fields={this.state.fields} save={this.save}/>}/>
             <Route path="/order/step2"  component={(props) => <OrderStep2 {...props} fields={this.state.fields}/>}/> */}
