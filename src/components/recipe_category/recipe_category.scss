@@ -1,5 +1,9 @@
+$title_size1: 26px;
+$title_size2: 20px;
+$p_size: 14px;
+
 .c_category_title{
-    font-size: 40px;
+    font-size: $title_size1;
     margin: 20px;
     font-weight: 700;
     // color: #707070;
