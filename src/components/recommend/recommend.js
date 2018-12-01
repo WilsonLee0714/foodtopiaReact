@@ -13,7 +13,7 @@ class Recommend extends Component {
           <React.Fragment>
               <div className="container ">            
                 <div className="recm_wrap">
-                  <h2 className="recm_title">每日推薦</h2>
+                  <p className="recm_title">每日推薦</p>
                   {/* <Link to="/recipe_page"> */}
                     <div className="recipe_wrap">
                       <img src={require('./images/recm_recipe.jpg')} />

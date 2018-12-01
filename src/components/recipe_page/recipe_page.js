@@ -11,30 +11,30 @@ class Recipe_page extends Component {
         <React.Fragment>
           {/* ----header----- */}
           <main className="head_bg">
-            <header className=" container d-flex header1">
+            <div className=" container d-flex header1">
                 <img className="main_pic" src={require('./images/western_2_main.jpg')}/>
                 <div className="main_text">
                   <div className="main_title d-flex">
-                    <h1>大蒜奶油沙朗牛排佐帕瑪森起司馬鈴薯</h1>
+                    <h1 className="recipe_tittle">大蒜奶油沙朗牛排佐帕瑪森起司馬鈴薯</h1>
                     <div className="like_btn d-flex justify-content-center">
                       <img className="like_img" src={require('./images/like.svg')}/>
                       <img className="liked_img" src={require('./images/liked.svg')}/>
                       <div className="like_text">收藏</div>
                     </div>
                   </div>
-                    <h4>大蒜、香草、奶油溶入牛排中，帶出豐富有層次的口感，這種晚餐將會是一種享受。</h4>
+                    <p class="recipe_intro">大蒜、香草、奶油溶入牛排中，帶出豐富有層次的口感，這種晚餐將會是一種享受。</p>
                     <div className="cook_info_wrap d-flex">
                         <div className="cook_info ">
                             <img className="info_icon time" src={require('./images/clock.svg')}/>
-                            <h3>40min</h3>
+                            <p className="info_text">40min</p>
                         </div>
                         <div className=" cook_info ">
                             <img className="info_icon level" src={require('./images/chef.svg')}/>
-                            <h3>容易</h3>
+                            <p class="info_text">容易</p>
                         </div>
                         <div className=" cook_info ">
                             <img className="info_icon portion" src={require('./images/dinner.svg')}/>
-                            <h3>2人份</h3>
+                            <p class="info_text">2人份</p>
                         </div>
                     </div>
                     {/* ---- nutrition ---- */}
@@ -71,20 +71,20 @@ class Recipe_page extends Component {
                       </table>
                     </main>
                 </div>
-            </header>
+            </div>
           </main>
 
           
-          <section className="middle_section container d-flex justify-content-between">
+          <section className="middle_part container d-flex justify-content-between">
             {/* ----- ingredients ------- */}
             <main className="ingredients_wrap">
-              <h1 className="i_title">所需食材</h1>
+              <p className="i_title">所需食材</p>
               {/* <span >共2人份</span> */}
               <div className="ingredients d-flex flex-wrap">
                 <div className="ingredient d-flex ">
                   <img className="ingredient_pic" src={require('./images/I_chicken.png')}/>
                   <div className="i_text">
-                    <h5 className="i_name">花椰菜</h5>
+                    <p className="i_name">花椰菜</p>
                     <p className="i_qty"> 180克</p>
                   </div>
                 </div>
@@ -92,7 +92,7 @@ class Recipe_page extends Component {
                 <div className="ingredient d-flex">
                   <img className="ingredient_pic" src={require('./images/I_chicken.png')}/>
                   <div className="i_text">
-                    <h5 className="i_name">花椰菜</h5>
+                    <p className="i_name">花椰菜</p>
                     <p className="i_qty"> 180克</p>
                   </div>
                 </div>
@@ -150,9 +150,9 @@ class Recipe_page extends Component {
             </main>
             {/* ---add2cart--- */}
             <main className="add2cart flex-row align-items-center">
-              <h1>購買食譜相關食材</h1>
-              <div className="btn btn-info">所有食材加入購物車</div>
-              <h4>新鮮食材24小時送達</h4>
+              <p className="add2cart_title">購買食譜相關食材</p>
+              <div className="btn btn-info add2cart_btn">所有食材加入購物車</div>
+              <p className="add2cart_24h">新鮮食材24小時送達</p>
             </main>
           </section>
 
@@ -205,16 +205,16 @@ class Recipe_page extends Component {
           <main className="recommendation_wrap">
             <div className="p_slider_wrap container d-flex align-items-center">
                 <div className="category_wrap container">
-                    <div className="category_title title1">你可能也會喜歡</div>
+                    <div className="category_title">你可能也會喜歡</div>
                     <div className="cards d-flex">
                         <div className="p_card">
                             <div className="upper_card">
                                 <img className="card_pic" src ={require("./images/card_pic.jpg")}/>
-                                <div className="rate title1">4.2</div>
+                                <div className="rate">4.2</div>
                             </div>
                             <div className="lower_card">
-                                <div className="card_title title2">蒜香牛小排</div>
-                                <div className="card_text text">15分鐘完成一道健康美味又簡單的料理!</div>
+                                <div className="card_title ">蒜香牛小排</div>
+                                <div className="card_text ">15分鐘完成一道健康美味又簡單的料理!</div>
                                 <img className="like_btn" src={require("./images/like.svg")}/>
                                 <img className="share_btn" src={require("./images/share.svg")}/>
                             </div>
@@ -222,11 +222,11 @@ class Recipe_page extends Component {
                         <div className="p_card">
                             <div className="upper_card">
                                 <img className="card_pic" src ={require("./images/card_pic.jpg")}/>
-                                <div className="rate title1">4.2</div>
+                                <div className="rate">4.2</div>
                             </div>
                             <div className="lower_card">
-                                <div className="card_title title2">蒜香牛小排</div>
-                                <div className="card_text text">15分鐘完成一道健康美味又簡單的料理!</div>
+                                <div className="card_title ">蒜香牛小排</div>
+                                <div className="card_text ">15分鐘完成一道健康美味又簡單的料理!</div>
                                 <img className="like_btn" src={require("./images/like.svg")}/>
                                 <img className="share_btn" src={require("./images/share.svg")}/>
                             </div>
@@ -237,8 +237,8 @@ class Recipe_page extends Component {
                                 <div className="rate title1">4.2</div>
                             </div>
                             <div className="lower_card">
-                                <div className="card_title title2">蒜香牛小排</div>
-                                <div className="card_text text">15分鐘完成一道健康美味又簡單的料理!</div>
+                                <div className="card_title ">蒜香牛小排</div>
+                                <div className="card_text ">15分鐘完成一道健康美味又簡單的料理!</div>
                                 <img className="like_btn" src={require("./images/like.svg")}/>
                                 <img className="share_btn" src={require("./images/share.svg")}/>
                             </div>
@@ -249,8 +249,8 @@ class Recipe_page extends Component {
                                 <div className="rate title1">4.2</div>
                             </div>
                             <div className="lower_card">
-                                <div className="card_title title2">蒜香牛小排</div>
-                                <div className="card_text text">15分鐘完成一道健康美味又簡單的料理!</div>
+                                <div className="card_title ">蒜香牛小排</div>
+                                <div className="card_text ">15分鐘完成一道健康美味又簡單的料理!</div>
                                 <img className="like_btn" src={require("./images/like.svg")}/>
                                 <img className="share_btn" src={require("./images/share.svg")}/>
                             </div>
