@@ -35,6 +35,7 @@ import Recipe_head from './components/recipe_head/recipe_head';
 import Up_load from "./components/up_load/up_load";
 import Test from "./components/test/test";
 import New_blog from "./components/new_blog/new_blog";
+import Month_blog from "./components/new_blog/month_blog";
 require('slick-carousel');
 
 class App extends Component {
@@ -74,6 +75,7 @@ class App extends Component {
           <Route path="/up_load" component={Up_load} />
           <Route path="/page/:id" component={Test} />
           <Route path="/new_blog" component={New_blog} />
+          <Route path="/month/:id" component={Month_blog} />
           <Footer/>
         </React.Fragment>
       </BrowserRouter>
