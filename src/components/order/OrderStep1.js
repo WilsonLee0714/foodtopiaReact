@@ -6,8 +6,7 @@ import {
   Form,
   FormGroup,
   Label,
-  Input,
-  FormText
+  Input
 } from 'reactstrap';
 import TwCitySelector from "tw-city-selector/tw-city-selector";
 import DatePicker from "react-datepicker";
@@ -30,18 +29,18 @@ class OrderStep1 extends Component {
     }).then(function (res) {
       console.log(res);
       return res.json();
-    }).then((a) => {
+    }).then((session) => {
       // this.setState({ name: a.name });
       // this.setState({ sid: a.sid });
       // this.setState({ phone: a.mobile });
       // alert(a.mobile)
-      console.log(a.profile)
-      console.log(a.nickname)
-      console.log(a.name)
+      console.log(session.profile)
+      console.log(session.nickname)
+      console.log(session.name)
       let fields = this.state.fields;
-      fields["name"] = a.name;
-      fields["phone"] = a.mobile;
-      fields["sid"] = a.sid;
+      fields["name"] = session.name;
+      fields["phone"] = session.mobile;
+      fields["sid"] = session.sid;
       this.setState({ fields });
     })
       .catch(function (err) {
