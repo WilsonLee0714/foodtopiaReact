@@ -3,8 +3,48 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 // import "bootstrap/dist/css/bootstrap.min.css";
 // import "bootstrap/dist/js/bootstrap.bundle";
 import "./recipe_page.scss";
+import $ from "jquery";
 
 class Recipe_page extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      comment:"",
+    }
+  }
+  //評論上傳
+  msChange = (evt) => {
+    let key = evt.target.id;
+    let data = evt.target.value;
+    this.setState({
+        [key]: data
+    })
+  }
+  msSend = () =>{
+    fetch('http://localhost:3000/talk/upload_talk', {
+      method: 'POST',
+      body: JSON.stringify(this.state),
+      headers: new Headers({
+          'Content-Type': 'application/json'
+      })
+    })
+  }
+
+  componentDidMount(){
+    $(".comment_send").on('click',function(){
+      var newitem = `<main class="comment_wrap d-flex container">    //會員大頭貼連結↓
+                      <img class="profile_pic" src={require("./images/foodtopia_profile_pic.png")} />
+                      <div class="comment_area">
+                        <span class="user_name"> Foodtopia</span>
+                        <span class="comment_time"> 2018-10-05 19:59</span>   //抓取留言內容↓
+                        <div class="comment_text">想問一下現做沒吃完的話怎麼保存？ 常溫不冰的話幾天內吃完比較ok?</div>
+                      </div>
+                    </main>`
+    
+      $('.comment_wrap_all').append(newitem);
+  })
+}
+
   render() {
     return (
       // <BrowserRouter>
@@ -262,20 +302,37 @@ class Recipe_page extends Component {
           </main>
 
           {/* ---comment--- */}
-          <main className="comment_wrap d-flex container">
-            {/* <div className="comment_title">評論</div> */}
-            <img className="profile_pic" src={require("./images/foodtopia_profile_pic.png")} />
-            <div className="comment_area">
-              <span className="user_name"> Foodtopia</span>
-              {/* <span className="comment_time"> 2018-10-05 19:59</span> */}
-              <div className="d-flex align-items-end">
-                <textarea className="comment_input" placeholder="請在這裡輸入您對這個食譜的想法!"></textarea>
-                <button className="comment_send btn btn-primary" type="submit">送出</button>
+          <div className="comment_wrap_all">
+            <main className="comment_wrap d-flex container">
+              {/* <div className="comment_title">評論</div> */}
+              <img className="profile_pic" src={require("./images/foodtopia_profile_pic.png")} />
+              <div className="comment_area">
+                <span className="user_name"> Foodtopia</span>
+                {/* <span className="comment_time"> 2018-10-05 19:59</span> */}
+                <div className="d-flex align-items-end">
+                  <input className="comment_input" placeholder="請在這裡輸入您對這個食譜的想法!" id="comment" value={this.state.comment} onChange={this.msChange}></input>
+                  <button className="comment_send btn btn-primary" onClick={this.msSend}>送出</button>
+                </div>
               </div>
-            </div>
-          </main>
-          <main className="comment_wrap d-flex container">
-            {/* <div className="comment_title">評論</div> */}
+            </main>
+            <main className="comment_wrap d-flex container">
+              {/* <div className="comment_title">評論</div> */}
+              <img className="profile_pic" src={require("./images/foodtopia_profile_pic.png")} />
+              <div className="comment_area">
+                <span className="user_name"> Foodtopia</span>
+                <span className="comment_time"> 2018-10-05 19:59</span>
+                <div className="comment_text">想問一下現做沒吃完的話怎麼保存？ 常溫不冰的話幾天內吃完比較ok?</div>
+              </div>
+            </main>
+            <main className="comment_wrap d-flex container">
+              <img className="profile_pic" src={require("./images/foodtopia_profile_pic.png")} />
+              <div className="comment_area">
+                <span className="user_name"> Foodtopia</span>
+                <span className="comment_time"> 2018-10-05 19:59</span>
+                <div className="comment_text">想問一下現做沒吃完的話怎麼保存？ 常溫不冰的話幾天內吃完比較ok?</div>
+              </div>
+            </main>
+            <main className="comment_wrap d-flex container">
             <img className="profile_pic" src={require("./images/foodtopia_profile_pic.png")} />
             <div className="comment_area">
               <span className="user_name"> Foodtopia</span>
@@ -283,23 +340,7 @@ class Recipe_page extends Component {
               <div className="comment_text">想問一下現做沒吃完的話怎麼保存？ 常溫不冰的話幾天內吃完比較ok?</div>
             </div>
           </main>
-          <main className="comment_wrap d-flex container">
-            <img className="profile_pic" src={require("./images/foodtopia_profile_pic.png")} />
-            <div className="comment_area">
-              <span className="user_name"> Foodtopia</span>
-              <span className="comment_time"> 2018-10-05 19:59</span>
-              <div className="comment_text">想問一下現做沒吃完的話怎麼保存？ 常溫不冰的話幾天內吃完比較ok?</div>
-            </div>
-          </main>
-          <main className="comment_wrap d-flex container">
-            <img className="profile_pic" src={require("./images/foodtopia_profile_pic.png")} />
-            <div className="comment_area">
-              <span className="user_name"> Foodtopia</span>
-              <span className="comment_time"> 2018-10-05 19:59</span>
-              <div className="comment_text">想問一下現做沒吃完的話怎麼保存？ 常溫不冰的話幾天內吃完比較ok?</div>
-            </div>
-          </main>
-
+          </div>
         </React.Fragment>
       // </BrowserRouter>
     );
