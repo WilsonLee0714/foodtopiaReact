@@ -68,6 +68,7 @@ class App extends Component {
           {/* 食譜 */}
           <Route path="/recipe_head" component={Recipe_head} />
           <Route path="/recipe_head/recipe_list" component={Recipe_list} />
+          <Route path="/recipe_category/:id?" component={Recipe_category} />
           <Route path="/recipe_head/recipe_category" component={Recipe_category} />
           <Route path="/recipe_page" component={Recipe_page} />
           {/* 部落格 */}
