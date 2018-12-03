@@ -5,9 +5,6 @@ import $ from "jquery";
 class Upload_header_img extends Component {
     constructor(props) {
       super(props)
-      this.state = {
-        display:"block"
-      }
 }
 
 componentDidMount(){
@@ -241,24 +238,22 @@ componentDidMount(){
     bubblyButtons[i].addEventListener('click', animateButton, false);
     }
 
-    
-
-    //新增欄位
+    //新增/刪減欄位
     var i =2;
     $("#new_step").on('click',function(){
-        var newitem = `<div className="upload_step">
-                            <div className="step_number_step d-flex">
-                                <from className="input_step_form col-4">
-                                    <i className="fas fa-camera-retro camera_icon"></i>
-                                    <div className="upload_camera"></div>
-                                    <input type="file" className="step_img" />
+        var newitem = `<div class="upload_step">
+                            <div class="step_number_step d-flex">
+                                <from class="input_step_form col-4">
+                                    <i class="fas fa-camera-retro camera_icon"></i>
+                                    <div class="upload_camera"></div>
+                                    <input type="file" class="step_img" />
                                 </from>
-                                <div className="upload_number_step d-flex col-8 ">
-                                    <p className="step_number">${i}</p>
-                                    <div className="step_icons">
-                                        <i className="step_icon far fa-trash-alt"></i>
+                                <div class="upload_number_step d-flex col-8 ">
+                                    <p class="step_number">${i}</p>
+                                    <div class="step_icons">
+                                        <i class="step_delete_icon far fa-trash-alt" id="step_delete_icon"></i>
                                         <br />
-                                        <textarea className="step_introduction" placeholder="步驟敘述..."/>
+                                        <textarea class="step_introduction" placeholder="步驟敘述..."/>
                                     </div>
                                 </div>
                             </div>
@@ -269,8 +264,17 @@ componentDidMount(){
         } else {
             return false;
         }
-    })
+        $("#recipe_step #step_delete_icon").on('click',function(){
+            if (i>=2) {
+                $(this).parentsUntil(".recipe_step").remove();
+                i=i-1
+            } else {
+                return false;
+            }
+        })
+    });
 }
+
     render() {
         return (    
             <React.Fragment>
@@ -532,14 +536,14 @@ componentDidMount(){
                             <div className="upload_ingredients">
                                 <p>份量</p>
                                 <div className="input_option">
-                                    <input type="text"></input><img src={require("./img/delete.jpg")} className="delete_icon" alt="" /><br />
-                                    <input type="text"></input><img src={require("./img/delete.jpg")} className="delete_icon" alt="" /><br />
-                                    <input type="text"></input><img src={require("./img/delete.jpg")} className="delete_icon" alt="" /><br />
-                                    <input type="text"></input><img src={require("./img/delete.jpg")} className="delete_icon" alt="" /><br />
-                                    <input type="text"></input><img src={require("./img/delete.jpg")} className="delete_icon" alt="" /><br />
-                                    <input type="text"></input><img src={require("./img/delete.jpg")} className="delete_icon" alt="" /><br />
-                                    <input type="text"></input><img src={require("./img/delete.jpg")} className="delete_icon" alt="" /><br />
-                                    <input type="text"></input><img src={require("./img/delete.jpg")} className="delete_icon" alt="" /><br />
+                                    <input type="text"></input><br />
+                                    <input type="text"></input><br />
+                                    <input type="text"></input><br />
+                                    <input type="text"></input><br />
+                                    <input type="text"></input><br />
+                                    <input type="text"></input><br />
+                                    <input type="text"></input><br />
+                                    <input type="text"></input><br />
                                 </div>
                             </div>
                         </div>
@@ -562,7 +566,7 @@ componentDidMount(){
                             <div className="upload_number_step d-flex col-8 ">
                                 <p className="step_number">1</p>
                                 <div className="step_icons">
-                                    <i className="step_icon far fa-trash-alt"></i>
+                                    <i className="step_delete_icon far fa-trash-alt" id="step_delete_icon"></i>
                                     <br />
                                     <textarea className="step_introduction" placeholder="步驟敘述..."/>
                                 </div>

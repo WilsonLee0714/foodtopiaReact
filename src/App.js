@@ -35,6 +35,7 @@ import Recipe_head from './components/recipe_head/recipe_head';
 import Up_load from "./components/up_load/up_load";
 import Test from "./components/test/test";
 import New_blog from "./components/new_blog/new_blog";
+import Month_blog from "./components/new_blog/month_blog";
 require('slick-carousel');
 
 class App extends Component {
@@ -57,6 +58,7 @@ class App extends Component {
             <Route path="/memberCenter/myService" component={MyService} />
           </div>
           {/* 食材 */}
+          
           <Route path="/ingridient_hompage" component={Ingridient_homepage} />
           <Route path="/ingridient_listpage" component={Ingridient_listpage} />
           <Route path="/ingridient_listpage/fruit" component={Fruit} />
@@ -73,8 +75,9 @@ class App extends Component {
           <Route path="/recipe_page" component={Recipe_page} />
           {/* 部落格 */}
           <Route path="/up_load" component={Up_load} />
-          <Route path="/page/:id" component={Test} />
+          <Route path="/page/:id" component={Recipe_page} />
           <Route path="/new_blog" component={New_blog} />
+          <Route path="/month/:id" component={Month_blog} />
           <Footer/>
         </React.Fragment>
       </BrowserRouter>

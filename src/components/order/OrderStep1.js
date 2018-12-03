@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, {Component} from 'react';
 import "./Order.scss";
 import {
   Button,
@@ -30,29 +30,24 @@ class OrderStep1 extends Component {
       console.log(res);
       return res.json();
     }).then((session) => {
-      // this.setState({ name: a.name });
-      // this.setState({ sid: a.sid });
-      // this.setState({ phone: a.mobile });
-      // alert(a.mobile)
       console.log(session.profile)
       console.log(session.nickname)
       console.log(session.name)
       let fields = this.state.fields;
       fields["name"] = session.name;
-      fields["phone"] = session.mobile;
-      fields["sid"] = session.sid;
+      fields["mobile"] = session.mobile;
+      fields["email"] = session.email;
       this.setState({ fields });
     })
       .catch(function (err) {
         console.log(err);
-        //alert(err);
       })
     this.state = {
       fields: {
         name: '',
-        sid: '',
+        email: '',
         tel: '',
-        phone: '',
+        mobile: '',
         city: '',
         dist: '',
         address: '',
@@ -64,7 +59,7 @@ class OrderStep1 extends Component {
       },
       errors: {}
     };
-
+    console.log(this.state)
   }
   handleChange = (evt) => {
     let key = evt.target.id;
@@ -117,14 +112,14 @@ class OrderStep1 extends Component {
       }
     }
 
-    //Phone
-    if (!fields["phone"]) {
+    //mobile
+    if (!fields["mobile"]) {
       formIsValid = false;
-      errors["phone"] = "手機為必填欄位";
-    } else if (typeof fields["phone"] !== "undefined") {
-      if (!fields["phone"].match(/^09\d{8}/)) {
+      errors["mobile"] = "手機為必填欄位";
+    } else if (typeof fields["mobile"] !== "undefined") {
+      if (!fields["mobile"].match(/^09\d{8}/)) {
         formIsValid = false;
-        errors["phone"] = "請輸入正確格式，例 0912345678";
+        errors["mobile"] = "請輸入正確格式，例 0912345678";
       }
     }
 
@@ -238,14 +233,14 @@ class OrderStep1 extends Component {
             </FormGroup>
 
             <FormGroup row>
-              <Label for='phone' className='inputLabel' sm={2}>*手機 :</Label>
+              <Label for='mobile' className='inputLabel' sm={2}>*手機 :</Label>
               <Col className='colPadding' sm={10}>
                 <Input
-                  id='phone'
+                  id='mobile'
                   className='inputContent'
                   type='text'
                   onChange={this.handleChange}
-                  value={this.state.fields.phone} />
+                  value={this.state.fields.mobile} />
               </Col>
               <Col
                 className='colPadding'
@@ -253,7 +248,7 @@ class OrderStep1 extends Component {
                   size: 10,
                   offset: 2
                 }}>
-                <span className='errorTip'>{this.state.errors["phone"]}</span>
+                <span className='errorTip'>{this.state.errors["mobile"]}</span>
               </Col>
             </FormGroup>
 

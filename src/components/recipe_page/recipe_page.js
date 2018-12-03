@@ -3,8 +3,91 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 // import "bootstrap/dist/css/bootstrap.min.css";
 // import "bootstrap/dist/js/bootstrap.bundle";
 import "./recipe_page.scss";
+import $ from "jquery";
 
 class Recipe_page extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      comment:"",
+      menus:[],
+      nutritional_values:[],
+      steps:[],
+      step_imgs:[],
+    }
+  }
+  //評論上傳
+  msChange = (evt) => {
+    let key = evt.target.id;
+    let data = evt.target.value;
+    this.setState({
+        [key]: data
+    })
+  }
+  msSend = () =>{
+    fetch('http://localhost:3000/talk/upload_talk', {
+      method: 'POST',
+      body: JSON.stringify(this.state),
+      headers: new Headers({
+          'Content-Type': 'application/json'
+      })
+    })
+  }
+  //食譜內頁各筆資訊
+    //簡介
+  getMenus(id) {
+    fetch("http://localhost:3000/update/menu/"+id)
+        .then(res => res.json())
+        .then(menus => this.setState({
+            menus: menus,
+        }))
+  };
+    //營養資訊
+  getNutritional_value(id) {
+    fetch("http://localhost:3000/update/nutritional_value/"+id)
+        .then(res => res.json())
+        .then(nutritional_values => this.setState({
+          nutritional_values: nutritional_values,
+        }))
+  };
+    //步驟
+  getStep(id) {
+    fetch("http://localhost:3000/update/step/"+id)
+        .then(res => res.json())
+        .then(steps => this.setState({
+          steps: steps,
+        }))
+  };
+    //步驟圖
+  getStep_img(id) {
+    fetch("http://localhost:3000/update/step_img/"+id)
+        .then(res => res.json())
+        .then(step_imgs => this.setState({
+          step_imgs: step_imgs,
+        }))
+  };
+  componentDidMount(){
+    //評論create item
+    $(".comment_send").on('click',function(){
+      var newitem = `<main class="comment_wrap d-flex container">    //會員大頭貼連結↓
+                      <img class="profile_pic" src={require("./images/foodtopia_profile_pic.png")} />
+                      <div class="comment_area">
+                        <span class="user_name"> Foodtopia</span>
+                        <span class="comment_time"> 2018-10-05 19:59</span>   //抓取留言內容↓
+                        <div class="comment_text">想問一下現做沒吃完的話怎麼保存？ 常溫不冰的話幾天內吃完比較ok?</div>
+                      </div>
+                    </main>`
+      
+      $('.comment_wrap_all').append(newitem);
+    })
+    //食譜單筆資料
+    let id = this.props.match.params.id
+    this.getMenus(id);
+    this.getNutritional_value(id);
+    this.getStep(id);
+    this.getStep_img(id);
+}
+
   render() {
     return (
       // <BrowserRouter>
@@ -12,11 +95,15 @@ class Recipe_page extends Component {
           {/* ----主要資訊(灰底) header----- */}
           <main className="head_bg">
             <div className=" container d-flex header1">
-                <img className="main_pic" src={require('./images/western_2_main.jpg')}/>
+              {this.state.menus.map(menu =>
+                  <img key={menu.id} className="main_pic" src={require(`./images/${menu.menu_img}.jpg`)}/>
+                )}
                 <div className="main_text">
                   <div className="main_title d-flex">
                     {/* ---食譜標題--- */}
-                    <h1 className="recipe_tittle">大蒜奶油沙朗牛排佐帕瑪森起司馬鈴薯</h1>
+                    {this.state.menus.map(menu =>
+                      <h1 key={menu.id} className="recipe_tittle">{menu.menu}</h1>
+                    )}
                     {/* ---收藏--- */}
                     <div className="like_btn d-flex justify-content-center">
                       <img className="like_img" src={require('./images/like.svg')}/>
@@ -25,22 +112,26 @@ class Recipe_page extends Component {
                     </div>
                   </div>
                     {/* ---食譜簡介--- */}
-                    <p class="recipe_intro">大蒜、香草、奶油溶入牛排中，帶出豐富有層次的口感，這種晚餐將會是一種享受。</p>
-                    <div className="cook_info_wrap d-flex">
+                    {this.state.menus.map(menu =>
+                      <p key={menu.id} className="recipe_intro">{menu.Introduction}</p>
+                    )}
+                    {this.state.menus.map(menu =>
+                    <div key={menu.id} className="cook_info_wrap d-flex">
                         {/* --食譜圓標籤-- */}
                         <div className="cook_info ">
                             <img className="info_icon time" src={require('./images/clock.svg')}/>
-                            <p className="info_text">40min</p>
+                            <p className="info_text">{menu.time}</p>
                         </div>
                         <div className=" cook_info ">
                             <img className="info_icon level" src={require('./images/chef.svg')}/>
-                            <p class="info_text">容易</p>
+                            <p className="info_text">{menu.difficult}</p>
                         </div>
                         <div className=" cook_info ">
                             <img className="info_icon portion" src={require('./images/dinner.svg')}/>
-                            <p class="info_text">2人份</p>
+                            <p className="info_text">{menu.Serving}</p>
                         </div>
                     </div>
+                     )}
                     {/* ---- 營養資訊 nutrition ---- */}
                     <main className="nutrition_wrap container">
                       <table className="nutrition_table table table-bordered table-sm">
@@ -59,18 +150,20 @@ class Recipe_page extends Component {
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td scope="row">3389 KJ</td>
-                            <td>810 kcal</td>
-                            <td>50 g</td>
-                            <td>16 g</td>
-                            <td>56 g</td>
-                            <td>18 g</td>
-                            <td>11 g</td>
-                            <td>40 g</td>
-                            <td>230 mg</td>
-                            <td>460 mg</td>
-                          </tr>
+                          {this.state.nutritional_values.map(nutritional_value =>
+                            <tr key={nutritional_value.id}>
+                              <td scope="row">{nutritional_value.value_1}</td>
+                              <td>{nutritional_value.value_2}</td>
+                              <td>{nutritional_value.value_3}</td>
+                              <td>{nutritional_value.value_4}</td>
+                              <td>{nutritional_value.value_5}</td>
+                              <td>{nutritional_value.value_6}</td>
+                              <td>{nutritional_value.value_7}</td>
+                              <td>{nutritional_value.value_8}</td>
+                              <td>{nutritional_value.value_9}</td>
+                              <td>{nutritional_value.value_10}</td>
+                            </tr>
+                          )}
                         </tbody>
                       </table>
                     </main>
@@ -92,63 +185,6 @@ class Recipe_page extends Component {
                     <p className="i_qty"> 180克</p>
                   </div>
                 </div>
-                {/* --食材假資料-- */}
-                <div className="ingredient d-flex">
-                  <img className="ingredient_pic" src={require('./images/I_chicken.png')}/>
-                  <div className="i_text">
-                    <p className="i_name">花椰菜</p>
-                    <p className="i_qty"> 180克</p>
-                  </div>
-                </div>
-                <div className="ingredient d-flex">
-                  <img className="ingredient_pic" src={require('./images/I_chicken.png')}/>
-                  <div className="i_text">
-                    <h5 className="i_name">花椰菜</h5>
-                    <p className="i_qty"> 180克</p>
-                  </div>
-                </div>
-                <div className="ingredient d-flex">
-                  <img className="ingredient_pic" src={require('./images/I_chicken.png')}/>
-                  <div className="i_text">
-                    <h5 className="i_name">花椰菜</h5>
-                    <p className="i_qty"> 180克</p>
-                  </div>
-                </div>
-                <div className="ingredient d-flex">
-                  <img className="ingredient_pic" src={require('./images/I_chicken.png')}/>
-                  <div className="i_text">
-                    <h5 className="i_name">花椰菜</h5>
-                    <p className="i_qty"> 180克</p>
-                  </div>
-                </div>
-                <div className="ingredient d-flex">
-                  <img className="ingredient_pic" src={require('./images/I_chicken.png')}/>
-                  <div className="i_text">
-                    <h5 className="i_name">花椰菜</h5>
-                    <p className="i_qty"> 180克</p>
-                  </div>
-                </div>
-                <div className="ingredient d-flex">
-                  <img className="ingredient_pic" src={require('./images/I_chicken.png')}/>
-                  <div className="i_text">
-                    <h5 className="i_name">花椰菜</h5>
-                    <p className="i_qty"> 180克</p>
-                  </div>
-                </div>
-                <div className="ingredient d-flex">
-                  <img className="ingredient_pic" src={require('./images/I_chicken.png')}/>
-                  <div className="i_text">
-                    <h5 className="i_name">花椰菜</h5>
-                    <p className="i_qty"> 180克</p>
-                  </div>
-                </div>
-                <div className="ingredient d-flex">
-                  <img className="ingredient_pic" src={require('./images/I_chicken.png')}/>
-                  <div className="i_text">
-                    <h5 className="i_name">花椰菜</h5>
-                    <p className="i_qty"> 180克</p>
-                  </div>
-                </div>
               </div>
             </main>
             {/* ---生成食材清單add2cart--- */}
@@ -163,33 +199,57 @@ class Recipe_page extends Component {
           <main className="steps-wrap">
             <div className="step d-flex justify-content-center">
               <span className="step_num">01</span>
-              <span className="step_pic"><img src={require("./images/western_2_step_1.jpg")}/></span>
-              <span className="detail">準備(湯鍋和煎鍋)湯鍋放入水、紅蘿蔔、馬鈴薯、少許鹽開火。同時煎鍋開火加入少許的油放牛排、洋蔥。</span>
+              {this.state.step_imgs.map(step_img=>
+                <span className="step_pic"><img src={require(`./images/${step_img.step_img_1}.jpg`)}/></span>
+              )}
+              {this.state.steps.map(step=>
+                <span className="detail">{step.step_1}</span>
+              )}
             </div> 
             <div className="step d-flex justify-content-center">
               <span className="step_num">02</span>
-              <span className="step_pic"><img src={require("./images/western_2_step_1.jpg")}/></span>
-              <span className="detail">準備(湯鍋和煎鍋)湯鍋放入水、紅蘿蔔、馬鈴薯、少許鹽開火。同時煎鍋開火加入少許的油放牛排、洋蔥。</span>
+              {this.state.step_imgs.map(step_img=>
+                <span className="step_pic"><img src={require(`./images/${step_img.step_img_2}.jpg`)}/></span>
+              )}
+              {this.state.steps.map(step=>
+                <span className="detail">{step.step_2}</span>
+              )}            
             </div> 
             <div className="step d-flex justify-content-center">
               <span className="step_num">03</span>
-              <span className="step_pic"><img src={require("./images/western_2_step_1.jpg")}/></span>
-              <span className="detail">準備(湯鍋和煎鍋)湯鍋放入水、紅蘿蔔、馬鈴薯、少許鹽開火。同時煎鍋開火加入少許的油放牛排、洋蔥。</span>
+              {this.state.step_imgs.map(step_img=>
+                <span className="step_pic"><img src={require(`./images/${step_img.step_img_3}.jpg`)}/></span>
+              )}
+              {this.state.steps.map(step=>
+                <span className="detail">{step.step_3}</span>
+              )}            
             </div> 
             <div className="step d-flex justify-content-center">
               <span className="step_num">04</span>
-              <span className="step_pic"><img src={require("./images/western_2_step_1.jpg")}/></span>
-              <span className="detail">準備(湯鍋和煎鍋)湯鍋放入水、紅蘿蔔、馬鈴薯、少許鹽開火。同時煎鍋開火加入少許的油放牛排、洋蔥。</span>
+              {this.state.step_imgs.map(step_img=>
+                <span className="step_pic"><img src={require(`./images/${step_img.step_img_4}.jpg`)}/></span>
+              )}
+              {this.state.steps.map(step=>
+                <span className="detail">{step.step_4}</span>
+              )}
             </div> 
             <div className="step d-flex justify-content-center">
               <span className="step_num">05</span>
-              <span className="step_pic"><img src={require("./images/western_2_step_1.jpg")}/></span>
-              <span className="detail">準備(湯鍋和煎鍋)湯鍋放入水、紅蘿蔔、馬鈴薯、少許鹽開火。同時煎鍋開火加入少許的油放牛排、洋蔥。</span>
+              {this.state.step_imgs.map(step_img=>
+                <span className="step_pic"><img src={require(`./images/${step_img.step_img_5}.jpg`)}/></span>
+              )}
+              {this.state.steps.map(step=>
+                <span className="detail">{step.step_5}</span>
+              )}
             </div> 
             <div className="step d-flex justify-content-center">
               <span className="step_num">06</span>
-              <span className="step_pic"><img src={require("./images/western_2_step_1.jpg")}/></span>
-              <span className="detail">準備(湯鍋和煎鍋)湯鍋放入水、紅蘿蔔、馬鈴薯、少許鹽開火。同時煎鍋開火加入少許的油放牛排、洋蔥。</span>
+              {this.state.step_imgs.map(step_img=>
+                <span className="step_pic"><img src={require(`./images/${step_img.step_img_6}.jpg`)}/></span>
+              )}
+              {this.state.steps.map(step=>
+                <span className="detail">{step.step_6}</span>
+              )}
             </div> 
           </main>
 
@@ -265,20 +325,37 @@ class Recipe_page extends Component {
           </main>
 
           {/* ---評論 comment--- */}
-          <main className="comment_wrap d-flex container">
-            {/* <div className="comment_title">評論</div> */}
-            <img className="profile_pic" src={require("./images/foodtopia_profile_pic.png")} />
-            <div className="comment_area">
-              <span className="user_name"> Foodtopia</span>
-              {/* <span className="comment_time"> 2018-10-05 19:59</span> */}
-              <div className="d-flex align-items-end">
-                <textarea className="comment_input" placeholder="請在這裡輸入您對這個食譜的想法!"></textarea>
-                <button className="comment_send btn btn-primary" type="submit">送出</button>
+          <div className="comment_wrap_all">
+            <main className="comment_wrap d-flex container">
+              {/* <div className="comment_title">評論</div> */}
+              <img className="profile_pic" src={require("./images/foodtopia_profile_pic.png")} />
+              <div className="comment_area">
+                <span className="user_name"> Foodtopia</span>
+                {/* <span className="comment_time"> 2018-10-05 19:59</span> */}
+                <div className="d-flex align-items-end">
+                  <textarea className="comment_input" placeholder="請在這裡輸入您對這個食譜的想法!" id="comment" value={this.state.comment} onChange={this.msChange}></textarea>
+                  <button className="comment_send btn btn-primary" onClick={this.msSend}>送出</button>
+                </div>
               </div>
-            </div>
-          </main>
-          <main className="comment_wrap d-flex container">
-            {/* <div className="comment_title">評論</div> */}
+            </main>
+            <main className="comment_wrap d-flex container">
+              {/* <div className="comment_title">評論</div> */}
+              <img className="profile_pic" src={require("./images/foodtopia_profile_pic.png")} />
+              <div className="comment_area">
+                <span className="user_name"> Foodtopia</span>
+                <span className="comment_time"> 2018-10-05 19:59</span>
+                <div className="comment_text">想問一下現做沒吃完的話怎麼保存？ 常溫不冰的話幾天內吃完比較ok?</div>
+              </div>
+            </main>
+            <main className="comment_wrap d-flex container">
+              <img className="profile_pic" src={require("./images/foodtopia_profile_pic.png")} />
+              <div className="comment_area">
+                <span className="user_name"> Foodtopia</span>
+                <span className="comment_time"> 2018-10-05 19:59</span>
+                <div className="comment_text">想問一下現做沒吃完的話怎麼保存？ 常溫不冰的話幾天內吃完比較ok?</div>
+              </div>
+            </main>
+            <main className="comment_wrap d-flex container">
             <img className="profile_pic" src={require("./images/foodtopia_profile_pic.png")} />
             <div className="comment_area">
               <span className="user_name"> Foodtopia</span>
@@ -286,23 +363,7 @@ class Recipe_page extends Component {
               <div className="comment_text">想問一下現做沒吃完的話怎麼保存？ 常溫不冰的話幾天內吃完比較ok?</div>
             </div>
           </main>
-          <main className="comment_wrap d-flex container">
-            <img className="profile_pic" src={require("./images/foodtopia_profile_pic.png")} />
-            <div className="comment_area">
-              <span className="user_name"> Foodtopia</span>
-              <span className="comment_time"> 2018-10-05 19:59</span>
-              <div className="comment_text">想問一下現做沒吃完的話怎麼保存？ 常溫不冰的話幾天內吃完比較ok?</div>
-            </div>
-          </main>
-          <main className="comment_wrap d-flex container">
-            <img className="profile_pic" src={require("./images/foodtopia_profile_pic.png")} />
-            <div className="comment_area">
-              <span className="user_name"> Foodtopia</span>
-              <span className="comment_time"> 2018-10-05 19:59</span>
-              <div className="comment_text">想問一下現做沒吃完的話怎麼保存？ 常溫不冰的話幾天內吃完比較ok?</div>
-            </div>
-          </main>
-
+          </div>
         </React.Fragment>
       // </BrowserRouter>
     );

@@ -12,7 +12,7 @@ class Filter extends Component {
 }
 
 //食譜map function
-getUpdate() {
+getnew_recipes() {
     fetch("http://localhost:3000/update/menu")
         .then(res => res.json())
         .then(new_recipes => this.setState({
@@ -20,7 +20,7 @@ getUpdate() {
         }))
 };
 //月份 map function
-getuploads(){
+getfilter_months(){
     fetch("http://localhost:3000/upload/upload_date/")
     .then(res => res.json())
     .then(filter_months => this.setState({ 
@@ -33,8 +33,10 @@ componentDidMount(){
     $(".filter_option").hover(function(){
         $(this).find(".content_menu").parent().find("ul").toggleClass("active1");
     });
+    //月份 map function
+    this.getfilter_months();
     //食譜map function
-    this.getUpdate();
+    this.getnew_recipes(); 
 }
 
     render() {     
@@ -63,9 +65,9 @@ componentDidMount(){
                         </div>
                         <div className="filter_option_content">
                             <ul className="content_menu">
-                                <li>123</li>
-                                <li>456</li>
-                                <li>789</li>
+                                {this.state.filter_months.map(filter_month=>
+                                    <a key={filter_month.id} href={(`/month/${filter_month.id}`)}><li>{filter_month.total_time}</li></a>
+                                )}
                             </ul>
                         </div>
                     </div>

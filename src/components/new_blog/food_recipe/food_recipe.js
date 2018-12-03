@@ -156,7 +156,7 @@ getProducts(page) {
 
         return (
             <React.Fragment>
-                <div className="recipe_diary row d-flex" id="none">
+                <div className="recipe_diary row d-flex">
                     {this.state.menus.map(menu =>  
                         <div key={menu.id} className="col-4">
                             <div className="food_recipe">
