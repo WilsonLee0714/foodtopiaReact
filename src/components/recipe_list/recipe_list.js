@@ -36,8 +36,7 @@ class Recipe_list extends Component {
           </div > */}
           <div className="container d-flex justify-content-center mt-5">
             {CategoryList.map((category)=>{
-                return <Link className="category_link col-2" data-toggle="collapse" href="#collapseExample" to={`/recipe_category/${category.category_id}`}  key={category.category_id}>{category.category}</Link>
-                
+                return <Link className="category_link col-2" to={`/recipe_category/${category.category_id}`}  key={category.category_id}>{category.category}</Link>
             })}         
             
           </div>

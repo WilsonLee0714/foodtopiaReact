@@ -1,3 +1,7 @@
+$color_red: #FF4343;
+$color_grey: #404040;
+$color_light_grey: #c7c7c7;
+
 .head_slider{
   margin-bottom: 10px;
   
@@ -27,9 +31,9 @@
   color: grey;
   
   &:hover{
-    color: black;
+    color: $color_red;
     font-weight: 700;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid $color_red;
     text-decoration: none;
   }
 }
