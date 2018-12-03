@@ -28,9 +28,11 @@ class Fix_button extends Component {
         google_plus:"",
         youtube:"",
         email:"",
-        communitys: [],
-        community: this.initState,
-        type: 'add'
+        // communitys: [],
+        // community: this.initState,
+        //修改食譜
+        filter_months:[],
+        menus:[],
     }
 }
 //修改按鈕特效
@@ -52,7 +54,6 @@ fileSelectedHandler = evt => {
 
 }
 //修改會員圖片
-
 //onclick上傳圖片   圖片上傳卡會員sid輸入
 fileUploadHandler = () =>{
     const formdata = new FormData();
@@ -92,6 +93,7 @@ handleChange = (evt) => {
     this.setState({
         [key]: data
     })
+    console.log(this.state.facebook)
 }
 // update = (evt) => {
 //     // this.props.update(this.state);
@@ -115,6 +117,24 @@ handleChange = (evt) => {
 // //     return null;
 // // }
 
+//修改食譜
+getfilter_months(){
+    fetch("http://localhost:3000/upload/upload_date/")
+    .then(res => res.json())
+    .then(filter_months => this.setState({ 
+        filter_months: filter_months,
+    }))
+}
+// getMonthMenus(upload_time_sid) {
+//     fetch("http://localhost:3000/month/menu/"+upload_time_sid)
+//         .then(res => res.json())
+//         .then(menus => this.setState({
+//             menus: menus,
+//         }))
+// }
+componentDidMount(){
+    this.getfilter_months();
+}
     render() {
         return (
             <React.Fragment>
@@ -132,7 +152,7 @@ handleChange = (evt) => {
                         <button className="btn_modify_3" data-toggle="modal" data-target="#exampleModal2" to="#">更換圖片</button>
                     </div>
                     <div className="btn_3 d-flex ">
-                        <div className="btn_modify_3">修改食譜</div>
+                        <button type="button" className="btn btn-primary btn_modify_3" data-toggle="modal" data-target=".bd-example-modal-lg">修改食譜</button>
                         <button type="button" className="btn_modify_3" data-toggle="modal" data-target="#exampleModal">設定社群</button>
                     </div>
                 </div>
@@ -209,16 +229,29 @@ handleChange = (evt) => {
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                             {this.props.modifyType === "add" ? 
-                            <button type="button" onClick={this.add} className="btn btn-primary">
+                            <button type="button" onClick={this.add} className="btn btn-danger">
                             新增
                             </button>
-                            : <button type="button" onClick={this.update} className="btn btn-secondary">
+                            : <button type="button" onClick={this.update} className="btn btn-danger">
                                 修改
                             </button>}
                         </div>
                         </div>
                     </div>
                 </div> 
+                {/* 修改食譜 */}
+                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            {this.state.filter_months.map(filter_month=>
+                                <div key={filter_month.id}>
+                                    <div data-month={filter_month.id} className="edit_month">{filter_month.total_time}</div>
+                                    <Link to="/" className="edit_recipe"></Link>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
             </React.Fragment>
         )
     }
