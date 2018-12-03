@@ -13,15 +13,13 @@ class React_search extends Component {
     this.state = {
       searchTerm: '',
       // menus: menus //設定初始值menus為引入的menus json檔
-      menus: []
+      menus: [],
       
     }
     this.searchUpdated = this.searchUpdated.bind(this)
   }
-  
+ 
   render () {
-    const KEYS_TO_FILTERS = this.state.menus.menu
-    const filteredRecipes = this.state.menus.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS))
 
     return (
       <div className="container"> 
