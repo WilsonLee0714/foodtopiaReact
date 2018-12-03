@@ -20,6 +20,14 @@ class React_search extends Component {
   }
  
   render () {
+        for(var i=0;i<=this.state.menus.length;i++){
+          // console.log(this.state.menus)
+        }
+        console.log(this.state.menus[0])
+        
+    const KEYS_TO_FILTERS = this.state.menus
+    // console.log(KEYS_TO_FILTERS)
+    const filteredRecipes = this.state.menus.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS))
 
     return (
       <div className="container"> 
