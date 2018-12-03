@@ -8,7 +8,7 @@ class Nav extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userName:'',
+      userName: '',
     }
   }
   // clickHandler(){   var lightBox = document.getElementById('lightBox');
@@ -19,29 +19,29 @@ class Nav extends Component {
     fetch('http://localhost:3000/session/info', {
       method: 'GET',
       credentials: 'include'
-  }).then(function (res) {
+    }).then(function (res) {
       console.log(res);
       return res.json();
     }).then((a) => {
-      if(a.login==1){
+      if (a.login == 1) {
         const cart = document.querySelector('#cart');
         cart.classList.toggle("openCart");
       } else {
-      window.location.assign('/login');
+        window.location.assign('/login');
       }
-  })
-    
+    })
+
   }
   handleHover = () => {
     // alert('ok')
     fetch('http://localhost:3000/session/info', {
       method: 'GET',
       credentials: 'include'
-  }).then(function (res) {
+    }).then(function (res) {
       console.log(res);
       return res.json();
     }).then((a) => {
-      if(a.login==1){
+      if (a.login == 1) {
         console.log(a.nickname);
         var sMenu = document.getElementById('sMenu');
         sMenu.style.height = '90px';
@@ -54,12 +54,12 @@ class Nav extends Component {
         var q = document.getElementById('q');
         q.style.display = 'block';
         sMenu.style.height = '60px';
-          // return false;
+        // return false;
       }
-  })
+    })
       .catch(function (err) {
-          console.log(err);
-          //alert(err);
+        console.log(err);
+        //alert(err);
       })
     // var sMenu = document.getElementById('sMenu');
     // sMenu.style.height = '60px';
@@ -75,7 +75,7 @@ class Nav extends Component {
   render() {
     return (
       <React.Fragment>
-        <nav id='nav' className="navbar navbar-expand-lg navbar-light bg-transparent fixed-top">
+        <nav id='nav' className="navbar navbar-expand-lg navbar-transparent bg-light fixed-top">
           <div className="container">
             <Link className="navbar-brand" to="/homePage">Foodtopia</Link>
             <button
@@ -118,13 +118,13 @@ class Nav extends Component {
                 </a>
                 <div className='sMenu' id='sMenu' onMouseOver={this.handleHover} onMouseOut={this.handleOut}>
                   <div id='q'>
-                  <p>尚未登入</p>
-                  <p ><a href="http://localhost:3000/session/login" >登入 / 註冊</a></p>
+                    <p>尚未登入</p>
+                    <p ><a href="http://localhost:3000/session/login" >登入 / 註冊</a></p>
                   </div>
-                  <p>{this.state.userName+' 歡迎回來'}</p>
+                  <p>{this.state.userName + ' 歡迎回來'}</p>
                   <p><a href="http://localhost:3000/session/login" >會員中心</a></p>
                   <p><a href='http://localhost:3000/session/logout' >登出</a></p>
-                  </div>
+                </div>
               </div>
 
               <img src={require('./icons/shopping-bag.png')} onClick={this.cartToggle} />
@@ -149,35 +149,26 @@ class Nav extends Component {
     fetch('http://localhost:3000/session/info', {
       method: 'GET',
       credentials: 'include'
-  }).then(function (res) {
+    }).then(function (res) {
       console.log(res);
       return res.json();
     }).then((a) => {
-      if(a.login==1){
+      if (a.login == 1) {
         console.log('已經登入');
       } else {
         console.log('未登入');
       }
-  })
-    // 
-    // var scrollLast = 0;
+    })
+    // nav特效開始
     $(window).scroll(function () {
       let scrollNow = $(this).scrollTop();
-      // console.log(scrollNow)
       if (scrollNow != 0) {
         $('nav').addClass('bg-light');
         $('nav').removeClass('bg-transparent');
-        // $('.progress').addClass('hide_nav');
       } else {
         $('nav').addClass('bg-transparent');
         $('nav').removeClass('bg-light');
       }
-      //   } else {
-      //     $('nav').addClass('bg-transparent');
-      //     $('nav').removeClass('bg-light');
-      //     // $('.progress').removeClass('hide_nav');
-      // }
-      // scrollLast = scrollNow
     })
     $('nav').mouseover(function () {
       $('nav').addClass('bg-light');
@@ -187,6 +178,7 @@ class Nav extends Component {
       $('nav').addClass('bg-transparent');
       $('nav').removeClass('bg-light');
     })
+    // nav特效結束
   }
 }
 
