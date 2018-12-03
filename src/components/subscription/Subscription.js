@@ -22,7 +22,7 @@ class Subscription extends Component {
                                 <td><input className='mr-2' type='checkbox' />食譜作者回應我跟者做的照片</td>
                             </tr>
                             <tr>
-                                <td><hr className='w-100'></hr></td>
+                                <td></td>
                                 <td><hr className='w-100'></hr></td>
                             </tr>
                             <tr>
@@ -34,7 +34,7 @@ class Subscription extends Component {
                                 <td><input className='mr-2' type='checkbox' />食譜作者回覆我的留言</td>
                             </tr>
                             <tr>
-                                <td><hr className='w-100'></hr></td>
+                                <td></td>
                                 <td><hr className='w-100'></hr></td>
                             </tr>
                             <tr>
@@ -42,7 +42,7 @@ class Subscription extends Component {
                                 <td><input className='mr-2' type='checkbox' />我訂閱的使用者發表新食譜</td>
                             </tr>
                             <tr>
-                                <td><hr className='w-100'></hr></td>
+                                <td></td>
                                 <td><hr className='w-100'></hr></td>
                             </tr>
                             <tr>
@@ -51,7 +51,7 @@ class Subscription extends Component {
                                     </td>
                             </tr>
                             <tr>
-                                <td><hr className='w-100'></hr></td>
+                                <td></td>
                                 <td><hr className='w-100'></hr></td>
                             </tr>
                             <tr>
