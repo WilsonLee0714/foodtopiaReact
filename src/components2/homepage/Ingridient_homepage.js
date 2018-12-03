@@ -11,6 +11,9 @@ import Sec8 from "./sec8/Sec8";
 
 
 class Ingridient_homepage extends Component {
+  componentDidMount(){
+    window.scrollTo(0,0);
+  }
   render() {
     return (
         <React.Fragment>
