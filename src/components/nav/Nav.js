@@ -75,7 +75,7 @@ class Nav extends Component {
   render() {
     return (
       <React.Fragment>
-        <nav id='nav' className="navbar navbar-expand-lg navbar-transparent bg-light fixed-top">
+        <nav id='nav' className="navbar navbar-expand-lg navbar-light bg-emptyNav fixed-top">
           <div className="container">
             <Link className="navbar-brand" to="/homePage">Foodtopia</Link>
             <button
@@ -160,24 +160,24 @@ class Nav extends Component {
       }
     })
     // nav特效開始
-    $(window).scroll(function () {
-      let scrollNow = $(this).scrollTop();
-      if (scrollNow != 0) {
-        $('nav').addClass('bg-light');
-        $('nav').removeClass('bg-transparent');
-      } else {
-        $('nav').addClass('bg-transparent');
-        $('nav').removeClass('bg-light');
-      }
-    })
-    $('nav').mouseover(function () {
-      $('nav').addClass('bg-light');
-      $('nav').removeClass('bg-transparent');
-    })
-    $('nav').mouseout(function () {
-      $('nav').addClass('bg-transparent');
-      $('nav').removeClass('bg-light');
-    })
+    // $(window).scroll(function () {
+    //   let scrollNow = $(this).scrollTop();
+    //   if (scrollNow != 0) {
+    //     $('nav').addClass('bg-light');
+    //     $('nav').removeClass('bg-transparent');
+    //   } else {
+    //     $('nav').addClass('bg-transparent');
+    //     $('nav').removeClass('bg-light');
+    //   }
+    // })
+    // $('nav').mouseover(function () {
+    //   $('nav').addClass('bg-light');
+    //   $('nav').removeClass('bg-transparent');
+    // })
+    // $('nav').mouseout(function () {
+    //   $('nav').addClass('bg-transparent');
+    //   $('nav').removeClass('bg-light');
+    // })
     // nav特效結束
   }
 }
