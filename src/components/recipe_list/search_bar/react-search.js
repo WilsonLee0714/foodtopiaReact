@@ -3,9 +3,9 @@ import SearchInput, {createFilter} from 'react-search-input'
 
 import recipes from './recipe_data'
 import "./react_search.scss";
-import menus from "../../recipe.json";
+// import menus from "../../recipe.json";
 
-const KEYS_TO_FILTERS = ['recipe.name']
+
 
 class React_search extends Component {
   constructor (props) {
@@ -13,18 +13,24 @@ class React_search extends Component {
     this.state = {
       searchTerm: '',
       // menus: menus //設定初始值menus為引入的menus json檔
-      // menus: menus
-      
+      menus: [],
       
     }
     this.searchUpdated = this.searchUpdated.bind(this)
   }
-
+ 
   render () {
-    const filteredRecipes = recipes.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS))
+        for(var i=0;i<=this.state.menus.length;i++){
+          // console.log(this.state.menus)
+        }
+        console.log(this.state.menus[0])
+        
+    const KEYS_TO_FILTERS = this.state.menus
+    // console.log(KEYS_TO_FILTERS)
+    const filteredRecipes = this.state.menus.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS))
 
     return (
-      <div>
+      <div className="container"> 
         <SearchInput
               type="text"
               className="form-control search-input"
@@ -36,16 +42,16 @@ class React_search extends Component {
 
         <div className="cards d-flex flex-wrap">
           {/* <SearchInput className="search-input" onChange={this.searchUpdated} /> */}
-          {filteredRecipes.map(recipes => {
+          {filteredRecipes.map(menu => {
             return (
               <div className="p_card">
                 <div className="upper_card">
-                  <img className="card_pic" src={require(`../product_slider/images/${recipes.recipe.img}.jpg`)} />
+                  <img className="card_pic" src={require(`../product_slider/images/${menu.menu_img}.jpg`)} />
                 </div>  
                 
                 <div className="lower_card">
-                   <div className="search_result card_title title2">{recipes.recipe.name}</div>
-                   <div className="card_text text ">{recipes.recipe.introduction}</div>
+                   <div className="search_result card_title title2">{menu.menu}</div>
+                   <div className="card_text text ">{menu.Introduction}</div>
                   
                   
                  </div>
@@ -60,6 +66,17 @@ class React_search extends Component {
 
   searchUpdated (term) {
     this.setState({searchTerm: term})
+  }
+  componentDidMount(){
+    this.getMenus();
+  }
+  //call restful api
+  getMenus(){
+    fetch("http://localhost:3000/api/recipe/")
+    .then(res=>res.json())
+    .then(menus => this.setState({
+        menus: menus
+    }))
   }
 }
 
