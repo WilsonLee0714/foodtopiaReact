@@ -9,21 +9,25 @@ class Recipe_page extends Component {
     return (
       // <BrowserRouter>
         <React.Fragment>
-          {/* ----header----- */}
+          {/* ----主要資訊(灰底) header----- */}
           <main className="head_bg">
             <div className=" container d-flex header1">
                 <img className="main_pic" src={require('./images/western_2_main.jpg')}/>
                 <div className="main_text">
                   <div className="main_title d-flex">
+                    {/* ---食譜標題--- */}
                     <h1 className="recipe_tittle">大蒜奶油沙朗牛排佐帕瑪森起司馬鈴薯</h1>
+                    {/* ---收藏--- */}
                     <div className="like_btn d-flex justify-content-center">
                       <img className="like_img" src={require('./images/like.svg')}/>
                       <img className="liked_img" src={require('./images/liked.svg')}/>
                       <div className="like_text">收藏</div>
                     </div>
                   </div>
+                    {/* ---食譜簡介--- */}
                     <p class="recipe_intro">大蒜、香草、奶油溶入牛排中，帶出豐富有層次的口感，這種晚餐將會是一種享受。</p>
                     <div className="cook_info_wrap d-flex">
+                        {/* --食譜圓標籤-- */}
                         <div className="cook_info ">
                             <img className="info_icon time" src={require('./images/clock.svg')}/>
                             <p className="info_text">40min</p>
@@ -37,7 +41,7 @@ class Recipe_page extends Component {
                             <p class="info_text">2人份</p>
                         </div>
                     </div>
-                    {/* ---- nutrition ---- */}
+                    {/* ---- 營養資訊 nutrition ---- */}
                     <main className="nutrition_wrap container">
                       <table className="nutrition_table table table-bordered table-sm">
                         <thead>
@@ -76,7 +80,7 @@ class Recipe_page extends Component {
 
           
           <section className="middle_part container d-flex justify-content-between">
-            {/* ----- ingredients ------- */}
+            {/* ----- 所需食材ingredients ------- */}
             <main className="ingredients_wrap">
               <p className="i_title">所需食材</p>
               {/* <span >共2人份</span> */}
@@ -88,7 +92,7 @@ class Recipe_page extends Component {
                     <p className="i_qty"> 180克</p>
                   </div>
                 </div>
-                {/* ---充數--- */}
+                {/* --食材假資料-- */}
                 <div className="ingredient d-flex">
                   <img className="ingredient_pic" src={require('./images/I_chicken.png')}/>
                   <div className="i_text">
@@ -145,10 +149,9 @@ class Recipe_page extends Component {
                     <p className="i_qty"> 180克</p>
                   </div>
                 </div>
-                {/* ----- */}
               </div>
             </main>
-            {/* ---add2cart--- */}
+            {/* ---生成食材清單add2cart--- */}
             <main className="add2cart flex-row align-items-center">
               <p className="add2cart_title">購買食譜相關食材</p>
               <div className="btn btn-info add2cart_btn">所有食材加入購物車</div>
@@ -156,7 +159,7 @@ class Recipe_page extends Component {
             </main>
           </section>
 
-          {/* ---steps--- */}
+          {/* ---步驟 steps--- */}
           <main className="steps-wrap">
             <div className="step d-flex justify-content-center">
               <span className="step_num">01</span>
@@ -190,7 +193,7 @@ class Recipe_page extends Component {
             </div> 
           </main>
 
-          {/* ---author--- */}
+          {/* ---作者資訊 author--- */}
           <main className="author_wrap container d-flex justify-content-center">
             <img className="profile_pic" src={require("./images/foodtopia_profile_pic.png")} />
             <div className="author_text">
@@ -201,7 +204,7 @@ class Recipe_page extends Component {
             
           </main>
 
-          {/* ---recommendation--- */}
+          {/* ---推薦食譜 recommendation--- */}
           <main className="recommendation_wrap">
             <div className="p_slider_wrap container d-flex align-items-center">
                 <div className="category_wrap container">
@@ -261,7 +264,7 @@ class Recipe_page extends Component {
             </div>
           </main>
 
-          {/* ---comment--- */}
+          {/* ---評論 comment--- */}
           <main className="comment_wrap d-flex container">
             {/* <div className="comment_title">評論</div> */}
             <img className="profile_pic" src={require("./images/foodtopia_profile_pic.png")} />
