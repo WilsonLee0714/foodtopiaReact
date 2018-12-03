@@ -58,6 +58,7 @@ class App extends Component {
             <Route path="/memberCenter/myService" component={MyService} />
           </div>
           {/* 食材 */}
+          
           <Route path="/ingridient_hompage" component={Ingridient_homepage} />
           <Route path="/ingridient_listpage" component={Ingridient_listpage} />
           <Route path="/ingridient_listpage/fruit" component={Fruit} />
