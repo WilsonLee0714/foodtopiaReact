@@ -25,7 +25,7 @@ class Recipe_category extends Component {
         <React.Fragment>
 
         <React_search/> 
-        <div className="category_wrap container">
+        {/* <div className="category_wrap container">
             <div className="c_category_title ">中式料理</div>
             <div className="cards d-flex flex-wrap">
                 {this.state.menus.map(menu =>  
@@ -44,7 +44,7 @@ class Recipe_category extends Component {
                 )}
                 
             </div>
-        </div>
+        </div> */}
           
         </React.Fragment>
     //   </BrowserRouter>

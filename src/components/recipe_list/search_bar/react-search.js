@@ -3,6 +3,7 @@ import SearchInput, {createFilter} from 'react-search-input'
 
 import recipes from './recipe_data'
 import "./react_search.scss";
+import { isThisSecond } from 'date-fns';
 // import menus from "../../recipe.json";
 
 
@@ -12,22 +13,26 @@ class React_search extends Component {
     super(props)
     this.state = {
       searchTerm: '',
-      // menus: menus //設定初始值menus為引入的menus json檔
       menus: [],
-      
+      filteredRecipes:[]  
     }
     this.searchUpdated = this.searchUpdated.bind(this)
   }
+  keyUp = (evt) => {
+    //alert(evt.target.value)
+   // console.log(this.state.menus)
+    let filteredRecipes = this.state.menus.filter(function (product) {
+      return product.menu.indexOf(evt.target.value) !== -1;
+    });
+    this.setState({
+      filteredRecipes: filteredRecipes      
+     // filteredRecipes:this.state.menus.filter(createFilter(evt.target.value, this.state.menus))
+    })
+  }
  
   render () {
-        for(var i=0;i<=this.state.menus.length;i++){
-          // console.log(this.state.menus)
-        }
-        console.log(this.state.menus[0])
-        
-    const KEYS_TO_FILTERS = this.state.menus
-    // console.log(KEYS_TO_FILTERS)
-    const filteredRecipes = this.state.menus.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS))
+   // const KEYS_TO_FILTERS = this.state.menus;
+  //  const filteredRecipes = this.state.menus; //.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS))
 
     return (
       <div className="container"> 
@@ -36,13 +41,13 @@ class React_search extends Component {
               className="form-control search-input"
               aria-label="Sizing example input"
               aria-describedby="inputGroup-sizing-default"
-              onChange={this.searchUpdated}
+              onFocus={this.searchUpdated}
+              onKeyUp = {this.keyUp}
               placeholder="請輸入食譜關鍵字"
               />
 
         <div className="cards d-flex flex-wrap">
-          {/* <SearchInput className="search-input" onChange={this.searchUpdated} /> */}
-          {filteredRecipes.map(menu => {
+          {this.state.filteredRecipes.map(menu => {
             return (
               <div className="p_card">
                 <div className="upper_card">
@@ -65,7 +70,9 @@ class React_search extends Component {
   }
 
   searchUpdated (term) {
-    this.setState({searchTerm: term})
+    this.setState({
+      searchTerm: term      
+    })
   }
   componentDidMount(){
     this.getMenus();
@@ -75,7 +82,8 @@ class React_search extends Component {
     fetch("http://localhost:3000/api/recipe/")
     .then(res=>res.json())
     .then(menus => this.setState({
-        menus: menus
+      menus:menus,
+      filteredRecipes: menus      
     }))
   }
 }
