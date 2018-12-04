@@ -21,7 +21,7 @@ class MemberCenter extends Component {
             return res.json();
         }).then((a) => {
             this.setState({ userName: a.nickname });
-            if(a.profile!=''){
+            if(a.profile!=null){
                 this.setState({ profile: a.profile });
             } else {
                 this.setState({ profile: 'Group158.png' });
