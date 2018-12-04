@@ -10,7 +10,7 @@ class Cart extends Component {
     this.state = {
       products: [],
       amount: '',
-      email: '',
+      sid: '',
       product: {
         sid: "",
         qty: ""
@@ -19,26 +19,26 @@ class Cart extends Component {
   }
 
   getCart = () => {
-    // 先取得session.email，再撈取個人購物車
+    // 先取得session.sid
     fetch('http://localhost:3000/session/info', {
       method: 'GET',
       credentials: 'include'
     }).then(res => {
       return res.json();
     }).then(session => {
-      let email = session.email
+      let sid = session.sid
       fetch("http://localhost:3000/cart/cart", {
         method: 'POST',
         mode: "cors",
         headers: {
           'Content-Type': 'application/json'
         },
-          body: JSON.stringify({email: email})
+          body: JSON.stringify({sid: sid})
         })
         .then(res => res.json())
         .then(cart => {
           let amount = cart.reduce((amount, product) => (amount += product.price * product.qty), 0)
-          this.setState({products: cart, amount: amount, email: email})
+          this.setState({products: cart, amount: amount, sid: sid})
         })
     })
   }

@@ -1,26 +1,43 @@
 import React, {Component} from 'react';
 import {Button, Container, Row, Col} from 'reactstrap';
-import {getYear, getMonth, getDate, getHours} from 'date-fns';
 import "./Order.scss";
 
 class OrderStep2 extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      fields:this.props.fields,
       products: [],
-      amount: ''
+      amount: ""
     }
   }
 
-  getCart = () =>{
-    let email = this.props.fields.email;
+  checkout = (evt) => {
+    evt.preventDefault();
+    fetch("http://localhost:3000/order/order", {
+        method: 'POST',
+        mode: "cors",
+        headers: new Headers({
+          'Content-Type': 'application/json'
+      }),
+        body: JSON.stringify(this.state)
+        })
+        .then(res => res.json())
+        .then(data => console.log(data))
+        .catch(function (err) {
+          console.log(err);
+      })
+  }
+
+  getCart = () => {
+    let sid = this.state.fields.sid;
     fetch("http://localhost:3000/cart/cart", {
         method: 'POST',
         mode: "cors",
         headers: {
           'Content-Type': 'application/json'
         },
-          body: JSON.stringify({email: email})
+          body: JSON.stringify({sid: sid})
         })
         .then(res => res.json())
         .then(cart => {
@@ -39,31 +56,13 @@ class OrderStep2 extends Component {
 
   render() {
     const ymd = () => {
-      let day = this.props.fields.date,
-        time = this.props.fields.time,
-        year = getYear(day),
-        month = getMonth(day)+1,
-        date = getDate(day),
-        hours = getHours(time);
+      let day = this.state.fields.date,
+        time = this.state.fields.time,
+        year = day.getFullYear(),
+        month = day.getMonth(),
+        date = day.getDate(),
+        hours = time.getHours();
       return `${year}/${month}/${date} ${hours}:00 前送達`
-    }
-
-    const shipWay = () => {
-      switch (this.props.fields.mod) {
-        case 'home':
-          return `宅配到府`
-      }
-    }
-
-    const payWay = () => {
-      switch (this.props.fields.pay) {
-        case 'card':
-          return `信用卡`
-        case 'atm':
-          return `ATM轉帳`
-        case 'payAfter':
-          return `貨到付款`
-      }
     }
 
     return (
@@ -82,7 +81,7 @@ class OrderStep2 extends Component {
             {this
               .state
               .products
-              .map(product => < Row className = 'checkInfo' > 
+              .map(product => <Row className='checkInfo' > 
               <Col
                 xs={{
                 size: 2,
@@ -91,7 +90,7 @@ class OrderStep2 extends Component {
                 className='productDetail'>
                 <img className='productImg' src={require(`../cart/images/${product.product_img}.jpeg`)}/>
               </Col> 
-              < Col xs = {3}
+              <Col xs = {3}
               className = 'px-0' > 
               <Col className='productName'>{product.product_name}</Col> 
               <Col className='productSpec'>{product.spec}</Col>
@@ -120,27 +119,27 @@ class OrderStep2 extends Component {
           <div className='titleBackground'></div>
           <Row className='checkInfo'>
             <Col xs={2} className='inputLabel'>姓名：</Col>
-            <Col xs={10} className='colPadding'>{this.props.fields.name}</Col>
+            <Col xs={10} className='colPadding'>{this.state.fields.name}</Col>
           </Row>
 
           <Row className='checkInfo'>
             <Col xs={2} className='inputLabel'>市話：</Col>
-            <Col xs={10} className='colPadding'>{this.props.fields.tel}</Col>
+            <Col xs={10} className='colPadding'>{this.state.fields.tel}</Col>
           </Row>
 
           <Row className='checkInfo'>
             <Col xs={2} className='inputLabel'>手機：</Col>
-            <Col xs={10} className='colPadding'>{this.props.fields.mobile}</Col>
+            <Col xs={10} className='colPadding'>{this.state.fields.mobile}</Col>
           </Row>
 
           <Row className='checkInfo'>
             <Col xs={2} className='inputLabel'>地址：</Col>
-            <Col xs={10} className='colPadding'>{`${this.props.fields.city} ${this.props.fields.dist} ${this.props.fields.address}`}</Col>
+            <Col xs={10} className='colPadding'>{`${this.state.fields.city} ${this.state.fields.dist} ${this.state.fields.address}`}</Col>
           </Row>
 
           <Row className='checkInfo'>
             <Col xs={2} className='inputLabel'>寄送方式：</Col>
-            <Col xs={10} className='colPadding'>{shipWay()}</Col>
+            <Col xs={10} className='colPadding'>{this.state.fields.ship}</Col>
           </Row>
 
           <Row className='checkInfo'>
@@ -150,12 +149,12 @@ class OrderStep2 extends Component {
 
           <Row className='checkInfo'>
             <Col xs={2} className='inputLabel'>備註事項：</Col>
-            <Col xs={10} className='colPadding'>{this.props.fields.note}</Col>
+            <Col xs={10} className='colPadding'>{this.state.fields.note}</Col>
           </Row>
 
           <Row className='checkInfo'>
             <Col xs={2} className='inputLabel'>付款方式：</Col>
-            <Col xs={10} className='colPadding'>{payWay()}</Col>
+            <Col xs={10} className='colPadding'>{this.state.fields.pay}</Col>
           </Row>
         </div>
         <Row>
@@ -166,7 +165,7 @@ class OrderStep2 extends Component {
             size: 3,
             offset: 6
           }}>
-            <Button className='btnNext' color='danger' onClick=''>確認結帳</Button>
+            <Button className='btnNext' color='danger' onClick={this.checkout}>確認結帳</Button>
           </Col>
         </Row>
       </React.Fragment>
@@ -174,11 +173,11 @@ class OrderStep2 extends Component {
   }
   componentDidMount() {
     window.scrollTo(0, 0);
-    console.log(this.state);
-    console.log(this.props.fields)
     this.getCart();
   }
   componentDidUpdate(){
+    console.log(this.state);
+    console.log(this.props.fields)
   }
 }
 

@@ -4,6 +4,7 @@ $secondColor : #707070;
     opacity: 0;
     transition: 1s;
     transform: translateX(-200px);
+    
 }
 .secondWrap {
     opacity: 0;
@@ -64,6 +65,7 @@ header {
 .home {
     font-family: '微軟正黑體';
     color: $secondColor;
+    overflow: hidden;
     .secondMenu {
                                 img {
                                     height:  150px;

@@ -36,7 +36,7 @@ class OrderStep1 extends Component {
       let fields = this.state.fields;
       fields["name"] = session.name;
       fields["mobile"] = session.mobile;
-      fields["email"] = session.email;
+      fields["sid"] = session.sid;
       this.setState({ fields });
     })
       .catch(function (err) {
@@ -44,18 +44,18 @@ class OrderStep1 extends Component {
       })
     this.state = {
       fields: {
-        name: '',
-        email: '',
-        tel: '',
-        mobile: '',
-        city: '',
-        dist: '',
-        address: '',
-        mod: 'home',
-        date: '',
-        time: '',
-        note: '',
-        pay: 'card'
+        sid: "",
+        name: "",
+        tel: "",
+        mobile: "",
+        ship: "宅配到府",
+        city: "",
+        dist: "",
+        address: "",
+        date: "",
+        time: "",
+        note: "",
+        pay: "信用卡"
       },
       errors: {}
     };
@@ -69,10 +69,10 @@ class OrderStep1 extends Component {
     this.setState({ fields });
     console.log(this.state);
   }
-  modChange = (evt) => {
+  shipChange = (evt) => {
     let choose = evt.target.value;
     let fields = this.state.fields;
-    fields["mod"] = choose;
+    fields["ship"] = choose;
     this.setState({ fields });
   }
   dateChange = (date) => {
@@ -287,12 +287,12 @@ class OrderStep1 extends Component {
               <Label className='' check sm={10}>
                 <Input
                   id="home"
-                  className='shipMod'
+                  className='ship'
                   type="radio"
-                  name="shipMod"
-                  value="home"
-                  onChange={this.modChange}
-                  checked={this.state.fields.mod === 'home'} />
+                  name="ship"
+                  value="宅配到府"
+                  onChange={this.shipChange}
+                  checked={this.state.fields.ship === '宅配到府'} />
                 宅配到府</Label>
             </FormGroup>
 
@@ -358,12 +358,12 @@ class OrderStep1 extends Component {
                   offset: 2
                 }}>
                 <Input
-                  className='payMod'
+                  className='pay'
                   type="radio"
-                  name="payWay"
-                  value="card"
+                  name="pay"
+                  value="信用卡"
                   onChange={this.payChange}
-                  checked={this.state.fields.pay === 'card'} />
+                  checked={this.state.fields.pay === '信用卡'} />
                 信用卡</Label>
               <Label
                 className='payName'
@@ -373,12 +373,12 @@ class OrderStep1 extends Component {
                   offset: 2
                 }}>
                 <Input
-                  className='payMod'
+                  className='pay'
                   type="radio"
-                  name="payWay"
-                  value="atm"
+                  name="pay"
+                  value="ATM轉帳"
                   onChange={this.payChange}
-                  checked={this.state.fields.pay === 'atm'} />
+                  checked={this.state.fields.pay === 'ATM轉帳'} />
                 ATM轉帳</Label>
               <Label
                 className='payName'
@@ -388,12 +388,12 @@ class OrderStep1 extends Component {
                   offset: 2
                 }}>
                 <Input
-                  className='payMod'
+                  className='pay'
                   type="radio"
-                  name="payWay"
-                  value="payAfter"
+                  name="pay"
+                  value="貨到付款"
                   onChange={this.payChange}
-                  checked={this.state.fields.pay === 'payAfter'} />
+                  checked={this.state.fields.pay === '貨到付款'} />
                 貨到付款</Label>
             </FormGroup>
 
