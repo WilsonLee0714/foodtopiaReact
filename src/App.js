@@ -33,7 +33,7 @@ import Recipe_head from './components/recipe_head/recipe_head';
 // import React_search from './components/recipe_list/search_bar/react-search';
 //部落格匯入
 import Up_load from "./components/up_load/up_load";
-import Test from "./components/test/test";
+// import Test from "./components/test/test";
 import New_blog from "./components/new_blog/new_blog";
 import Month_blog from "./components/new_blog/month_blog";
 require('slick-carousel');
