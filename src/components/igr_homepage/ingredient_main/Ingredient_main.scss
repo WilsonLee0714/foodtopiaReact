@@ -1,0 +1,30 @@
+$mainColor : #FF4343;
+.container{
+    //排版測試 background-color: $mainColor;
+        .bmain_img{
+            width: 100%;
+        }
+        .topicSec{
+            height: 15vh;
+            display: flex;
+            .daily_active{
+                width: 50%;
+                padding: 20px;
+                margin: 2px;    
+                background:  url(./image/test1.jpg) no-repeat;
+            }
+            .daily_recipies{
+                width: 25%;
+                padding: 20px;
+                margin: 2px;    
+                background:  url(./image/test2.jpg) no-repeat;
+            }
+            .ingridient_promo{
+                width: 25%;
+                padding: 20px;
+                margin: 2px;    
+                background:  url(./image/test3.jpg) no-repeat;
+            }
+        }
+}
+

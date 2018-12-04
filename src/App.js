@@ -16,14 +16,20 @@ import Footer from './components/footer/Footer.js';
 import HomePage from './components/homePage/HomePage.js';
 import Login from './components/login/Login.js';
 //食材元件匯入
-import Ingridient_homepage from './components2/homepage/Ingridient_homepage';
-import Ingridient_listpage from './components2/listpage/Ingridient_listpage';
-import Fruit from "./components2/listpage/Fruit/Fruit";
-import Meat from "./components2/listpage/Meat/Meat";
-import Vegetable from "./components2/listpage/Vegetable/Vegetable";
-import Seafood from "./components2/listpage/Seafood/Seafood";
-import Dairy from "./components2/listpage/Dairy/Dairy";
-import Other from "./components2/listpage/Other/Other";
+import Ingridient_homepage from './components/igr_homepage/Ingridient_homepage';
+import Ingridient_listpage from './components/igr_listpage/Ingridient_listpage';
+import Fruit from "./components/igr_listpage/Fruit/Fruit";
+import Meat from "./components/igr_listpage/Meat/Meat";
+import Vegetable from "./components/igr_listpage/Vegetable/Vegetable";
+import Seafood from "./components/igr_listpage/Seafood/Seafood";
+import Dairy from "./components/igr_listpage/Dairy/Dairy";
+import Other from "./components/igr_listpage/Other/Other";
+import Dairy_board from "./components/igr_listpage/Dairy/Dairy_board";
+import Fruit_board from "./components/igr_listpage/Fruit/Fruit_board";
+import Meat_board from "./components/igr_listpage/Meat/Meat_board";
+import Other_board from "./components/igr_listpage/Other/Other_board";
+import Seafood_board from "./components/igr_listpage/Seafood/Seafood_board";
+import Vegetable_board from "./components/igr_listpage/Vegetable/Vegetable_board";
 //食譜元件匯入
 import Recipe_list from './components/recipe_list/recipe_list.js';
 import Recipe_page from './components/recipe_page/recipe_page';
@@ -63,7 +69,6 @@ class App extends Component {
             <Route path="/memberCenter/myService" component={MyService} />
           </div>
           {/* 食材 */}
-          
           <Route path="/ingridient_hompage" component={Ingridient_homepage} />
           <Route path="/ingridient_listpage" component={Ingridient_listpage} />
           <Route path="/ingridient_listpage/fruit" component={Fruit} />
@@ -72,6 +77,12 @@ class App extends Component {
           <Route path="/ingridient_listpage/other" component={Other} />
           <Route path="/ingridient_listpage/seafood" component={Seafood} />
           <Route path="/ingridient_listpage/dairy" component={Dairy} />
+          <Route path="/ingridient_listpage/dairy_board/:id?/:it?/:pic?" component={Dairy_board} />
+          <Route path="/ingridient_listpage/fruit_board/:id?/:it?/:pic?" component={Fruit_board} />
+          <Route path="/ingridient_listpage/meat_board/:id?/:it?/:pic?" component={Meat_board} />
+          <Route path="/ingridient_listpage/other_board/:id?/:it?/:pic?" component={Other_board} />
+          <Route path="/ingridient_listpage/seafood_board/:id?/:it?/:pic?" component={Seafood_board} />
+          <Route path="/ingridient_listpage/vegetable_board/:id?/:it?/:pic?" component={Vegetable_board} />
           {/* 食譜 */}
           <Route path="/recipe_head" component={Recipe_head} />
           <Route path="/recipe_head/recipe_list" component={Recipe_list} />
