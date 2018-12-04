@@ -120,22 +120,21 @@ class BasicInfo extends Component {
               method='post'
               style={{
               borderRadius: '5px',
-
-              background: 'rgba(0,0,0,.5)'
+              height:'85%',
+              background: 'rgba(0,0,0,.5)',
             }}>
-              <Row className=''>
+              <Row className='' style={{height:'80%'}}>
                 <Col
                   sm={6}
-                  className='infoContent'
+                  className='p-5'
                   style={{
-                  flex: '1',
-                  borderRight: '2px dashed #707070'
+                  borderRight: '3px dashed #707070'
                 }}>
                   <h4 className='sideTitle'>基本資料</h4>
                   <Input name='sid' value={this.state.sid} className='d-none'/> {/* sid用來給後端的 不要刪掉 */}
                   <FormGroup row>
                     <Label className='leftLabel' sm={3}>信箱 :</Label>
-                    <Col className='colPadding emailText' sm={9}>
+                    <Col className='colPadding emailText' style={{letterSpacing:'3px'}} sm={9}>
                       {this.state.email}
                     </Col>
                   </FormGroup>
@@ -175,7 +174,7 @@ class BasicInfo extends Component {
                   </FormGroup>
 
                 </Col>
-                <Col className='infoContent' sm={6}>
+                <Col className='py-5 pl-2' sm={6} style={{flex:'2'}}>
                   <h4 className='sideTitle'>收件資訊</h4>
                   <FormGroup row>
                     <Label className='rightLabel' sm={3}>姓名 :</Label>
@@ -206,20 +205,20 @@ class BasicInfo extends Component {
                       <FormGroup className='' row>
                     <Label className='addressLabel' sm={3}>地址 :</Label>
                         <Col className='colPadding' sm={9}>
-                        <Col sm={12} className='colPadding addressSelect d-flex'>
+                        <Col sm={12} style={{}} className='colPadding addressSelect d-flex'>
                           <ZipCodeTW
                             displayType='text'
                             countyValue={this.state.county}
                             districtValue={this.state.district}
                             zipCodeValue={this.state.zipCode}
                             countyStyle={{
-                            width: '75px',
+                            width: '95px',fontSize:'12px'
                           }}
                             districtStyle={{
-                            width: '75px',
+                            width: '95px',fontSize:'12px'
                           }}
                             zipStyle={{
-                            width: '50px',
+                            width: '50px',fontSize:'12px',
                             padding:0
                           }}
                             handleChangeCounty={this.handleZipCodeChange}
@@ -242,9 +241,9 @@ class BasicInfo extends Component {
                 </Col>
               </Row>
               <Row
-                className='align-items-center justify-content-center'
+                className='align-items-center justify-content-center m-auto'
                 style={{
-                borderTop: '3px dashed #707070'
+                borderTop: '3px dashed #707070',height:'20%',width:'100%'
               }}>
                 <Button color='danger' type='submit' className='btnSave'>儲存變更</Button>
               </Row>
