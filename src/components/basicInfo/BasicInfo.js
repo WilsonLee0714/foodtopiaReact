@@ -23,6 +23,7 @@ class BasicInfo extends Component {
       sid: '',
       mobile: '',
       county: '',
+      zipCode:'',
       district: '',
       address: '',
       password: '',
@@ -50,6 +51,7 @@ class BasicInfo extends Component {
         password: a.password,
         profile: a.profile,
         mobile: a.mobile,
+        zipCode: a.zipCode,
         county: a.county,
         district: a.district,
         address: a.address
