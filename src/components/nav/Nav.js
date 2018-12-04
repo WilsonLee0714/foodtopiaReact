@@ -49,12 +49,15 @@ class Nav extends Component {
         console.log(this.state.userName);
         var q = document.getElementById('q');
         q.style.display = 'none';
+        // var blog = document.getElementById('blog');
+        // blog.style.display = 'block';
       } else {
         var sMenu = document.getElementById('sMenu');
         var q = document.getElementById('q');
         q.style.display = 'block';
         sMenu.style.height = '60px';
         // return false;
+        
       }
     })
       .catch(function (err) {
@@ -73,6 +76,21 @@ class Nav extends Component {
     // },500)
   }
   render() {
+    fetch('http://localhost:3000/session/info', {
+      method: 'GET',
+      credentials: 'include'
+    }).then(function (res) {
+      console.log(res);
+      return res.json();
+    }).then((a) => {
+      if (a.login == 1) {
+        console.log('已經登入');
+        var blog = document.getElementById('blog');
+        blog.style.display = 'block';
+      } else {
+        console.log('未登入');
+      }
+    })
     return (
       <React.Fragment>
         <nav id='nav' className="navbar navbar-expand-lg navbar-light bg-emptyNav fixed-top">
@@ -101,7 +119,7 @@ class Nav extends Component {
                 <li className="nav-item">
                   <Link class="nav-link" to="/ingridient_hompage">生鮮食材</Link>
                 </li>
-                <li className="nav-item">
+                <li id='blog' className="nav-item" style={{display:'none'}}>
                   <Link class="nav-link" to="/new_blog">食譜部落格</Link>
                 </li>
 

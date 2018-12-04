@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {BrowserRouter, Route, Link} from "react-router-dom";
+import React, { Component } from 'react';
+import { BrowserRouter, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import Nav from "./components/nav/Nav.js";
@@ -54,11 +54,11 @@ class App extends Component {
     return (
       <BrowserRouter>
         <React.Fragment>
-          <Nav/>
-          <Route path="/homePage" component={HomePage}/>
-          <Route path="/login" component={Login}/>
-          <Route path="/register" component={Register}/>
-          <Route path="/registerSuccessful" component={RegisterSuccessful}/>
+          <Nav />
+          <Route path="/homePage" component={HomePage} />
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+          <Route path="/registerSuccessful" component={RegisterSuccessful} />
           <Route path="/order" component={Order} />
           <div className="container d-flex">
             <Route path="/memberCenter" component={MemberCenter} />
@@ -95,13 +95,14 @@ class App extends Component {
           <Route path="/recipe_page" component={Recipe_page} />
           {/* 部落格 */}
           <Route path="/up_load" component={Up_load} />
-          <Route path="/page/:id" component={Recipe_page} />
-          <Route path="/new_blog" component={New_blog} />
-          <Route path="/month/:id" component={Month_blog} />
+            <Route path="/page/:id" component={Recipe_page} />
+            <Route path="/new_blog" component={New_blog} />
+            <Route path="/month/:id" component={Month_blog} />
           <Footer/>
         </React.Fragment>
       </BrowserRouter>
     );
+   
   }
 }
 
