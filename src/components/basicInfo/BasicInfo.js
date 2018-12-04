@@ -146,7 +146,7 @@ class BasicInfo extends Component {
                         id='nickname'
                         className='leftInput'
                         type='text'
-                        name='nickname'
+                        name='nick_name'
                         onChange={this.handleChangeNotNull}
                         value={this.state.nickname}/>
                     </Col>
