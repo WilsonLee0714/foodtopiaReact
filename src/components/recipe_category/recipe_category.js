@@ -51,6 +51,8 @@ class Recipe_category extends Component {
     );
   }
   componentDidMount(){
+    // let id = this.props.match.params.id
+
     this.getMenus();
   }
   //call restful api

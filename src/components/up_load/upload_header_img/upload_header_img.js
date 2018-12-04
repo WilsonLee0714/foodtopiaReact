@@ -262,7 +262,7 @@ class Upload_header_img extends Component {
                             </div>
                         </div>`
             $('.recipe_step').append(newitem);
-            var i = 0;
+            var i=0;
             $('.upload_step').each(function () {
                 i++;
                 $(this).find('.step_number').text(i)
@@ -271,11 +271,10 @@ class Upload_header_img extends Component {
         // 刪除
         $("#recipe_step").on('click', "#step_delete_icon", function () {
             $(this).parentsUntil(".recipe_step").remove();
-            var i = 0;
+            var i=0;
             $('.upload_step').each(function () {
                 i++;
                 $(this).find('.step_number').text(i)
-                // console.log(i)
             })
         })
     }
