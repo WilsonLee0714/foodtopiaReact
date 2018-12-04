@@ -25,14 +25,14 @@ class Recipe_category extends Component {
         <React.Fragment>
 
         <React_search/> 
-        <div className="category_wrap container">
+        {/* <div className="category_wrap container">
             <div className="c_category_title ">中式料理</div>
             <div className="cards d-flex flex-wrap">
                 {this.state.menus.map(menu =>  
                     <div className="p_card">
                         <div className="upper_card">
                             <img className="card_pic" src ={require(`../recipe_list/product_slider/images/${menu.menu_img}.jpg`)} alt="" />
-                            <div className="rate title1">4.2</div>
+                            <div className="rate title2">4.2</div>
                         </div>
                         <div className="lower_card">
                             <div className="card_title title2">{menu.menu}</div>
@@ -44,7 +44,7 @@ class Recipe_category extends Component {
                 )}
                 
             </div>
-        </div>
+        </div> */}
           
         </React.Fragment>
     //   </BrowserRouter>

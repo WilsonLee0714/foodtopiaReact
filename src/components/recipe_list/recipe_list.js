@@ -13,28 +13,35 @@ import Product_slider_right from './product_slider/product_slider_right.js';
 import Recipe_page from '../recipe_page/recipe_page.js';
 import Recipe_category from "../recipe_category/recipe_category"
 import SimpleSlider from '../SimpleSlider/simpleSlider';
+import CategoryList from './search_bar/category.json';
 
 
 
 class Recipe_list extends Component {
+  componentDidMount(){
+    window.scrollTo(0, 0);
+  }
   render() {
     return (
       // <BrowserRouter>
         <React.Fragment>
-          {/* <div className="fadeIn head_slider">
-            <Head_slider />   
-          </div>
-          <div className="search_bar">
-            <Search_bar />
-          </div> */}
-          {/* <Route path="recipe_head/recipe_category" component={Recipe_category} /> */}
-          {/* <Route path="/recipe_page" component={Recipe_page} /> */}
-          <div className="middle_section container d-flex justify-content-center ">
-          {/* <Link to="/recipe_page"> */}
+          <div className="middle_part container d-flex justify-content-center ">
             <Recommend />
-            
-          {/* </Link> */}
             <Day_rank />
+          </div>
+          {/* <div  className="container d-flex justify-content-center mt-5">
+            <Link to="/recipe_category/1" className="category_link col-2">異國料理</Link>
+            <Link to="/recipe_category/5" className="category_link col-2">場合料理</Link>
+            <Link to="/recipe_category/3" className="category_link col-2">烹調時間</Link>
+            <Link to="/recipe_category/4" className="category_link col-2">烹調方式</Link>
+            <Link to="/recipe_category/2" className="category_link col-2">選擇食材</Link>
+            
+          </div > */}
+          <div className="container d-flex justify-content-center mt-5">
+            {CategoryList.map((category)=>{
+                return <Link className="category_link col-2" to={`/recipe_category/${category.category_id}`}  key={category.category_id}>{category.category}</Link>
+            })}         
+            
           </div>
           <div className="product_slider">
             <Product_slider/>

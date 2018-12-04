@@ -71,9 +71,9 @@ class HomePage extends Component {
                         <h3 className='rubberBand3' style={{opacity:'0'}}>Foodtopia 服務最便利的線上超市</h3>
                     </div>
                     <div className='firstMenu d-flex justify-content-center'>
-                        <img className='i i1' src={require('./images/Group125.png')} />
-                        <img className='mx-5 i i2' src={require('./images/Group127.png')} />
-                        <img className='i i3' src={require('./images/Group777.png')} />
+                        <Link to='/recipe_head/recipe_list'><img className='i i1' src={require('./images/Group125.png')} /></Link>
+                        <Link to='/ingridient_hompage'><img className='mx-5 i i2' src={require('./images/Group127.png')} /></Link>
+                        <Link to='/'><img className='i i3' src={require('./images/Group777.png')} /></Link>
                     </div>
                 </header>
                 <div className='home '>
@@ -92,7 +92,7 @@ class HomePage extends Component {
                         <div className='smallBox1 '>
                             <div className='text-center pt-4 pb-3'>最齊全的食譜種類<br />最便捷的食材採買服務</div>
                             <div className='text-center'>
-                                <button type='button' style={{ borderRadius: '20px' }} className='w-50 btn btn-danger'>前往食譜</button>
+                            <Link to='/recipe_head/recipe_list'><button type='button' style={{ borderRadius: '20px' }} className='w-50 btn btn-danger'>前往食譜</button></Link>
                             </div>
                         </div>
                     </div>
