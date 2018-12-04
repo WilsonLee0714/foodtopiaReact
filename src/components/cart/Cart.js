@@ -173,7 +173,7 @@ class Cart extends Component {
               size: 6,
               offset: 3
             }}>
-              <Link to='/order/step1'>
+              <Link to='/order'>
                 <Button color='danger' onClick={this.props.cartToggle} className="btnCheckOut">結帳</Button>
               </Link>
             </Col>

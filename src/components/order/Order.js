@@ -4,6 +4,7 @@ import {BrowserRouter, Route, Link} from "react-router-dom";
 import "./Order.scss";
 import OrderStep1 from "./OrderStep1";
 import OrderStep2 from "./OrderStep2";
+import Order_successful from "./Order_successful";
 
 class Order extends Component {
   constructor(props) {
@@ -28,6 +29,8 @@ class Order extends Component {
           return <OrderStep1 fields={this.state.fields} save={this.save} step={this.step}/>;
         case 2:
           return <OrderStep2 fields={this.state.fields} save={this.save} step={this.step}/>;
+        case 3:
+          return <Order_successful/>;
       }
     }
     const step1Class = () => {
@@ -111,7 +114,6 @@ class Order extends Component {
       }
     }
     return (
-      <BrowserRouter>
         <React.Fragment>
           <Container className='orderPage'>
             <Row className='orderStep'>
@@ -148,7 +150,6 @@ class Order extends Component {
             <Route path="/order/step2"  component={(props) => <OrderStep2 {...props} fields={this.state.fields}/>}/> */}
           </Container>
         </React.Fragment>
-      </BrowserRouter>
     )
   }
   componentDidMount() {

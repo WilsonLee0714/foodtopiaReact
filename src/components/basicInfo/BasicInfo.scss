@@ -1,36 +1,40 @@
 $secondColor:#707070;
 $thirdColor:#EFEDE8;
+
 // .bgWrap {
-    //     height: 100%;
-    //     width: 100%;
-    // }
-    .basicWrap{
-       
+//     height: 100%;
+//     width: 100%;
+// }
+.basicWrap {
+
     overflow: hidden;
     width: 80%;
     height: 100vh;
     font-family: '微軟正黑體';
-    color:#fff;
+    color: #fff;
     user-select: none;
-    .profileImg{
-        width:200px;
-    height:200px;
-    -webkit-clip-path:circle(50% at 50% 50%);
-    border: 3px solid #707070;
-    border-radius: 50%;
-    padding: 50px;
+
+    .profileImg {
+        width: 200px;
+        height: 200px;
+        -webkit-clip-path: circle(50% at 50% 50%);
+        border: 3px solid #707070;
+        border-radius: 50%;
+        padding: 50px;
+
         img {
             object-fit: contain;
             width: 100%;
             height: 100%;
-            }
+        }
     }
-    .infoWrap{
+
+    .infoWrap {
         position: relative;
         border: 10px solid $thirdColor;
         height: 520px;
         margin: 0;
-   
+
         img {
             position: absolute;
             z-index: -1;
@@ -41,34 +45,39 @@ $thirdColor:#EFEDE8;
             left: 0;
             top: 0;
         }
-        .infoForm{
+
+        .infoForm {
             display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                width: 600px;
-                height:  300px;
-                font-size: 1rem;
-                border-radius: 10px;
-                padding: 20px;
-                margin: 0 auto;
-                // margin-top: 60px;
-                background: rgba(0,0,0,.5);
-            }
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 600px;
+            height: 300px;
+            font-size: 1rem;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 0 auto;
+            // margin-top: 60px;
+            background: rgba(0, 0, 0, .5);
+        }
     }
-    .infoTitle{
+
+    .infoTitle {
         background: $thirdColor;
     }
+
     table {
-        border-collapse:separate;
-        border-spacing:0px 20px;
+        border-collapse: separate;
+        border-spacing: 0px 20px;
     }
+
     input {
         border: 1px solid #707070;
         border-radius: 5px;
     }
 
 }
+
 // 3d
 .bodyWrap {
     padding: 0;
@@ -82,7 +91,7 @@ $thirdColor:#EFEDE8;
 
 }
 
- .wrap91 {
+.wrap91 {
     /* animation: ani9 10s infinite linear; */
     transform-style: preserve-3d;
     width: 600px;
@@ -96,7 +105,7 @@ $thirdColor:#EFEDE8;
 .box91 {
     width: 600px;
     height: 300px;
-    background: rgba(255,255,255,.1);
+    background: rgba(255, 255, 255, .1);
     // background: #000;
     text-align: center;
     // line-height: 150px;
@@ -179,6 +188,7 @@ $thirdColor:#EFEDE8;
 .opacity1 {
     opacity: 1;
 }
+
 /* 圖片控制大小 */
 .imgInside {
     object-fit: contain;
@@ -186,5 +196,35 @@ $thirdColor:#EFEDE8;
     width: 100%;
     height: 100%;
 }
+
 /* 圖片控制大小 */
 // 3d
+.addressSelect {
+
+    select,
+    input {
+        background-color: #fff;
+        margin: 0 5px 0 0;
+        border-color: #707070;
+        border-radius: 5px;
+        color: #707070;
+
+        &:focus {
+            outline: 0px;
+            box-shadow: 0 0 0 .25rem rgba(255, 67, 67, 0.25);
+            border-color: rgba(255, 255, 255, 0);
+        }
+    }
+}
+
+.inputContent {
+    width: 200px !important;
+    border-color: #707070;
+    border-radius: 5px;
+    color: #707070;
+
+    &:focus {
+        box-shadow: 0 0 0 0.2rem rgba(255, 67, 67, 0.25);
+        border-color: rgba(255, 255, 255, 0);
+    }
+}

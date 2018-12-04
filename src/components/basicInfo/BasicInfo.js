@@ -2,6 +2,14 @@ import React, { Component } from 'react';
 import './BasicInfo.scss';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
+import {
+  FormGroup,
+  Col,
+  Input
+} from 'reactstrap';
+import {ZipCodeTW} from "zipcode-tw-react";
+
+
 
 class BasicInfo extends Component {
   constructor(prop) {
@@ -12,6 +20,8 @@ class BasicInfo extends Component {
       email: '',
       sid: '',
       mobile: '',
+      county: '',
+      district: '',
       address: '',
       password: '',
       profile: '',
@@ -29,14 +39,14 @@ class BasicInfo extends Component {
       console.log(res);
       return res.json();
     }).then((a) => {
-      this.setState({ nickname: a.nickname });
-      this.setState({ sid: a.sid });
-      this.setState({ email: a.email });
-      this.setState({ name: a.name });
-      this.setState({ password: a.password });
-      this.setState({ profile: a.profile });
-      this.setState({ mobile: a.mobile });
-      this.setState({ address: a.address });
+      this.setState({ nickname: a.nickname,sid: a.sid,email: a.email, name: a.name, password: a.password, profile: a.profile, mobile: a.mobile, county: a.county, district: a.district, address: a.address });
+      // this.setState({ sid: a.sid });
+      // this.setState({ email: a.email });
+      // this.setState({ name: a.name });
+      // this.setState({ password: a.password });
+      // this.setState({ profile: a.profile });
+      // this.setState({ mobile: a.mobile });
+      // this.setState({ address: a.address });
       console.log(a.profile)
       console.log(a.nickname)
       console.log(a.name)
@@ -95,7 +105,13 @@ class BasicInfo extends Component {
     // 3d
   }
 
-  handleChange = (event) => {
+  handleChange = (evt) => {
+    let key = evt.target.id;
+    let data = evt.target.value;
+    this.setState({[key]:data});
+    console.log(this.state);
+  }
+  handleChange1 = (event) => {
     this.setState({ nickname: event.target.value });
   }
   handleChange2 = (event) => {
@@ -128,6 +144,11 @@ class BasicInfo extends Component {
   //   infoForm2.submit()
   //   infoForm.submit()
   // }
+
+  handleZipCodeChange = (e) =>{
+    const {countyValue,districtValue,zipValue} = e;
+    this.setState({zipCode: zipValue, county: countyValue,district: districtValue});
+  }
 
 
   render() {
@@ -188,7 +209,7 @@ class BasicInfo extends Component {
                       <tr>
                         <td>密碼 : </td>
                         <td>
-                          <input name='password' size='10' type='password' id='rPw' onChange={this.handleChange2} value={this.state.password} className={this.state.display}>
+                          <input name='password' size='10' type='password' id='password' onChange={this.handleChange} value={this.state.password} className={this.state.display}>
                           </input><button type='button' id='rBtn' onClick={this.handleClick} style={{ borderRadius: '5px' }}>修改密碼</button></td>
                       </tr>
                     </table>
@@ -219,7 +240,7 @@ class BasicInfo extends Component {
                             id='name'
                             name='name'
                             value={this.state.name}
-                            onChange={this.handleChange3}
+                            onChange={this.handleChange}
                             className='text-center'
                             size='10'
                             type='text'></input>
@@ -233,7 +254,7 @@ class BasicInfo extends Component {
                             id='mobile'
                             name='mobile'
                             value={this.state.mobile}
-                            onChange={this.handleChange4}
+                            onChange={this.handleChange}
                             className='text-center'
                             size='10'
                             type='text'></input>
@@ -243,8 +264,42 @@ class BasicInfo extends Component {
                       <tr>
                         <td>地址 : </td>
                         <td>
-                          <input name='address' size='20' type='text' onChange={this.handleChange5} value={this.state.address}>
-                          </input></td>
+                          {/* <input name='address' size='20' type='text' onChange={this.handleChange5} value={this.state.address}></input> */}
+            <FormGroup className='addressSelect' row>
+                     <Col sm={12}>
+                          <ZipCodeTW displayType='text'
+                       countyValue={this.state.county}
+                       districtValue={this.state.district}
+                       zipCodeValue={this.state.zipCode}
+                       countyStyle={{
+                         width: '100px', 
+                         display: 'inline'
+                       }}
+                       districtStyle={{
+                         width: '100px',
+                         display: 'inline'
+                       }}
+                       zipStyle={{
+                         width: '70px',
+                         display: 'inline'
+                       }}
+                       handleChangeCounty={this.handleZipCodeChange}
+                       handleChangeDistrict={this.handleZipCodeChange}
+                       handleChangeZipCode={this.handleZipCodeChange}
+                       handleBlurZipCode={this.handleZipCodeChange}
+                       handleZipCodeNotExists={this.handleZipCodeChange} />
+                   </Col>
+                          <Col sm={12}>
+                            <Input
+                              id='address'
+                              name='address'
+                              className='inputContent'
+                              type='text'
+                              onChange={this.handleChange}
+                              value={this.state.address}/>
+                            </Col>
+              </FormGroup>
+                        </td>
                       </tr>
                     </table>
                     <div className='text-center mt-1 w-100'>
