@@ -16,6 +16,7 @@ class Month_blog extends Component {
             menus: [], 
             filter_months:[]
       }
+      console.log(this)
 }
 componentDidMount() {
     //篩選月份食譜

@@ -1,3 +1,7 @@
+$color_red: #FF4343;
+$color_grey: #404040;
+$color_light_grey: #c7c7c7;
+
 .head_slider{
   margin-bottom: 10px;
   
@@ -5,8 +9,8 @@
 .search_bar{
   margin-bottom: 40px;
 }
-.middle_section{
-    margin-top: 50px;
+.middle_part{
+    // margin-top: 50px;
   }
   .product_slider{
     margin: 20px 0;
@@ -23,3 +27,13 @@
   .fadeIn {
     animation: 1s fadeIn;
   }
+.category_link{
+  color: grey;
+  
+  &:hover{
+    color: $color_red;
+    font-weight: 700;
+    border-bottom: 2px solid $color_red;
+    text-decoration: none;
+  }
+}

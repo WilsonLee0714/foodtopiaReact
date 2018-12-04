@@ -18,7 +18,7 @@ class Product_slider_right extends Component {
                         <div className="p_card">
                             <div className="upper_card">
                                 <img className="card_pic" src ={require("./images/card_pic.jpg")}/>
-                                <div className="rate title1">4.2</div>
+                                <div className="rate ">4.2</div>
                             </div>
                             <div className="lower_card">
                                 <div className="card_title title2">蒜香牛小排</div>
@@ -30,7 +30,7 @@ class Product_slider_right extends Component {
                         <div className="p_card">
                             <div className="upper_card">
                                 <img className="card_pic" src ={require("./images/card_pic.jpg")}/>
-                                <div className="rate title1">4.2</div>
+                                <div className="rate">4.2</div>
                             </div>
                             <div className="lower_card">
                                 <div className="card_title title2">蒜香牛小排</div>
@@ -42,7 +42,7 @@ class Product_slider_right extends Component {
                         <div className="p_card">
                             <div className="upper_card">
                                 <img className="card_pic" src ={require("./images/card_pic.jpg")}/>
-                                <div className="rate title1">4.2</div>
+                                <div className="rate ">4.2</div>
                             </div>
                             <div className="lower_card">
                                 <div className="card_title title2">蒜香牛小排</div>
