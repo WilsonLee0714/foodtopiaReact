@@ -8,7 +8,6 @@ import {
   Label,
   Input
 } from 'reactstrap';
-import TwCitySelector from "tw-city-selector/tw-city-selector";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {
@@ -19,29 +18,13 @@ import {
   getDate,
   addDays
 } from 'date-fns';
+import {ZipCodeTW} from "zipcode-tw-react";
 
 class OrderStep1 extends Component {
   constructor(props) {
     super(props);
-    fetch('http://localhost:3000/session/info', {
-      method: 'GET',
-      credentials: 'include'
-    }).then(function (res) {
-      console.log(res);
-      return res.json();
-    }).then((session) => {
-      console.log(session.profile)
-      console.log(session.nickname)
-      console.log(session.name)
-      let fields = this.state.fields;
-      fields["name"] = session.name;
-      fields["mobile"] = session.mobile;
-      fields["sid"] = session.sid;
-      this.setState({ fields });
-    })
-      .catch(function (err) {
-        console.log(err);
-      })
+    
+    
     this.state = {
       fields: {
         sid: "",
@@ -49,8 +32,9 @@ class OrderStep1 extends Component {
         tel: "",
         mobile: "",
         ship: "宅配到府",
-        city: "",
-        dist: "",
+        county: "",
+        district: "",
+        zipCode:'',
         address: "",
         date: "",
         time: "",
@@ -60,6 +44,15 @@ class OrderStep1 extends Component {
       errors: {}
     };
     console.log(this.state)
+  }
+
+  handleZipCodeChange = (e) =>{
+    const {countyValue,districtValue,zipValue} = e;
+    let fields = this.state.fields;
+    fields["zipCode"]=zipValue
+    fields["county"]=countyValue
+    fields["district"]=districtValue
+    this.setState({ fields });
   }
   handleChange = (evt) => {
     let key = evt.target.id;
@@ -124,10 +117,10 @@ class OrderStep1 extends Component {
     }
 
     //Address
-    if (!fields["city"]) {
+    if (!fields["county"]) {
       formIsValid = false;
       errors["address"] = "地址為必填欄位";
-    } else if (!fields["dist"]) {
+    } else if (!fields["district"]) {
       formIsValid = false;
       errors["address"] = "地址為必填欄位";
     } else if (!fields["address"]) {
@@ -252,21 +245,60 @@ class OrderStep1 extends Component {
               </Col>
             </FormGroup>
 
-            <FormGroup className='my-selector-c addressSelect' row>
-              <Label for='city' className='inputLabel' sm={2}>*地址 :</Label>
+            {/* <FormGroup className='my-selector-c addressSelect' row>
+              <Label for='county' className='inputLabel' sm={2}>*地址 :</Label>
               <Input
-                id='city'
+                id='county'
                 className='county'
                 type='select'
                 onChange={this.handleChange}
-                value={this.state.fields.city} />
+                value={this.state.fields.county} />
               <Input
-                id='dist'
+                id='district'
                 className='district'
                 type='select'
                 onChange={this.handleChange}
-                value={this.state.fields.dist} />
+                value={this.state.fields.district} />
               <Input
+                id='address'
+                className='inputContent'
+                type='text'
+                onChange={this.handleChange}
+                value={this.state.fields.address} />
+              <Col
+                className='colPadding'
+                sm={{
+                  size: 10,
+                  offset: 2
+                }}>
+                <span className='errorTip'>{this.state.errors["address"]}</span>
+              </Col>
+            </FormGroup> */}
+            <FormGroup className='addressSelect' row>
+            <Label for='county' className='inputLabel' sm={2}>*地址 :</Label>
+            <ZipCodeTW displayType='text'
+                       countyValue={this.state.fields.county}
+                       districtValue={this.state.fields.district}
+                       zipCodeValue={this.state.fields.zipCode}
+                       countyStyle={{
+                         width: '100px', 
+                         display: 'inline'
+                        }}
+                       districtStyle={{
+                         width: '100px',
+                         display: 'inline'
+                       }}
+                       zipStyle={{
+                        width: '70px',
+                         display: 'inline'
+                       }}
+                       zipCodePositionLast={false}
+                       handleChangeCounty={this.handleZipCodeChange}
+                       handleChangeDistrict={this.handleZipCodeChange}
+                       handleChangeZipCode={this.handleZipCodeChange}
+                       handleBlurZipCode={this.handleZipCodeChange}
+                       handleZipCodeNotExists={this.handleZipCodeChange} />
+            <Input
                 id='address'
                 className='inputContent'
                 type='text'
@@ -411,11 +443,36 @@ class OrderStep1 extends Component {
     )
   }
   componentDidMount() {
-    new TwCitySelector({
-      el: '.my-selector-c', elCounty: '.county', // 在 el 裡查找 dom
-      elDistrict: '.district', // 在 el 裡查找 dom
-    });
+    
     window.scrollTo(0, 0);
+    fetch('http://localhost:3000/session/info', {
+      method: 'GET',
+      credentials: 'include'
+    }).then(function (res) {
+      console.log(res);
+      return res.json();
+    }).then((session) => {
+      console.log(session.zipCode)
+      console.log(session.county)
+      console.log(session.district)
+      console.log(session.address)
+      console.log(session.nickname)
+      console.log(session.name)
+      let fields = this.state.fields;
+      fields["name"] = session.name;
+      fields["mobile"] = session.mobile;
+      fields["sid"] = session.sid;
+      fields["zipCode"] = session.zipCode;
+      fields["county"] = session.county;
+      fields["address"] = session.address;
+      fields["district"] = session.district;
+      this.setState({ fields });
+      
+    })
+      .catch(function (err) {
+        console.log(err);
+      })
+    
     console.log(this.state)
   }
   componentDidUpdate() { }

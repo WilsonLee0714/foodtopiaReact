@@ -6,7 +6,7 @@ class OrderStep2 extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fields:this.props.fields,
+      fields: this.props.fields,
       products: [],
       amount: ""
     }
@@ -14,6 +14,7 @@ class OrderStep2 extends Component {
 
   checkout = (evt) => {
     evt.preventDefault();
+
     fetch("http://localhost:3000/order/order", {
         method: 'POST',
         mode: "cors",
@@ -24,6 +25,7 @@ class OrderStep2 extends Component {
         })
         .then(res => res.json())
         .then(data => console.log(data))
+        .then(data => this.props.step(3))
         .catch(function (err) {
           console.log(err);
       })
@@ -59,7 +61,7 @@ class OrderStep2 extends Component {
       let day = this.state.fields.date,
         time = this.state.fields.time,
         year = day.getFullYear(),
-        month = day.getMonth(),
+        month = day.getMonth()+1,
         date = day.getDate(),
         hours = time.getHours();
       return `${year}/${month}/${date} ${hours}:00 前送達`
@@ -134,7 +136,7 @@ class OrderStep2 extends Component {
 
           <Row className='checkInfo'>
             <Col xs={2} className='inputLabel'>地址：</Col>
-            <Col xs={10} className='colPadding'>{`${this.state.fields.city} ${this.state.fields.dist} ${this.state.fields.address}`}</Col>
+            <Col xs={10} className='colPadding'>{`${this.state.fields.zipCode} ${this.state.fields.county} ${this.state.fields.district} ${this.state.fields.address}`}</Col>
           </Row>
 
           <Row className='checkInfo'>

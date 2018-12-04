@@ -167,15 +167,12 @@ $bgColor: #707070;
     }
 
     .addressSelect {
-        select {
+        select,input {
             background-color: #fff;
             margin: 0 5px 0 0;
             border-color: #707070;
             border-radius: 5px;
-            color: #707070; // -webkit-appearance: none;
-
-            // -moz-appearance: none;
-            // appearance: none;
+            color: #707070; 
             &:focus {
                 outline: 0px;
                 box-shadow: 0 0 0 .25rem rgba(255, 67, 67, 0.25);
@@ -287,3 +284,71 @@ $bgColor: #707070;
         font-size: 20px;
     }
 }
+.orderSuccess{
+    font-family: 'Roboto', 'Noto sans CJK TC';
+    color: #707070;
+    margin: 20px 0 55px 0;
+    h3{
+        color: #ff4343;
+        font-size: 3em;
+        font-weight: bold;
+    }
+    p {
+        letter-spacing: 3px;
+    }
+    button {
+        width: 180px;
+    }
+ }
+ @media screen and (max-width: 768px) {
+     .orderSuccess{
+        font-family: 'Roboto', 'Noto sans CJK TC';
+        color: #707070;
+         h3{
+             font-size: 3em;
+             font-weight: bold;
+         }
+         p {
+             letter-spacing: 0;
+         }
+         button {
+             width: 300px;
+         }
+      }
+ }
+ @keyframes tada {
+     from {
+       -webkit-transform: scale3d(1, 1, 1);
+       transform: scale3d(1, 1, 1);
+     }
+   
+     10%,
+     20% {
+       -webkit-transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+       transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+     }
+   
+     30%,
+     50%,
+     70%,
+     90% {
+       -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+       transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+     }
+   
+     40%,
+     60%,
+     80% {
+       -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+       transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+     }
+   
+     to {
+       -webkit-transform: scale3d(1, 1, 1);
+       transform: scale3d(1, 1, 1);
+     }
+   }
+   
+   .tada {
+     animation: 1s tada;
+   }
