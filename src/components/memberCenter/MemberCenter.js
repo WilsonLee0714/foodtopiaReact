@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,NavLink } from 'react-router-dom';
 import './MemberCenter.scss';
 
 class MemberCenter extends Component {
@@ -21,7 +21,7 @@ class MemberCenter extends Component {
             return res.json();
         }).then((a) => {
             this.setState({ userName: a.nickname });
-            if(a.profile!=''){
+            if(a.profile!=null){
                 this.setState({ profile: a.profile });
             } else {
                 this.setState({ profile: 'Group158.png' });
@@ -63,18 +63,18 @@ class MemberCenter extends Component {
                     </div>
                     <div>
                         <ul>
-                            <li><Link className='a' style={{ fontWeight: '600' }} to='/memberCenter/basicInfo'>基本資料</Link></li>
-                            <li><Link className='a' style={{ fontWeight: '600' }} to='/memberCenter/subscription'>訂閱通知</Link></li>
-                            <li><Link className='a' style={{ fontWeight: '600' }} to='/memberCenter/favorite'>收藏清單</Link></li>
-                            <li><Link className='a' style={{ fontWeight: '600' }} to='/memberCenter/myOrder'>我的訂單</Link></li>
-                            <li><Link className='a' style={{ fontWeight: '600' }} to='/memberCenter/myService'>客服系統</Link></li>
-                            <li><Link className='a' style={{ fontWeight: '600' }} to='/memberCenter/myService'>部落格</Link></li>
+                            <li><NavLink activeClassName="active" className='a' style={{ fontWeight: '600' }} to='/memberCenter/basicInfo'>基本資料</NavLink></li>
+                            <li><NavLink activeClassName="active" className='a' style={{ fontWeight: '600' }} to='/memberCenter/myOrder'>我的訂單</NavLink></li>
+                            <li><NavLink activeClassName="active" className='a' style={{ fontWeight: '600' }} to='/memberCenter/subscription'>訂閱通知</NavLink></li>
+                            <li><NavLink activeClassName="active" className='a' style={{ fontWeight: '600' }} to='/memberCenter/favorite'>收藏清單</NavLink></li>
+                            {/* <li><NavLink activeClassName="active" className='a' style={{ fontWeight: '600' }} to='/memberCenter/myService'>客服系統</NavLink></li> */}
+                            {/* <li><NavLink activeClassName="active" className='a' style={{ fontWeight: '600' }} to='/memberCenter/myService'>部落格</NavLink></li> */}
                         </ul>
                     </div>
                     <a href='http://localhost:3000/session/logout' style={{ textDecoration: 'none' }}>
                         <div id='logout' className='mt-2 logout' onClick={this.logout} style={{ cursor: 'pointer' }}>
                             <img className='my-2 mr-3' style={{ width: '15px' }} src={require('./images/Group162.png')} />
-                            <span className='text-danger' style={{ fontWeight: '600' }}>登出</span>
+                            <span style={{ fontWeight: '600',color:'#FF4343'}}>登出</span>
                         </div></a>
                 </div>
             </React.Fragment>
