@@ -95,9 +95,9 @@ class App extends Component {
           <Route path="/recipe_page" component={Recipe_page} />
           {/* 部落格 */}
           <Route path="/up_load" component={Up_load} />
-            <Route path="/page/:id" component={Recipe_page} />
-            <Route path="/new_blog" component={New_blog} />
-            <Route path="/month/:id" component={Month_blog} />
+          <Route path="/page/:id" component={Recipe_page} />
+          <Route path="/new_blog" component={New_blog} />
+          <Route path="/month/:id" component={Month_blog} />
           <Footer/>
         </React.Fragment>
       </BrowserRouter>
