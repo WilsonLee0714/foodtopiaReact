@@ -145,7 +145,7 @@ componentDidUpdate = () => {
           <Route path="/ingridient_listpage/vegetable_board/:id?/:it?/:pic?" component={Vegetable_board} />
           {/* 食譜 */}
           <Route path="/recipe_head" component={Recipe_head} />
-          <Route path="/recipe_head/recipe_list" component={Recipe_list} />
+          <Route path="/recipe_head/recipe_list" render={(props) => <Recipe_list {...props} getCart={this.getCart} />}/>
           <Route path="/recipe_category/1" component={Recipe_category_country} />
           <Route path="/recipe_category/2" component={Recipe_category_method} />
           <Route path="/recipe_category/3" component={Recipe_category_occasion} />
