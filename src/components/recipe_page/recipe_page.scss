@@ -131,22 +131,19 @@ $title_fontWeight: 700;
             
         }
         .ingredient{
-            width: 200px;
+            width: 150%;
+            margin: 0;
             // margin: 10px 0 0px 10px;
-            .i_text{
-                .i_name{
-                    margin-top:20px;
-                    margin-bottom: 5px;
-                    font-size: $p_size_L;
-                }
+            .ingredient_total{
                 .i_qty{
+                    width: 100%;
                     font-size: $p_size_S;
                 }
+                .ingredient_pic{
+                    width: 100%;
+                    height: 80px;
+                }
             }
-        }
-        .ingredient_pic{
-            width: 70px;
-            height: 70px;
         }
     }
     .add2cart{

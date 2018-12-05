@@ -42,6 +42,11 @@ class Order_successful extends Component {
                     className='btn btn1 btn-lg text-light btn-danger mx-3 my-1'
                     type="button">返回首頁</button>
                 </Link>
+                <Link to='/memberCenter/myOrder'>
+                  <button
+                    className='btn btn1 btn-lg text-danger btn-outline-danger mx-3 my-1'
+                    type="button">查看訂單紀錄</button>
+                </Link>
               </div>
             </div>
           </Container>
