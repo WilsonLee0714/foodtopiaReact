@@ -33,9 +33,9 @@ class HomePage extends Component {
         }, 1800)
         $(window).scroll(function () {
             let scrollNow = $(this).scrollTop();
-            console.log(scrollNow);
+            // console.log(scrollNow);
             let scrollHeight = $(window).height();
-            console.log(scrollHeight);
+            // console.log(scrollHeight);
             if (scrollNow >= scrollHeight / 2) {
                 // $('.mainWrap').css('top', scrollHeight + 'px').css('opacity','1')
                 $('.secondWrap').css('opacity', '1').css('transform', 'translateX(0)');

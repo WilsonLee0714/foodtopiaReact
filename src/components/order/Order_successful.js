@@ -7,6 +7,18 @@ class Order_successful extends Component {
   constructor(props) {
     super(props);
   }
+
+  cleanCart =() => {
+      fetch("http://localhost:3000/cart/cleanCart", {
+        method: 'DELETE',
+        mode: "cors",
+        credentials: 'include',
+        })
+        .then(res => res.json())
+        .then(message => console.log(message)
+        )
+  }
+
   render() {
     return (
         <React.Fragment>
@@ -39,6 +51,7 @@ class Order_successful extends Component {
   }
   componentDidMount() {
     window.scrollTo(0, 0);
+    this.cleanCart();
 
   }
 }
