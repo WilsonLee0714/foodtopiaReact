@@ -177,6 +177,21 @@ class Nav extends Component {
         console.log('未登入');
       }
     })
+    // nav下滑消失
+    var scrollLast = 0
+        $(window).scroll(function () {
+            let scrollNow = $(this).scrollTop();
+            console.log(scrollNow)
+            if (scrollNow > scrollLast) {
+                $('.navbar').addClass('hide_nav');
+                // $('.progress').addClass('hide_nav');
+            } else {
+                $('.navbar').removeClass('hide_nav');
+                // $('.progress').removeClass('hide_nav');
+            }
+            scrollLast = scrollNow
+        })
+    // nav下滑消失
     // nav特效開始
     // $(window).scroll(function () {
     //   let scrollNow = $(this).scrollTop();
