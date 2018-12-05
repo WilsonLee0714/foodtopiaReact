@@ -14,6 +14,7 @@ class Recipe_page extends Component {
       nutritional_values:[],
       steps:[],
       step_imgs:[],
+      ingredients:[],
     }
   }
   //評論上傳
@@ -66,6 +67,30 @@ class Recipe_page extends Component {
           step_imgs: step_imgs,
         }))
   };
+   //食材圖
+   getIngredients(id) {
+    fetch("http://localhost:3000/foodtopia/ingredients/"+id)
+        .then(res => res.json())
+        .then(ingredients => this.setState({
+          ingredients: ingredients,
+        }))
+  };
+
+  allAddCart = () => {
+    evt.preventDefault();
+  
+    fetch("http://localhost:3000/cart/allAddCart", {
+      method: 'POST',
+      mode: "cors",
+      headers: new Headers({'Content-Type': 'application/json'}),
+        body: JSON.stringify({products: this.state.ingredients})
+      })
+      .then(res => res.json())
+      .then(message => console.log(message))
+      .then(() => this.props.getCart())
+      
+  }
+
   componentDidMount(){
     //評論create item
     $(".comment_send").on('click',function(){
@@ -86,6 +111,7 @@ class Recipe_page extends Component {
     this.getNutritional_value(id);
     this.getStep(id);
     this.getStep_img(id);
+    this.getIngredients(id);
 }
 
   render() {
@@ -177,20 +203,21 @@ class Recipe_page extends Component {
             <main className="ingredients_wrap">
               <p className="i_title">所需食材</p>
               {/* <span >共2人份</span> */}
-              <div className="ingredients d-flex flex-wrap">
-                <div className="ingredient d-flex ">
-                  <img className="ingredient_pic" src={require('./images/I_chicken.png')}/>
-                  <div className="i_text">
-                    <p className="i_name">花椰菜</p>
-                    <p className="i_qty"> 180克</p>
+              <div className="ingredients flex-wrap">
+                <div className="ingredient row">
+                  {this.state.ingredients.map(ingredient=>
+                  <div key={ingredient.id} className="ingredient_total d-flex col-4">
+                      <img className="ingredient_pic col-7" src={require(`./images/${ingredient.ingredients_img}.jpg`)}/>
+                      <p className="i_qty col-5">{ingredient.ingredients_name}</p>
                   </div>
+                  )}
                 </div>
               </div>
             </main>
             {/* ---生成食材清單add2cart--- */}
             <main className="add2cart flex-row align-items-center">
               <p className="add2cart_title">購買食譜相關食材</p>
-              <div className="btn btn-info add2cart_btn">所有食材加入購物車</div>
+              <div className="btn btn-info add2cart_btn" onClick={this.allAddCart}>所有食材加入購物車</div>
               <p className="add2cart_24h">新鮮食材24小時送達</p>
             </main>
           </section>

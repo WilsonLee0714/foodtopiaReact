@@ -20,7 +20,7 @@ class Fix_button extends Component {
         selectedFile: null,
         //上傳圖片檔名
         img_name:"",
-        imgups:[],
+        // imgups:[],
         //修改個人社群
         id: "",
         facebook:"",
