@@ -1,16 +1,10 @@
-.sec6{
-    width: 100%;
-    background-color: #ECF0FB;
-    box-sizing: border-box;
-    margin: 5px;
     .sec6_flex{
         display: flex;
-        width: 95%;
-        margin: 0 auto;
         padding: 2px;
         .sec6_left_content{
             flex-basis: 50%;
             text-align: center;
+            background-color: #DDE0F1;
             button{
                 text-align: center;
             }
@@ -24,4 +18,4 @@
             // }
         }
     }
-}
+

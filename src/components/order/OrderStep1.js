@@ -27,7 +27,7 @@ class OrderStep1 extends Component {
     
     this.state = {
       fields: {
-        sid: "",
+        member_sid: "",
         name: "",
         tel: "",
         mobile: "",
@@ -461,7 +461,7 @@ class OrderStep1 extends Component {
       let fields = this.state.fields;
       fields["name"] = session.name;
       fields["mobile"] = session.mobile;
-      fields["sid"] = session.sid;
+      fields["member_sid"] = session.sid;
       fields["zipCode"] = session.zipCode;
       fields["county"] = session.county;
       fields["address"] = session.address;
