@@ -50,6 +50,18 @@ import Month_blog from "./components/new_blog/month_blog";
 require('slick-carousel');
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      products: [],
+      amount: '',
+      sid: '',
+      product: {
+        sid: "",
+        qty: ""
+      }
+    }
+  }
   render() {
     return (
       <BrowserRouter>

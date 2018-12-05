@@ -28,6 +28,8 @@ class Login extends Component {
         }).then(function(res){
             if(res=='wrong'){
                 alert('此帳號不存在或密碼不正確');
+            } else if(res=="inactive") {
+                alert('信箱還未激活');
             } else {
                 registerFrom.submit();
             }

@@ -20,6 +20,32 @@ getUpdate() {
       }))
 };
 
+addCart = (evt) =>{
+  evt.preventDefault();
+  let product_id = evt.target.dataset.product_id
+  fetch('http://localhost:3000/session/info', {
+    method: 'GET',
+    credentials: 'include'
+  }).then(res => {
+    return res.json();
+  }).then(session => {
+    let member_sid = session.sid
+    console.log(this.state);
+    console.log(product_id);
+    console.log(member_sid);
+    fetch("http://localhost:3000/cart/addCart", {
+      method: 'POST',
+      mode: "cors",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+        body: JSON.stringify({member_sid: member_sid, product_id:	product_id})
+      })
+      .then(res => res.json())
+      .then(message => console.log(message))
+    })
+}
+
 
 componentDidMount() {
   this.getUpdate(); 
@@ -32,7 +58,7 @@ componentDidMount() {
       <h2>肉類</h2>
       <div className="sec5_card_sec">
       {this.state.meat.map(food =>
-          <div className="sec5_card_item">
+          <div className="sec5_card_item" key={food.sid}>
             <Link className="" to={`/ingridient_listpage/meat_board/${food.product_name}/${food.price}/${food.product_img}`}  key={food.product_name + food.price + food.product_img }>{food.product_name}</Link>
             <img src={require(`../igr_img/${food.product_img}.jpg`)} alt="oops" />
             <h3>{food.product_name}</h3>
@@ -40,7 +66,7 @@ componentDidMount() {
               <img className="icon" src={require('./image/test10.jpg')} alt />
               <p>{food.price}</p>
               <img className="icon" src={require('./image/shopping-bag.png')} onClick={this.cartToggle} />
-              <button type="button" class="btn btn-info">加入購物車</button>
+              <button type="button" class="btn btn-info" data-product_id={food.product_id} onClick={this.addCart}>加入購物車</button>
             </div>
           </div>         
         )}

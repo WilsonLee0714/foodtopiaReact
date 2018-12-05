@@ -18,8 +18,8 @@ class Ingridient_homepage extends Component {
             <Ingredient_main/>
             <Ingredient_middlecontent/>
             <Ingredient_list/>
-            <Ingredient_active/>
             <Ingredient_recipes/>
+            <Ingredient_active/>
             <Ingredient_list/>
             <Ingredient_finalimg/>                
         </React.Fragment>
