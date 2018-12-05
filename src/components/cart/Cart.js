@@ -10,7 +10,7 @@ class Cart extends Component {
     this.state = {
       products: [],
       amount: '',
-      sid: '',
+      member_sid: '',
       product: {
         sid: "",
         qty: ""
@@ -26,19 +26,19 @@ class Cart extends Component {
     }).then(res => {
       return res.json();
     }).then(session => {
-      let sid = session.sid
+      let member_sid = session.sid
       fetch("http://localhost:3000/cart/cart", {
         method: 'POST',
         mode: "cors",
         headers: {
           'Content-Type': 'application/json'
         },
-          body: JSON.stringify({sid: sid})
+          body: JSON.stringify({member_sid: member_sid})
         })
         .then(res => res.json())
         .then(cart => {
           let amount = cart.reduce((amount, product) => (amount += product.price * product.qty), 0)
-          this.setState({products: cart, amount: amount, sid: sid})
+          this.setState({products: cart, amount: amount, member_sid: member_sid})
         })
     })
   }
@@ -120,7 +120,7 @@ class Cart extends Component {
                   <Col>
                     <img
                       className='productImg'
-                      src={require(`./images/${product.product_img}.jpeg`)}/>
+                      src={require(`../igr_listpage/igr_img/${product.product_img}.jpg`)}/>
                   </Col>
                   <Col className='productQty'>
                     <Button

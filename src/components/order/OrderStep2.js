@@ -32,14 +32,14 @@ class OrderStep2 extends Component {
   }
 
   getCart = () => {
-    let sid = this.state.fields.sid;
+    let member_sid = this.state.fields.member_sid;
     fetch("http://localhost:3000/cart/cart", {
         method: 'POST',
         mode: "cors",
         headers: {
           'Content-Type': 'application/json'
         },
-          body: JSON.stringify({sid: sid})
+          body: JSON.stringify({member_sid: member_sid})
         })
         .then(res => res.json())
         .then(cart => {
@@ -90,7 +90,7 @@ class OrderStep2 extends Component {
                 offset: 1
               }}
                 className='productDetail'>
-                <img className='productImg' src={require(`../cart/images/${product.product_img}.jpeg`)}/>
+                <img className='productImg' src={require(`../igr_listpage/igr_img/${product.product_img}.jpg`)}/>
               </Col> 
               <Col xs = {3}
               className = 'px-0' > 
