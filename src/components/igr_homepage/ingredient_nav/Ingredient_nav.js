@@ -8,8 +8,7 @@ class Ingredient_nav extends Component {
   render() {
     return (
       <React.Fragment>
-      <div className="sec2">
-        <div className="b_container">
+      <div className="b_container container">
           <h2>生鮮食材</h2>
           <nav className="nav nav-pills nav-justified bnav">
             <Link className="bnav-link" to="/ingridient_listpage/fruit">
@@ -41,7 +40,6 @@ class Ingredient_nav extends Component {
                 食物櫃
             </Link>             
           </nav>
-        </div>
       </div>
       </React.Fragment>
     )

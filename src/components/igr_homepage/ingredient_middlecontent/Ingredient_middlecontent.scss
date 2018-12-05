@@ -1,18 +1,15 @@
 /* sec3_4 */
-.sec3_4{
-    width: 100%;
-    box-sizing: border-box;
-    margin: 5px;
     .sec3_4_container{
-        display: flex;
-        width: 95%;
-        margin: 0 auto;
         /* sec3 */
+        display: flex;
+        justify-content: space-between;
+        
         .sec3{
             width: 75%;
             height: 300px;
-            margin-right: 5px;
-            padding: 5px;
+            margin-right: 2px;
+            padding: 2px;
+            background-color: rgba(244, 244, 248, 0.658);
             h2{
                 padding: 5px;
             }
@@ -23,7 +20,6 @@
                 .sec3_card_item{
                     width: 40%;
                     display: flex;
-                    // background-color: #8a5a5a;
                     padding: 5px;
                     h4{
                         padding-left: 10px;
@@ -42,13 +38,12 @@
                     }
                 }
             }
-
         }
         // sec4
         .sec4{
             width: 25%;
             height: 300px;
-            display: flex;
+            // display: flex;
             flex-direction: column;
             margin: 2px;
             .sec4_event1{
@@ -63,4 +58,4 @@
             }
         }
     }
-}
+

@@ -1,6 +1,5 @@
 $mainColor : #FF4343;
-.container{
-    //排版測試 background-color: $mainColor;
+.b_container{
         .bmain_img{
             width: 100%;
         }
@@ -12,18 +11,21 @@ $mainColor : #FF4343;
                 padding: 20px;
                 margin: 2px;    
                 background:  url(./image/test1.jpg) no-repeat;
+                text-align: center;
             }
             .daily_recipies{
                 width: 25%;
                 padding: 20px;
                 margin: 2px;    
                 background:  url(./image/test2.jpg) no-repeat;
+                text-align: center;
             }
             .ingridient_promo{
                 width: 25%;
                 padding: 20px;
                 margin: 2px;    
                 background:  url(./image/test3.jpg) no-repeat;
+                text-align: center;
             }
         }
 }
