@@ -75,21 +75,21 @@ class Nav extends Component {
     // },500)
   }
   render() {
-    // fetch('http://localhost:3000/session/info', {
-    //   method: 'GET',
-    //   credentials: 'include'
-    // }).then(function (res) {
-    //   console.log(res);
-    //   return res.json();
-    // }).then((a) => {
-    //   if (a.login == 1) {
-    //     console.log('已經登入');
-    //     var blog = document.getElementById('blog');
-    //     blog.style.display = 'block';
-    //   } else {
-    //     console.log('未登入');
-    //   }
-    // })
+    fetch('http://localhost:3000/session/info', {
+      method: 'GET',
+      credentials: 'include'
+    }).then(function (res) {
+      console.log(res);
+      return res.json();
+    }).then((a) => {
+      if (a.login == 1) {
+        console.log('已經登入');
+        var blog = document.getElementById('blog');
+        blog.style.display = 'block';
+      } else {
+        console.log('未登入');
+      }
+    })
     return (
       <React.Fragment>
         <nav id='nav' className="navbar navbar-expand-lg navbar-light bg-emptyNav fixed-top">
