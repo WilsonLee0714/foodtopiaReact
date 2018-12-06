@@ -14,24 +14,23 @@ class Nav extends Component {
   // clickHandler(){   var lightBox = document.getElementById('lightBox');
   // lightBox.style.display = 'flex';     setTimeout(function(){
   // lightBox.style.opacity = '1';     },100) }
-  cartToggle = () => {
-    // session 使否已經登入判斷 用來讀取資料用
-    fetch('http://localhost:3000/session/info', {
-      method: 'GET',
-      credentials: 'include'
-    }).then(function (res) {
-      console.log(res);
-      return res.json();
-    }).then((a) => {
-      if (a.login == 1) {
-        const cart = document.querySelector('#cart');
-        cart.classList.toggle("openCart");
-      } else {
-        window.location.assign('/login');
-      }
-    })
-
-  }
+  // cartToggle = () => {
+  //   // session 使否已經登入判斷 用來讀取資料用
+  //   fetch('http://localhost:3000/session/info', {
+  //     method: 'GET',
+  //     credentials: 'include'
+  //   }).then(function (res) {
+  //     console.log(res);
+  //     return res.json();
+  //   }).then((session) => {
+  //     if (session.login == 1) {
+  //       const cart = document.querySelector('#cart');
+  //       cart.classList.toggle("openCart");
+  //     } else {
+  //       window.location.assign('/login');
+  //     }
+  //   })
+  // }
   handleHover = () => {
     // alert('ok')
     fetch('http://localhost:3000/session/info', {
@@ -76,21 +75,21 @@ class Nav extends Component {
     // },500)
   }
   render() {
-    fetch('http://localhost:3000/session/info', {
-      method: 'GET',
-      credentials: 'include'
-    }).then(function (res) {
-      console.log(res);
-      return res.json();
-    }).then((a) => {
-      if (a.login == 1) {
-        console.log('已經登入');
-        var blog = document.getElementById('blog');
-        blog.style.display = 'block';
-      } else {
-        console.log('未登入');
-      }
-    })
+    // fetch('http://localhost:3000/session/info', {
+    //   method: 'GET',
+    //   credentials: 'include'
+    // }).then(function (res) {
+    //   console.log(res);
+    //   return res.json();
+    // }).then((a) => {
+    //   if (a.login == 1) {
+    //     console.log('已經登入');
+    //     var blog = document.getElementById('blog');
+    //     blog.style.display = 'block';
+    //   } else {
+    //     console.log('未登入');
+    //   }
+    // })
     return (
       <React.Fragment>
         <nav id='nav' className="navbar navbar-expand-lg navbar-light bg-emptyNav fixed-top">
@@ -145,7 +144,7 @@ class Nav extends Component {
                 </div>
               </div>
 
-              <img src={require('./icons/shopping-bag.png')} onClick={this.cartToggle} />
+              <img src={require('./icons/shopping-bag.png')} onClick={this.props.cartToggle} />
               <form className="form-inline my-2 my-lg-0">
                 <input
                   className="form-control mr-sm-2"
@@ -157,7 +156,6 @@ class Nav extends Component {
             </div>
           </div>
         </nav>
-        <Cart cartToggle={this.cartToggle} />
         <div className='p-5'></div>
       </React.Fragment>
     );
@@ -181,7 +179,7 @@ class Nav extends Component {
     var scrollLast = 0
         $(window).scroll(function () {
             let scrollNow = $(this).scrollTop();
-            console.log(scrollNow)
+            // console.log(scrollNow)
             if (scrollNow > scrollLast) {
                 $('.navbar').addClass('hide_nav');
                 // $('.progress').addClass('hide_nav');

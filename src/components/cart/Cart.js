@@ -8,50 +8,26 @@ class Cart extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: [],
-      amount: '',
-      member_sid: '',
-      product: {
-        sid: "",
-        qty: ""
-      }
+
     }
   }
 
-  getCart = () => {
-    // 先取得session.sid
-    fetch('http://localhost:3000/session/info', {
-      method: 'GET',
-      credentials: 'include'
-    }).then(res => {
-      return res.json();
-    }).then(session => {
-      let member_sid = session.sid
-      fetch("http://localhost:3000/cart/cart", {
-        method: 'POST',
-        mode: "cors",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-          body: JSON.stringify({member_sid: member_sid})
-        })
-        .then(res => res.json())
-        .then(cart => {
-          let amount = cart.reduce((amount, product) => (amount += product.price * product.qty), 0)
-          this.setState({products: cart, amount: amount, member_sid: member_sid})
-        })
-    })
-  }
+  // getCart = () => {     fetch("http://localhost:3000/cart/cart", {
+  // method: 'GET',       mode: "cors",       credentials: 'include',       })
+  //   .then(res => res.json())       .then(cart => {         let amount =
+  // cart.reduce((amount, product) => (amount += product.price * product.qty), 0)
+  //        this.setState({products: cart, amount: amount})       }) }
+
 
   modify = (evt) => {
     evt.preventDefault();
     let sid = evt.target.dataset.sid,
-        type = evt.target.dataset.type;
+      type = evt.target.dataset.type;
     switch (type) {
       case "min":
-        fetch("http://localhost:3000/cart/cart/" + sid, {
-          method: 'GET'
-        }).then(res => res.json())
+        fetch("http://localhost:3000/cart/cart/" + sid, {method: 'GET',mode: "cors",
+        credentials: 'include'})
+          .then(res => res.json())
           .then(data => {
             let oldQty = data[0].qty;
             if (oldQty > 1) {
@@ -63,14 +39,14 @@ class Cart extends Component {
                   'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({qty: qty})
-              }).then(res => this.getCart())
+              }).then(res => this.props.getCart())
             }
           });
         break;
       case "plus":
-        fetch("http://localhost:3000/cart/cart/" + sid, {
-          method: 'GET'
-        }).then(res => res.json())
+        fetch("http://localhost:3000/cart/cart/" + sid, {method: 'GET',mode: "cors",
+        credentials: 'include'})
+          .then(res => res.json())
           .then(data => {
             let oldQty = data[0].qty,
               qty = oldQty + 1
@@ -81,29 +57,14 @@ class Cart extends Component {
                 'Content-Type': 'application/json'
               },
               body: JSON.stringify({qty: qty})
-            }).then( res => this.getCart())
+            }).then(res => this.props.getCart())
           });
         break;
       case "del":
-        fetch("http://localhost:3000/cart/cart/" + sid, {
-          method: 'DELETE'
-        }).then(res => this.getCart())
+        fetch("http://localhost:3000/cart/cart/" + sid, {method: 'DELETE',mode: "cors",
+        credentials: 'include'}).then(res => this.props.getCart())
         break;
     }
-  }
-
-  update = (member) => {
-    fetch('http://localhost:3000/api/members/' + member.id, {
-      method: 'PUT',
-      body: JSON.stringify(member),
-        headers: new Headers({'Content-Type': 'application/json'})
-      })
-      .then(res => res.json())
-      .then(data => {
-        alert(data.message);
-        this.getMembers();
-
-      })
   }
 
   render() {
@@ -113,7 +74,7 @@ class Cart extends Component {
           <div className='title'>購物車</div>
           <div>
             {this
-              .state
+              .props
               .products
               .map(product => <Row key={product.sid} className='pt-2'>
                 <Col sm={5}>
@@ -154,10 +115,7 @@ class Cart extends Component {
                   data-type="del"
                   onClick={this.modify}>
                   <span>
-                    <i 
-                    className="fas fa-trash-alt"
-                    data-sid={product.sid}
-                    data-type="del"></i>
+                    <i className="fas fa-trash-alt" data-sid={product.sid} data-type="del"></i>
                   </span>
                 </Col>
               </Row>)}
@@ -166,7 +124,7 @@ class Cart extends Component {
             <hr className='line1'/>
           </Container>
           <Col className='totalPrice'>
-            總計: NT$ {this.state.amount}
+            總計: NT$ {this.props.amount}
           </Col>
           <Row>
             <Col sm={{
@@ -184,7 +142,7 @@ class Cart extends Component {
   }
 
   componentDidMount() {
-    this.getCart();
+
   }
 
   componentDidUpdate() {

@@ -150,8 +150,6 @@ class OrderStep1 extends Component {
       this
         .props
         .step(2);
-      // this.props.history.push('/order/step2');
-      // window.location.assign('/order/step2');
     } else {
       return
     }
@@ -245,35 +243,6 @@ class OrderStep1 extends Component {
               </Col>
             </FormGroup>
 
-            {/* <FormGroup className='my-selector-c addressSelect' row>
-              <Label for='county' className='inputLabel' sm={2}>*地址 :</Label>
-              <Input
-                id='county'
-                className='county'
-                type='select'
-                onChange={this.handleChange}
-                value={this.state.fields.county} />
-              <Input
-                id='district'
-                className='district'
-                type='select'
-                onChange={this.handleChange}
-                value={this.state.fields.district} />
-              <Input
-                id='address'
-                className='inputContent'
-                type='text'
-                onChange={this.handleChange}
-                value={this.state.fields.address} />
-              <Col
-                className='colPadding'
-                sm={{
-                  size: 10,
-                  offset: 2
-                }}>
-                <span className='errorTip'>{this.state.errors["address"]}</span>
-              </Col>
-            </FormGroup> */}
             <FormGroup className='addressSelect' row>
             <Label for='county' className='inputLabel' sm={2}>*地址 :</Label>
             <ZipCodeTW displayType='text'
@@ -449,7 +418,6 @@ class OrderStep1 extends Component {
       method: 'GET',
       credentials: 'include'
     }).then(function (res) {
-      console.log(res);
       return res.json();
     }).then((session) => {
       console.log(session.zipCode)
@@ -467,14 +435,13 @@ class OrderStep1 extends Component {
       fields["address"] = session.address;
       fields["district"] = session.district;
       this.setState({ fields });
-      
     })
       .catch(function (err) {
         console.log(err);
       })
-    
-    console.log(this.state)
   }
-  componentDidUpdate() { }
+  componentDidUpdate() { 
+    console.log('update')
+  }
 }
 export default OrderStep1;

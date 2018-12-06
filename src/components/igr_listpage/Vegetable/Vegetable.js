@@ -40,7 +40,7 @@ componentDidMount() {
               <img className="icon" src={require('./image/test10.jpg')} alt />
               <p>{food.price}</p>
               <img className="icon" src={require('./image/shopping-bag.png')} onClick={this.cartToggle} />
-              <button type="button" class="btn btn-info">加入購物車</button>
+              <button type="button" class="btn btn-info" data-product_id={food.product_id} onClick={this.props.addCart}>加入購物車</button>
             </div>
           </div>         
         )}

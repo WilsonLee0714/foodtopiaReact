@@ -75,6 +75,22 @@ class Recipe_page extends Component {
           ingredients: ingredients,
         }))
   };
+
+  allAddCart = (evt) => {
+    evt.preventDefault();
+  
+    fetch("http://localhost:3000/cart/allAddCart", {
+      method: 'POST',
+      mode: "cors",
+      headers: new Headers({'Content-Type': 'application/json'}),
+        body: JSON.stringify({products: this.state.ingredients})
+      })
+      .then(res => res.json())
+      .then(message => console.log(message))
+      .then(() => this.props.getCart())
+      
+  }
+
   componentDidMount(){
     //評論create item
     $(".comment_send").on('click',function(){
@@ -201,7 +217,7 @@ class Recipe_page extends Component {
             {/* ---生成食材清單add2cart--- */}
             <main className="add2cart flex-row align-items-center">
               <p className="add2cart_title">購買食譜相關食材</p>
-              <div className="btn btn-info add2cart_btn">所有食材加入購物車</div>
+              <div className="btn btn-info add2cart_btn" onClick={this.allAddCart}>所有食材加入購物車</div>
               <p className="add2cart_24h">新鮮食材24小時送達</p>
             </main>
           </section>
