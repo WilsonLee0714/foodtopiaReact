@@ -52,7 +52,7 @@ componentDidMount(){
                         <div className="filter_option_content">
                             <ul className="content_menu">
                                 {this.state.new_recipes.map(new_recipe=>
-                                    <a key={new_recipe.id} href={(`/page/${new_recipe.id}`)}><li>{new_recipe.menu}</li></a>
+                                    <Link key={new_recipe.id} to={(`/page/${new_recipe.id}`)}><li>{new_recipe.menu}</li></Link>
                                 )}
                             </ul>
                         </div>

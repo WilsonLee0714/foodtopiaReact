@@ -51,10 +51,14 @@ fileSelectedHandler = evt => {
     this.setState({
         img_name:evt.target.files[0].name
     })
-
+}
+modify = (evt) => {
+    evt.preventDefault();
+    let sid = evt.target.dataset.sid,
+        type = evt.target.dataset.type;
 }
 //修改會員圖片
-//onclick上傳圖片   圖片上傳卡會員sid輸入
+//onclick上傳圖片
 fileUploadHandler = () =>{
     const formdata = new FormData();
     formdata.append('image',this.state.selectedFile,this.state.selectedFile.name);
@@ -64,25 +68,16 @@ fileUploadHandler = () =>{
     }).then(function(res){
         return res.json();
     })
-    // //上傳圖片檔名
-    // fetch('http://localhost:3000/imgup/upload_name', { //+sid
-    //     method: 'PUT',
-    //     body: JSON.stringify({img_name:this.state.img_name}),
-    //     headers: new Headers({
-    //         'Content-Type': 'application/json'
-    //     })
-    // }).then(res => res.json())
-    // .then(//刷新頁面
-    //     window.location.replace('http://localhost:3001/new_blog')
-    // )
-    fetch('http://localhost:3000/imgup/upload_name', {
+    //上傳圖片檔名
+    fetch('http://localhost:3000/imgup/upload_name', { 
         method: 'POST',
-        body: JSON.stringify({img_name:this.state.img_name}),
+        mode:"cors",
         headers: new Headers({
             'Content-Type': 'application/json'
-        })
+        }),
+        body: JSON.stringify({img_name:this.state.img_name}),
     }).then(res => res.json())
-    .then(
+    .then(//刷新頁面
         window.location.replace('http://localhost:3001/new_blog')
     )
 }

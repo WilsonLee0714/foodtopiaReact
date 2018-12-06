@@ -78,7 +78,8 @@ paging = e => {  //顯示頁數資料
 }
 
 getProducts(page) {
-    fetch("http://localhost:3000/foodtopia/menu/" + page)
+    fetch("http://localhost:3000/foodtopia/menu/" + page, {method: 'GET',mode: "cors",
+    credentials: 'include'})
       .then(res => res.json())
       .then(menus => {
         this.setState({

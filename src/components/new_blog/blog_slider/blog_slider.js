@@ -13,7 +13,7 @@ class New_blog extends Component {
 
 //讀取資料
 getUploadImg() {
-    fetch("http://localhost:3000/imgup/upload_name")
+    fetch("http://localhost:3000/imgup/upload_name",)
         .then(res => res.json())
         .then(imgups => this.setState({ 
             imgups: imgups,
