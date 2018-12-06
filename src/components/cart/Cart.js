@@ -22,7 +22,7 @@ class Cart extends Component {
   modify = (evt) => {
     evt.preventDefault();
     let sid = evt.target.dataset.sid,
-      type = evt.target.dataset.type;
+        type = evt.target.dataset.type;
     switch (type) {
       case "min":
         fetch("http://localhost:3000/cart/cart/" + sid, {method: 'GET',mode: "cors",

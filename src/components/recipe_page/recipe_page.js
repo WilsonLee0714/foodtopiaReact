@@ -78,7 +78,6 @@ class Recipe_page extends Component {
 
   allAddCart = (evt) => {
     evt.preventDefault();
-  
     fetch("http://localhost:3000/cart/allAddCart", {
       method: 'POST',
       mode: "cors",
@@ -94,11 +93,11 @@ class Recipe_page extends Component {
   componentDidMount(){
     //評論create item
     $(".comment_send").on('click',function(){
-      var newitem = `<main class="comment_wrap d-flex container">    //會員大頭貼連結↓
+      var newitem = `<main class="comment_wrap d-flex container">    
                       <img class="profile_pic" src={require("./images/foodtopia_profile_pic.png")} />
                       <div class="comment_area">
                         <span class="user_name"> Foodtopia</span>
-                        <span class="comment_time"> 2018-10-05 19:59</span>   //抓取留言內容↓
+                        <span class="comment_time"> 2018-10-05 19:59</span>   
                         <div class="comment_text">想問一下現做沒吃完的話怎麼保存？ 常溫不冰的話幾天內吃完比較ok?</div>
                       </div>
                     </main>`
