@@ -82,8 +82,9 @@ getProducts(page) {
     credentials: 'include'})
       .then(res => res.json())
       .then(menus => {
+          console.log(menus)
         this.setState({
-          menus: menus.datas,
+          menus: menus.datas ,
           totalPage: Math.ceil(menus.TotalCount / this.state.perPage), //計算出總共幾頁
           currentPage: page
         })

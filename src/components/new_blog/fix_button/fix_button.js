@@ -70,13 +70,15 @@ fileUploadHandler = () =>{
     })
     //上傳圖片檔名
     fetch('http://localhost:3000/imgup/upload_name', { 
-        method: 'POST',
+        method: 'PUT',
         mode:"cors",
+        credentials: 'include',
         headers: new Headers({
             'Content-Type': 'application/json'
         }),
         body: JSON.stringify({img_name:this.state.img_name}),
     }).then(res => res.json())
+    .then(json => console.log(json))
     .then(//刷新頁面
         window.location.replace('http://localhost:3001/new_blog')
     )
