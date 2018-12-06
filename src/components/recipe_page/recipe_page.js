@@ -82,6 +82,7 @@ class Recipe_page extends Component {
     fetch("http://localhost:3000/cart/allAddCart", {
       method: 'POST',
       mode: "cors",
+      credentials: 'include',
       headers: new Headers({'Content-Type': 'application/json'}),
         body: JSON.stringify({products: this.state.ingredients})
       })
