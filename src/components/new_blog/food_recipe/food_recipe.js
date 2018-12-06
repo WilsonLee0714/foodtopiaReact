@@ -78,11 +78,13 @@ paging = e => {  //顯示頁數資料
 }
 
 getProducts(page) {
-    fetch("http://localhost:3000/foodtopia/menu/" + page)
+    fetch("http://localhost:3000/foodtopia/menu/" + page, {method: 'GET',mode: "cors",
+    credentials: 'include'})
       .then(res => res.json())
       .then(menus => {
+          console.log(menus)
         this.setState({
-          menus: menus.datas,
+          menus: menus.datas ,
           totalPage: Math.ceil(menus.TotalCount / this.state.perPage), //計算出總共幾頁
           currentPage: page
         })

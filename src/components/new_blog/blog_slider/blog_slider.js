@@ -8,19 +8,50 @@ class New_blog extends Component {
       this.state = {
         //讀圖片檔名
         imgups:[],
+        welcomes:[],
+        introductions:[],
     }
 }
 
-//讀取資料
+//讀取圖片檔名
 getUploadImg() {
-    fetch("http://localhost:3000/imgup/upload_name",)
+    fetch("http://localhost:3000/imgup/upload_img_name", {  
+        method: 'GET',
+        mode:"cors",
+        credentials: 'include',})
         .then(res => res.json())
         .then(imgups => this.setState({ 
             imgups: imgups,
         }))
 }
+//讀取welcome
+getWelcome() {
+    fetch("http://localhost:3000/imgup/upload_welcome", {  
+        method: 'GET',
+        mode:"cors",
+        credentials: 'include',})
+        .then(res => res.json())
+        .then(welcomes => this.setState({ 
+            welcomes: welcomes,
+        }))
+}
+//讀取introduction
+getIntroduction() {
+    fetch("http://localhost:3000/imgup/upload_introduction", {  
+        method: 'GET',
+        mode:"cors",
+        credentials: 'include',})
+        .then(res => res.json())
+        .then(introductions => this.setState({ 
+            introductions: introductions,
+        }))
+}
 componentDidMount() {
+    //讀取圖片檔名
     this.getUploadImg();
+    //讀取welcome讀取introduction
+    this.getWelcome();
+    this.getIntroduction();
 }
 
     render() {
@@ -34,8 +65,13 @@ componentDidMount() {
                 )}
                 {/* 歡迎語 */}
                 <div className="background_text">
-                    <h2>歡迎來到使用者の分享天地</h2>
-                    <p>這裡主要都是分享西式料理居多，歡迎大家一起與我一起分享。</p>
+                    {this.state.welcomes.map(welcome=>
+                        <h2>{welcome.welcome}</h2>
+                    )}
+                    {this.state.introductions.map(introduction=>
+                         <p>{introduction.introduction}</p>
+                    )}
+                   
                 </div>
             </React.Fragment>
         )

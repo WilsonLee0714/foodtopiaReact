@@ -20,7 +20,6 @@ class Fix_button extends Component {
         selectedFile: null,
         //上傳圖片檔名
         img_name:"",
-        // imgups:[],
         //修改個人社群
         id: "",
         facebook:"",
@@ -28,11 +27,12 @@ class Fix_button extends Component {
         google_plus:"",
         youtube:"",
         email:"",
-        // communitys: [],
-        // community: this.initState,
+        welcome:"",
+        introduction:"",
         //修改食譜
         filter_months:[],
         menus:[],
+        communitys:[],
     }
 }
 //修改按鈕特效
@@ -51,9 +51,20 @@ fileSelectedHandler = evt => {
         img_name:evt.target.files[0].name
     })
 }
-
+// welcome修改
+welcomeVal = evt =>{
+    this.setState({
+        welcome:evt.target.value
+    })
+}
+// introduction
+introductionVal = evt =>{
+    this.setState({
+        introduction:evt.target.value
+    })
+}
 //修改會員圖片
-//onclick上傳圖片
+    //onclick上傳圖片
 fileUploadHandler = () =>{
     const formdata = new FormData();
     formdata.append('image',this.state.selectedFile,this.state.selectedFile.name);
@@ -64,15 +75,50 @@ fileUploadHandler = () =>{
         return res.json();
     })
     //上傳圖片檔名
-    fetch('http://localhost:3000/imgup/upload_name', { 
+    fetch('http://localhost:3000/imgup/upload_img_name', { 
         method: 'PUT',
         mode:"cors",
-        credentials:"include",
+        credentials: 'include',
         headers: new Headers({
             'Content-Type': 'application/json'
         }),
         body: JSON.stringify({img_name:this.state.img_name}),
     }).then(res => res.json())
+    .then(json => console.log(json))
+    .then(//刷新頁面
+        window.location.replace('http://localhost:3001/new_blog')
+    )
+}
+//修改welcome
+welcome = () => {
+    //上傳welcome
+    fetch('http://localhost:3000/imgup/upload_welcome', { 
+        method: 'PUT',
+        mode:"cors",
+        credentials: 'include',
+        headers: new Headers({
+            'Content-Type': 'application/json'
+        }),
+        body: JSON.stringify({welcome:this.state.welcome}),
+    }).then(res => res.json())
+    .then(json => console.log(json))
+    .then(//刷新頁面
+        window.location.replace('http://localhost:3001/new_blog')
+    )
+}
+//修改introduction
+introduction = () => {
+    //上傳introduction
+    fetch('http://localhost:3000/imgup/upload_introduction', { 
+        method: 'PUT',
+        mode:"cors",
+        credentials: 'include',
+        headers: new Headers({
+            'Content-Type': 'application/json'
+        }),
+        body: JSON.stringify({introduction:this.state.introduction}),
+    }).then(res => res.json())
+    .then(json => console.log(json))
     .then(//刷新頁面
         window.location.replace('http://localhost:3001/new_blog')
     )
@@ -85,63 +131,50 @@ handleChange = (evt) => {
         [key]: data
     })
 }
-modify = (evt) => {
-    evt.preventDefault();
-    let sid = evt.target.dataset.sid,
-        type = evt.target.dataset.type;
-}
-update = (evt) => {
-    evt.preventDefault();
-    fetch('http://localhost:3000/members/members/', {
-            method: 'PUT',
-            body: JSON.stringify(),
-            headers: new Headers({
-                'Content-Type': 'application/json'
-            })
-        }).then(res => res.json())
-            .then(data => {
-                alert(data.message);
-                this.getMembers();
-
+update = () => {
+    fetch('http://localhost:3000/imgup/upload_community', {
+        method: 'PUT',
+        mode:"cors",
+        credentials: 'include',
+        body: JSON.stringify({
+            facebook:this.state.facebook,
+            instagram:this.state.instagram,
+            google_plus:this.state.google_plus,
+            youtube:this.state.youtube,
+            email:this.state.email,
+        }),
+        headers: new Headers({
+            'Content-Type': 'application/json'
         })
+    }).then(res => res.json())
+    .then(//刷新頁面
+        window.location.replace('http://localhost:3001/new_blog')
+    )
 }
-add = (evt) => {
-    evt.preventDefault();
-    delete 
-        fetch('http://localhost:3000/members/members', {
-            method: 'POST',
-            body: JSON.stringify(),
-            headers: new Headers({
-                'Content-Type': 'application/json'
-            })
-        }).then(res => res.json())
-            .then(data => {
-                alert(data.message);
-                this.getMembers();
-        })
-}
-// static getDerivedStateFromProps(props, state) {
-//     if (props.modifyData.id !== state.id) {
-//         return {
-//             id: props.modifyData.id,
-//             facebook: props.modifyData.facebook,
-//             instagram: props.modifyData.instagram,
-//             google_plus: props.modifyData.google_plus,
-//             youtube: props.modifyData.youtube,
-//             email: props.modifyData.email
-//         }
-//     }
-//     return null;
-// }
-
-//修改食譜
-getfilter_months(){
-    fetch("http://localhost:3000/upload/upload_date/")
+//communitys讀取
+getCommunitys() {
+    fetch("http://localhost:3000/imgup/upload_community", {  
+        method: 'GET',
+        mode:"cors",
+        credentials: 'include',})
     .then(res => res.json())
-    .then(filter_months => this.setState({ 
-        filter_months: filter_months,
+    .then(communitys => this.setState({ 
+            facebook:communitys[0].facebook,
+            instagram:communitys[0].instagram,
+            google_plus:communitys[0].google_plus,
+            youtube:communitys[0].youtube,
+            email:communitys[0].email,
     }))
 }
+
+//修改食譜
+// getfilter_months(){
+//     fetch("http://localhost:3000/upload/upload_date/")
+//     .then(res => res.json())
+//     .then(filter_months => this.setState({ 
+//         filter_months: filter_months,
+//     }))
+// }
 // getMonthMenus(upload_time_sid) {
 //     fetch("http://localhost:3000/month/menu/"+upload_time_sid)
 //         .then(res => res.json())
@@ -150,19 +183,20 @@ getfilter_months(){
 //         }))
 // }
 componentDidMount(){
-    this.getfilter_months();
+    // this.getfilter_months();
+    this.getCommunitys();
 }
     render() {
         return (
             <React.Fragment>
                 <div className="fix_div close">
                     <div className="fix_div_modify ">
-                        <input type="text" className="header_modify" placeholder="請編輯歡迎用語" /><br />
-                        <div className="btn_modify">修改</div>
+                        <input type="text" onChange={this.welcomeVal} className="header_modify" placeholder="請編輯歡迎用語" /><br />
+                        <div className="btn_modify" onClick={this.welcome}>修改</div>
                     </div>
                     <div className="fix_div_modify_2 ">
-                        <textarea type="text" className="header_modify" placeholder="請編輯部落格簡介" /><br />
-                        <div className="btn_modify">修改</div>
+                        <textarea type="text" onChange={this.introductionVal} className="header_modify" placeholder="請編輯部落格簡介" /><br />
+                        <div className="btn_modify" onClick={this.introduction}>修改</div>
                     </div>
                     <div className="btn_3 d-flex ">
                         <a className="btn_modify_3" href="/up_load">上傳食譜</a>
@@ -215,7 +249,7 @@ componentDidMount(){
                             <div className="facebook_link input_br">
                                 <span>Facebook：</span>
                                 <div className="">
-                                    <input type="text" className="input" value={this.state.facebook} onChange={this.handleChange} id="facebook" placeholder="facebook社群"/>
+                                    <input type="text" className="input" value={this.state.facebook} onChange={this.handleChange} id="facebook" placeholder="Facebook社群"/>
                                 </div>
                             </div>
                             <div className="instagram_link input_br">
@@ -245,13 +279,7 @@ componentDidMount(){
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                            {this.props.modifyType === "add" ? 
-                            <button type="button" onClick={this.add} className="btn btn-danger">
-                            新增
-                            </button>
-                            : <button type="button" onClick={this.update} className="btn btn-danger">
-                                修改
-                            </button>}
+                            <button type="button" onClick={this.update} className="btn btn-danger">修改</button>
                         </div>
                         </div>
                     </div>
