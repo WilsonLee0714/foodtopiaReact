@@ -68,7 +68,7 @@ class Recipe_page extends Component {
         }))
   };
    //食材圖
-   getIngredients(id) {
+  getIngredients(id) {
     fetch("http://localhost:3000/foodtopia/ingredients/"+id)
         .then(res => res.json())
         .then(ingredients => this.setState({
