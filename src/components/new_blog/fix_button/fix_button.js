@@ -6,15 +6,6 @@ import $ from 'jquery';
 class Fix_button extends Component {
     constructor(props) {
       super(props)
-      //修改個人社群->更新input
-    //   this.initState = {
-    //     id: "",
-    //     facebook: "",
-    //     instagram: "",
-    //     google_plus: "",
-    //     youtube:"",
-    //     email:"",
-    // }
       this.state = {
         //上傳圖片檔案
         selectedFile: null,
@@ -31,8 +22,8 @@ class Fix_button extends Component {
         introduction:"",
         //修改食譜
         filter_months:[],
-        menus:[],
-        communitys:[],
+        // menus:[],
+        
     }
 }
 //修改按鈕特效
@@ -40,6 +31,7 @@ click(){
     $(".fix_div").toggleClass("open");
     $(".fix_div").toggleClass("close");
 }
+
 // onchange圖片與檔名
 fileSelectedHandler = evt => {
     //圖片檔案
@@ -50,79 +42,34 @@ fileSelectedHandler = evt => {
     this.setState({
         img_name:evt.target.files[0].name
     })
+}//傳父層
+fileUploadHandler = evt =>{
+    this.props.fileUploadHandler(this.state);
+    evt.preventDefault();
 }
+
 // welcome修改
 welcomeVal = evt =>{
     this.setState({
         welcome:evt.target.value
     })
+}//傳父層
+welcome = evt =>{
+    this.props.welcome(this.state);
+    evt.preventDefault();
 }
-// introduction
+
+// introduction修改
 introductionVal = evt =>{
     this.setState({
         introduction:evt.target.value
     })
+}//傳父層
+introduction = evt =>{
+    this.props.introduction(this.state);
+    evt.preventDefault();
 }
-//修改會員圖片
-    //onclick上傳圖片
-fileUploadHandler = () =>{
-    const formdata = new FormData();
-    formdata.append('image',this.state.selectedFile,this.state.selectedFile.name);
-    fetch("http://localhost:3000/imgup/upload",{
-        method:"POST",
-        body:formdata
-    }).then(function(res){
-        return res.json();
-    })
-    //上傳圖片檔名
-    fetch('http://localhost:3000/imgup/upload_img_name', { 
-        method: 'PUT',
-        mode:"cors",
-        credentials: 'include',
-        headers: new Headers({
-            'Content-Type': 'application/json'
-        }),
-        body: JSON.stringify({img_name:this.state.img_name}),
-    }).then(res => res.json())
-    .then(json => console.log(json))
-    .then(//刷新頁面
-        window.location.replace('http://localhost:3001/new_blog')
-    )
-}
-//修改welcome
-welcome = () => {
-    //上傳welcome
-    fetch('http://localhost:3000/imgup/upload_welcome', { 
-        method: 'PUT',
-        mode:"cors",
-        credentials: 'include',
-        headers: new Headers({
-            'Content-Type': 'application/json'
-        }),
-        body: JSON.stringify({welcome:this.state.welcome}),
-    }).then(res => res.json())
-    .then(json => console.log(json))
-    .then(//刷新頁面
-        window.location.replace('http://localhost:3001/new_blog')
-    )
-}
-//修改introduction
-introduction = () => {
-    //上傳introduction
-    fetch('http://localhost:3000/imgup/upload_introduction', { 
-        method: 'PUT',
-        mode:"cors",
-        credentials: 'include',
-        headers: new Headers({
-            'Content-Type': 'application/json'
-        }),
-        body: JSON.stringify({introduction:this.state.introduction}),
-    }).then(res => res.json())
-    .then(json => console.log(json))
-    .then(//刷新頁面
-        window.location.replace('http://localhost:3001/new_blog')
-    )
-}
+
 //修改個人社群連結
 handleChange = (evt) => {
     let key = evt.target.id;
@@ -130,29 +77,12 @@ handleChange = (evt) => {
     this.setState({
         [key]: data
     })
-}
-update = () => {
-    fetch('http://localhost:3000/imgup/upload_community', {
-        method: 'PUT',
-        mode:"cors",
-        credentials: 'include',
-        body: JSON.stringify({
-            facebook:this.state.facebook,
-            instagram:this.state.instagram,
-            google_plus:this.state.google_plus,
-            youtube:this.state.youtube,
-            email:this.state.email,
-        }),
-        headers: new Headers({
-            'Content-Type': 'application/json'
-        })
-    }).then(res => res.json())
-    .then(//刷新頁面
-        window.location.replace('http://localhost:3001/new_blog')
-    )
-}
-//communitys讀取
-getCommunitys() {
+}//傳父層
+update = evt =>{
+    this.props.update(this.state);
+    evt.preventDefault();
+}//communitys讀取
+getCommunitys()  {
     fetch("http://localhost:3000/imgup/upload_community", {  
         method: 'GET',
         mode:"cors",
@@ -167,25 +97,28 @@ getCommunitys() {
     }))
 }
 
+componentDidMount(){
+    this.getCommunitys()
+    this.getfilter_months(); 
+    window.scrollTo(0,0);
+
+}
 //修改食譜
-// getfilter_months(){
-//     fetch("http://localhost:3000/upload/upload_date/")
-//     .then(res => res.json())
-//     .then(filter_months => this.setState({ 
-//         filter_months: filter_months,
-//     }))
-// }
+getfilter_months(){
+    fetch("http://localhost:3000/upload/upload_date/")
+    .then(res => res.json())
+    .then(filter_months => this.setState({ 
+        filter_months: filter_months,
+    }))
+}
 // getMonthMenus(upload_time_sid) {
 //     fetch("http://localhost:3000/month/menu/"+upload_time_sid)
 //         .then(res => res.json())
 //         .then(menus => this.setState({
 //             menus: menus,
 //         }))
-// }
-componentDidMount(){
-    // this.getfilter_months();
-    this.getCommunitys();
-}
+// // }
+
     render() {
         return (
             <React.Fragment>
@@ -199,7 +132,7 @@ componentDidMount(){
                         <div className="btn_modify" onClick={this.introduction}>修改</div>
                     </div>
                     <div className="btn_3 d-flex ">
-                        <a className="btn_modify_3" href="/up_load">上傳食譜</a>
+                        <Link className="btn_modify_3" to="/up_load">上傳食譜</Link>
                         <button className="btn_modify_3" data-toggle="modal" data-target="#exampleModal2" to="#">更換圖片</button>
                     </div>
                     <div className="btn_3 d-flex ">
