@@ -7,14 +7,14 @@ class Fix_button extends Component {
     constructor(props) {
       super(props)
       //修改個人社群->更新input
-      this.initState = {
-        id: "",
-        facebook: "",
-        instagram: "",
-        google_plus: "",
-        youtube:"",
-        email:"",
-    }
+    //   this.initState = {
+    //     id: "",
+    //     facebook: "",
+    //     instagram: "",
+    //     google_plus: "",
+    //     youtube:"",
+    //     email:"",
+    // }
       this.state = {
         //上傳圖片檔案
         selectedFile: null,
@@ -39,7 +39,6 @@ class Fix_button extends Component {
 click(){
     $(".fix_div").toggleClass("open");
     $(".fix_div").toggleClass("close");
-    
 }
 // onchange圖片與檔名
 fileSelectedHandler = evt => {
@@ -52,11 +51,7 @@ fileSelectedHandler = evt => {
         img_name:evt.target.files[0].name
     })
 }
-modify = (evt) => {
-    evt.preventDefault();
-    let sid = evt.target.dataset.sid,
-        type = evt.target.dataset.type;
-}
+
 //修改會員圖片
 //onclick上傳圖片
 fileUploadHandler = () =>{
@@ -70,8 +65,9 @@ fileUploadHandler = () =>{
     })
     //上傳圖片檔名
     fetch('http://localhost:3000/imgup/upload_name', { 
-        method: 'POST',
+        method: 'PUT',
         mode:"cors",
+        credentials:"include",
         headers: new Headers({
             'Content-Type': 'application/json'
         }),
@@ -88,29 +84,55 @@ handleChange = (evt) => {
     this.setState({
         [key]: data
     })
-    console.log(this.state.facebook)
 }
-// update = (evt) => {
-//     // this.props.update(this.state);
-//     evt.preventDefault();
+modify = (evt) => {
+    evt.preventDefault();
+    let sid = evt.target.dataset.sid,
+        type = evt.target.dataset.type;
+}
+update = (evt) => {
+    evt.preventDefault();
+    fetch('http://localhost:3000/members/members/', {
+            method: 'PUT',
+            body: JSON.stringify(),
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            })
+        }).then(res => res.json())
+            .then(data => {
+                alert(data.message);
+                this.getMembers();
+
+        })
+}
+add = (evt) => {
+    evt.preventDefault();
+    delete 
+        fetch('http://localhost:3000/members/members', {
+            method: 'POST',
+            body: JSON.stringify(),
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            })
+        }).then(res => res.json())
+            .then(data => {
+                alert(data.message);
+                this.getMembers();
+        })
+}
+// static getDerivedStateFromProps(props, state) {
+//     if (props.modifyData.id !== state.id) {
+//         return {
+//             id: props.modifyData.id,
+//             facebook: props.modifyData.facebook,
+//             instagram: props.modifyData.instagram,
+//             google_plus: props.modifyData.google_plus,
+//             youtube: props.modifyData.youtube,
+//             email: props.modifyData.email
+//         }
+//     }
+//     return null;
 // }
-// add = (evt) => {
-//     // this.props.add(this.state);
-//     evt.preventDefault();
-// }
-// // static getDerivedStateFromProps(props, state) {
-// //     if (props.modifyData.id !== state.id) {
-// //         return {
-// //             id: props.modifyData.id,
-// //             facebook: props.modifyData.facebook,
-// //             instagram: props.modifyData.instagram,
-// //             google_plus: props.modifyData.google_plus,
-// //             youtube: props.modifyData.youtube,
-// //             email: props.modifyData.email
-// //         }
-// //     }
-// //     return null;
-// // }
 
 //修改食譜
 getfilter_months(){
