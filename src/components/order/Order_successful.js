@@ -15,9 +15,9 @@ class Order_successful extends Component {
         credentials: 'include',
         })
         .then(res => res.json())
-        .then(message => console.log(message)
-        .them(()=> this.props.getCart())
-        )
+        .then(message => console.log(message))
+        .then(() => this.props.getCart())
+        
   }
 
   render() {

@@ -69,6 +69,7 @@ class App extends Component {
       .then(cart => {
         let amount = cart.reduce((amount, product) => (amount += product.price * product.qty), 0)
         this.setState({products: cart, amount: amount})
+        console.log(cart)
       })
 }
 
@@ -82,6 +83,7 @@ addCart = (evt) => {
       credentials: 'include',
       })
       .then(res => res.json())
+      .then(message => console.log(message))
       .then(() => this.getCart())  
 }
 
