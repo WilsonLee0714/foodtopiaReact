@@ -8,7 +8,7 @@ class Order_successful extends Component {
     super(props);
   }
 
-  cleanCart =() => {
+  cleanCart = () => {
       fetch("http://localhost:3000/cart/cleanCart", {
         method: 'DELETE',
         mode: "cors",
@@ -16,6 +16,7 @@ class Order_successful extends Component {
         })
         .then(res => res.json())
         .then(message => console.log(message)
+        .them(()=> this.props.getCart())
         )
   }
 

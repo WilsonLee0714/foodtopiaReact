@@ -156,7 +156,7 @@ componentDidUpdate = () => {
 
           {/* 部落格 */}
           <Route path="/up_load" component={Up_load} />
-          <Route path="/page/:id" component={Recipe_page} />
+          <Route path="/page/:id" render={(props) => <Recipe_page {...props} getCart={this.getCart} />}/>
           <Route path="/new_blog" component={New_blog} />
           <Route path="/month/:id" component={Month_blog} />
           <Footer/>
