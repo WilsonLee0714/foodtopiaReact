@@ -35,7 +35,7 @@ componentDidMount() {
       <div className="sec5_card_sec">
       {this.state.fruit.map(food =>
           <div className="sec5_card_item">
-            <Link className="" to={`/ingridient_listpage/fruit_board/${food.product_name}/${food.price}/${food.product_img}`}  key={food.product_name + food.price + food.product_img }>{food.product_name}</Link>
+            <Link className="" to={`/ingridient_listpage/fruit_board/${food.product_name}/${food.product_id}/${food.price}/${food.product_img}/${food.spec}`}  key={food.product_name + food.product_id + food.price + food.product_img}>{food.product_name}</Link>
             <img src={require(`../igr_img/${food.product_img}.jpg`)} alt="oops" />
             <h3>{food.product_name}</h3>
             <div className="cardprice_bar">
