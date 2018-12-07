@@ -184,8 +184,10 @@ class BasicInfo extends Component {
                         className='rightInput'
                         type='text'
                         name='name'
+                        maxlength= '5'
                         onChange={this.handleChange}
                         value={this.state.name}/>
+                        
                     </Col>
                   </FormGroup>
 
@@ -196,6 +198,7 @@ class BasicInfo extends Component {
                         id='mobile'
                         className='rightInput'
                         type='text'
+                        maxlength= '10'
                         name='mobile'
                         onChange={this.handleChange}
                         value={this.state.mobile}/>

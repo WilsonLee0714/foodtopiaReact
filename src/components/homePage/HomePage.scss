@@ -38,13 +38,14 @@ $secondColor : #707070;
 }
 header {
     .foodTitle{
+        transition: .5s;
         width: 600px;
         text-align: center;
         font-weight: 600;
         font-family: 'Noto sans CJK TC', 微軟正黑體;
         position: absolute;
         color: #393939;
-        left: 30%;
+        left: calc(50% - 300px);
         top:30%;
         background: rgba(255,255,255,.5);
         padding: 20px;
@@ -139,3 +140,88 @@ header {
     animation-delay:.9s;
     animation-fill-mode: forwards;
   }
+  .homeRDW1{
+      transition: .5s;
+  }
+  @media screen and (max-width:992px){
+      .homeRDW1{
+          transform: scale(.8,.8) translateY(600px) !important;
+        }
+        .foodTitle{
+            transform: scale(.8,.8);
+        }
+        .RWD3{
+            transform: scale(.8,.8) !important;
+      }
+        .RWD4{
+            transform: scale(.6,.6) translateY(-250px) !important;
+      }
+      .home{
+          transform: translateY(-100px) !important;
+          height: 100vh;
+      }
+    }
+    @media screen and (max-width:768px){
+              .home{
+                  transform: translateY(-100px) !important;
+                  height: 110vh;
+              }
+      .homeRDW1{
+          transform: scale(.8,.8) translateY(550px) translateX(-200px) !important;
+          flex-direction: column;
+        }
+        .RWD3{
+            flex-direction: column;
+            transform: scale(.8,.8) translateY(-150px) translateX(150px) !important;
+            img {
+                margin: 50px 0 ;
+            }
+      }
+      
+      .RWD4,.smallBox1{
+        display: none;
+    }
+    .thirdWrap{
+        width:0;
+        height: 0;
+  }
+        .foodTitle{
+            transform: scale(.8,.8);
+      }
+      header{
+        background-attachment: fixed !important;
+        height: 50vh;
+      }
+}
+    @media screen and (max-width:576px){
+              .home{
+                  transform: translateY(-100px) !important;
+                  height: 200vh;
+              }
+      .homeRDW1{
+          transform: scale(.8,.8) translateY(1300px) translateX(0px) !important;
+          flex-direction: column;
+        }
+        .RWD3{
+            flex-direction: column;
+            transform: scale(.8,.8) translateY(-200px) translateX(0px) !important;
+            img {
+                margin: 50px 0 ;
+            }
+      }
+      
+      .RWD4,.smallBox1{
+        display: none;
+    }
+    .thirdWrap{
+        width:0;
+        height: 0;
+  }
+        .foodTitle{
+            transform: scale(.8,.8);
+      }
+      header{
+        background-attachment: fixed !important;
+        height: 50vh;
+      }
+}
