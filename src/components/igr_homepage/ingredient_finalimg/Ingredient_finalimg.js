@@ -9,7 +9,7 @@ class Ingredient_finalimg extends Component {
       {/* <div className="sec8">
       <p>Lorem ipsum dolor sit amet.</p>
       <button>Ahead Recipies</button>
-      </div>; */}
+      </div> */}
       <div className='sFotter d-flex justify-content-center align-items-center thirdWrap'>
           <div className='smallBox1 '>
               <div className='text-center pt-4 pb-3'>最齊全的食譜種類<br />最便捷的食材採買服務</div>

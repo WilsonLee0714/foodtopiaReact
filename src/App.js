@@ -136,12 +136,12 @@ componentDidUpdate = () => {
           <Route path="/ingridient_listpage/other" render={(props) => <Other {...props} addCart={this.addCart} />}/>
           <Route path="/ingridient_listpage/seafood" render={(props) => <Seafood {...props} addCart={this.addCart} />}/>
           <Route path="/ingridient_listpage/dairy" render={(props) => <Dairy {...props} addCart={this.addCart} />}/>
-          <Route path="/ingridient_listpage/dairy_board/:id?/:it?/:pic?" component={Dairy_board} />
-          <Route path="/ingridient_listpage/fruit_board/:id?/:it?/:pic?" component={Fruit_board} />
-          <Route path="/ingridient_listpage/meat_board/:id?/:it?/:pic?" component={Meat_board} />
-          <Route path="/ingridient_listpage/other_board/:id?/:it?/:pic?" component={Other_board} />
-          <Route path="/ingridient_listpage/seafood_board/:id?/:it?/:pic?" component={Seafood_board} />
-          <Route path="/ingridient_listpage/vegetable_board/:id?/:it?/:pic?" component={Vegetable_board} />
+          <Route path="/ingridient_listpage/dairy_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?" component={Dairy_board} />
+          <Route path="/ingridient_listpage/fruit_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?" component={Fruit_board} />
+          <Route path="/ingridient_listpage/meat_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?" component={Meat_board} />
+          <Route path="/ingridient_listpage/other_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?" component={Other_board} />
+          <Route path="/ingridient_listpage/seafood_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?" component={Seafood_board} />
+          <Route path="/ingridient_listpage/vegetable_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?" component={Vegetable_board} />
           {/* 食譜 */}
           <Route path="/recipe_head" component={Recipe_head} />
           <Route path="/recipe_head/recipe_list" component={Recipe_list} />
