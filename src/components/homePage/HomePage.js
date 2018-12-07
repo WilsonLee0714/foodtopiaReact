@@ -8,7 +8,7 @@ class HomePage extends Component {
         super(prop)
     }
     componentDidMount() {
-        var random = ['1.jpg','2.jpg','3.jpg','4np.jpg','5.jpg','6.jpg'];
+        var random = ['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg','6.jpg'];
         var shuffle = random.sort(function (a, b) {
             return Math.random() - .5
         });

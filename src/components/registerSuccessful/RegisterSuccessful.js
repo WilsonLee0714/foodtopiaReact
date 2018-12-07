@@ -34,7 +34,7 @@ class RegisterSuccessful extends Component {
                     </div>
                     <div className="text-center mt-4"><p>驗證信已寄到您的Email,請點擊信件內連結以驗證你的Email<br />若沒有收到驗證信請點擊重新寄出按鈕</p></div>
                     <div className="d-flex my-3 flex-md-row flex-column">
-                        <Link to='/homePage'><button className='btn btn1 btn-lg text-light btn-danger mx-3 my-1' type="button">返回首頁</button></Link>
+                        <Link to='/login'><button className='btn btn1 btn-lg text-light btn-danger mx-3 my-1' type="button">立即登入</button></Link>
                         <button className='btn btn2 btn-lg btn-outline-danger mx-3 my-1' type="button" onClick={this.handleClick}>重新寄送確認信</button>
                     </div>
                 </div>
