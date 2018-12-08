@@ -19,8 +19,9 @@ import CategoryList from './search_bar/category.json';
 
 
 class Recipe_list extends Component {
+  
   componentDidMount(){
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 400);
   }
   render() {
     return (
