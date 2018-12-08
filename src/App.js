@@ -148,11 +148,17 @@ componentDidUpdate = () => {
           <Route path="/recipe_head" component={Recipe_head} />
           <Route path="/recipe_head/recipe_list" component={Recipe_list} />
           {/* <Route path="/recipe_category" component={Recipe_category} /> */}
-          <Route path="/recipe_category/1" component={Recipe_category_country} />
-          <Route path="/recipe_category/2" component={Recipe_category_method} />
-          <Route path="/recipe_category/3" component={Recipe_category_occasion} />
-          <Route path="/recipe_category/4" component={Recipe_category_screening} />
-          <Route path="/recipe_category/5" component={Recipe_category_time} />
+          <Route path="/country" component={Recipe_category_country} />
+          {/* QQQQQQQ 需要:id嗎?因為我們最後一層是直接用setstate改變fetch */}
+          <Route path="/country/:id" component={Recipe_category_country} /> 
+          <Route path="/serving" component={Recipe_category_method} />
+          <Route path="/serving/:id" component={Recipe_category_method} />
+          <Route path="/occasion" component={Recipe_category_occasion} />
+          <Route path="/occasion/:id" component={Recipe_category_occasion} />
+          <Route path="/difficult" component={Recipe_category_screening} />
+          <Route path="/difficult/:id" component={Recipe_category_screening} />
+          <Route path="/time" component={Recipe_category_time} />
+          <Route path="/time/:id" component={Recipe_category_time} />
           {/* <Route path="/recipe_head/recipe_category" component={Recipe_category} /> */}
           {/* <Route path="/recipe_page" render={(props) => <Recipe_page {...props} getCart={this.getCart} />}/> */}
 

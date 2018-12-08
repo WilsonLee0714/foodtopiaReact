@@ -29,20 +29,20 @@ class Recipe_list extends Component {
             <Recommend />
             <Day_rank />
           </div>
-          {/* <div  className="container d-flex justify-content-center mt-5">
-            <Link to="/recipe_category/1" className="category_link col-2">異國料理</Link>
-            <Link to="/recipe_category/5" className="category_link col-2">場合料理</Link>
-            <Link to="/recipe_category/3" className="category_link col-2">烹調時間</Link>
-            <Link to="/recipe_category/4" className="category_link col-2">烹調方式</Link>
-            <Link to="/recipe_category/2" className="category_link col-2">選擇食材</Link>
+          <div  className="container d-flex justify-content-center mt-5">
+            <Link to="/country" className="category_link col-2">異國料理</Link>
+            <Link to="/serving" className="category_link col-2">選擇人數</Link>
+            <Link to="/occasion" className="category_link col-2">場合料理</Link>
+            <Link to="/difficult" className="category_link col-2">烹飪難度</Link>
+            <Link to="/time" className="category_link col-2">烹調時間</Link>
             
-          </div > */}
-          <div className="container d-flex justify-content-center mt-5">
+          </div >
+          {/* <div className="container d-flex justify-content-center mt-5">
             {CategoryList.map((category)=>{
                 return <Link className="category_link col-2" to={`/recipe_category/${category.category_id}`}  key={category.category_id}>{category.category}</Link>
             })}         
             
-          </div>
+          </div> */}
           <div className="product_slider">
             <Product_slider/>
           </div>

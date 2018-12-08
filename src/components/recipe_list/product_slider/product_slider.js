@@ -30,7 +30,7 @@ class Product_slider extends Component {
                             </div>
                         </Link>
                         <div className="category_wrap container">
-                            <div className="category_title title1">異國料理</div>
+                            <div className="category_title title1">獨家推薦</div>
                             <div className="cards d-flex">
                                 {this.state.menus.map(menu =>  //menu -> 資料庫名稱
                                     
