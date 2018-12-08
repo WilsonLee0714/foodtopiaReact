@@ -9,15 +9,28 @@ class Recipe_page extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      //評論change
       comment:"",
+      //簡介
       menus:[],
+      //營養資訊
       nutritional_values:[],
+      //步驟
       steps:[],
+      //步驟圖
       step_imgs:[],
+      //食材圖
       ingredients:[],
+      //評論
       recipe_comments:[],
+      //session暱稱
       nicknames:[],
+      //當下食譜
       recipe_id:"",
+      //食譜亂數推薦
+      recipe_rands:[],
+      //食譜作者
+      recipe_members:[],
     }
   }
   //評論上傳
@@ -104,6 +117,28 @@ class Recipe_page extends Component {
     .then(nicknames => this.setState({ 
       nicknames:nicknames,
     }))
+  }
+//隨機生成4筆食譜連結
+getRecipe_rand = () => {
+  fetch("http://localhost:3000/api/recipe_rand", {  
+      method: 'GET',
+      mode:"cors",
+      credentials: 'include',})
+  .then(res => res.json())
+  .then(recipe_rands => this.setState({ 
+    recipe_rands:recipe_rands,
+  }))
+}
+//食譜作者
+getRecipe_member = (id) => {
+  fetch("http://localhost:3000/api/recipe_members/"+id, {  
+      method: 'GET',
+      mode:"cors",
+      credentials: 'include',})
+  .then(res => res.json())
+  .then(recipe_members => this.setState({ 
+    recipe_members:recipe_members,
+  }))
 }
 
   allAddCart = (evt) => {
@@ -122,23 +157,10 @@ class Recipe_page extends Component {
   }
 
   componentDidMount(){
-    //評論create item
-    // $(".comment_send").on('click',function(){
-    //   var newitem = `<main class="comment_wrap d-flex container">    
-    //                   <img class="profile_pic" src={require("./images/foodtopia_profile_pic.png")} />
-    //                   <div class="comment_area">
-    //                     <span class="user_name"> Foodtopia</span>
-    //                     <span class="comment_time"> 2018-10-05 19:59</span>   
-    //                     <div class="comment_text">想問一下現做沒吃完的話怎麼保存？ 常溫不冰的話幾天內吃完比較ok?</div>
-    //                   </div>
-    //                 </main>`
-      
-    //   $('.comment_wrap_all').append(newitem);
-    // })
     //食譜單筆資料
     let id = this.props.match.params.id
     this.setState({recipe_id:this.props.match.params.id})
-
+    
     this.getMenus(id);
     this.getNutritional_value(id);
     this.getStep(id);
@@ -146,11 +168,27 @@ class Recipe_page extends Component {
     this.getIngredients(id);
     this.getRecipe_comments(id);
     this.getCommunitys();
+    this.getRecipe_rand();
+    this.getRecipe_member(id)
 }
 
   render() {
+    //評論會員名稱判定
+    fetch('http://localhost:3000/session/info', {
+      method: 'GET',
+      credentials: 'include'
+    }).then(function (res) {
+      return res.json();
+    }).then((a) => {
+      if (a.login == 1) {
+        var comment = document.getElementById('comment')
+        var blog = document.getElementById('nouser_name');
+        blog.style.display = 'none';
+        comment.disabled = false;
+      } else {
+      }
+    })
     return (
-      // <BrowserRouter>
         <React.Fragment>
           {/* ----主要資訊(灰底) header----- */}
           <main className="head_bg">
@@ -314,78 +352,42 @@ class Recipe_page extends Component {
           </main>
 
           {/* ---作者資訊 author--- */}
-          <main className="author_wrap container d-flex justify-content-center">
-            <img className="profile_pic" src={require("./images/foodtopia_profile_pic.png")} />
-            <div className="author_text">
-              <div className="author_name">作者:</div>
-              <div className="author_name"> Foodtopia官方小編</div>
-              <div className="author_intro">懶得想要吃什麼?來foodtopia找就對了!</div>
-            </div>
-            
-          </main>
-
+          {this.state.recipe_members.map(recipe_member=>
+            <main className="author_wrap container d-flex justify-content-center">
+              <img className="profile_pic" src={require(`./images/foodtopia_profile_pic.png`)} />  {/* 會員大頭像讀取 */}
+              <div className="author_text">
+                <div className="author_name">作者:</div>
+                <div className="author_name">{recipe_member.nick_name}</div>
+                <div className="author_intro">懶得想要吃什麼?來foodtopia找就對了!</div>
+              </div>
+            </main>
+          )}
           {/* ---推薦食譜 recommendation--- */}
           <main className="recommendation_wrap">
             <div className="p_slider_wrap container d-flex align-items-center">
                 <div className="category_wrap container">
                     <div className="category_title">你可能也會喜歡</div>
                     <div className="cards d-flex">
-                        <div className="p_card">
-                            <div className="upper_card">
-                                <img className="card_pic" src ={require("./images/card_pic.jpg")}/>
-                                <div className="rate">4.2</div>
-                            </div>
-                            <div className="lower_card">
-                                <div className="card_title ">蒜香牛小排</div>
-                                <div className="card_text ">15分鐘完成一道健康美味又簡單的料理!</div>
-                                <img className="like_btn" src={require("./images/like.svg")}/>
-                                <img className="share_btn" src={require("./images/share.svg")}/>
-                            </div>
+                      {this.state.recipe_rands.map(recipe_rand=>
+                        <div key={recipe_rand.id} className="p_card">
+                          <div className="upper_card">
+                              <img className="card_pic" src ={require(`./images/${recipe_rand.menu_img}.jpg`)}/>
+                              <div className="rate">4.2</div>
+                          </div>
+                          <div className="lower_card">
+                              <div className="card_title ">{recipe_rand.menu}</div>
+                              <div className="card_text ">{recipe_rand.Introduction}</div>
+                              <img className="like_btn" src={require("./images/like.svg")}/>
+                              <img className="share_btn" src={require("./images/share.svg")}/>
+                          </div>
                         </div> 
-                        <div className="p_card">
-                            <div className="upper_card">
-                                <img className="card_pic" src ={require("./images/card_pic.jpg")}/>
-                                <div className="rate">4.2</div>
-                            </div>
-                            <div className="lower_card">
-                                <div className="card_title ">蒜香牛小排</div>
-                                <div className="card_text ">15分鐘完成一道健康美味又簡單的料理!</div>
-                                <img className="like_btn" src={require("./images/like.svg")}/>
-                                <img className="share_btn" src={require("./images/share.svg")}/>
-                            </div>
-                        </div>
-                        <div className="p_card">
-                            <div className="upper_card">
-                                <img className="card_pic" src ={require("./images/card_pic.jpg")}/>
-                                <div className="rate title1">4.2</div>
-                            </div>
-                            <div className="lower_card">
-                                <div className="card_title ">蒜香牛小排</div>
-                                <div className="card_text ">15分鐘完成一道健康美味又簡單的料理!</div>
-                                <img className="like_btn" src={require("./images/like.svg")}/>
-                                <img className="share_btn" src={require("./images/share.svg")}/>
-                            </div>
-                        </div>
-                        <div className="p_card">
-                            <div className="upper_card">
-                                <img className="card_pic" src ={require("./images/card_pic.jpg")}/>
-                                <div className="rate title1">4.2</div>
-                            </div>
-                            <div className="lower_card">
-                                <div className="card_title ">蒜香牛小排</div>
-                                <div className="card_text ">15分鐘完成一道健康美味又簡單的料理!</div>
-                                <img className="like_btn" src={require("./images/like.svg")}/>
-                                <img className="share_btn" src={require("./images/share.svg")}/>
-                            </div>
-                        </div>
-                        
+                      )}
                     </div>
                 </div>
             </div>
           </main>
 
           {/* ---評論 comment--- */}
-          
           <div className="comment_wrap_all">
           {this.state.recipe_comments.map(recipe_comment=>
             <div className="comment_recipe">
@@ -404,15 +406,15 @@ class Recipe_page extends Component {
               {this.state.nicknames.map(nickname=>
                 <span className="user_name">{nickname.nick_name}</span>
               )}
+                <span id="nouser_name" style={{display:'block'}}>請先登入</span>
                 <div className="d-flex align-items-end">
-                  <textarea className="comment_input" placeholder="請在這裡輸入您對這個食譜的想法!" id="comment" value={this.state.comment} onChange={this.msChange}></textarea>
+                  <textarea className="comment_input" placeholder="請在這裡輸入您對這個食譜的想法!" id="comment" value={this.state.comment} onChange={this.msChange} disabled></textarea>
                   <button className="comment_send btn btn-primary" onClick={this.msSend}>送出</button>
                 </div>
               </div>
             </main>
           </div>
         </React.Fragment>
-      // </BrowserRouter>
     );
   }
 }
