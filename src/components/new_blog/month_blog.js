@@ -139,7 +139,7 @@ getfilter_months(id){
 }
 
 componentDidMount() {
-    window.scrollTo(0,500);
+    window.scrollTo(0,0);
     //篩選月份食譜
     let id = this.props.match.params.id
     this.getMonthMenus(id);

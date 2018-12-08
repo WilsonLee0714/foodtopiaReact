@@ -33,31 +33,6 @@ class Recipe_page extends Component {
       recipe_members:[],
     }
   }
-  //評論上傳
-  msChange = (evt) => {
-    let key = evt.target.id;
-    let data = evt.target.value;
-    this.setState({
-        [key]: data
-    })
-  }
-  msSend = () =>{
-    fetch('http://localhost:3000/api/comment_upload', { 
-      method: 'POST',
-      mode:"cors",
-      credentials: 'include',
-      headers: new Headers({
-          'Content-Type': 'application/json'
-      }),
-      body: JSON.stringify({
-        comment:this.state.comment,
-        recipe_id:this.state.recipe_id,
-      }),
-    }).then(() => {
-        this.setState({comment:""})
-        this.getRecipe_comments(this.state.recipe_id);
-    })
-  }
   //食譜內頁各筆資訊
   //簡介
   getMenus(id) {
@@ -107,6 +82,31 @@ class Recipe_page extends Component {
           recipe_comments: recipe_comments,
         }))
   };
+  //評論上傳
+  msChange = (evt) => {
+    let key = evt.target.id;
+    let data = evt.target.value;
+    this.setState({
+        [key]: data
+    })
+  }
+  msSend = () =>{
+    fetch('http://localhost:3000/api/comment_upload', { 
+      method: 'POST',
+      mode:"cors",
+      credentials: 'include',
+      headers: new Headers({
+          'Content-Type': 'application/json'
+      }),
+      body: JSON.stringify({
+        comment:this.state.comment,
+        recipe_id:this.state.recipe_id,
+      }),
+    }).then(() => {
+        this.setState({comment:""})
+        this.getRecipe_comments(this.state.recipe_id);
+    })
+  }
   //抓session會員nickname
   getCommunitys = () => {
     fetch("http://localhost:3000/api/nickname_comment", {  
@@ -141,22 +141,22 @@ getRecipe_member = (id) => {
   }))
 }
 
-  allAddCart = (evt) => {
-    evt.preventDefault();
-    fetch("http://localhost:3000/cart/allAddCart", {
-      method: 'POST',
-      mode: "cors",
-      credentials: 'include',
-      headers: new Headers({'Content-Type': 'application/json'}),
-        body: JSON.stringify({products: this.state.ingredients})
-      })
-      .then(res => res.json())
-      .then(message => console.log(message))
-      .then(message => this.props.getCart())
-      
-  }
+allAddCart = (evt) => {
+  evt.preventDefault();
+  fetch("http://localhost:3000/cart/allAddCart", {
+    method: 'POST',
+    mode: "cors",
+    credentials: 'include',
+    headers: new Headers({'Content-Type': 'application/json'}),
+      body: JSON.stringify({products: this.state.ingredients})
+    })
+    .then(res => res.json())
+    .then(message => console.log(message))
+    .then(message => this.props.getCart())
+    
+}
 
-  componentDidMount(){
+componentDidMount(){
     //食譜單筆資料
     let id = this.props.match.params.id
     this.setState({recipe_id:this.props.match.params.id})
@@ -181,8 +181,8 @@ getRecipe_member = (id) => {
       return res.json();
     }).then((a) => {
       if (a.login == 1) {
-        var comment = document.getElementById('comment')
         var blog = document.getElementById('nouser_name');
+        var comment = document.getElementById('comment')
         blog.style.display = 'none';
         comment.disabled = false;
       } else {
@@ -403,11 +403,13 @@ getRecipe_member = (id) => {
             <main className="comment_wrap d-flex container">
               <img className="profile_pic" src={require("./images/foodtopia_profile_pic.png")} />
               <div className="comment_area">
+              {/* 抓會員暱稱 */}
               {this.state.nicknames.map(nickname=>
                 <span className="user_name">{nickname.nick_name}</span>
               )}
-                <span id="nouser_name" style={{display:'block'}}>請先登入</span>
+              <span id="nouser_name" style={{display:'block'}}>請先登入</span>
                 <div className="d-flex align-items-end">
+                  {/* 評論輸入 */}
                   <textarea className="comment_input" placeholder="請在這裡輸入您對這個食譜的想法!" id="comment" value={this.state.comment} onChange={this.msChange} disabled></textarea>
                   <button className="comment_send btn btn-primary" onClick={this.msSend}>送出</button>
                 </div>

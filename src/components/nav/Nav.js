@@ -32,7 +32,6 @@ class Nav extends Component {
   //   })
   // }
   handleHover = () => {
-    // alert('ok')
     fetch('http://localhost:3000/session/info', {
       method: 'GET',
       credentials: 'include'
