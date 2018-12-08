@@ -6,41 +6,31 @@ import $ from 'jquery';
 class Fix_button extends Component {
     constructor(props) {
       super(props)
-      //修改個人社群->更新input
-      this.initState = {
-        id: "",
-        facebook: "",
-        instagram: "",
-        google_plus: "",
-        youtube:"",
-        email:"",
-    }
       this.state = {
         //上傳圖片檔案
         selectedFile: null,
         //上傳圖片檔名
         img_name:"",
-        imgups:[],
         //修改個人社群
         id: "",
         facebook:"",
         instagram:"",
         google_plus:"",
         youtube:"",
-        email:"",
-        // communitys: [],
-        // community: this.initState,
+        welcome:"",
+        introduction:"",
         //修改食譜
         filter_months:[],
-        menus:[],
+        // menus:[],
+        
     }
 }
 //修改按鈕特效
 click(){
     $(".fix_div").toggleClass("open");
     $(".fix_div").toggleClass("close");
-    
 }
+
 // onchange圖片與檔名
 fileSelectedHandler = evt => {
     //圖片檔案
@@ -51,41 +41,34 @@ fileSelectedHandler = evt => {
     this.setState({
         img_name:evt.target.files[0].name
     })
+}//傳父層
+fileUploadHandler = evt =>{
+    this.props.fileUploadHandler(this.state);
+    evt.preventDefault();
+}
 
-}
-//修改會員圖片
-//onclick上傳圖片   圖片上傳卡會員sid輸入
-fileUploadHandler = () =>{
-    const formdata = new FormData();
-    formdata.append('image',this.state.selectedFile,this.state.selectedFile.name);
-    fetch("http://localhost:3000/imgup/upload",{
-        method:"POST",
-        body:formdata
-    }).then(function(res){
-        return res.json();
+// welcome修改
+welcomeVal = evt =>{
+    this.setState({
+        welcome:evt.target.value
     })
-    // //上傳圖片檔名
-    // fetch('http://localhost:3000/imgup/upload_name', { //+sid
-    //     method: 'PUT',
-    //     body: JSON.stringify({img_name:this.state.img_name}),
-    //     headers: new Headers({
-    //         'Content-Type': 'application/json'
-    //     })
-    // }).then(res => res.json())
-    // .then(//刷新頁面
-    //     window.location.replace('http://localhost:3001/new_blog')
-    // )
-    fetch('http://localhost:3000/imgup/upload_name', {
-        method: 'POST',
-        body: JSON.stringify({img_name:this.state.img_name}),
-        headers: new Headers({
-            'Content-Type': 'application/json'
-        })
-    }).then(res => res.json())
-    .then(
-        window.location.replace('http://localhost:3001/new_blog')
-    )
+}//傳父層
+welcome = evt =>{
+    this.props.welcome(this.state);
+    evt.preventDefault();
 }
+
+// introduction修改
+introductionVal = evt =>{
+    this.setState({
+        introduction:evt.target.value
+    })
+}//傳父層
+introduction = evt =>{
+    this.props.introduction(this.state);
+    evt.preventDefault();
+}
+
 //修改個人社群連結
 handleChange = (evt) => {
     let key = evt.target.id;
@@ -93,30 +76,32 @@ handleChange = (evt) => {
     this.setState({
         [key]: data
     })
-    console.log(this.state.facebook)
+}//傳父層
+update = evt =>{
+    this.props.update(this.state);
+    evt.preventDefault();
 }
-// update = (evt) => {
-//     // this.props.update(this.state);
-//     evt.preventDefault();
-// }
-// add = (evt) => {
-//     // this.props.add(this.state);
-//     evt.preventDefault();
-// }
-// // static getDerivedStateFromProps(props, state) {
-// //     if (props.modifyData.id !== state.id) {
-// //         return {
-// //             id: props.modifyData.id,
-// //             facebook: props.modifyData.facebook,
-// //             instagram: props.modifyData.instagram,
-// //             google_plus: props.modifyData.google_plus,
-// //             youtube: props.modifyData.youtube,
-// //             email: props.modifyData.email
-// //         }
-// //     }
-// //     return null;
-// // }
 
+//communitys讀取
+getCommunitys()  {
+    fetch("http://localhost:3000/imgup/upload_community", {  
+        method: 'GET',
+        mode:"cors",
+        credentials: 'include',})
+    .then(res => res.json())
+    .then(communitys => this.setState({ 
+            facebook:communitys[0].facebook,
+            instagram:communitys[0].instagram,
+            google_plus:communitys[0].google_plus,
+            youtube:communitys[0].youtube,
+    }))
+}
+
+componentDidMount(){
+    this.getCommunitys()
+    this.getfilter_months(); 
+    window.scrollTo(0,0);
+}
 //修改食譜
 getfilter_months(){
     fetch("http://localhost:3000/upload/upload_date/")
@@ -131,24 +116,22 @@ getfilter_months(){
 //         .then(menus => this.setState({
 //             menus: menus,
 //         }))
-// }
-componentDidMount(){
-    this.getfilter_months();
-}
+// // }
+
     render() {
         return (
             <React.Fragment>
                 <div className="fix_div close">
                     <div className="fix_div_modify ">
-                        <input type="text" className="header_modify" placeholder="請編輯歡迎用語" /><br />
-                        <div className="btn_modify">修改</div>
+                        <input type="text" onChange={this.welcomeVal} className="header_modify" placeholder="請編輯歡迎用語" /><br />
+                        <div className="btn_modify" onClick={this.welcome}>修改</div>
                     </div>
                     <div className="fix_div_modify_2 ">
-                        <textarea type="text" className="header_modify" placeholder="請編輯部落格簡介" /><br />
-                        <div className="btn_modify">修改</div>
+                        <textarea type="text" onChange={this.introductionVal} className="header_modify" placeholder="請編輯部落格簡介" /><br />
+                        <div className="btn_modify" onClick={this.introduction}>修改</div>
                     </div>
                     <div className="btn_3 d-flex ">
-                        <a className="btn_modify_3" href="/up_load">上傳食譜</a>
+                        <Link className="btn_modify_3" to="/up_load">上傳食譜</Link>
                         <button className="btn_modify_3" data-toggle="modal" data-target="#exampleModal2" to="#">更換圖片</button>
                     </div>
                     <div className="btn_3 d-flex ">
@@ -198,7 +181,7 @@ componentDidMount(){
                             <div className="facebook_link input_br">
                                 <span>Facebook：</span>
                                 <div className="">
-                                    <input type="text" className="input" value={this.state.facebook} onChange={this.handleChange} id="facebook" placeholder="facebook社群"/>
+                                    <input type="text" className="input" value={this.state.facebook} onChange={this.handleChange} id="facebook" placeholder="Facebook社群"/>
                                 </div>
                             </div>
                             <div className="instagram_link input_br">
@@ -219,22 +202,16 @@ componentDidMount(){
                                     <input type="text" className="input" value={this.state.youtube} onChange={this.handleChange} id="youtube" placeholder="youtube頻道"/>
                                 </div>
                             </div>
-                            <div className="email_link input_br">
+                            {/* <div className="email_link input_br">
                                 <span>Email：</span>
                                 <div className="">
                                     <input type="email" className="input" value={this.state.email} onChange={this.handleChange} id="email" placeholder="個人email"/>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                            {this.props.modifyType === "add" ? 
-                            <button type="button" onClick={this.add} className="btn btn-danger">
-                            新增
-                            </button>
-                            : <button type="button" onClick={this.update} className="btn btn-danger">
-                                修改
-                            </button>}
+                            <button type="button" onClick={this.update} className="btn btn-danger">修改</button>
                         </div>
                         </div>
                     </div>

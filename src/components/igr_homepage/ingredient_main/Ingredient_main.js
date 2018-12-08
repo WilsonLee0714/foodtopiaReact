@@ -5,9 +5,9 @@ class Ingredient_main extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="container">
+        <div className="b_container container">
         <div className="topicSec">
-            <div className="daily_active ">
+            <div className="daily_active">
               <h3>搶鮮活動</h3>
               <p>此為搶先活動內容</p>
             </div>
@@ -18,7 +18,6 @@ class Ingredient_main extends Component {
               <h3>搶鮮特價食材</h3>
             </div>
           </div>
-
           <img className="bmain_img" src={require('./image/igr_main.jpg')} alt=""/>
         </div>
       </React.Fragment>

@@ -91,6 +91,7 @@ class Register extends Component {
             ok.textContent ='';
         } else {
             console.log(IsEmail(email.value))
+            localStorage.setItem('email',email.value);
             registerFrom.submit();
         }
     };

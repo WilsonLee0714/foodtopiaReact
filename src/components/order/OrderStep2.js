@@ -5,45 +5,24 @@ import "./Order.scss";
 class OrderStep2 extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      fields:this.props.fields,
-      products: [],
-      amount: ""
-    }
+    this.state = {}
   }
 
   checkout = (evt) => {
     evt.preventDefault();
-    fetch("http://localhost:3000/order/order", {
-        method: 'POST',
-        mode: "cors",
-        headers: new Headers({
-          'Content-Type': 'application/json'
-      }),
-        body: JSON.stringify(this.state)
-        })
-        .then(res => res.json())
-        .then(data => console.log(data))
-        .catch(function (err) {
-          console.log(err);
-      })
-  }
 
-  getCart = () => {
-    let sid = this.state.fields.sid;
-    fetch("http://localhost:3000/cart/cart", {
-        method: 'POST',
-        mode: "cors",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-          body: JSON.stringify({sid: sid})
-        })
-        .then(res => res.json())
-        .then(cart => {
-          let amount = cart.reduce((amount, product) => (amount += product.price * product.qty), 0)
-          this.setState({products: cart, amount: amount})
-        })
+    fetch("http://localhost:3000/order/order", {
+      method: 'POST',
+      mode: "cors",
+      headers: new Headers({'Content-Type': 'application/json'}),
+        body: JSON.stringify({fields: this.props.fields, products: this.props.products, amount: this.props.amount})
+      })
+      .then(res => res.json())
+      .then(data => console.log(data))
+      .then(data => this.props.step(3))
+      .catch(err => {
+        console.log(err);
+      })
   }
 
   lastStep = (evt) => {
@@ -56,10 +35,10 @@ class OrderStep2 extends Component {
 
   render() {
     const ymd = () => {
-      let day = this.state.fields.date,
-        time = this.state.fields.time,
+      let day = this.props.fields.date,
+        time = this.props.fields.time,
         year = day.getFullYear(),
-        month = day.getMonth(),
+        month = day.getMonth() + 1,
         date = day.getDate(),
         hours = time.getHours();
       return `${year}/${month}/${date} ${hours}:00 前送達`
@@ -79,26 +58,26 @@ class OrderStep2 extends Component {
               <Col xs={2} className='productTitle'>總價</Col>
             </Row>
             {this
-              .state
+              .props
               .products
-              .map(product => <Row className='checkInfo' > 
-              <Col
-                xs={{
-                size: 2,
-                offset: 1
-              }}
-                className='productDetail'>
-                <img className='productImg' src={require(`../cart/images/${product.product_img}.jpeg`)}/>
-              </Col> 
-              <Col xs = {3}
-              className = 'px-0' > 
-              <Col className='productName'>{product.product_name}</Col> 
-              <Col className='productSpec'>{product.spec}</Col>
-              </Col > 
-              <Col xs={2} className='productDetail'>{product.qty}</Col>
-              <Col xs={2}
-              className='productDetail'>NT$ {product.price}</Col>
-              <Col xs={2} className='productDetail'>NT$ {product.qty*product.price}</Col > 
+              .map(product => <Row className='checkInfo' key={product.sid}>
+                <Col
+                  xs={{
+                  size: 2,
+                  offset: 1
+                }}
+                  className='productDetail'>
+                  <img
+                    className='productImg'
+                    src={require(`../igr_listpage/igr_img/${product.product_img}.jpg`)}/>
+                </Col>
+                <Col xs={3} className='px-0'>
+                  <Col className='productName'>{product.product_name}</Col>
+                  <Col className='productSpec'>{product.spec}</Col>
+                </Col >
+                <Col xs={2} className='productDetail'>{product.qty}</Col>
+                <Col xs={2} className='productDetail'>NT$ {product.price}</Col>
+                <Col xs={2} className='productDetail'>NT$ {product.qty * product.price}</Col >
               </Row>)}
             <hr className='line1'/>
             <Row className='checkInfo'>
@@ -109,7 +88,7 @@ class OrderStep2 extends Component {
               }}
                 className='amountTitle'>結帳總金額：
               </Col>
-              <Col xs={2} className='amount'>NT$ {this.state.amount}
+              <Col xs={2} className='amount'>NT$ {this.props.amount}
               </Col>
             </Row>
           </Container>
@@ -119,27 +98,27 @@ class OrderStep2 extends Component {
           <div className='titleBackground'></div>
           <Row className='checkInfo'>
             <Col xs={2} className='inputLabel'>姓名：</Col>
-            <Col xs={10} className='colPadding'>{this.state.fields.name}</Col>
+            <Col xs={10} className='colPadding'>{this.props.fields.name}</Col>
           </Row>
 
           <Row className='checkInfo'>
             <Col xs={2} className='inputLabel'>市話：</Col>
-            <Col xs={10} className='colPadding'>{this.state.fields.tel}</Col>
+            <Col xs={10} className='colPadding'>{this.props.fields.tel}</Col>
           </Row>
 
           <Row className='checkInfo'>
             <Col xs={2} className='inputLabel'>手機：</Col>
-            <Col xs={10} className='colPadding'>{this.state.fields.mobile}</Col>
+            <Col xs={10} className='colPadding'>{this.props.fields.mobile}</Col>
           </Row>
 
           <Row className='checkInfo'>
             <Col xs={2} className='inputLabel'>地址：</Col>
-            <Col xs={10} className='colPadding'>{`${this.state.fields.city} ${this.state.fields.dist} ${this.state.fields.address}`}</Col>
+            <Col xs={10} className='colPadding'>{`${this.props.fields.zipCode} ${this.props.fields.county} ${this.props.fields.district} ${this.props.fields.address}`}</Col>
           </Row>
 
           <Row className='checkInfo'>
             <Col xs={2} className='inputLabel'>寄送方式：</Col>
-            <Col xs={10} className='colPadding'>{this.state.fields.ship}</Col>
+            <Col xs={10} className='colPadding'>{this.props.fields.ship}</Col>
           </Row>
 
           <Row className='checkInfo'>
@@ -149,12 +128,12 @@ class OrderStep2 extends Component {
 
           <Row className='checkInfo'>
             <Col xs={2} className='inputLabel'>備註事項：</Col>
-            <Col xs={10} className='colPadding'>{this.state.fields.note}</Col>
+            <Col xs={10} className='colPadding'>{this.props.fields.note}</Col>
           </Row>
 
           <Row className='checkInfo'>
             <Col xs={2} className='inputLabel'>付款方式：</Col>
-            <Col xs={10} className='colPadding'>{this.state.fields.pay}</Col>
+            <Col xs={10} className='colPadding'>{this.props.fields.pay}</Col>
           </Row>
         </div>
         <Row>
@@ -173,11 +152,8 @@ class OrderStep2 extends Component {
   }
   componentDidMount() {
     window.scrollTo(0, 0);
-    this.getCart();
   }
-  componentDidUpdate(){
-    console.log(this.state);
-    console.log(this.props.fields)
+  componentDidUpdate() {
   }
 }
 

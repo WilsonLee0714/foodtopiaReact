@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {BrowserRouter, Route, Link} from "react-router-dom";
+import React, { Component } from 'react';
+import { BrowserRouter, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import Nav from "./components/nav/Nav.js";
@@ -15,6 +15,8 @@ import MyService from './components/myService/MyService.js';
 import Footer from './components/footer/Footer.js';
 import HomePage from './components/homePage/HomePage.js';
 import Login from './components/login/Login.js';
+import Cart from "./components/cart/Cart.js";
+
 //食材元件匯入
 import Ingridient_homepage from './components/igr_homepage/Ingridient_homepage';
 import Ingridient_listpage from './components/igr_listpage/Ingridient_listpage';
@@ -44,22 +46,81 @@ import Recipe_head from './components/recipe_head/recipe_head';
 // import React_search from './components/recipe_list/search_bar/react-search';
 //部落格匯入
 import Up_load from "./components/up_load/up_load";
-// import Test from "./components/test/test";
 import New_blog from "./components/new_blog/new_blog";
 import Month_blog from "./components/new_blog/month_blog";
 require('slick-carousel');
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      products: [],
+      amount:''
+    }
+  }
+
+  getCart = () => {
+    fetch("http://localhost:3000/cart/cart", {
+      method: 'GET',
+      mode: "cors",
+      credentials: 'include',
+      })
+      .then(res => res.json())
+      .then(cart => {
+        let amount = cart.reduce((amount, product) => (amount += product.price * product.qty), 0)
+        this.setState({products: cart, amount: amount})
+        console.log(cart)
+      })
+}
+
+addCart = (evt) => {
+  evt.preventDefault();
+  let product_id = evt.target.dataset.product_id
+  
+    fetch("http://localhost:3000/cart/addCart/" + product_id, {
+      method: 'GET',
+      mode: "cors",
+      credentials: 'include',
+      })
+      .then(res => res.json())
+      .then(message => console.log(message))
+      .then(() => this.getCart())  
+}
+
+cartToggle = () => {
+  fetch('http://localhost:3000/session/info', {
+    method: 'GET',
+    credentials: 'include'
+  }).then(function (res) {
+    return res.json();
+  }).then((session) => {
+    if (session.login == 1) {
+      let cart = document.querySelector('#cart');
+      cart.classList.toggle("openCart");
+    } else {
+      window.location.assign('/login');
+    }
+  })
+}
+
+componentDidMount = () => {
+  this.getCart();
+}
+componentDidUpdate = () => {
+
+}
+
   render() {
     return (
       <BrowserRouter>
         <React.Fragment>
-          <Nav/>
-          <Route path="/homePage" component={HomePage}/>
-          <Route path="/login" component={Login}/>
-          <Route path="/register" component={Register}/>
-          <Route path="/registerSuccessful" component={RegisterSuccessful}/>
-          <Route path="/order" component={Order} />
+          <Nav cartToggle={this.cartToggle} getCart={this.getCart} />
+          <Cart cartToggle={this.cartToggle} getCart={this.getCart} products={this.state.products} amount={this.state.amount}/>
+          <Route path="/homePage" component={HomePage} />
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+          <Route path="/registerSuccessful" component={RegisterSuccessful} />
+          <Route path="/order" render={(props) => <Order  {...props}  getCart={this.getCart} products={this.state.products} amount={this.state.amount}/>}/>
           <div className="container d-flex">
             <Route path="/memberCenter" component={MemberCenter} />
             <Route path="/memberCenter/BasicInfo" component={BasicInfo} />
@@ -71,18 +132,18 @@ class App extends Component {
           {/* 食材 */}
           <Route path="/ingridient_hompage" component={Ingridient_homepage} />
           <Route path="/ingridient_listpage" component={Ingridient_listpage} />
-          <Route path="/ingridient_listpage/fruit" component={Fruit} />
-          <Route path="/ingridient_listpage/meat" component={Meat} />
-          <Route path="/ingridient_listpage/vegetable" component={Vegetable} />
-          <Route path="/ingridient_listpage/other" component={Other} />
-          <Route path="/ingridient_listpage/seafood" component={Seafood} />
-          <Route path="/ingridient_listpage/dairy" component={Dairy} />
-          <Route path="/ingridient_listpage/dairy_board/:id?/:it?/:pic?" component={Dairy_board} />
-          <Route path="/ingridient_listpage/fruit_board/:id?/:it?/:pic?" component={Fruit_board} />
-          <Route path="/ingridient_listpage/meat_board/:id?/:it?/:pic?" component={Meat_board} />
-          <Route path="/ingridient_listpage/other_board/:id?/:it?/:pic?" component={Other_board} />
-          <Route path="/ingridient_listpage/seafood_board/:id?/:it?/:pic?" component={Seafood_board} />
-          <Route path="/ingridient_listpage/vegetable_board/:id?/:it?/:pic?" component={Vegetable_board} />
+          <Route path="/ingridient_listpage/fruit" render={(props) => <Fruit {...props} addCart={this.addCart} />}/>
+          <Route path="/ingridient_listpage/meat" render={(props) => <Meat {...props} addCart={this.addCart} />}/>
+          <Route path="/ingridient_listpage/vegetable" render={(props) => <Vegetable {...props} addCart={this.addCart} />}/>
+          <Route path="/ingridient_listpage/other" render={(props) => <Other {...props} addCart={this.addCart} />}/>
+          <Route path="/ingridient_listpage/seafood" render={(props) => <Seafood {...props} addCart={this.addCart} />}/>
+          <Route path="/ingridient_listpage/dairy" render={(props) => <Dairy {...props} addCart={this.addCart} />}/>
+          <Route path="/ingridient_listpage/dairy_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?" component={Dairy_board} />
+          <Route path="/ingridient_listpage/fruit_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?" component={Fruit_board} />
+          <Route path="/ingridient_listpage/meat_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?" component={Meat_board} />
+          <Route path="/ingridient_listpage/other_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?" component={Other_board} />
+          <Route path="/ingridient_listpage/seafood_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?" component={Seafood_board} />
+          <Route path="/ingridient_listpage/vegetable_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?" component={Vegetable_board} />
           {/* 食譜 */}
           <Route path="/recipe_head" component={Recipe_head} />
           <Route path="/recipe_head/recipe_list" component={Recipe_list} />
@@ -92,17 +153,19 @@ class App extends Component {
           <Route path="/recipe_category/3" component={Recipe_category_occasion} />
           <Route path="/recipe_category/4" component={Recipe_category_screening} />
           <Route path="/recipe_category/5" component={Recipe_category_time} />
-          <Route path="/recipe_head/recipe_category" component={Recipe_category} />
-          <Route path="/recipe_page" component={Recipe_page} />
+          {/* <Route path="/recipe_head/recipe_category" component={Recipe_category} /> */}
+          {/* <Route path="/recipe_page" render={(props) => <Recipe_page {...props} getCart={this.getCart} />}/> */}
+
           {/* 部落格 */}
           <Route path="/up_load" component={Up_load} />
-          <Route path="/page/:id" component={Recipe_page} />
+          <Route path="/page/:id" render={(props) => <Recipe_page {...props} getCart={this.getCart} />}/>
           <Route path="/new_blog" component={New_blog} />
           <Route path="/month/:id" component={Month_blog} />
           <Footer/>
         </React.Fragment>
       </BrowserRouter>
     );
+   
   }
 }
 

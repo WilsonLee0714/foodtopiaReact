@@ -78,11 +78,13 @@ paging = e => {  //顯示頁數資料
 }
 
 getProducts(page) {
-    fetch("http://localhost:3000/foodtopia/menu/" + page)
+    fetch("http://localhost:3000/foodtopia/menu/" + page, {method: 'GET',mode: "cors",
+    credentials: 'include'})
       .then(res => res.json())
       .then(menus => {
+          console.log(menus)
         this.setState({
-          menus: menus.datas,
+          menus: menus.datas ,
           totalPage: Math.ceil(menus.TotalCount / this.state.perPage), //計算出總共幾頁
           currentPage: page
         })
@@ -161,7 +163,7 @@ getProducts(page) {
                         <div key={menu.id} className="col-4">
                             <div className="food_recipe">
                                 <div className="recipe_img">
-                                    <a href={`/page/${menu.id}`} ><img src={require(`./img/${menu.menu_img}.jpg`)} alt="" /></a>
+                                    <Link to={`/page/${menu.id}`} ><img src={require(`./img/${menu.menu_img}.jpg`)} alt="" /></Link>
                                 </div>
                                 <h6>{menu.menu}</h6>
                                 <p className="line"></p>

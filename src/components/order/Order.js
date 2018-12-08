@@ -4,12 +4,16 @@ import {BrowserRouter, Route, Link} from "react-router-dom";
 import "./Order.scss";
 import OrderStep1 from "./OrderStep1";
 import OrderStep2 from "./OrderStep2";
+import Order_successful from "./Order_successful";
 
 class Order extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      step: 1
+      fields: [],
+      step: 1,
+      products: this.props.products,
+      amount: this.props.amount
     };
   }
 
@@ -27,7 +31,9 @@ class Order extends Component {
         case 1:
           return <OrderStep1 fields={this.state.fields} save={this.save} step={this.step}/>;
         case 2:
-          return <OrderStep2 fields={this.state.fields} save={this.save} step={this.step}/>;
+          return <OrderStep2 fields={this.state.fields} save={this.save} step={this.step} getCart={this.props.getCart} products={this.state.products} amount={this.state.amount}/>;
+        case 3:
+          return <Order_successful getCart={this.props.getCart}/>;
       }
     }
     const step1Class = () => {
@@ -111,7 +117,6 @@ class Order extends Component {
       }
     }
     return (
-      <BrowserRouter>
         <React.Fragment>
           <Container className='orderPage'>
             <Row className='orderStep'>
@@ -148,10 +153,10 @@ class Order extends Component {
             <Route path="/order/step2"  component={(props) => <OrderStep2 {...props} fields={this.state.fields}/>}/> */}
           </Container>
         </React.Fragment>
-      </BrowserRouter>
     )
   }
   componentDidMount() {
+    console.log(this.state)
   }
   componentDidUpdate() {
     console.log(this.state)
