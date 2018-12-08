@@ -45,6 +45,13 @@ class Recipe_list extends Component {
             })}         
             
           </div> */}
+          <main className="subCate_nav container d-flex justify-content-center">
+            <Link className="mx-3" to="/country/1">日韓料理</Link>
+            <Link className="mx-3" to="/country/2">中式料理</Link>
+            <Link className="mx-3" to="/country/3">台灣料理</Link>
+            <Link className="mx-3" to="/country/4">西式料理</Link>
+            <Link className="mx-3" to="/country/5">東南亞料理</Link>
+          </main>
           <div className="product_slider">
             <Product_slider/>
           </div>

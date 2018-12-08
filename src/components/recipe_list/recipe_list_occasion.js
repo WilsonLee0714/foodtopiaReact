@@ -33,11 +33,20 @@ class Recipe_list extends Component {
           <div  className="container d-flex justify-content-center mt-5">
             <Link to="/country" className="category_link col-2">異國料理</Link>
             <Link to="/serving" className="category_link col-2">選擇人數</Link>
-            <Link to="/occasion" className="category_link col-2">場合料理</Link>
+            <Link to="/occasion" className="category_link col-2">場合料理o</Link>
             <Link to="/difficult" className="category_link col-2">烹飪難度</Link>
             <Link to="/time" className="category_link col-2">烹調時間</Link>
             
           </div >
+          <main className="subCate_nav container d-flex justify-content-center">
+            <Link className="mx-3" to="/country/1">早午餐</Link>
+            <Link className="mx-3" to="/country/2">素食</Link>
+            <Link className="mx-3" to="/country/3">宵夜</Link>
+            <Link className="mx-3" to="/country/4">野餐</Link>
+            <Link className="mx-3" to="/country/5">派隊</Link>
+            <Link className="mx-3" to="/country/5">健康輕食</Link>
+            <Link className="mx-3" to="/country/5">節慶</Link>
+          </main>
           {/* <div className="container d-flex justify-content-center mt-5">
             {CategoryList.map((category)=>{
                 return <Link className="category_link col-2" to={`/recipe_category/${category.category_id}`}  key={category.category_id}>{category.category}</Link>
