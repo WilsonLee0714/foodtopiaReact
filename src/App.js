@@ -152,7 +152,7 @@ componentDidUpdate = () => {
           <Route path="/recipe_category/5" component={Recipe_category_time} />
           {/* <Route path="/recipe_head/recipe_category" component={Recipe_category} /> */}
 
-          <Route path="/recipe_page" render={(props) => <Recipe_page {...props} getCart={this.getCart} />}/>
+          {/* <Route path="/recipe_page" render={(props) => <Recipe_page {...props} getCart={this.getCart} />}/> */}
 
           {/* 部落格 */}
           <Route path="/up_load" component={Up_load} />

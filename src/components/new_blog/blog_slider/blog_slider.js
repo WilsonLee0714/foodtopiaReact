@@ -10,21 +10,18 @@ class New_blog extends Component {
         return (
             <React.Fragment>
                 {/* Header */}
-                {this.props.imgups.map(imgup=>
-                 <div key={imgup.id} className="background">
-                    <img src={(`http://localhost:3000/imgup/${imgup.img_name}`)} alt="" />
-                </div>
+                {this.props.communitys.map(community=>
+                    <div key={community.id}>
+                        <div  className="background">
+                            <img src={(`http://localhost:3000/imgup/${community.img_name}`)} alt="" />
+                        </div>
+                        {/* 歡迎語 */}
+                        <div className="background_text">
+                            <h2>{community.welcome}</h2>
+                            <p>{community.introduction}</p>
+                        </div>
+                    </div>
                 )}
-                {/* 歡迎語 */}
-                <div className="background_text">
-                    {this.props.welcomes.map(welcome=>
-                        <h2>{welcome.welcome}</h2>
-                    )}
-                    {this.props.introductions.map(introduction=>
-                         <p>{introduction.introduction}</p>
-                    )}
-                   
-                </div>
             </React.Fragment>
         )
     }

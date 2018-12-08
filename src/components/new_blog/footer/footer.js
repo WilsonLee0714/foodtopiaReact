@@ -18,7 +18,6 @@ class Footer extends Component {
                                     <a className="link_black" href={(`${community.instagram}`)}><i className="icon fab fa-instagram col-2"></i></a>
                                     <a className="link_black" href={(`${community.google_plus}`)}><i className="icon fab fa-google-plus-g col-2"></i></a>
                                     <a className="link_black" href={(`${community.youtube}`)}><i className="icon fab fa-youtube col-2"></i></a>
-                                    <a className="link_black" href={(`${community.email}`)}><i className="icon far fa-envelope col-2"></i></a>
                                 </div>
                             )}
                     </div>
