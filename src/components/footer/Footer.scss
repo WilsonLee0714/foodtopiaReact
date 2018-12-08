@@ -26,3 +26,20 @@ footer {
         }
     }
 }
+@media screen and (max-width:992px){
+    .footerRWD{
+        flex-direction: column;
+        // justify-content: center;
+        // align-items: center;
+    }
+}
+@media screen and (max-width:576px){
+            .footerRWD{
+                flex-direction: column-reverse;
+                // justify-content: center;
+                // align-items: center;
+            }
+    // .RWD2 {
+    //     flex-direction: column;
+    // }
+}

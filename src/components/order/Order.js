@@ -10,6 +10,7 @@ class Order extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      fields: [],
       step: 1,
       products: this.props.products,
       amount: this.props.amount
@@ -30,9 +31,9 @@ class Order extends Component {
         case 1:
           return <OrderStep1 fields={this.state.fields} save={this.save} step={this.step}/>;
         case 2:
-          return <OrderStep2 fields={this.state.fields} save={this.save} step={this.step} getCart={this.getCart} products={this.state.products} amount={this.state.amount}/>;
+          return <OrderStep2 fields={this.state.fields} save={this.save} step={this.step} getCart={this.props.getCart} products={this.state.products} amount={this.state.amount}/>;
         case 3:
-          return <Order_successful/>;
+          return <Order_successful getCart={this.props.getCart}/>;
       }
     }
     const step1Class = () => {

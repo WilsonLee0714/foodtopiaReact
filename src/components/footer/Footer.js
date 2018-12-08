@@ -10,8 +10,8 @@ class Footer extends Component {
     return (
       <React.Fragment>
         <footer>
-          <div className='container d-flex justify-content-between py-5'>
-            <div className='d-flex'>
+          <div className='container d-flex justify-content-between py-5 footerRWD'>
+            <div className='d-flex RWD2'>
               <div className='pr-4'>
                 <ul>
                   <li>首頁</li>

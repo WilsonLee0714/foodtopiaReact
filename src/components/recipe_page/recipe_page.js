@@ -117,7 +117,8 @@ class Recipe_page extends Component {
       })
       .then(res => res.json())
       .then(message => console.log(message))
-      .then(() => this.props.getCart())
+      .then(message => this.props.getCart())
+      
   }
 
   componentDidMount(){
