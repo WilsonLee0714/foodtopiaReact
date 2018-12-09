@@ -36,6 +36,7 @@ $title_fontWeight: 700;
                 font-size: $p_size_S;
             }
             .like_btn{
+                position: relative;
                 margin: 0 10px 0px 50px;
                 border: 1px solid $color_red;
                 padding: 5px;
@@ -44,27 +45,30 @@ $title_fontWeight: 700;
                 border-radius: 5px;
                 background-color: #fff;
                 cursor: pointer;
-                &:hover{
+                .love{
+                    height: 100%;
                     .like_img{
-                        display: none;
+                        margin-left: 10px;
+                        width: 25px;
                     }
+                    .like_text{
+                        font-size: 16px;
+                        line-height: 25px;
+                        margin-left: 10px;
+                    }
+                }
+                .loved{
+                    position: absolute;
+                    height: 100%;
+                    top: 13%;
+                    left: 5.2%;
                     .liked_img{
-                        display: inline-block;
-                        margin-left: 25px;
-                        // text-align: center;
+                        margin-left: 10px;
+                        width: 25px;
                     }
-                    
                 }
-                .like_img{
-                    height: 25px;
-                }
-                .liked_img{
+                .close{
                     display: none;
-                }
-                .like_text{
-                    font-size: 16px;
-                    line-height: 25px;
-                    margin-left: 10px;
                 }
             }
             

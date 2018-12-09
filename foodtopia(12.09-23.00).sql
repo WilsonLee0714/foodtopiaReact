@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018 年 12 月 08 日 04:40
+-- 產生時間： 2018 年 12 月 09 日 15:56
 -- 伺服器版本: 10.1.36-MariaDB
 -- PHP 版本： 7.1.22
 
@@ -41,7 +41,37 @@ CREATE TABLE `cart` (
 
 INSERT INTO `cart` (`sid`, `member_sid`, `product_id`, `qty`) VALUES
 (1, 0, '1101', 1),
-(2, 0, '1102', 1);
+(2, 0, '1102', 1),
+(19, 4, '6613', 1),
+(20, 4, '6113', 1),
+(21, 4, '6117', 1),
+(22, 4, '6112', 1),
+(23, 4, '5107', 1),
+(24, 4, '1515', 1),
+(25, 4, '3628', 1),
+(26, 4, '3203', 1),
+(27, 4, '3629', 1),
+(28, 4, '3610', 1),
+(29, 4, '3630', 1),
+(30, 4, '3631', 1),
+(31, 4, '2201', 1),
+(32, 4, '3607', 1),
+(33, 4, '3608', 1),
+(34, 4, '3635', 1),
+(35, 6, '1515', 1),
+(36, 6, '6301', 1),
+(37, 6, '3204', 1),
+(38, 6, '6613', 1),
+(39, 6, '6130', 1),
+(40, 6, '6705', 1),
+(41, 6, '6113', 1),
+(42, 6, '3634', 1),
+(43, 6, '3610', 1),
+(44, 6, '6608', 1),
+(45, 6, '3631', 1),
+(46, 6, '3607', 1),
+(47, 6, '3608', 1),
+(48, 6, '3635', 1);
 
 -- --------------------------------------------------------
 
@@ -98,9 +128,6 @@ INSERT INTO `comment` (`id`, `comment`, `recipe_id`, `members_id`, `comment_name
 (25, '321', 2, 74, 'OPQ'),
 (26, '333', 2, 74, 'OPQ'),
 (27, '222', 2, 74, 'OPQ'),
-(28, '123', 0, 74, 'OPQ'),
-(29, '1231', 0, 74, 'OPQ'),
-(30, '12313', 0, 74, 'OPQ'),
 (31, '123', 1, 74, 'OPQ'),
 (32, '123', 1, 74, 'OPQ'),
 (33, '123', 1, 74, 'OPQ'),
@@ -115,7 +142,13 @@ INSERT INTO `comment` (`id`, `comment`, `recipe_id`, `members_id`, `comment_name
 (42, '21234', 3, 4, 'OPQ'),
 (43, '32123', 3, 4, 'OPQ'),
 (44, '22221111', 3, 4, 'OPQ'),
-(45, '123', 4, 4, 'OPQ');
+(45, '123', 4, 4, 'OPQ'),
+(46, '1234455', 3, 4, 'OPQ'),
+(47, '123445', 5, 4, 'OPQ'),
+(48, '1234', 5, 4, 'OPQ'),
+(49, '3333', 5, 3, 'wilson'),
+(50, '333', 4, 6, 'OPQ'),
+(51, '333', 2, 3, 'wilson');
 
 -- --------------------------------------------------------
 
@@ -140,7 +173,9 @@ CREATE TABLE `community` (
 --
 
 INSERT INTO `community` (`id`, `facebook`, `instagram`, `google_plus`, `youtube`, `img_name`, `welcome`, `introduction`, `sid`) VALUES
-(21, 'https://www.youtube.com/watch?v=B3mSmLANs0U', NULL, 'https://www.youtube.com/watch?v=B3mSmLANs0U', NULL, '789.jpg', '123', 'qwe', 4);
+(21, 'https://www.youtube.com/watch?v=z7pU3iDkLCA', NULL, '', NULL, '789.jpg', '123', '123', 4),
+(23, 'https://www.youtube.com/watch?v=_xliMXUzSkw', NULL, 'https://www.youtube.com/watch?v=_xliMXUzSkw', NULL, '123.jpg', '你好你好你好你好', '你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好', 6),
+(24, NULL, NULL, NULL, NULL, 'Tifa.jpg', '請設定部落格歡迎用語', '請設定部落格簡介', 3);
 
 -- --------------------------------------------------------
 
@@ -885,6 +920,30 @@ INSERT INTO `ingredients_name` (`id`, `name_1`, `name_2`, `name_3`, `name_4`, `n
 -- --------------------------------------------------------
 
 --
+-- 資料表結構 `love`
+--
+
+CREATE TABLE `love` (
+  `id` int(11) NOT NULL,
+  `member_id` int(11) NOT NULL,
+  `recipe_id` int(11) NOT NULL,
+  `love` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
+
+--
+-- 資料表的匯出資料 `love`
+--
+
+INSERT INTO `love` (`id`, `member_id`, `recipe_id`, `love`) VALUES
+(11, 6, 1, 0),
+(12, 3, 2, 0),
+(14, 3, 1, 0),
+(15, 3, 3, 0),
+(16, 3, 4, 0);
+
+-- --------------------------------------------------------
+
+--
 -- 資料表結構 `members`
 --
 
@@ -917,8 +976,8 @@ INSERT INTO `members` (`sid`, `name`, `nick_name`, `account`, `password`, `email
 (1, '', '噴火龍!!', '1', '123', 'erw@dfg.com', 'photo-1542692422-5cb6fc2cf737.jpg', '', '', '', '', 0, '', '', '', '0000-00-00', '', '0000-00-00 00:00:00'),
 (2, '', '你好', '1', '123', '123@ok.com', '', '', '', '', '', 0, '', '', '', '0000-00-00', '', '2018-11-27 12:24:59'),
 (3, NULL, 'wilson', '1', '123', 'nash0714@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-12-05 16:29:26'),
-(4, NULL, 'OPQ', '1', 'wilson', 's28281771@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-12-07 17:06:29'),
 (5, '', '管理員', '1', '123', 'ckhtpe@gmail.com', '', '', '', '', '', 0, '', '', '', '0000-00-00', '', '0000-00-00 00:00:00'),
+(6, NULL, 'OPQ', '1', 'wilson', 's28281771@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-12-07 17:06:29'),
 (49, '', '123', '', '123', '7ee@fee.com', '', '', '', '', '', 0, '', '', '', '0000-00-00', '', '0000-00-00 00:00:00'),
 (50, '', '456', '', '456789', '456@gmail.com', '', '', '', '', '', 0, '', '', '', '0000-00-00', '', '0000-00-00 00:00:00'),
 (52, '', '使用者A', '', '123', 'dvsd@fwiof.com', 'photo-1460103841677-11ff72e1f0b9.jpg', '', '', '', '', 0, '', '', '', '0000-00-00', '', '0000-00-00 00:00:00'),
@@ -1610,6 +1669,13 @@ ALTER TABLE `ingredients_name`
   ADD UNIQUE KEY `id` (`id`);
 
 --
+-- 資料表索引 `love`
+--
+ALTER TABLE `love`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`);
+
+--
 -- 資料表索引 `members`
 --
 ALTER TABLE `members`
@@ -1692,7 +1758,7 @@ ALTER TABLE `upload_ingredients_name`
 -- 使用資料表 AUTO_INCREMENT `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- 使用資料表 AUTO_INCREMENT `category`
@@ -1704,19 +1770,25 @@ ALTER TABLE `category`
 -- 使用資料表 AUTO_INCREMENT `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- 使用資料表 AUTO_INCREMENT `community`
 --
 ALTER TABLE `community`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- 使用資料表 AUTO_INCREMENT `love`
+--
+ALTER TABLE `love`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- 使用資料表 AUTO_INCREMENT `members`
 --
 ALTER TABLE `members`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- 使用資料表 AUTO_INCREMENT `menu`
