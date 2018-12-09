@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Button, Container, Row, Col} from 'reactstrap';
-import "./Order.scss";
+import './Order.scss';
 
 class OrderStep2 extends Component {
   constructor(props) {
@@ -10,19 +10,18 @@ class OrderStep2 extends Component {
 
   checkout = (evt) => {
     evt.preventDefault();
-
-    fetch("http://localhost:3000/order/order", {
+    fetch('http://localhost:3000/order/order', {
       method: 'POST',
-      mode: "cors",
-      headers: new Headers({'Content-Type': 'application/json'}),
+      mode: 'cors',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+      },
         body: JSON.stringify({fields: this.props.fields, products: this.props.products, amount: this.props.amount})
       })
       .then(res => res.json())
-      .then(data => console.log(data))
-      .then(data => this.props.step(3))
-      .catch(err => {
-        console.log(err);
-      })
+      .then(message => console.log(message))
+      .then(() => this.props.step(3));
   }
 
   lastStep = (evt) => {
@@ -153,8 +152,7 @@ class OrderStep2 extends Component {
   componentDidMount() {
     window.scrollTo(0, 0);
   }
-  componentDidUpdate() {
-  }
+  componentDidUpdate() {}
 }
 
 export default OrderStep2;
