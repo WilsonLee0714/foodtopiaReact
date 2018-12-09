@@ -182,7 +182,7 @@ componentDidMount(){
     }).then((a) => {
       if (a.login == 1) {
         var blog = document.getElementById('nouser_name');
-        var comment = document.getElementById('comment')
+        var comment = document.getElementById('comment');
         blog.style.display = 'none';
         comment.disabled = false;
       } else {
