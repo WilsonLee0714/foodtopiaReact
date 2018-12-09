@@ -21,7 +21,6 @@ class Fix_button extends Component {
         introduction:"",
         //修改食譜
         filter_months:[],
-        // menus:[],
         
     }
 }
@@ -110,13 +109,6 @@ getfilter_months(){
         filter_months: filter_months,
     }))
 }
-// getMonthMenus(upload_time_sid) {
-//     fetch("http://localhost:3000/month/menu/"+upload_time_sid)
-//         .then(res => res.json())
-//         .then(menus => this.setState({
-//             menus: menus,
-//         }))
-// // }
 
     render() {
         return (
@@ -202,12 +194,6 @@ getfilter_months(){
                                     <input type="text" className="input" value={this.state.youtube} onChange={this.handleChange} id="youtube" placeholder="youtube頻道"/>
                                 </div>
                             </div>
-                            {/* <div className="email_link input_br">
-                                <span>Email：</span>
-                                <div className="">
-                                    <input type="email" className="input" value={this.state.email} onChange={this.handleChange} id="email" placeholder="個人email"/>
-                                </div>
-                            </div> */}
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>

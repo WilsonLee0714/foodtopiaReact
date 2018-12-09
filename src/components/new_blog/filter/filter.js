@@ -42,8 +42,8 @@ componentDidMount(){
     render() {     
         return (
             <React.Fragment>
-                <div className="filter d-flex">
-                    <div className="filter_option col-4">
+                <div className="filter row d-flex">
+                    <div className="filter_option col-md-4 col-sm-12 col-12">
                         <div className="ani_line">
                             <h2>近期食譜</h2>
                             <br />
@@ -57,7 +57,7 @@ componentDidMount(){
                             </ul>
                         </div>
                     </div>
-                    <div className="filter_option col-4 filter_option_line">
+                    <div className="filter_option filter_option_line col-md-4 col-sm-12 col-12">
                         <div className="ani_line">
                             <h2>食譜彙整</h2>
                             <br />
@@ -71,7 +71,7 @@ componentDidMount(){
                             </ul>
                         </div>
                     </div>
-                    <div className="filter_option col-4 filter_option_line">
+                    <div className="filter_option filter_option_line col-md-4 col-sm-12 col-12">
                         <div className="ani_line">
                             <h2>熱烈迴響</h2>
                             <br />
