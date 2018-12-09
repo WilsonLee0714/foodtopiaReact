@@ -35,9 +35,9 @@ import Vegetable_board from "./components/igr_listpage/Vegetable/Vegetable_board
 //食譜元件匯入
 import Recipe_list from './components/recipe_list/recipe_list.js';
 import Recipe_page from './components/recipe_page/recipe_page';
-// import Recipe_category from './components/recipe_category/recipe_category';
+import Recipe_category from './components/recipe_category/recipe_category';
 import Recipe_category_country from './components/recipe_list/recipe_list_country';
-import Recipe_category_method from './components/recipe_list/recipe_list_people';
+import Recipe_category_method from './components/recipe_list/recipe_list_serving';
 import Recipe_category_occasion from './components/recipe_list/recipe_list_occasion';
 import Recipe_category_screening from './components/recipe_list/recipe_list_difficult';
 import Recipe_category_time from './components/recipe_list/recipe_list_time';
@@ -147,13 +147,19 @@ componentDidUpdate = () => {
           {/* 食譜 */}
           <Route path="/recipe_head" component={Recipe_head} />
           <Route path="/recipe_head/recipe_list" component={Recipe_list} />
-          <Route path="/recipe_category/1" component={Recipe_category_country} />
-          <Route path="/recipe_category/2" component={Recipe_category_method} />
-          <Route path="/recipe_category/3" component={Recipe_category_occasion} />
-          <Route path="/recipe_category/4" component={Recipe_category_screening} />
-          <Route path="/recipe_category/5" component={Recipe_category_time} />
+          <Route path="/recipe_category" component={Recipe_category} />
+          <Route exact path="/country" component={Recipe_category_country} />
+          {/* QQQQQQQ 需要:id嗎?因為我們最後一層是直接用setstate改變fetch */}
+          <Route path="/country/:id" component={Recipe_category_country} /> 
+          <Route exact path="/serving" component={Recipe_category_method} />
+          <Route path="/serving/:id" component={Recipe_category_method} />
+          <Route exact path="/occasion" component={Recipe_category_occasion} />
+          <Route path="/occasion/:id" component={Recipe_category_occasion} />
+          <Route exact path="/difficult" component={Recipe_category_screening} />
+          <Route path="/difficult/:id" component={Recipe_category_screening} />
+          <Route exact path="/time" component={Recipe_category_time} />
+          <Route path="/time/:id" component={Recipe_category_time} />
           {/* <Route path="/recipe_head/recipe_category" component={Recipe_category} /> */}
-
           {/* <Route path="/recipe_page" render={(props) => <Recipe_page {...props} getCart={this.getCart} />}/> */}
 
           {/* 部落格 */}

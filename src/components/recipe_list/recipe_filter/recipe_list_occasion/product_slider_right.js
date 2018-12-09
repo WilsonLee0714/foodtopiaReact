@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import "./product_slider.scss";
+// import "./product_slider.scss";
 
 
 

@@ -44,7 +44,7 @@ class Recipe_category extends Component {
                 )}
                 
             </div>
-        </div> */}
+        </div>  */}
           
         </React.Fragment>
     //   </BrowserRouter>
