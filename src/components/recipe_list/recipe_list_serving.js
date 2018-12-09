@@ -25,6 +25,7 @@ class Recipe_list extends Component {
     this.state = {
       recipe_subs:[],
       recipe_lists:[],
+      menus: [],
       id: this.props.id
     }
     console.log(this.state)
@@ -83,17 +84,37 @@ class Recipe_list extends Component {
                 <div className="p_card">
                     <div className="upper_card">
                         <img className="card_pic" src ={require(`./product_slider/images/${recipe_list.menu_img}.jpg`)} alt="" />
-                        <div className="rate title1">{final_rate}</div>
+                        <div className="rate title2">{recipe_list.rating}</div>
                     </div>
                     <div className="lower_card">
-                        <div className="card_title title2">{recipe_list.menu}</div>
-                        <div className="card_text text ">{recipe_list.Introduction}</div>
-                        <img className="like_btn" src={require("./product_slider/images/like.svg")}/>
-                        <img className="share_btn" src={require("./product_slider/images/share.svg")}/>
+                        <div className="recipe_title">{recipe_list.menu}</div>
+                        <div className="recipe_text text ">{recipe_list.Introduction}</div>
+                        <img className="like_btn1" src={require("./product_slider/images/like.svg")}/>
+                        <img className="share_btn1" src={require("./product_slider/images/share.svg")}/>
                     </div> 
                 </div> 
             )}
             </div>
+            {/* 全部食譜 */}
+            <div className="category_wrap container">
+            {/* <div className="c_category_title ">異國料理</div> */}
+              <div className="cards d-flex flex-wrap">
+                  {this.state.menus.map(menu =>  
+                      <div className="p_card">
+                          <div className="upper_card">
+                              <img className="card_pic" src ={require(`../recipe_list/product_slider/images/${menu.menu_img}.jpg`)} alt="" />
+                              <div className="rate title2">{menu.rating}</div>
+                          </div>
+                          <div className="lower_card">
+                              <div className="recipe_title">{menu.menu}</div>
+                              <div className="recipe_text">{menu.Introduction}</div>
+                              <img className="like_btn1" src={require("./product_slider/images/like.svg")}/>
+                              <img className="share_btn1" src={require("./product_slider/images/share.svg")}/>
+                          </div> 
+                      </div>
+                  )}
+              </div>
+          </div>
           {/* <div className="product_slider">
             <Product_slider/>
           </div>
@@ -108,6 +129,18 @@ class Recipe_list extends Component {
         </React.Fragment>
       // </BrowserRouter>
     );
+  }
+  componentDidMount(){
+    window.scrollTo(0, 200);
+    // this.getCountry_subs();
+    this.getMenus();
+  }
+  getMenus(){
+    fetch("http://localhost:3000/api/recipe")
+    .then(res=>res.json())
+    .then(menus => this.setState({
+        menus: menus
+    }))
   }
 }
 

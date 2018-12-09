@@ -24,6 +24,7 @@ class Recipe_list extends Component {
     this.state = {
       recipe_subs:[],
       recipe_lists:[],
+      menus: [],
       id: this.props.id
     }
     console.log(this.state)
@@ -32,7 +33,7 @@ class Recipe_list extends Component {
     // window.scrollTo(0, 400);
   }
   subRecipe_lists = (id) => {
-    fetch('http://localhost:3000/api/country/'+id)
+    fetch('http://localhost:3000/api/occasion/'+id)
         .then(res=>res.json())
         .then(recipe_lists=>{
             console.log(recipe_lists)
@@ -64,13 +65,13 @@ class Recipe_list extends Component {
             
           </div >
           <main className="subCate_nav container d-flex justify-content-center">
-            <div className="m-3 sub_link" to="/occasion/1" onClick={this.on_subRecipe_lists}  key="1" data-recipe_sub="1">早午餐</div>
-            <div className="m-3 sub_link" to="/occasion/2" onClick={this.on_subRecipe_lists}  key="2" data-recipe_sub="2">素食</div>
-            <div className="m-3 sub_link" to="/occasion/3" onClick={this.on_subRecipe_lists}  key="3" data-recipe_sub="3">宵夜</div>
-            <div className="m-3 sub_link" to="/occasion/4" onClick={this.on_subRecipe_lists}  key="4" data-recipe_sub="4">野餐</div>
-            <div className="m-3 sub_link" to="/occasion/5" onClick={this.on_subRecipe_lists}  key="5" data-recipe_sub="5">派隊</div>
-            <div className="m-3 sub_link" to="/occasion/6" onClick={this.on_subRecipe_lists}  key="6" data-recipe_sub="6">健康輕食</div>
-            <div className="m-3 sub_link" to="/occasion/7" onClick={this.on_subRecipe_lists}  key="7" data-recipe_sub="7">節慶</div>
+            <div className="m-3 sub_link" to="/occasion/24" onClick={this.on_subRecipe_lists}  key="24" data-recipe_sub="24">早午餐</div>
+            <div className="m-3 sub_link" to="/occasion/25" onClick={this.on_subRecipe_lists}  key="25" data-recipe_sub="25">素食</div>
+            <div className="m-3 sub_link" to="/occasion/26" onClick={this.on_subRecipe_lists}  key="26" data-recipe_sub="26">宵夜</div>
+            <div className="m-3 sub_link" to="/occasion/27" onClick={this.on_subRecipe_lists}  key="27" data-recipe_sub="27">野餐</div>
+            <div className="m-3 sub_link" to="/occasion/28" onClick={this.on_subRecipe_lists}  key="28" data-recipe_sub="28">派對</div>
+            <div className="m-3 sub_link" to="/occasion/29" onClick={this.on_subRecipe_lists}  key="29" data-recipe_sub="29">健康輕食</div>
+            <div className="m-3 sub_link" to="/occasion/30" onClick={this.on_subRecipe_lists}  key="30" data-recipe_sub="30">節慶</div>
           </main>
           {/* <div className="container d-flex justify-content-center mt-5">
             {CategoryList.map((category)=>{
@@ -85,17 +86,37 @@ class Recipe_list extends Component {
                 <div className="p_card">
                     <div className="upper_card">
                         <img className="card_pic" src ={require(`./product_slider/images/${recipe_list.menu_img}.jpg`)} alt="" />
-                        <div className="rate title1">{final_rate}</div>
+                        <div className="rate title2">{recipe_list.rating}</div>
                     </div>
                     <div className="lower_card">
-                        <div className="card_title title2">{recipe_list.menu}</div>
-                        <div className="card_text text ">{recipe_list.Introduction}</div>
-                        <img className="like_btn" src={require("./product_slider/images/like.svg")}/>
-                        <img className="share_btn" src={require("./product_slider/images/share.svg")}/>
+                        <div className="recipe_title">{recipe_list.menu}</div>
+                        <div className="recipe_text text ">{recipe_list.Introduction}</div>
+                        <img className="like_btn1" src={require("./product_slider/images/like.svg")}/>
+                        <img className="share_btn1" src={require("./product_slider/images/share.svg")}/>
                     </div> 
                 </div> 
             )}
             </div>
+            {/* 全部食譜 */}
+            <div className="category_wrap container">
+            {/* <div className="c_category_title ">異國料理</div> */}
+              <div className="cards d-flex flex-wrap">
+                  {this.state.menus.map(menu =>  
+                      <div className="p_card">
+                          <div className="upper_card">
+                              <img className="card_pic" src ={require(`../recipe_list/product_slider/images/${menu.menu_img}.jpg`)} alt="" />
+                              <div className="rate title2">{menu.rating}</div>
+                          </div>
+                          <div className="lower_card">
+                              <div className="recipe_title">{menu.menu}</div>
+                              <div className="recipe_text">{menu.Introduction}</div>
+                              <img className="like_btn1" src={require("./product_slider/images/like.svg")}/>
+                              <img className="share_btn1" src={require("./product_slider/images/share.svg")}/>
+                          </div> 
+                      </div>
+                  )}
+              </div>
+          </div>
           {/* <div className="product_slider">
             <Product_slider/>
           </div>
@@ -110,6 +131,17 @@ class Recipe_list extends Component {
         </React.Fragment>
       // </BrowserRouter>
     );
+  }
+  componentDidMount(){
+    window.scrollTo(0, 200);
+    this.getMenus();
+  }
+  getMenus(){
+    fetch("http://localhost:3000/api/recipe")
+    .then(res=>res.json())
+    .then(menus => this.setState({
+        menus: menus
+    }))
   }
 }
 

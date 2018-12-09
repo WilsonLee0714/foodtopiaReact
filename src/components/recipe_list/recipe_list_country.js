@@ -7,6 +7,7 @@ import "./recipe_list.scss";
 // import Head_slider from './head_slider/head_slider.js';
 import Recommend from './recommend/recommend.js';
 import Day_rank from './rank/day_rank.js';
+import React_search from './search_bar/react-search';
 import Product_slider from './recipe_filter/recipe_list_country/product_slider.js';
 import Product_slider_right from './recipe_filter/recipe_list_country/product_slider_right.js';
 import Product_slider_buttom from './recipe_filter/recipe_list_country/product_slider_buttom.js';
@@ -24,6 +25,7 @@ class Recipe_list extends Component {
     this.state = {
       recipe_subs:[],
       recipe_lists:[],
+      menus: [],
       id: this.props.id
     }
     console.log(this.state)
@@ -74,24 +76,44 @@ class Recipe_list extends Component {
             <div className="m-3 sub_link" to="/country/5" onClick={this.on_subRecipe_lists}  key="5" data-recipe_sub="5">東南亞料理</div>
           </main> 
           
+          {/* <React_search/> */}
           {/* 單一食譜 */}
           <div className="subRecipes_wrap container d-flex flex-wrap">
             {this.state.recipe_lists.map(recipe_list =>  //menu -> 資料庫名稱
-
-                <div className="p_card">
-                    <div className="upper_card">
-                        <img className="card_pic" src ={require(`./product_slider/images/${recipe_list.menu_img}.jpg`)} alt="" />
-                        <div className="rate title1">{final_rate}</div>
-                    </div>
-                    <div className="lower_card">
-                        <div className="card_title title2">{recipe_list.menu}</div>
-                        <div className="card_text text ">{recipe_list.Introduction}</div>
-                        <img className="like_btn" src={require("./product_slider/images/like.svg")}/>
-                        <img className="share_btn" src={require("./product_slider/images/share.svg")}/>
-                    </div> 
-                </div> 
+              <div className="p_card">
+                  <div className="upper_card">
+                      <img className="card_pic" src ={require(`./product_slider/images/${recipe_list.menu_img}.jpg`)} alt="" />
+                      <div className="rate title2">{recipe_list.rating}</div>
+                  </div>
+                  <div className="lower_card">
+                      <div className="recipe_title">{recipe_list.menu}</div>
+                      <div className="recipe_text text ">{recipe_list.Introduction}</div>
+                      <img className="like_btn1" src={require("./product_slider/images/like.svg")}/>
+                      <img className="share_btn1" src={require("./product_slider/images/share.svg")}/>
+                  </div> 
+              </div> 
             )}
             </div>
+            {/* 全部食譜 */}
+            <div className="category_wrap container">
+            {/* <div className="c_category_title ">異國料理</div> */}
+              <div className="cards d-flex flex-wrap">
+                  {this.state.menus.map(menu =>  
+                      <div className="p_card">
+                          <div className="upper_card">
+                              <img className="card_pic" src ={require(`../recipe_list/product_slider/images/${menu.menu_img}.jpg`)} alt="" />
+                              <div className="rate title2">{menu.rating}</div>
+                          </div>
+                          <div className="lower_card">
+                              <div className="recipe_title">{menu.menu}</div>
+                              <div className="recipe_text">{menu.Introduction}</div>
+                              <img className="like_btn1" src={require("./product_slider/images/like.svg")}/>
+                              <img className="share_btn1" src={require("./product_slider/images/share.svg")}/>
+                          </div> 
+                      </div>
+                  )}
+              </div>
+          </div>
           
           {/* <div className="product_slider">
             <Product_slider/>
@@ -101,15 +123,15 @@ class Recipe_list extends Component {
           </div>
           <div className="product_slider">
             <Product_slider_buttom/>
-          
           </div> */}
           {/* <SimpleSlider/> */}
         </React.Fragment>
     );
   }
   componentDidMount(){
-    // window.scrollTo(0, 400);
+    window.scrollTo(0, 200);
     // this.getCountry_subs();
+    this.getMenus();
   }
   // getCountry_subs(){
   //   fetch("http://localhost:3000/api/country/:id")
@@ -119,6 +141,14 @@ class Recipe_list extends Component {
   //     recipe_subs: recipe_subs
   //   }))
   // }
+  //call restful api
+  getMenus(){
+    fetch("http://localhost:3000/api/recipe")
+    .then(res=>res.json())
+    .then(menus => this.setState({
+        menus: menus
+    }))
+  }
 }
 
 export default Recipe_list;

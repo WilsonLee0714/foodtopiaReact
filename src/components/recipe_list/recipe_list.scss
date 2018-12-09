@@ -2,6 +2,36 @@ $color_red: #FF4343;
 $color_grey: #404040;
 $color_light_grey: #c7c7c7;
 
+$title_size1: 26px;
+$title_size2: 20px;
+$p_size_L: 18px;
+$p_size_M: 16px;
+$p_size_S: 14px;
+$p_size_XS: 12px;
+$title_fontWeight: 700;
+
+.c_category_title{
+    font-size: $title_size1;
+    margin: 20px;
+    font-weight: 700;
+    // color: #707070;
+}
+.title1{
+    font-size: $title_size1;
+    font-weight: $title_fontWeight;
+}
+.title2{
+    font-size: $title_size2;
+    font-weight: $title_fontWeight;
+}
+.title3{
+    font-size: $p_size_XS;
+    font-weight: $title_fontWeight;
+    // line-height: 10px;
+}
+.text{
+    font-size: $p_size_S;
+}
 .head_slider{
   margin-bottom: 10px;
   
@@ -64,4 +94,26 @@ $color_light_grey: #c7c7c7;
   .fadeIn {
     animation: 3s fadeIn;
   }
+}
+.recipe_title{
+  line-height: 2.2rem;
+  font-size: $p_size_M;
+  font-weight: $title_fontWeight;
+}
+.recipe_text{
+  height: 70px;
+  line-height: 1.6rem;
+  overflow: hidden;
+}
+.like_btn1{
+  height: 20px;
+  position: absolute;
+  right: 50px;
+  top: 125px
+}
+.share_btn1{
+  height: 20px;
+  position: absolute;
+  right: 20px;
+  top: 125px
 }

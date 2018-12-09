@@ -9,6 +9,7 @@ import Recommend from './recommend/recommend.js';
 import Day_rank from './rank/day_rank.js';
 import Product_slider from './product_slider/product_slider.js';
 import Product_slider_right from './product_slider/product_slider_right.js';
+import Product_slider_last from './product_slider/product_slider_last.js';
 // import Search_bar from './search_bar/search_bar';
 import Recipe_page from '../recipe_page/recipe_page.js';
 import Recipe_category from "../recipe_category/recipe_category"
@@ -50,7 +51,7 @@ class Recipe_list extends Component {
             <Product_slider_right/>
           </div>
           <div className="product_slider">
-            <Product_slider/>
+            <Product_slider_last/>
           
           </div>
           {/* <SimpleSlider/> */}

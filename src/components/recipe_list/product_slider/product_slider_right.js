@@ -17,7 +17,7 @@ class Product_slider_right extends Component {
           <React.Fragment>
             <div className="p_slider_wrap container d-flex align-items-center">
                 <div className="category_wrap container">
-                    <div className="category_title title1">聖誕食譜</div>
+                    <div className="category_title title1">聖誕大餐</div>
                     <div className="cards d-flex">
                         {this.state.menus.map(menu =>  //menu -> 資料庫名稱
                             <div className="p_card">
@@ -39,7 +39,7 @@ class Product_slider_right extends Component {
                 </div>
                 <Link to="/recipe_head/recipe_category">
                     <div className="category_pic">
-                        <img src={require("./images/category.jpg")}/>
+                        <img src={require("./images/cate_xmas.jpg")}/>
                     </div>
                 </Link>
                 

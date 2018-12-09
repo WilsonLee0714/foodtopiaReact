@@ -26,7 +26,7 @@ class Product_slider extends Component {
                     {/* <Route path="recipe_head/recipe_category" component={Recipe_category} /> */}
                         <Link to="/recipe_head/recipe_category">
                             <div className="category_pic">
-                                <img src={require("./images/category.jpg")}/>
+                                <img src={require("./images/cate_dark.jpg")}/>
                             </div>
                         </Link>
                         <div className="category_wrap container">
