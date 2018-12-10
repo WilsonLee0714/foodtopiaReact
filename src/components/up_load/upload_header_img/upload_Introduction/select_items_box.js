@@ -11,7 +11,6 @@ class Select_filter_box extends Component {
         }
     }
     change = (event) => {
-
         this.setState({
             value: event.target.value,
         })
@@ -47,7 +46,7 @@ class Select_filter_box extends Component {
     render() {
         return (
             <React.Fragment>
-                <select onChange={this.change} value={this.state.value} className="select_box select_items_box">
+                <select onChange={this.change} value={this.state.value} id={(`${this.state.value}`)} className="select_box select_items_box">
                     <option value="0">請選擇</option>
                     {this.state.upload_ingredients.map((upload_ingredient) => {
                         let opt = <option key={upload_ingredient.id} value={upload_ingredient.id}>

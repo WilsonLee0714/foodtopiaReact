@@ -9,6 +9,7 @@ class Upload_Introduction extends Component {
         super(props)
         this.state = {
             id: 1,
+            
         }
     }
     categoryChangeHandler = (id) => {

@@ -8,7 +8,34 @@ class Upload_header_img extends Component {
         super(props)
         this.state = {
             n: 1,
+            recipe_time:"",
+            recipe_people:"",
+            recipe_difficult:"",
+            introduction:"",
+            stepImg_1:"",
+            stepText_1:"",
+            stepImg_2:"",
+            stepText_2:"",
+            stepImg_3:"",
+            stepText_3:"",
+            stepImg_4:"",
+            stepText_4:"",
+            stepImg_5:"",
+            stepText_5:"",
+            stepImg_6:"",
+            stepText_6:"",
         }
+    }
+    //上傳
+    change =(evt)=>{
+        let key = evt.target.id
+        let data = evt.target.value
+        this.setState({
+            [key] : data
+        })
+    }
+    send_recipe = () => {
+
     }
     componentDidMount() {
         //新增欄位
@@ -18,14 +45,14 @@ class Upload_header_img extends Component {
                                 <form class="input_step_form col-4">
                                     <i class="fas fa-camera-retro camera_icon"></i>
                                     <div class="upload_camera"></div>
-                                    <input type="file" class="step_img" />
+                                    <input type="file" onChange={this.change} id="stepImg" class="step_img" />
                                 </form>
                                 <div class="upload_number_step d-flex col-8 ">
                                     <p class="step_number"></p>
                                     <div class="step_icons">
                                         <i class="step_delete_icon far fa-trash-alt" id="step_delete_icon"></i>
                                         <br />
-                                        <textarea class="step_introduction" placeholder="步驟敘述..."/>
+                                        <textarea class="step_introduction" onChange={this.change} id="stepText" placeholder="步驟敘述..."/>
                                     </div>
                                 </div>
                             </div>
@@ -63,21 +90,21 @@ class Upload_header_img extends Component {
                             <input type="file" className="recipe_header_img" />
                             {/* 食譜時間,份量,難度 */}
                             <div className="recipe_dropdowns container d-flex">
-                                <select onChange={this.change} value={this.state.value} className="select_box select_time_box col-4">
+                                <select onChange={this.change} value={this.state.value} id="recipe_time" className="select_box select_time_box col-4">
                                     <option value="" className="select_options">時間</option>
                                     <option value="" className="select_options">15分鐘</option>
                                     <option value="" className="select_options">30分鐘</option>
                                     <option value="" className="select_options">45分鐘</option>
                                     <option value="" className="select_options">60分鐘</option>
                                 </select>
-                                <select onChange={this.change} value={this.state.value} className="select_box select_people_box col-4">
+                                <select onChange={this.change} value={this.state.value} id="recipe_people" className="select_box select_people_box col-4">
                                     <option value="" className="select_options">份量</option>
                                     <option value="" className="select_options">1人份</option>
                                     <option value="" className="select_options">2人份</option>
                                     <option value="" className="select_options">3人份</option>
                                     <option value="" className="select_options">4人份</option>
                                 </select>
-                                <select onChange={this.change} value={this.state.value} className="select_box select_difficult_box col-4">
+                                <select onChange={this.change} value={this.state.value} id="recipe_difficult" className="select_box select_difficult_box col-4">
                                     <option value="" className="select_options">難度</option>
                                     <option value="" className="select_options">簡單</option>
                                     <option value="" className="select_options">稍難</option>
@@ -85,7 +112,7 @@ class Upload_header_img extends Component {
                                 </select>
                             </div>
                             {/* 食譜簡介 */}
-                            <textarea className="introduction" placeholder="食譜簡介..." />
+                            <textarea className="introduction" value={this.state.value} id="introduction" onChange={this.change} placeholder="食譜簡介..." />
                         </form>
                     </div>
                     {/* 食譜食材 */}
@@ -116,14 +143,14 @@ class Upload_header_img extends Component {
                             <form className="input_step_form col-4">
                                 <i className="fas fa-camera-retro camera_icon"></i>
                                 <div className="upload_camera"></div>
-                                <input type="file" className="step_img" />
+                                <input type="file" onChange={this.change} value={this.state.value} id="stepImg_1" className="step_img" />
                             </form>
                             <div className="upload_number_step d-flex col-8 ">
                                 <p className="step_number">1</p>
                                 <div className="step_icons">
                                     <i className="step_delete_icon far fa-trash-alt" id="step_delete_icon"></i>
                                     <br />
-                                    <textarea className="step_introduction" placeholder="步驟敘述..." />
+                                    <textarea className="step_introduction" value={this.state.value} onChange={this.change} id="stepText_1" placeholder="步驟敘述..." />
                                 </div>
                             </div>
                         </div>
@@ -134,14 +161,14 @@ class Upload_header_img extends Component {
                             <form className="input_step_form col-4">
                                 <i className="fas fa-camera-retro camera_icon"></i>
                                 <div className="upload_camera"></div>
-                                <input type="file" className="step_img" />
+                                <input type="file" onChange={this.change} value={this.state.value} id="stepImg_2" className="step_img" />
                             </form>
                             <div className="upload_number_step d-flex col-8 ">
                                 <p className="step_number">2</p>
                                 <div className="step_icons">
                                     <i className="step_delete_icon far fa-trash-alt" id="step_delete_icon"></i>
                                     <br />
-                                    <textarea className="step_introduction" placeholder="步驟敘述..." />
+                                    <textarea className="step_introduction" value={this.state.value} onChange={this.change} id="stepText_2" placeholder="步驟敘述..." />
                                 </div>
                             </div>
                         </div>
@@ -152,14 +179,68 @@ class Upload_header_img extends Component {
                             <form className="input_step_form col-4">
                                 <i className="fas fa-camera-retro camera_icon"></i>
                                 <div className="upload_camera"></div>
-                                <input type="file" className="step_img" />
+                                <input type="file" onChange={this.change} value={this.state.value} id="stepImg_3" className="step_img" />
                             </form>
                             <div className="upload_number_step d-flex col-8 ">
                                 <p className="step_number">3</p>
                                 <div className="step_icons">
                                     <i className="step_delete_icon far fa-trash-alt" id="step_delete_icon"></i>
                                     <br />
-                                    <textarea className="step_introduction" placeholder="步驟敘述..." />
+                                    <textarea className="step_introduction" value={this.state.value} onChange={this.change} id="stepText_3" placeholder="步驟敘述..." />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="upload_step">
+                        <div className="step_number_step d-flex">
+                            {/* 步驟圖片上傳 */}
+                            <form className="input_step_form col-4">
+                                <i className="fas fa-camera-retro camera_icon"></i>
+                                <div className="upload_camera"></div>
+                                <input type="file" onChange={this.change} value={this.state.value} id="stepImg_4" className="step_img" />
+                            </form>
+                            <div className="upload_number_step d-flex col-8 ">
+                                <p className="step_number">4</p>
+                                <div className="step_icons">
+                                    <i className="step_delete_icon far fa-trash-alt" id="step_delete_icon"></i>
+                                    <br />
+                                    <textarea className="step_introduction" value={this.state.value} onChange={this.change} id="stepText_4" placeholder="步驟敘述..." />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="upload_step">
+                        <div className="step_number_step d-flex">
+                            {/* 步驟圖片上傳 */}
+                            <form className="input_step_form col-4">
+                                <i className="fas fa-camera-retro camera_icon"></i>
+                                <div className="upload_camera"></div>
+                                <input type="file" onChange={this.change} value={this.state.value} id="stepImg_5" className="step_img" />
+                            </form>
+                            <div className="upload_number_step d-flex col-8 ">
+                                <p className="step_number">5</p>
+                                <div className="step_icons">
+                                    <i className="step_delete_icon far fa-trash-alt" id="step_delete_icon"></i>
+                                    <br />
+                                    <textarea className="step_introduction" value={this.state.value} onChange={this.change} id="stepText_5" placeholder="步驟敘述..." />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="upload_step">
+                        <div className="step_number_step d-flex">
+                            {/* 步驟圖片上傳 */}
+                            <form className="input_step_form col-4">
+                                <i className="fas fa-camera-retro camera_icon"></i>
+                                <div className="upload_camera"></div>
+                                <input type="file" onChange={this.change} value={this.state.value} id="stepImg_6" className="step_img" />
+                            </form>
+                            <div className="upload_number_step d-flex col-8 ">
+                                <p className="step_number">6</p>
+                                <div className="step_icons">
+                                    <i className="step_delete_icon far fa-trash-alt" id="step_delete_icon"></i>
+                                    <br />
+                                    <textarea className="step_introduction" value={this.state.value} onChange={this.change} id="stepText_6" placeholder="步驟敘述..." />
                                 </div>
                             </div>
                         </div>
@@ -171,7 +252,7 @@ class Upload_header_img extends Component {
                 </div>
                 {/* 上傳/取消 */}
                 <div className="send_buttom">
-                    <button type="button" className="btn btn-outline-danger btn_mr">上傳</button>
+                    <button type="button" className="btn btn-outline-danger btn_mr" onClick={this.send_recipe}>上傳</button>
                     <button type="button" className="btn btn-outline-dark">取消</button>
                 </div>
             </React.Fragment>
