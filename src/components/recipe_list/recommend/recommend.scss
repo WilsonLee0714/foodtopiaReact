@@ -1,13 +1,18 @@
 $color_red: #FF4343;
 $color_grey: #404040;
+
 $title_size1: 26px;
 $title_size2: 20px;
-$p_size: 14px;
+$p_size_L: 18px;
+$p_size_M: 16px;
+$p_size_S: 14px;
+$p_size_XS: 12px;
 
 body{
     font-family: '微軟正黑體';
 }
 .recm_wrap{
+    width: 500px;
     margin: 10px 20px;
 }
 .recm_title{
@@ -18,6 +23,7 @@ body{
     color: $color_grey;
 }
 .recipe_wrap{
+    width: 500px;
     img{
         width: 500px;
         // height: 200px;

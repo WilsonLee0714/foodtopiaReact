@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import "./product_slider.scss";
+// import "./product_slider.scss";
 
 
 
@@ -16,7 +16,7 @@ class Product_slider extends Component {
                     <img src={require("./images/category.jpg")}/>
                 </div>
                 <div className="category_wrap container">
-                    <div className="category_title title1">韓式料理</div>
+                    <div className="category_title title1">日韓料理</div>
                     <div className="cards d-flex">
                         <div className="p_card">
                             <div className="upper_card">

@@ -14,7 +14,7 @@ class Food_recipe_month extends Component {
             <React.Fragment>
                 <div className="recipe_diary row d-flex">
                     {this.props.menus.map(menu =>  
-                        <div key={menu.id} className="col-4">
+                        <div key={menu.id} className="col-lg-4 col-sm-6 col-12">
                             <div className="food_recipe">
                                 <div className="recipe_img">
                                     <Link to={`/page/${menu.id}`} ><img src={require(`./img/${menu.menu_img}.jpg`)} alt="" /></Link>

@@ -4,6 +4,11 @@ $button-text-color: #fff;
 $baby-blue: #f8faff;
 
 //食譜名稱,食譜照上傳
+h1{
+    font-family: "微軟正黑體";
+    text-align: center;
+    font-weight: 700;
+}
 .upload_header{
     font-family: "微軟正黑體";
     width: 50%;
@@ -31,20 +36,20 @@ $baby-blue: #f8faff;
             height: 21%;
             opacity: .5;
             left: 27.5%;
-            top: 35%;
+            top: 43%;
         }
         .recipe_header_img{
             position: absolute;
             width: 27.6%;
             height: 40%;
             opacity: 0;
-            top: 29.5%;
+            top: 38%;
             left: 18%;
             cursor: pointer;
         }
         .line_img{
             position: absolute;
-            top: 53%;
+            top: 61%;
             left: 18%;
             width:27%;
         }

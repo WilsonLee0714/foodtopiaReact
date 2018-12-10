@@ -6,6 +6,8 @@ $mainColor : #FF4343;
 nav {
     font-family: '微軟正黑體';
     user-select: none;
+    transition: .5s;
+
     .navbar-brand {
         font-weight: 600 !important;
         font-size: 1.5em !important;
@@ -19,7 +21,7 @@ nav {
         }
     }
     li {
-        margin-left:35px; 
+        margin-left:25px; 
         font-size: .9em;
     }
     a {
@@ -69,4 +71,5 @@ nav {
 }
 .hide_nav {
     transform: translateY(-100px);
+    // transition: .5s;
 }

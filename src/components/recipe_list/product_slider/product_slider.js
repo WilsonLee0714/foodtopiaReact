@@ -23,19 +23,19 @@ class Product_slider extends Component {
             // <BrowserRouter>
                 <React.Fragment>
                     <div className="p_slider_wrap container d-flex align-items-center">
-                    <Route path="recipe_head/recipe_category" component={Recipe_category} />
+                    {/* <Route path="recipe_head/recipe_category" component={Recipe_category} /> */}
                         <Link to="/recipe_head/recipe_category">
                             <div className="category_pic">
                                 <img src={require("./images/category.jpg")}/>
                             </div>
                         </Link>
                         <div className="category_wrap container">
-                            <div className="category_title title1">異國料理</div>
+                            <div className="category_title title1">獨家推薦</div>
                             <div className="cards d-flex">
                                 {this.state.menus.map(menu =>  //menu -> 資料庫名稱
                                     
                                     <div className="p_card">
-                                        {/* <Link to='/recipe_page'> */}
+                                        
                                             <div className="upper_card">
                                                 <img className="card_pic" src ={require(`./images/${menu.menu_img}.jpg`)} alt="" />
                                                 <div className="rate title1">4.2</div>
@@ -47,7 +47,7 @@ class Product_slider extends Component {
                                                 <img className="like_btn" src={require("./images/like.svg")}/>
                                                 <img className="share_btn" src={require("./images/share.svg")}/>
                                             </div> 
-                                        {/* </Link> */}
+                                        
                                     </div>
                                     
                                 )}

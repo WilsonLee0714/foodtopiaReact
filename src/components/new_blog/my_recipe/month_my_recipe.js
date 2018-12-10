@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./month_my_recipe.scss";
+import "./my_recipe.scss";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 
 class Month_my_recipe extends Component {
@@ -13,6 +13,7 @@ class Month_my_recipe extends Component {
                 {this.props.filter_months.map(filter_month=>
                     <div key={filter_month.id} className="recipe_header">
                         <h1>My Recipe</h1>
+                        <div className="line"></div>
                         <p>{filter_month.total_time}</p>
                     </div>
                 )}
