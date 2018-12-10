@@ -7,6 +7,9 @@ import $ from "jquery";
 import { getDate } from 'date-fns';
 
 class Recipe_page extends Component {
+  componentWillMount(){
+    window.scrollTo(0, 0);
+  }
   constructor(props) {
     super(props)
     this.state = {
@@ -207,7 +210,7 @@ componentDidMount(){
       $(".loved").toggleClass("close");
     });
 }
-
+  
   render() {
     //評論會員名稱判定
     fetch('http://localhost:3000/session/info', {
@@ -334,8 +337,9 @@ componentDidMount(){
           </section>
 
           {/* ---步驟 steps--- */}
-          <main className="steps-wrap">
-            <div className="step d-flex justify-content-center">
+          <main className="steps-wrap container">
+            <div className="steps_title title1 ">食譜步驟</div>
+            <div className="step d-flex ">
               <span className="step_num">01</span>
               {this.state.step_imgs.map(step_img=>
                 <span className="step_pic"><img src={require(`./images/${step_img.step_img_1}.jpg`)}/></span>
@@ -344,7 +348,7 @@ componentDidMount(){
                 <span className="detail">{step.step_1}</span>
               )}
             </div> 
-            <div className="step d-flex justify-content-center">
+            <div className="step d-flex ">
               <span className="step_num">02</span>
               {this.state.step_imgs.map(step_img=>
                 <span className="step_pic"><img src={require(`./images/${step_img.step_img_2}.jpg`)}/></span>
@@ -353,7 +357,7 @@ componentDidMount(){
                 <span className="detail">{step.step_2}</span>
               )}            
             </div> 
-            <div className="step d-flex justify-content-center">
+            <div className="step d-flex ">
               <span className="step_num">03</span>
               {this.state.step_imgs.map(step_img=>
                 <span className="step_pic"><img src={require(`./images/${step_img.step_img_3}.jpg`)}/></span>
@@ -362,7 +366,7 @@ componentDidMount(){
                 <span className="detail">{step.step_3}</span>
               )}            
             </div> 
-            <div className="step d-flex justify-content-center">
+            <div className="step d-flex ">
               <span className="step_num">04</span>
               {this.state.step_imgs.map(step_img=>
                 <span className="step_pic"><img src={require(`./images/${step_img.step_img_4}.jpg`)}/></span>
@@ -371,7 +375,7 @@ componentDidMount(){
                 <span className="detail">{step.step_4}</span>
               )}
             </div> 
-            <div className="step d-flex justify-content-center">
+            <div className="step d-flex ">
               <span className="step_num">05</span>
               {this.state.step_imgs.map(step_img=>
                 <span className="step_pic"><img src={require(`./images/${step_img.step_img_5}.jpg`)}/></span>
@@ -380,7 +384,7 @@ componentDidMount(){
                 <span className="detail">{step.step_5}</span>
               )}
             </div> 
-            <div className="step d-flex justify-content-center">
+            <div className="step d-flex ">
               <span className="step_num">06</span>
               {this.state.step_imgs.map(step_img=>
                 <span className="step_pic"><img src={require(`./images/${step_img.step_img_6}.jpg`)}/></span>
@@ -412,13 +416,15 @@ componentDidMount(){
                         <div key={recipe_rand.id} className="p_card">
                           <div className="upper_card">
                               <img className="card_pic" src ={require(`./images/${recipe_rand.menu_img}.jpg`)}/>
-                              <div className="rate">4.2</div>
+                              <div className="rate">{recipe_rand.rating}</div>
                           </div>
                           <div className="lower_card">
                               <div className="card_title ">{recipe_rand.menu}</div>
                               <div className="card_text ">{recipe_rand.Introduction}</div>
-                              <img className="like_btn" src={require("./images/like.svg")}/>
-                              <img className="share_btn" src={require("./images/share.svg")}/>
+                              <img className="like_btn1" src={require("./images/like.svg")}/>
+                              <img className="share_btn1" src={require("./images/share.svg")}/>
+                              <img className="liked_btn1" src={require("./images/liked.svg")}/>
+                              <img className="shared_btn1" src={require("./images/shared.svg")}/>
                           </div>
                         </div> 
                       )}
@@ -459,6 +465,7 @@ componentDidMount(){
         </React.Fragment>
     );
   }
+  
 }
 
 export default Recipe_page;

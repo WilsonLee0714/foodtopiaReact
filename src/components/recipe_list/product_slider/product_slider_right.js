@@ -15,7 +15,7 @@ class Product_slider_right extends Component {
     render() {
         return (
           <React.Fragment>
-            <div className="p_slider_wrap container d-flex align-items-center">
+            <div className="p_slider_wrap container d-flex align-items-center justify-content-between">
                 <div className="category_wrap container">
                     <div clasName="container d-flex ">
                         <img className="cate_logo" src={require("./images/santa-claus.svg")}/>
@@ -32,21 +32,19 @@ class Product_slider_right extends Component {
                                     <div className="lower_card">
                                         <div className="card_title title2">{menu.menu}</div>
                                         <div className="card_text text ">{menu.Introduction}</div>
-                                        <img className="like_btn" src={require("./images/like.svg")}/>
-                                        <img className="share_btn" src={require("./images/share.svg")}/>
+                                        <img className="like_btn1" src={require("./images/like.svg")}/>
+                                        <img className="share_btn1" src={require("./images/share.svg")}/>
+                                        <img className="liked_btn1" src={require("./images/liked.svg")}/>
+                                        <img className="shared_btn1" src={require("./images/shared.svg")}/>
                                     </div> 
                             </div>
                             
                         )}
                     </div>
                 </div>
-                <Link to="/recipe_head/recipe_category">
-                    <div className="category_pic">
-                        <img src={require("./images/cate_xmas.jpg")}/>
-                    </div>
-                </Link>
-                
-                
+                <div className="category_pic">
+                    <img src={require("./images/cate_xmas.jpg")}/>
+                </div>
             </div>
           </React.Fragment>
         );

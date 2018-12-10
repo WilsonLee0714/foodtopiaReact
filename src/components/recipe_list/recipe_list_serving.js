@@ -78,9 +78,9 @@ class Recipe_list extends Component {
             
           </div> */}
           {/* 單一食譜 */}
-          <div className="subRecipes_wrap container d-flex flex-wrap">
-            {this.state.recipe_lists.map(recipe_list =>  //menu -> 資料庫名稱
-
+          <div className="category_wrap container">
+            <div className="cards d-flex flex-wrap">
+              {this.state.recipe_lists.map(recipe_list =>  //menu -> 資料庫名稱
                 <div className="p_card">
                     <div className="upper_card">
                         <img className="card_pic" src ={require(`./product_slider/images/${recipe_list.menu_img}.jpg`)} alt="" />
@@ -88,12 +88,15 @@ class Recipe_list extends Component {
                     </div>
                     <div className="lower_card">
                         <div className="recipe_title">{recipe_list.menu}</div>
-                        <div className="recipe_text text ">{recipe_list.Introduction}</div>
+                        <div className="recipe_text ">{recipe_list.Introduction}</div>
                         <img className="like_btn1" src={require("./product_slider/images/like.svg")}/>
                         <img className="share_btn1" src={require("./product_slider/images/share.svg")}/>
+                        <img className="liked_btn1" src={require("./product_slider/images/liked.svg")}/>
+                        <img className="shared_btn1" src={require("./product_slider/images/shared.svg")}/>
                     </div> 
                 </div> 
-            )}
+              )}
+              </div>
             </div>
             {/* 全部食譜 */}
             <div className="category_wrap container">
@@ -110,6 +113,8 @@ class Recipe_list extends Component {
                               <div className="recipe_text">{menu.Introduction}</div>
                               <img className="like_btn1" src={require("./product_slider/images/like.svg")}/>
                               <img className="share_btn1" src={require("./product_slider/images/share.svg")}/>
+                              <img className="liked_btn1" src={require("./product_slider/images/liked.svg")}/>
+                              <img className="shared_btn1" src={require("./product_slider/images/shared.svg")}/>
                           </div> 
                       </div>
                   )}

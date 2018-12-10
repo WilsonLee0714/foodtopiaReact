@@ -11,16 +11,20 @@ class Recommend extends Component {
     render() {
         return (
           <React.Fragment>
-              <div className="container ">            
                 <div className="recm_wrap">
                   <h2 className="recm_title">每日推薦</h2>
-                    <Link to="/recipe_page">
-                      <div className="recipe_wrap">
-                        <img src={require('./images/recm_recipe.jpg')} />
+                  <Link to="/page/3">
+                    <div className="recipe_wrap">
+                      <div className="hover_black">
+                        <img src={require('./images/china_show_3.jpg')} />
+                        <div className="recm_recipe_title">
+                          <p className="recm_recipe_h">紅燒芝麻牛肉</p> 
+                          <p className="recm_recipe_text">你可能聽說過海鮮醬，但不是每個人都知道它是什麼。</p> 
+                        </div>
                       </div>
-                    </Link>
+                    </div>
+                  </Link>
                 </div>
-              </div>
           </React.Fragment>
         );
       }

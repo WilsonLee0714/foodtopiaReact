@@ -84,7 +84,7 @@ class Nav extends Component {
       if (a.login == 1) {
         console.log('已經登入');
         var blog = document.getElementById('blog');
-        blog.style.display = 'block';
+        // blog.style.display = 'block';
       } else {
         console.log('未登入');
       }

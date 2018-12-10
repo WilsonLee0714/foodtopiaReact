@@ -7,15 +7,7 @@ import "./recipe_list.scss";
 // import Head_slider from './head_slider/head_slider.js';
 import Recommend from './recommend/recommend.js';
 import Day_rank from './rank/day_rank.js';
-import React_search from './search_bar/react-search';
-import Product_slider from './recipe_filter/recipe_list_country/product_slider.js';
-import Product_slider_right from './recipe_filter/recipe_list_country/product_slider_right.js';
-import Product_slider_buttom from './recipe_filter/recipe_list_country/product_slider_buttom.js';
-// import Search_bar from './search_bar/search_bar';
-import Recipe_page from '../recipe_page/recipe_page.js';
-import Recipe_category from "../recipe_category/recipe_category"
-import SimpleSlider from '../SimpleSlider/simpleSlider';
-import CategoryList from './search_bar/category.json';
+
 
 
 
@@ -78,21 +70,25 @@ class Recipe_list extends Component {
           
           {/* <React_search/> */}
           {/* 單一食譜 */}
-          <div className="subRecipes_wrap container d-flex flex-wrap">
-            {this.state.recipe_lists.map(recipe_list =>  //menu -> 資料庫名稱
-              <div className="p_card">
-                  <div className="upper_card">
-                      <img className="card_pic" src ={require(`./product_slider/images/${recipe_list.menu_img}.jpg`)} alt="" />
-                      <div className="rate title2">{recipe_list.rating}</div>
-                  </div>
-                  <div className="lower_card">
-                      <div className="recipe_title">{recipe_list.menu}</div>
-                      <div className="recipe_text text ">{recipe_list.Introduction}</div>
-                      <img className="like_btn1" src={require("./product_slider/images/like.svg")}/>
-                      <img className="share_btn1" src={require("./product_slider/images/share.svg")}/>
-                  </div> 
-              </div> 
-            )}
+          <div className="category_wrap container">
+            <div className="cards d-flex flex-wrap">
+              {this.state.recipe_lists.map(recipe_list =>  //menu -> 資料庫名稱
+                <div className="p_card">
+                    <div className="upper_card">
+                        <img className="card_pic" src ={require(`./product_slider/images/${recipe_list.menu_img}.jpg`)} alt="" />
+                        <div className="rate title2">{recipe_list.rating}</div>
+                    </div>
+                    <div className="lower_card">
+                        <div className="recipe_title">{recipe_list.menu}</div>
+                        <div className="recipe_text ">{recipe_list.Introduction}</div>
+                        <img className="like_btn1" src={require("./product_slider/images/like.svg")}/>
+                        <img className="share_btn1" src={require("./product_slider/images/share.svg")}/>
+                        <img className="liked_btn1" src={require("./product_slider/images/liked.svg")}/>
+                        <img className="shared_btn1" src={require("./product_slider/images/shared.svg")}/>
+                    </div> 
+                </div> 
+              )}
+              </div>
             </div>
             {/* 全部食譜 */}
             <div className="category_wrap container">
@@ -109,6 +105,8 @@ class Recipe_list extends Component {
                               <div className="recipe_text">{menu.Introduction}</div>
                               <img className="like_btn1" src={require("./product_slider/images/like.svg")}/>
                               <img className="share_btn1" src={require("./product_slider/images/share.svg")}/>
+                              <img className="liked_btn1" src={require("./product_slider/images/liked.svg")}/>
+                              <img className="shared_btn1" src={require("./product_slider/images/shared.svg")}/>
                           </div> 
                       </div>
                   )}
