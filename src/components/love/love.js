@@ -28,6 +28,7 @@ class Login extends Component {
         return (
             <React.Fragment>
                 <div className="love_background">
+                    <h2>收藏清單</h2>
                     <img className="backImg1" src={require('./img/bg2.png')} />
                     <img className="backImg2" src={require('./img/bg5.png')} />
                     <img className="backImg3" src={require('./img/column_bg.png')} />
