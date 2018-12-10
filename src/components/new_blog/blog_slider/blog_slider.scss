@@ -47,3 +47,96 @@
         transform: rotate(-45deg);
     }
 }
+@media screen and (max-width:1200px){
+    .background_text{
+        width: 50%;
+        height: 35%;
+        margin-top: 2%;
+        h2{
+            text-align: center;
+            margin-top: 2%;
+            font-size: 2em;
+            font-weight: 700;
+            color: black;
+        }
+        p{
+            width: 85%;
+            margin: 5% auto 0;
+            font-size: 1.7em;
+            font-weight: 700;
+            color: black;
+        }
+    }
+}
+@media screen and (max-width:992px){
+    .background{
+        margin-top: -2%;
+    }
+    .background_text{
+        width: 55%;
+        height: 30%;
+        margin-top: -3%;
+        h2{
+            text-align: center;
+            margin-top: 2%;
+            font-size: 1.8em;
+            font-weight: 700;
+            color: black;
+        }
+        p{
+            width: 85%;
+            margin: 5% auto 0;
+            font-size: 1.5em;
+            font-weight: 700;
+            color: black;
+        }
+    }
+}
+@media screen and (max-width:768px){
+    .background{
+        margin-top: -4%;
+    }
+    .background_text{
+        width: 55%;
+        height: 25%;
+        margin-top: -10%;
+        h2{
+            text-align: center;
+            margin-top: 2%;
+            font-size: 1.5em;
+            font-weight: 700;
+            color: black;
+        }
+        p{
+            width: 85%;
+            margin: 5% auto 0;
+            font-size: 1.2em;
+            font-weight: 700;
+            color: black;
+        }
+    }
+}
+@media screen and (max-width:576px){
+    .background{
+        margin-top: -4%;
+    }
+    .background_text{
+        width: 55%;
+        height: 20%;
+        margin-top: -18%;
+        h2{
+            text-align: center;
+            margin-top: 2%;
+            font-size: 1.2em;
+            font-weight: 700;
+            color: black;
+        }
+        p{
+            width: 85%;
+            margin: 5% auto 0;
+            font-size: 1em;
+            font-weight: 700;
+            color: black;
+        }
+    }
+}

@@ -65,8 +65,8 @@ class MemberCenter extends Component {
                         <ul>
                             <li><NavLink activeClassName="active" className='a' style={{ fontWeight: '600' }} to='/memberCenter/basicInfo'>基本資料</NavLink></li>
                             <li><NavLink activeClassName="active" className='a' style={{ fontWeight: '600' }} to='/memberCenter/myOrder'>訂單紀錄</NavLink></li>
-                            <li><NavLink activeClassName="active" className='a' style={{ fontWeight: '600' }} to='/memberCenter/subscription'>訂閱通知</NavLink></li>
                             <li><NavLink activeClassName="active" className='a' style={{ fontWeight: '600' }} to='/memberCenter/favorite'>收藏清單</NavLink></li>
+                            <li><NavLink activeClassName="active" className='a' style={{ fontWeight: '600' }} to='/memberCenter/subscription'>訂閱通知</NavLink></li>
                             {/* <li><NavLink activeClassName="active" className='a' style={{ fontWeight: '600' }} to='/memberCenter/myService'>客服系統</NavLink></li> */}
                             {/* <li><NavLink activeClassName="active" className='a' style={{ fontWeight: '600' }} to='/memberCenter/myService'>部落格</NavLink></li> */}
                         </ul>

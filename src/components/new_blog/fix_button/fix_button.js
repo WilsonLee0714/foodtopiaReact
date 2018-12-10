@@ -17,12 +17,10 @@ class Fix_button extends Component {
         instagram:"",
         google_plus:"",
         youtube:"",
-        email:"",
         welcome:"",
         introduction:"",
         //修改食譜
         filter_months:[],
-        // menus:[],
         
     }
 }
@@ -81,7 +79,9 @@ handleChange = (evt) => {
 update = evt =>{
     this.props.update(this.state);
     evt.preventDefault();
-}//communitys讀取
+}
+
+//communitys讀取
 getCommunitys()  {
     fetch("http://localhost:3000/imgup/upload_community", {  
         method: 'GET',
@@ -93,7 +93,6 @@ getCommunitys()  {
             instagram:communitys[0].instagram,
             google_plus:communitys[0].google_plus,
             youtube:communitys[0].youtube,
-            email:communitys[0].email,
     }))
 }
 
@@ -101,7 +100,6 @@ componentDidMount(){
     this.getCommunitys()
     this.getfilter_months(); 
     window.scrollTo(0,0);
-
 }
 //修改食譜
 getfilter_months(){
@@ -111,13 +109,6 @@ getfilter_months(){
         filter_months: filter_months,
     }))
 }
-// getMonthMenus(upload_time_sid) {
-//     fetch("http://localhost:3000/month/menu/"+upload_time_sid)
-//         .then(res => res.json())
-//         .then(menus => this.setState({
-//             menus: menus,
-//         }))
-// // }
 
     render() {
         return (
@@ -201,12 +192,6 @@ getfilter_months(){
                                 <span>Youtube：</span>
                                 <div className="">
                                     <input type="text" className="input" value={this.state.youtube} onChange={this.handleChange} id="youtube" placeholder="youtube頻道"/>
-                                </div>
-                            </div>
-                            <div className="email_link input_br">
-                                <span>Email：</span>
-                                <div className="">
-                                    <input type="email" className="input" value={this.state.email} onChange={this.handleChange} id="email" placeholder="個人email"/>
                                 </div>
                             </div>
                         </div>

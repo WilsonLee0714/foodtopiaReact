@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import "./new_blog.scss";
+import "./new_blog.scss";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import Blog_slider from "./blog_slider/blog_slider"
 import My_recipe from "./my_recipe/my_recipe"
@@ -12,6 +12,7 @@ class New_blog extends Component {
     constructor(props) {
       super(props)
       this.state = {
+        communitys:[],
         //上傳圖片檔案
         selectedFile: null,
         //上傳圖片檔名
@@ -22,14 +23,8 @@ class New_blog extends Component {
         instagram:"",
         google_plus:"",
         youtube:"",
-        email:"",
         welcome:"",
         introduction:"",
-        communitys:[],
-        //讀圖片檔名
-        imgups:[],
-        welcomes:[],
-        introductions:[],
         //修改食譜
         // filter_months:[],
         // menus:[],
@@ -56,21 +51,21 @@ fileUploadHandler = (fileUploadHandler) =>{
             'Content-Type': 'application/json'
         }),
         body: JSON.stringify({img_name:fileUploadHandler.img_name}),
-    }).then(res=>{
+    }).then(() => {
         alert("上傳成功");
-        this.getUploadImg();
+        this.getCommunitys();
     })
 }
-//讀取圖片檔名
-getUploadImg() {
-    fetch("http://localhost:3000/imgup/upload_img_name", {  
+//communitys讀取
+getCommunitys = () => {
+    fetch("http://localhost:3000/imgup/upload_community", {  
         method: 'GET',
         mode:"cors",
         credentials: 'include',})
-        .then(res => res.json())
-        .then(imgups => this.setState({ 
-            imgups: imgups,
-        }))
+    .then(res => res.json())
+    .then(communitys => this.setState({ 
+        communitys:communitys,
+    }))
 }
 
 //修改welcome
@@ -84,25 +79,15 @@ welcome = (welcome) => {
             'Content-Type': 'application/json'
         }),
         body: JSON.stringify({welcome:welcome.welcome}),
-    }).then(res=>{
-        this.getWelcome();
+    }).then(() => {
+        this.getCommunitys();
     })
-}
-//讀取welcome
-getWelcome() {
-    fetch("http://localhost:3000/imgup/upload_welcome", {  
-        method: 'GET',
-        mode:"cors",
-        credentials: 'include',})
-        .then(res => res.json())
-        .then(welcomes => this.setState({ 
-            welcomes: welcomes,
-        }))
 }
 
 //修改introduction
 introduction = (introduction) => {
     //上傳introduction
+    console.log(introduction)
     fetch('http://localhost:3000/imgup/upload_introduction', { 
         method: 'PUT',
         mode:"cors",
@@ -111,20 +96,10 @@ introduction = (introduction) => {
             'Content-Type': 'application/json'
         }),
         body: JSON.stringify({introduction:introduction.introduction}),
-    }).then(res=>{
-        this.getIntroduction();
     })
-}
-//讀取introduction
-getIntroduction() {
-    fetch("http://localhost:3000/imgup/upload_introduction", {  
-        method: 'GET',
-        mode:"cors",
-        credentials: 'include',})
-        .then(res => res.json())
-        .then(introductions => this.setState({ 
-            introductions: introductions,
-        }))
+    .then(() => {
+        this.getCommunitys();
+    })
 }
 
 //社群修改
@@ -138,42 +113,25 @@ update = (update) => {
             instagram:update.instagram,
             google_plus:update.google_plus,
             youtube:update.youtube,
-            email:update.email,
         }),
         headers: new Headers({
             'Content-Type': 'application/json'
         })
-    })
-    .then(res=>{
-        alert("更新完成");
+    }).then(() => {
+        alert("更新成功")
         this.getCommunitys();
     })
-}//communitys讀取
-getCommunitys = () => {
-    fetch("http://localhost:3000/imgup/upload_community", {  
-        method: 'GET',
-        mode:"cors",
-        credentials: 'include',})
-    .then(res => res.json())
-    .then(communitys => this.setState({ 
-            communitys:communitys,
-    }))
 }
 
 componentDidMount(){
     window.scrollTo(0,0);
-    //讀取圖片檔名
-    this.getUploadImg();
-    //讀取welcome讀取introduction
-    this.getWelcome();
-    this.getIntroduction();
     //讀取社群
     this.getCommunitys();
 }
     render() {
         return (
             <React.Fragment>
-                <Blog_slider imgups={this.state.imgups} welcomes={this.state.welcomes} introductions={this.state.introductions} />
+                <Blog_slider communitys={this.state.communitys} />
                 <My_recipe />
                 <Food_recipe />
                 <Filter />

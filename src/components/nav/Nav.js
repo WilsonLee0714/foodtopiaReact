@@ -32,7 +32,6 @@ class Nav extends Component {
   //   })
   // }
   handleHover = () => {
-    // alert('ok')
     fetch('http://localhost:3000/session/info', {
       method: 'GET',
       credentials: 'include'
@@ -123,9 +122,7 @@ class Nav extends Component {
                 </li>
 
               </ul>
-              {/* <a href=''> */}
-              <img src={require('./icons/like.png')} />
-              {/* </a> */}
+              <img src={require('./icons/like.png')} onClick={this.props.love}/>
               <div>
                 <a href="http://localhost:3000/session/login">
                   <img

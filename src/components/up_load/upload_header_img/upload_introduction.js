@@ -27,7 +27,7 @@ class Upload_Introduction extends Component {
                     {/* 項目 */}
                     <Select_items_box categoryId={this.state.id} />
                     {/* 數量 */}
-                    <input className="introduction_number" type="text"></input>
+                    <input className="introduction_number" type="text" />
                 </div>
             </React.Fragment>
         );
