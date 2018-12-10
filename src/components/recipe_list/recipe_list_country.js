@@ -76,7 +76,7 @@ class Recipe_list extends Component {
           
           {/* 單一食譜 */}
           <div className="subRecipes_wrap container d-flex flex-wrap">
-            {this.state.recipe_lists.map(recipe_list =>  //menu -> 資料庫名稱
+            {this.state.recipe_lists.map(recipe_list =>  
 
                 <div className="p_card">
                     <div className="upper_card">

@@ -42,11 +42,13 @@ import Recipe_category_occasion from './components/recipe_list/recipe_list_occas
 import Recipe_category_screening from './components/recipe_list/recipe_list_difficult';
 import Recipe_category_time from './components/recipe_list/recipe_list_time';
 import Recipe_head from './components/recipe_head/recipe_head';
-// import SimpleSlider from './components/SimpleSlider/simpleSlider'; import
-// React_search from './components/recipe_list/search_bar/react-search'; 部落格匯入
-import Up_load from './components/up_load/up_load';
-import New_blog from './components/new_blog/new_blog';
-import Month_blog from './components/new_blog/month_blog';
+// import SimpleSlider from './components/SimpleSlider/simpleSlider';
+// import React_search from './components/recipe_list/search_bar/react-search';
+//部落格匯入
+import Up_load from "./components/up_load/up_load";
+import New_blog from "./components/new_blog/new_blog";
+import Month_blog from "./components/new_blog/month_blog";
+import Love from "./components/love/love";
 require('slick-carousel');
 
 class App extends Component {
@@ -93,6 +95,22 @@ class App extends Component {
         }
       })
   }
+      
+//收藏登入判定
+love = () => {
+  fetch('http://localhost:3000/session/info', {
+    method: 'GET',
+    credentials: 'include'
+  }).then(function (res) {
+    return res.json();
+  }).then((session) => {
+    if (session.login == 1) {
+      window.location.assign('/love');
+    } else {
+      window.location.assign('/login');
+    }
+  })
+}
 
   cartToggle = () => {
     let cartOpen = !this.state.cartOpen;
@@ -109,23 +127,12 @@ class App extends Component {
       <BrowserRouter>
         <React.Fragment>
           <Nav cartToggle={this.cartToggle} getCart={this.getCart} products={this.state.products}/>
-          <Cart
-            cartOpen={this.state.cartOpen}
-            cartToggle={this.cartToggle}
-            getCart={this.getCart}
-            products={this.state.products}
-            amount={this.state.amount}/>
+          <Cart cartOpen={this.state.cartOpen} cartToggle={this.cartToggle} getCart={this.getCart} products={this.state.products} amount={this.state.amount}/>
           <Route path='/homePage' component={HomePage}/>
           <Route path='/login' component={Login}/>
           <Route path='/register' component={Register}/>
           <Route path='/registerSuccessful' component={RegisterSuccessful}/>
-          <Route
-            path='/order'
-            render={(props) => <Order
-            {...props}
-            getCart={this.getCart}
-            products={this.state.products}
-            amount={this.state.amount}/>}/>
+          <Route path='/order' render={(props) => <Order {...props} getCart={this.getCart} products={this.state.products} amount={this.state.amount}/>}/>
           <div className='container d-flex'>
             <Route path='/memberCenter' component={MemberCenter}/>
             <Route path='/memberCenter/BasicInfo' component={BasicInfo}/>
@@ -167,11 +174,12 @@ class App extends Component {
           {/* <Route path="/recipe_head/recipe_category" component={Recipe_category} /> */}
           {/* <Route path="/recipe_page" render={(props) => <Recipe_page {...props} getCart={this.getCart} />}/> */}
 
-          <Route path='/recipe_page' render={(props) => <Recipe_page {...props} getCart={this.getCart}/>}/> {/* 部落格 */}
-          <Route path='/up_load' component={Up_load}/>
-          <Route path='/page/:id' render={(props) => <Recipe_page {...props} getCart={this.getCart}/>}/>
-          <Route path='/new_blog' component={New_blog}/>
-          <Route path='/month/:id' component={Month_blog}/>
+          {/* 部落格 */}
+          <Route path="/up_load" component={Up_load} />
+          <Route path="/page/:id" render={(props) => <Recipe_page {...props} getCart={this.getCart} />}/>
+          <Route path="/new_blog" component={New_blog} />
+          <Route path="/month/:id" component={Month_blog} />
+          <Route path="/love" component={Love} />
           <Footer/>
         </React.Fragment>
       </BrowserRouter>
