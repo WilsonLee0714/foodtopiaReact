@@ -53,6 +53,15 @@ h1{
             left: 18%;
             width:27%;
         }
+        .img{
+            position: absolute;
+            width: 27.7%;
+            height: 41%;
+            opacity: 1;
+            left: 17.9%;
+            top: 37.5%;
+            border-radius: 15px;
+        }
         //食譜時間,份量,難度
         .recipe_dropdowns{
             margin: 5% 0 0 9.5%;
@@ -136,6 +145,16 @@ h1{
                     margin-left: 10%;
                     background-color: #707070;
                     opacity: .2;
+                    border-radius: 15px;
+                }
+                .imgti{
+                    position: absolute;
+                    width: 73.5%;
+                    height: 105%;
+                    opacity: 1;
+                    left: 13.5%;
+                    top: 0%;
+                    border-radius: 15px;
                 }
                 .camera_icon{
                     font-size: 80px;
@@ -143,6 +162,7 @@ h1{
                     position: absolute;
                     top: 25%;
                     left: 39%;
+
                 }
                 .step_img{
                     opacity: 0;

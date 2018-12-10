@@ -9,6 +9,7 @@ class Select_filter_box extends Component {
             upload_ingredients_names: [],
         }
     }
+    //篩選食材
     change = (event) => {
         // console.log(event.target.value)
         this.setState({ value: event.target.value });
