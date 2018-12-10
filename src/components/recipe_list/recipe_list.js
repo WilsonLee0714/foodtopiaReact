@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import "./recipe_list.scss";
-
+import $ from 'jquery';
 // import Head_slider from './head_slider/head_slider.js';
 import Recommend from './recommend/recommend.js';
 import Day_rank from './rank/day_rank.js';
@@ -24,7 +24,6 @@ class Recipe_list extends Component {
   }
   render() {
     return (
-      // <BrowserRouter>
         <React.Fragment>
           <div className="middle_part container d-flex justify-content-center ">
             <Recommend />
@@ -56,8 +55,12 @@ class Recipe_list extends Component {
           </div>
           {/* <SimpleSlider/> */}
         </React.Fragment>
-      // </BrowserRouter>
     );
+  }
+  componentDidMount(){
+    $(".category_link").click(function(){
+      $(this).css({"border-bottom": "2px solid #FF4343", "color": "#FF4343", "font-weight": "700"});
+    })
   }
 }
 

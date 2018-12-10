@@ -65,7 +65,7 @@ class Recipe_list extends Component {
             <Day_rank />
           </div>
           <div  className="container d-flex justify-content-center mt-5">
-            <Link to="/country" className="category_link col-2" >異國料理</Link>
+            <Link to="/country" className="category_link col-2">異國料理</Link>
             <Link to="/serving" className="category_link col-2" >選擇人數</Link>
             <Link to="/occasion" className="category_link col-2" >場合料理</Link>
             <Link to="/difficult" className="category_link col-2" >烹飪難度</Link>
@@ -119,7 +119,7 @@ class Recipe_list extends Component {
               </div>
             </div>
             {/* 全部食譜 */}
-            <div className="all_recipies container">
+            <div className="all_recipies category_wrap container">
               {/* <div className="c_category_title ">全部料理</div> */}
               <div className="cards d-flex flex-wrap">
                   {this.state.menus.map(menu =>  
@@ -165,9 +165,16 @@ class Recipe_list extends Component {
     // window.scrollTo(0, 100);
     // this.getCountry_subs();
     this.getMenus();
+    $(".category_link").click(function(){
+      $(this).css({"border-bottom": "2px solid #FF4343", "color": "#FF4343", "font-weight": "700"});
+    })
     $(".sub_link").click(function(){
       $(".all_recipies").css("display", "none");
+      $(this).css("font-weight", "900")
     });
+    // $(".sub_link").toggle(function(){
+      
+    // })
   }
   // getCountry_subs(){
   //   fetch("http://localhost:3000/api/country/:id")

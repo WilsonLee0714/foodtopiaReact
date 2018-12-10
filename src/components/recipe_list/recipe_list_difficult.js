@@ -122,7 +122,7 @@ class Recipe_list extends Component {
               </div>
             </div>
             {/* 全部食譜 */}
-            <div className="all_recipies container ">
+            <div className="all_recipies category_wrap container ">
             {/* <div className="c_category_title ">異國料理</div> */}
               <div className="cards d-flex flex-wrap">
                   {this.state.menus.map(menu =>  
@@ -167,6 +167,9 @@ class Recipe_list extends Component {
     this.getMenus();
     // window.scrollTo(0, 250);
     this.getMenus();
+    $(".category_link").click(function(){
+      $(this).css({"border-bottom": "2px solid red", "color": "red", "font-weight": "700"});
+    })
     $(".sub_link").click(function(){
       $(".all_recipies").css("display", "none");
     });
