@@ -16,10 +16,8 @@ class Vegetable_board extends Component {
           <div className="board_right">
           <h2>{this.props.match.params.ipname}</h2>
                 <p>{this.props.match.params.ipid}</p>
-                <p>{this.props.match.params.iprice}</p>
-                <p>{this.props.match.params.ispec}</p>
-
-            <img className="icon" src={require('./image/shopping-bag.png')} onClick={this.cartToggle} />
+                <p>產品價格: {this.props.match.params.iprice}</p>
+                <p>產品規格: {this.props.match.params.ispec}</p>
             <button type="button" class="btn btn-info">加入購物車</button>
           </div>
         </div>  

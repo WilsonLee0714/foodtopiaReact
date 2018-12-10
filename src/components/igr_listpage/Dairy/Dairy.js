@@ -33,14 +33,15 @@ componentDidMount() {
           <h2>乳製品</h2>
           <div className="sec5_card_sec">
           {this.state.dairy.map(food =>
-              <div className="sec5_card_item">
-                <Link className="" to={`/ingridient_listpage/dairy_board/${food.product_name}/${food.product_id}/${food.price}/${food.product_img}/${food.spec}`}  key={food.product_name + food.product_id + food.price + food.product_img}>{food.product_name}</Link>
+              <div className="sec5_card_item card">
                 <img src={require(`../igr_img/${food.product_img}.jpg`)} alt="oops" />
-                <h3>{food.product_name}</h3>
+                <h3>
+                  <Link className="" to={`/ingridient_listpage/dairy_board/${food.product_name}/${food.product_id}/${food.price}/${food.product_img}/${food.spec}`}  key={food.product_name + food.product_id + food.price + food.product_img}>{food.product_name}</Link>
+                </h3>
                 <div className="cardprice_bar">
                   <img className="icon" src={require('./image/test10.jpg')} alt />
-                  <p>{food.price}</p>
-                  <img className="icon" src={require('./image/shopping-bag.png')} onClick={this.cartToggle} />
+                  <p>{food.spec}</p>
+                  <p>{food.price}元</p>
                   <button type="button" class="btn btn-info" data-product_id={food.product_id} onClick={this.props.addCart}>加入購物車</button>
                 </div>
               </div>         

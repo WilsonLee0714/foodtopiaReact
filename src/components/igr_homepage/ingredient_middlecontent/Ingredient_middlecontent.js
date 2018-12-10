@@ -14,7 +14,7 @@ class Ingredient_middlecontent extends Component {
         <div className="sec3_card_sec">
 
           <div className="sec3_card_item">
-            <img src={require('./image/dairytest.jpg')} alt />
+            <img src={require('./image/dairy.jpg')} alt />
             <div>
               <Link className="" to={`/ingridient_listpage/dairy`}>
               <h4>乳製品</h4>
@@ -27,7 +27,7 @@ class Ingredient_middlecontent extends Component {
           </div>
 
           <div className="sec3_card_item">
-            <img src={require('./image/vegetest.jpg')} alt />
+            <img src={require('./image/vegetable.jpg')} alt />
             <div>
               <Link className="" to={`/ingridient_listpage/vegetable`}>
                 <h4>新鮮蔬菜</h4>
@@ -44,9 +44,9 @@ class Ingredient_middlecontent extends Component {
         <div className="sec3_card_sec">
 
           <div className="sec3_card_item">
-            <img src={require('./image/meattest.jpg')} alt />
+            <img src={require('./image/meat.jpg')} alt />
             <div>
-              <Link className="" to={`/ingridient_listpage/dairy`}>
+              <Link className="" to={`/ingridient_listpage/meat`}>
                 <h4>肉類</h4>
               </Link>
               <div className="cardprice_bar">
@@ -57,14 +57,14 @@ class Ingredient_middlecontent extends Component {
           </div>
 
           <div className="sec3_card_item">
-            <img src={require('./image/seafoodtest.jpg')} alt />
+            <img src={require('./image/fruit.jpg')} alt />
             <div>
-              <Link className="" to={`/ingridient_listpage/dairy`}>
-                <h4>海鮮</h4>
+              <Link className="" to={`/ingridient_listpage/fruit`}>
+                <h4>新鮮水果</h4>
               </Link>
               <div className="cardprice_bar">
                 <img src={require('./image/test117.jpg')} alt />
-                <p>肉質彈牙，鮮味滿點</p>
+                <p>台灣品質，果肉飽滿</p>
               </div>
             </div>
           </div>
