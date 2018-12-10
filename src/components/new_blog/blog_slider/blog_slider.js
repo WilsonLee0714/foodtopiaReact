@@ -12,7 +12,7 @@ class New_blog extends Component {
                 {/* Header */}
                 {this.props.communitys.map(community=>
                     <div key={community.id}>
-                        <div  className="background">
+                        <div className="background">
                             <img src={(`http://localhost:3000/imgup/${community.img_name}`)} alt="" />
                         </div>
                         {/* 歡迎語 */}

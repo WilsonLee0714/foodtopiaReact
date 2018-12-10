@@ -48,6 +48,7 @@ import Recipe_head from './components/recipe_head/recipe_head';
 import Up_load from "./components/up_load/up_load";
 import New_blog from "./components/new_blog/new_blog";
 import Month_blog from "./components/new_blog/month_blog";
+import Love from "./components/love/love";
 require('slick-carousel');
 
 class App extends Component {
@@ -102,6 +103,21 @@ cartToggle = () => {
     }
   })
 }
+//收藏登入判定
+love = () => {
+  fetch('http://localhost:3000/session/info', {
+    method: 'GET',
+    credentials: 'include'
+  }).then(function (res) {
+    return res.json();
+  }).then((session) => {
+    if (session.login == 1) {
+      window.location.assign('/love');
+    } else {
+      window.location.assign('/login');
+    }
+  })
+}
 
 componentDidMount = () => {
   this.getCart();
@@ -114,7 +130,7 @@ componentDidUpdate = () => {
     return (
       <BrowserRouter>
         <React.Fragment>
-          <Nav cartToggle={this.cartToggle} getCart={this.getCart} />
+          <Nav cartToggle={this.cartToggle} getCart={this.getCart} love={this.love}/>
           <Cart cartToggle={this.cartToggle} getCart={this.getCart} products={this.state.products} amount={this.state.amount}/>
           <Route path="/homePage" component={HomePage} />
           <Route path="/login" component={Login} />
@@ -167,6 +183,7 @@ componentDidUpdate = () => {
           <Route path="/page/:id" render={(props) => <Recipe_page {...props} getCart={this.getCart} />}/>
           <Route path="/new_blog" component={New_blog} />
           <Route path="/month/:id" component={Month_blog} />
+          <Route path="/love" component={Love} />
           <Footer/>
         </React.Fragment>
       </BrowserRouter>

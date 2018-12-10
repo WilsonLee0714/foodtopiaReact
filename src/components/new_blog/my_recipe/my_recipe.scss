@@ -1,16 +1,99 @@
 // blog食譜清單標題
 .recipe_header{
+    width: 50%;
     text-align: center;
-    margin-top: 2%;
+    margin: 2% auto 0;
     font-family: "微軟正黑體";
     h1{
         font-size: 3.5em;
     }
-    p{
+    .line{
         margin: 1% auto 0;
-        width: 10%;
+        width: 12%;
         border-top: 2px solid #707070;
+    }
+    p{
         font-size: 1.5em;
         font-weight: 700;
+    }
+}
+@media screen and (max-width:1200px){
+    .recipe_header{
+        width: 50%;
+        text-align: center;
+        margin: 2% auto 0;
+        font-family: "微軟正黑體";
+        h1{
+            font-size: 3em;
+        }
+        .line{
+            margin: 1% auto 0;
+            width: 16%;
+            border-top: 2px solid #707070;
+        }
+        p{
+            font-size: 1.5em;
+            font-weight: 700;
+        }
+    }
+}
+@media screen and (max-width:992px){
+    .recipe_header{
+        width: 50%;
+        text-align: center;
+        margin: 4% auto -2%;
+        font-family: "微軟正黑體";
+        h1{
+            font-size: 2.5em;
+        }
+        .line{
+            margin: 1% auto 0;
+            width: 20%;
+            border-top: 2px solid #707070;
+        }
+        p{
+            font-size: 1.5em;
+            font-weight: 700;
+        }
+    }
+}
+@media screen and (max-width:768px){
+    .recipe_header{
+        width: 50%;
+        text-align: center;
+        margin: 6% auto -3%;
+        font-family: "微軟正黑體";
+        h1{
+            font-size: 2.3em;
+        }
+        .line{
+            margin: 1% auto 0;
+            width: 22%;
+            border-top: 2px solid #707070;
+        }
+        p{
+            font-size: 1.3em;
+            font-weight: 700;
+        }
+    }
+}
+@media screen and (max-width:576px){
+    .recipe_header{
+        width: 50%;
+        text-align: center;
+        margin: 6% auto -7%;
+        font-family: "微軟正黑體";
+        h1{
+            font-size: 1.7em;
+        }
+        .line{
+            margin: 1% auto 0;
+            width: 22%;
+            border-top: 2px solid #707070;
+        }
+        p{
+            font-size: 1em;
+            font-weight: 700;
+        }
     }
 }

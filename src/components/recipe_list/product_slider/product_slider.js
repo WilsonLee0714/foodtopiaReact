@@ -30,7 +30,10 @@ class Product_slider extends Component {
                             </div>
                         </Link>
                         <div className="category_wrap container">
-                            <div className="category_title title1">獨家推薦</div>
+                            <div clasName="container d-flex ">
+                                <img className="cate_logo" src={require("./images/bells.svg")}/>
+                                <div className="category_title title1">獨家推薦</div>
+                            </div>
                             <div className="cards d-flex">
                                 {this.state.menus.map(menu =>  //menu -> 資料庫名稱
                                     

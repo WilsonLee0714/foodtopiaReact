@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import "./new_blog.scss";
+import "./new_blog.scss";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import Blog_slider from "./blog_slider/blog_slider"
 import My_recipe from "./my_recipe/my_recipe"

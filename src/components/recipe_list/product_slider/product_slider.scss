@@ -44,9 +44,15 @@ $title_fontWeight: 700;
     }
 }
 .category_wrap{
+    .cate_logo{
+        height: 60px;
+        display: inline-block;
+    }
     .category_title{
         // color: red;
-        margin: 15px 15px 0 15px;
+        margin: 0px 15px 0 10px;
+        display: inline-block;
+        vertical-align: bottom;
     }
     .p_card{
         width: 220px;
@@ -57,9 +63,14 @@ $title_fontWeight: 700;
         cursor: pointer;
         .upper_card{
             position: relative;
+            overflow: hidden;
             .card_pic{
                 width: 100%;
                 border-radius: 10px 10px 0 0;
+                transition: .5s;
+                &:hover{
+                    transform: scale(1.3);
+                }
             }
             .rate{
                 position: absolute;

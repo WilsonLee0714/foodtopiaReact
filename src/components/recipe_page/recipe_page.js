@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 // import "bootstrap/dist/js/bootstrap.bundle";
 import "./recipe_page.scss";
 import $ from "jquery";
+import { getDate } from 'date-fns';
 
 class Recipe_page extends Component {
   constructor(props) {
@@ -118,49 +119,79 @@ class Recipe_page extends Component {
       nicknames:nicknames,
     }))
   }
-//隨機生成4筆食譜連結
-getRecipe_rand = () => {
-  fetch("http://localhost:3000/api/recipe_rand", {  
+  //隨機生成4筆食譜連結
+  getRecipe_rand = () => {
+    fetch("http://localhost:3000/api/recipe_rand", {  
+        method: 'GET',
+        mode:"cors",
+        credentials: 'include',})
+    .then(res => res.json())
+    .then(recipe_rands => this.setState({ 
+      recipe_rands:recipe_rands,
+    }))
+  }
+  //食譜作者
+  getRecipe_member = (id) => {
+    fetch("http://localhost:3000/api/recipe_members/"+id, {  
+        method: 'GET',
+        mode:"cors",
+        credentials: 'include',})
+    .then(res => res.json())
+    .then(recipe_members => this.setState({ 
+      recipe_members:recipe_members,
+    }))
+  }
+  //確認收藏
+  getConfirmLove =(id)=>{
+    fetch("http://localhost:3000/love/love/"+id, {  
       method: 'GET',
       mode:"cors",
       credentials: 'include',})
-  .then(res => res.json())
-  .then(recipe_rands => this.setState({ 
-    recipe_rands:recipe_rands,
-  }))
-}
-//食譜作者
-getRecipe_member = (id) => {
-  fetch("http://localhost:3000/api/recipe_members/"+id, {  
-      method: 'GET',
+      .then(res => res.json())
+      .then(function(confirmloves){
+        if(!confirmloves.length){
+          $(".loved").addClass("close");
+        }else{
+          $(".loved").removeClass("close");
+        }
+      })
+  }
+  //加入收藏
+  getLove =(evt)=>{
+    evt.preventDefault();
+    fetch("http://localhost:3000/love/love", {  
+      method: 'POST',
       mode:"cors",
-      credentials: 'include',})
-  .then(res => res.json())
-  .then(recipe_members => this.setState({ 
-    recipe_members:recipe_members,
-  }))
-}
-
-allAddCart = (evt) => {
-  evt.preventDefault();
-  fetch("http://localhost:3000/cart/allAddCart", {
-    method: 'POST',
-    mode: "cors",
-    credentials: 'include',
-    headers: new Headers({'Content-Type': 'application/json'}),
-      body: JSON.stringify({products: this.state.ingredients})
+      credentials: 'include',
+      headers: new Headers({
+          'Content-Type': 'application/json'
+      }),
+      body: JSON.stringify({recipe_id:this.state.recipe_id,}) 
     })
     .then(res => res.json())
-    .then(message => console.log(message))
-    .then(message => this.props.getCart())
-    
-}
+    // .then(this.getConfirmLove(this.state.recipe_id))
+  }
+
+  allAddCart = (evt) => {
+    evt.preventDefault();
+    fetch("http://localhost:3000/cart/allAddCart", {
+      method: 'POST',
+      mode: "cors",
+      credentials: 'include',
+      headers: new Headers({'Content-Type': 'application/json'}),
+        body: JSON.stringify({products: this.state.ingredients})
+      })
+      .then(res => res.json())
+      .then(message => console.log(message))
+      .then(message => this.props.getCart())
+      
+  }
 
 componentDidMount(){
     //食譜單筆資料
     let id = this.props.match.params.id
     this.setState({recipe_id:this.props.match.params.id})
-    
+    //導入
     this.getMenus(id);
     this.getNutritional_value(id);
     this.getStep(id);
@@ -169,7 +200,12 @@ componentDidMount(){
     this.getRecipe_comments(id);
     this.getCommunitys();
     this.getRecipe_rand();
-    this.getRecipe_member(id)
+    this.getRecipe_member(id);
+    this.getConfirmLove(id);
+    // 收藏
+    $(".like_btn").on("click",function(){
+      $(".loved").toggleClass("close");
+    });
 }
 
   render() {
@@ -182,7 +218,7 @@ componentDidMount(){
     }).then((a) => {
       if (a.login == 1) {
         var blog = document.getElementById('nouser_name');
-        var comment = document.getElementById('comment')
+        var comment = document.getElementById('comment');
         blog.style.display = 'none';
         comment.disabled = false;
       } else {
@@ -203,10 +239,14 @@ componentDidMount(){
                       <h1 key={menu.id} className="recipe_tittle">{menu.menu}</h1>
                     )}
                     {/* ---收藏--- */}
-                    <div className="like_btn d-flex justify-content-center">
-                      <img className="like_img" src={require('./images/like.svg')}/>
-                      <img className="liked_img" src={require('./images/liked.svg')}/>
-                      <div className="like_text">收藏</div>
+                    <div className="like_btn" onClick={this.getLove}>
+                      <div className="love d-flex">
+                        <img className="like_img" src={require('./images/like.svg')}/>
+                        <p className="like_text">收藏</p>
+                      </div>
+                      <div className="loved close">
+                        <img className="liked_img" src={require('./images/liked.svg')}/>
+                      </div>
                     </div>
                   </div>
                     {/* ---食譜簡介--- */}
