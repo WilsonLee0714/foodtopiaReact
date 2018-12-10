@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import "./product_slider.scss";
-import menus from "../../recipe_list.json";
+import xmas from "./xmas_recipes";
 import Recipe_category from "../../recipe_category/recipe_category"
 
 class Product_slider_right extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            menus: menus //設定初始值menus為引入的menus json檔
+            menus: xmas //設定初始值menus為引入的menus json檔
             // menus: []
           }
     }
@@ -23,7 +23,7 @@ class Product_slider_right extends Component {
                             <div className="p_card">
                                     <div className="upper_card">
                                         <img className="card_pic" src ={require(`./images/${menu.menu_img}.jpg`)} alt="" />
-                                        <div className="rate title1">4.2</div>
+                                        <div className="rate title1">{menu.rating}</div>
                                     </div>
                                     
                                     <div className="lower_card">

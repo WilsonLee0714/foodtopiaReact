@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import "./product_slider.scss";
 // 引入json檔資料，並取名叫做menus
-import menus from "../../recipe_list.json";
+import season from "./season_recipes.json";
 import $ from 'jquery';
 
 import Recipe_category from "../../recipe_category/recipe_category"
@@ -14,7 +14,7 @@ class Product_slider extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            menus: menus //設定初始值menus為引入的menus json檔
+            menus: season //設定初始值menus為引入的menus json檔
             // menus: []
           }
     };
@@ -38,7 +38,7 @@ class Product_slider extends Component {
                                         
                                             <div className="upper_card">
                                                 <img className="card_pic" src ={require(`./images/${menu.menu_img}.jpg`)} alt="" />
-                                                <div className="rate title1">4.2</div>
+                                                <div className="rate title1">{menu.rating}</div>
                                             </div>
                                             
                                             <div className="lower_card">

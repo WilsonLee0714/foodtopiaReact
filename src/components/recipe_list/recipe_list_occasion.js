@@ -133,7 +133,7 @@ class Recipe_list extends Component {
     );
   }
   componentDidMount(){
-    window.scrollTo(0, 200);
+    // window.scrollTo(0, 250);
     this.getMenus();
   }
   getMenus(){

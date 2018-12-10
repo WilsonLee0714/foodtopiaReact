@@ -30,7 +30,7 @@ class Recipe_list extends Component {
     console.log(this.state)
   }
   // componentDidMount(){
-  //   // window.scrollTo(0, 400);
+  //   //
   // }
   subRecipe_lists = (id) => {
     fetch('http://localhost:3000/api/country/'+id)
@@ -128,6 +128,7 @@ class Recipe_list extends Component {
   }
   componentDidMount(){
     this.getMenus();
+    // window.scrollTo(0, 250);
   }
   getMenus(){
     fetch("http://localhost:3000/api/recipe")
