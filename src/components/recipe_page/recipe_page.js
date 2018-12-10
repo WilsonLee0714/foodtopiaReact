@@ -32,6 +32,10 @@ class Recipe_page extends Component {
       recipe_rands:[],
       //食譜作者
       recipe_members:[],
+      //會員頭貼
+      profile: 'chef.png',
+      //頭貼來源
+      source: 'http://localhost:3000/uploads/',
     }
   }
   //食譜內頁各筆資訊
@@ -188,6 +192,21 @@ class Recipe_page extends Component {
   }
 
 componentDidMount(){
+    //讀會員頭貼
+    fetch('http://localhost:3000/session/info', {
+            method: 'GET',
+            credentials: 'include'
+        }).then(function (res) {
+            console.log(res);
+            return res.json();
+        }).then((a) => {
+            this.setState({ userName: a.nickname });
+            if(a.profile!=null){
+                this.setState({ profile: a.profile });
+            } else {
+                this.setState({ profile: 'chef.png' });
+            }
+        })
     //食譜單筆資料
     let id = this.props.match.params.id
     this.setState({recipe_id:this.props.match.params.id})
@@ -432,7 +451,8 @@ componentDidMount(){
           {this.state.recipe_comments.map(recipe_comment=>
             <div className="comment_recipe">
               <main className="comment_wrap d-flex container">
-                <img className="profile_pic" src={require("./images/foodtopia_profile_pic.png")} />
+                <img className="profile_pic" style={{ width: '60px',height:'60px',borderRadius:'50%' }} src={this.state.source+recipe_comment.profile} />
+                {/* <img className="profile_pic" src={require("./images/foodtopia_profile_pic.png")} /> */}
                 <div className="comment_area">
                   <span className="user_name">{recipe_comment.comment_name}</span>
                   <div className="comment_text">{recipe_comment.comment}</div>
@@ -441,7 +461,7 @@ componentDidMount(){
             </div>
           )}
             <main className="comment_wrap d-flex container">
-              <img className="profile_pic" src={require("./images/foodtopia_profile_pic.png")} />
+              <img className="profile_pic" style={{ width: '60px',height:'60px',borderRadius:'50%' }} src={this.state.source+this.state.profile} />
               <div className="comment_area">
               {/* 抓會員暱稱 */}
               {this.state.nicknames.map(nickname=>
