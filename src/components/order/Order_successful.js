@@ -16,7 +16,7 @@ class Order_successful extends Component {
         })
         .then(res => res.json())
         .then(message => console.log(message)
-        .them(()=> this.props.getCart())
+        .then(()=> this.props.getCart())
         )
   }
 
