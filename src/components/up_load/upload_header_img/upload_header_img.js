@@ -8,22 +8,51 @@ class Upload_header_img extends Component {
         super(props)
         this.state = {
             n: 1,
+            menu:"",//食譜名稱
+            //圖片檔案
+            selectedFile:null,
+            selectedFile1:null,
+            selectedFile2:null,
+            selectedFile3:null,
+            selectedFile4:null,
+            selectedFile5:null,
+            selectedFile6:null,
+            //圖片檔名
+            img_name:"",
+            img_name_1:"",
+            img_name_2:"",
+            img_name_3:"",
+            img_name_4:"",
+            img_name_5:"",
+            img_name_6:"",
+            //難度時間分量簡介
             recipe_time:"",
             recipe_people:"",
             recipe_difficult:"",
             introduction:"",
-            stepImg_1:"",
+            //步驟
             stepText_1:"",
-            stepImg_2:"",
             stepText_2:"",
-            stepImg_3:"",
             stepText_3:"",
-            stepImg_4:"",
             stepText_4:"",
-            stepImg_5:"",
             stepText_5:"",
-            stepImg_6:"",
             stepText_6:"",
+            //食材
+            ingredients_1:"",
+            ingredients_2:"",
+            ingredients_3:"",
+            ingredients_4:"",
+            ingredients_5:"",
+            ingredients_6:"",
+            ingredients_7:"",
+            //份量
+            changeNum1:"",
+            changeNum2:"",
+            changeNum3:"",
+            changeNum4:"",
+            changeNum5:"",
+            changeNum6:"",
+            changeNum7:"",
         }
     }
     //上傳
@@ -34,9 +63,241 @@ class Upload_header_img extends Component {
             [key] : data
         })
     }
-    send_recipe = () => {
-
+    //圖片
+    fileSelectedHandler = evt => {
+        this.setState({
+            selectedFile:evt.target.files[0],
+        })
+        this.setState({
+            img_name:evt.target.files[0].name,
+        })
     }
+    fileSelectedHandler1 = evt => {
+        this.setState({
+            selectedFile1:evt.target.files[0],
+        })
+        this.setState({
+            img_name_1:evt.target.files[0].name,
+        })
+    }
+    fileSelectedHandler2 = evt => {
+        this.setState({
+            selectedFile2:evt.target.files[0],
+        })
+        this.setState({
+            img_name_2:evt.target.files[0].name,
+        })
+    }
+    fileSelectedHandler3 = evt => {
+        this.setState({
+            selectedFile3:evt.target.files[0],
+        })
+        this.setState({
+            img_name_3:evt.target.files[0].name,
+        })
+    }
+    fileSelectedHandler4 = evt => {
+        this.setState({
+            selectedFile4:evt.target.files[0],
+        })
+        this.setState({
+            img_name_4:evt.target.files[0].name,
+        })
+    }
+    fileSelectedHandler5 = evt => {
+        this.setState({
+            selectedFile5:evt.target.files[0],
+        })
+        this.setState({
+            img_name_5:evt.target.files[0].name,
+        })
+    }
+    fileSelectedHandler6 = evt => {
+        this.setState({
+            selectedFile6:evt.target.files[0],
+        })
+        this.setState({
+            img_name_6:evt.target.files[0].name,
+        })
+    }   
+    //食材
+    change1 =(change)=>{
+        this.setState({
+            ingredients_1:change.valueins,
+        })
+    }
+    change2 =(change)=>{
+        this.setState({
+            ingredients_2:change.valueins,
+        })
+    }
+    change3 =(change)=>{
+        this.setState({
+            ingredients_3:change.valueins,
+        })
+    }
+    change4 =(change)=>{
+        this.setState({
+            ingredients_4:change.valueins,
+        })
+    }
+    change5 =(change)=>{
+        this.setState({
+            ingredients_5:change.valueins,
+        })
+    }
+    change6 =(change)=>{
+        this.setState({
+            ingredients_6:change.valueins,
+        })
+    }
+    change7 =(change)=>{
+        this.setState({
+            ingredients_7:change.valueins,
+        })
+    }
+    //份量
+    changeNum1=(changeNum)=>{
+        this.setState({
+            changeNum1:changeNum.numbers,
+        })
+    }
+    changeNum2=(changeNum)=>{
+        this.setState({
+            changeNum2:changeNum.numbers,
+        })
+    }
+    changeNum3=(changeNum)=>{
+        this.setState({
+            changeNum3:changeNum.numbers,
+        })
+    }
+    changeNum4=(changeNum)=>{
+        this.setState({
+            changeNum4:changeNum.numbers,
+        })
+    }
+    changeNum5=(changeNum)=>{
+        this.setState({
+            changeNum5:changeNum.numbers,
+        })
+    }
+    changeNum6=(changeNum)=>{
+        this.setState({
+            changeNum6:changeNum.numbers,
+        })
+    }
+    changeNum7=(changeNum)=>{
+        this.setState({
+            changeNum7:changeNum.numbers,
+        })
+    }
+    //送出上傳
+    send_recipe = () => {
+        //傳資料庫
+        fetch('http://localhost:3000/upload/upload_menu_total', { 
+        method: 'POST',
+        mode:"cors",
+        credentials: 'include',
+        headers: new Headers({
+            'Content-Type': 'application/json'
+        }),
+        body: JSON.stringify({
+            menu:this.state.menu,
+            menu_img:this.state.img_name,
+            Introduction:this.state.introduction,
+            difficult:this.state.recipe_difficult,
+            time:this.state.recipe_time,
+            serving:this.state.recipe_people,
+            step_img_1:this.state.img_name_1,
+            step_img_2:this.state.img_name_2,
+            step_img_3:this.state.img_name_3,
+            step_img_4:this.state.img_name_4,
+            step_img_5:this.state.img_name_5,
+            step_img_6:this.state.img_name_6,
+            step_1:this.state.stepText_1,
+            step_2:this.state.stepText_2,
+            step_3:this.state.stepText_3,
+            step_4:this.state.stepText_4,
+            step_5:this.state.stepText_5,
+            step_6:this.state.stepText_6,
+            name_1:this.state.changeNum1+"單位"+this.state.ingredients_1,
+            name_2:this.state.changeNum2+"單位"+this.state.ingredients_2,
+            name_3:this.state.changeNum3+"單位"+this.state.ingredients_3,
+            name_4:this.state.changeNum4+"單位"+this.state.ingredients_4,
+            name_5:this.state.changeNum5+"單位"+this.state.ingredients_5,
+            name_6:this.state.changeNum6+"單位"+this.state.ingredients_6,
+            name_7:this.state.changeNum7+"單位"+this.state.ingredients_7,
+        }),
+        }).then(() => {
+           alert("上傳成功");
+           
+        })
+        //傳圖片
+        const formdata = new FormData();
+        formdata.append('image',this.state.selectedFile,this.state.img_name);
+        fetch("http://localhost:3000/upload/upload",{
+            method:"POST",
+            body:formdata
+        }).then(function(res){
+            return res.json();
+        })
+        // ---------------------------------------------------------
+        const formdata1 = new FormData();
+        formdata1.append('image',this.state.selectedFile1,this.state.img_name_1);
+        fetch("http://localhost:3000/upload/upload1",{
+            method:"POST",
+            body:formdata1
+        }).then(function(res){
+            return res.json();
+        })
+        // ---------------------------------------------------------
+        const formdata2 = new FormData();
+        formdata2.append('image',this.state.selectedFile2,this.state.img_name_2);
+        fetch("http://localhost:3000/upload/upload2",{
+            method:"POST",
+            body:formdata2
+        }).then(function(res){
+            return res.json();
+        })
+        // ---------------------------------------------------------
+        const formdata3 = new FormData();
+        formdata3.append('image',this.state.selectedFile3,this.state.img_name_3);
+        fetch("http://localhost:3000/upload/upload3",{
+            method:"POST",
+            body:formdata3
+        }).then(function(res){
+            return res.json();
+        })
+        // ---------------------------------------------------------
+        const formdata4 = new FormData();
+        formdata4.append('image',this.state.selectedFile4,this.state.img_name_4);
+        fetch("http://localhost:3000/upload/upload4",{
+            method:"POST",
+            body:formdata4
+        }).then(function(res){
+            return res.json();
+        })
+        // ---------------------------------------------------------
+        const formdata5 = new FormData();
+        formdata5.append('image',this.state.selectedFile5,this.state.img_name_5);
+        fetch("http://localhost:3000/upload/upload5",{
+            method:"POST",
+            body:formdata5
+        }).then(function(res){
+            return res.json();
+        })
+        // ---------------------------------------------------------
+        const formdata6 = new FormData();
+        formdata6.append('image',this.state.selectedFile6,this.state.img_name_6);
+        fetch("http://localhost:3000/upload/upload6",{
+            method:"POST",
+            body:formdata6
+        }).then(function(res){
+            return res.json();
+        })
+    }
+
     componentDidMount() {
         //新增欄位
         $("#new_step").on('click', () => {
@@ -76,6 +337,7 @@ class Upload_header_img extends Component {
     }
 
     render() {
+        console.log(this.state)
         return (
             <React.Fragment>
                 <h1>分享食譜</h1>
@@ -83,32 +345,33 @@ class Upload_header_img extends Component {
                     <div className="upload_header container">
                         {/* 食譜名稱,食譜照上傳 */}
                         <form className="input_form">
-                            <input className="form-control header" type="text" placeholder="食譜名稱" aria-label="Search" />
+                            <input className="form-control header" onChange={this.change} value={this.state.value} id="menu" type="text" placeholder="食譜名稱" aria-label="Search" />
                             <img className="chicken_img" src={require("./img/th.png")} alt="" />
                             <div className="upload_chicken"></div>
                             <img className="line_img" src={require("./img/line_img.png")} alt="" />
-                            <input type="file" className="recipe_header_img" />
+                            <img className="img" src={(`http://localhost:3000/imgup/${this.state.img_name}`)} alt="" />
+                            <input type="file" onChange={this.fileSelectedHandler} id="menu_img" className="recipe_header_img" />
                             {/* 食譜時間,份量,難度 */}
                             <div className="recipe_dropdowns container d-flex">
                                 <select onChange={this.change} value={this.state.value} id="recipe_time" className="select_box select_time_box col-4">
-                                    <option value="" className="select_options">時間</option>
-                                    <option value="" className="select_options">15分鐘</option>
-                                    <option value="" className="select_options">30分鐘</option>
-                                    <option value="" className="select_options">45分鐘</option>
-                                    <option value="" className="select_options">60分鐘</option>
+                                    <option value="0" className="select_options">時間</option>
+                                    <option value="15分鐘" className="select_options">15分鐘</option>
+                                    <option value="30分鐘" className="select_options">30分鐘</option>
+                                    <option value="45分鐘" className="select_options">45分鐘</option>
+                                    <option value="60分鐘" className="select_options">60分鐘</option>
                                 </select>
                                 <select onChange={this.change} value={this.state.value} id="recipe_people" className="select_box select_people_box col-4">
-                                    <option value="" className="select_options">份量</option>
-                                    <option value="" className="select_options">1人份</option>
-                                    <option value="" className="select_options">2人份</option>
-                                    <option value="" className="select_options">3人份</option>
-                                    <option value="" className="select_options">4人份</option>
+                                    <option value="0" className="select_options">份量</option>
+                                    <option value="1人份" className="select_options">1人份</option>
+                                    <option value="2人份" className="select_options">2人份</option>
+                                    <option value="3人份" className="select_options">3人份</option>
+                                    <option value="4人份" className="select_options">4人份</option>
                                 </select>
                                 <select onChange={this.change} value={this.state.value} id="recipe_difficult" className="select_box select_difficult_box col-4">
-                                    <option value="" className="select_options">難度</option>
-                                    <option value="" className="select_options">簡單</option>
-                                    <option value="" className="select_options">稍難</option>
-                                    <option value="" className="select_options">困難</option>
+                                    <option value="0" className="select_options">難度</option>
+                                    <option value="簡單" className="select_options">簡單</option>
+                                    <option value="稍難" className="select_options">稍難</option>
+                                    <option value="困難" className="select_options">困難</option>
                                 </select>
                             </div>
                             {/* 食譜簡介 */}
@@ -123,13 +386,13 @@ class Upload_header_img extends Component {
                             <h2 className="col-5 recipe_project_items">品項</h2>
                             <h2 className="col-2 recipe_project_number">數量</h2>
                         </div>
-                        <Upload_introduction />
-                        <Upload_introduction />
-                        <Upload_introduction />
-                        <Upload_introduction />
-                        <Upload_introduction />
-                        <Upload_introduction />
-                        <Upload_introduction />
+                        <Upload_introduction change={this.change1} changeNum={this.changeNum1} />
+                        <Upload_introduction change={this.change2} changeNum={this.changeNum2} />
+                        <Upload_introduction change={this.change3} changeNum={this.changeNum3} />
+                        <Upload_introduction change={this.change4} changeNum={this.changeNum4} />
+                        <Upload_introduction change={this.change5} changeNum={this.changeNum5} />
+                        <Upload_introduction change={this.change6} changeNum={this.changeNum6} />
+                        <Upload_introduction change={this.change7} changeNum={this.changeNum7} />
                     </div>
                 </div>
                 {/* 步驟 */}
@@ -143,7 +406,8 @@ class Upload_header_img extends Component {
                             <form className="input_step_form col-4">
                                 <i className="fas fa-camera-retro camera_icon"></i>
                                 <div className="upload_camera"></div>
-                                <input type="file" onChange={this.change} value={this.state.value} id="stepImg_1" className="step_img" />
+                                <img className="imgti" src={(`http://localhost:3000/imgup/${this.state.img_name_1}`)} alt="" />
+                                <input type="file" onChange={this.fileSelectedHandler1}  id="stepImg_1" className="step_img" />
                             </form>
                             <div className="upload_number_step d-flex col-8 ">
                                 <p className="step_number">1</p>
@@ -161,7 +425,8 @@ class Upload_header_img extends Component {
                             <form className="input_step_form col-4">
                                 <i className="fas fa-camera-retro camera_icon"></i>
                                 <div className="upload_camera"></div>
-                                <input type="file" onChange={this.change} value={this.state.value} id="stepImg_2" className="step_img" />
+                                <img className="imgti" src={(`http://localhost:3000/imgup/${this.state.img_name_2}`)} alt="" />
+                                <input type="file" onChange={this.fileSelectedHandler2} id="stepImg_2" className="step_img" />
                             </form>
                             <div className="upload_number_step d-flex col-8 ">
                                 <p className="step_number">2</p>
@@ -179,7 +444,8 @@ class Upload_header_img extends Component {
                             <form className="input_step_form col-4">
                                 <i className="fas fa-camera-retro camera_icon"></i>
                                 <div className="upload_camera"></div>
-                                <input type="file" onChange={this.change} value={this.state.value} id="stepImg_3" className="step_img" />
+                                <img className="imgti" src={(`http://localhost:3000/imgup/${this.state.img_name_3}`)} alt="" />
+                                <input type="file" onChange={this.fileSelectedHandler3} id="stepImg_3" className="step_img" />
                             </form>
                             <div className="upload_number_step d-flex col-8 ">
                                 <p className="step_number">3</p>
@@ -197,7 +463,8 @@ class Upload_header_img extends Component {
                             <form className="input_step_form col-4">
                                 <i className="fas fa-camera-retro camera_icon"></i>
                                 <div className="upload_camera"></div>
-                                <input type="file" onChange={this.change} value={this.state.value} id="stepImg_4" className="step_img" />
+                                <img className="imgti" src={(`http://localhost:3000/imgup/${this.state.img_name_4}`)} alt="" />
+                                <input type="file" onChange={this.fileSelectedHandler4} id="stepImg_4" className="step_img" />
                             </form>
                             <div className="upload_number_step d-flex col-8 ">
                                 <p className="step_number">4</p>
@@ -215,7 +482,8 @@ class Upload_header_img extends Component {
                             <form className="input_step_form col-4">
                                 <i className="fas fa-camera-retro camera_icon"></i>
                                 <div className="upload_camera"></div>
-                                <input type="file" onChange={this.change} value={this.state.value} id="stepImg_5" className="step_img" />
+                                <img className="imgti" src={(`http://localhost:3000/imgup/${this.state.img_name_5}`)} alt="" />
+                                <input type="file" onChange={this.fileSelectedHandler5} id="stepImg_5" className="step_img" />
                             </form>
                             <div className="upload_number_step d-flex col-8 ">
                                 <p className="step_number">5</p>
@@ -233,7 +501,8 @@ class Upload_header_img extends Component {
                             <form className="input_step_form col-4">
                                 <i className="fas fa-camera-retro camera_icon"></i>
                                 <div className="upload_camera"></div>
-                                <input type="file" onChange={this.change} value={this.state.value} id="stepImg_6" className="step_img" />
+                                <img className="imgti" src={(`http://localhost:3000/imgup/${this.state.img_name_6}`)} alt="" />
+                                <input type="file" onChange={this.fileSelectedHandler6} id="stepImg_6" className="step_img" />
                             </form>
                             <div className="upload_number_step d-flex col-8 ">
                                 <p className="step_number">6</p>
