@@ -36,9 +36,7 @@ class Head_slider extends Component {
                 </ul>
                 
                 <ul id="paging" className="list-unstyled paging position-absolute d-flex justify-content-center">
-                    {/* <li></li>
-                    <li></li>
-                    <li></li> */}
+                    
                 </ul>
             </div>
 

@@ -118,8 +118,8 @@ class Order extends Component {
         <React.Fragment>
           <Container className='orderPage'>
             <Row className='orderStep'>
-              <Col xs={2} className='stepTitle'>購買流程</Col>
-            <Col xs={10} className='px-0 d-flex justify-content-center'>
+              <Col lg={2} xs={12} className='stepTitle'>購買流程</Col>
+            <Col lg={10} xs={12} className='d-flex justify-content-center stepBox'>
               <div className={step1Class()} id='step1'>
                 <div className='stepNum' id='step1Num'>{step1NumClass()}</div>
                 <div className='stepText'>填寫資料</div>

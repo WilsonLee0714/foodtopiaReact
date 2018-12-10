@@ -24,23 +24,6 @@ getUpdate = () => {
       }))
 };
 
-// addCart = (evt) => {
-//   evt.preventDefault();
-//   let product_id = evt.target.dataset.product_id
-  
-//     fetch("http://localhost:3000/cart/addCart", {
-//       method: 'POST',
-//       mode: "cors",
-//       credentials: 'include',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       },
-//         body: JSON.stringify({product_id:	product_id})
-//       })
-//       .then(res => res.json())
-//       .then(() => this.props.getCart())
-    
-// }
 
 componentDidUpdate(){
 }

@@ -18,7 +18,7 @@ class Seafood_board extends Component {
                 <p>{this.props.match.params.iprice}</p>
                 <p>{this.props.match.params.ispec}</p>
             <img className="icon" src={require('./image/shopping-bag.png')} onClick={this.cartToggle} />
-            <button type="button" class="btn btn-info">加入購物車</button>
+            <button type="button" class="btn btn-info" data-product_id={this.props.match.params.ipid} onClick={this.props.addCart}>加入購物車</button>
           </div>
         </div>  
       </React.Fragment>

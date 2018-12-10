@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import "./product_slider.scss";
+// import "./product_slider.scss";
 
 
 
-class Product_slider extends Component {
+class Product_slider_right extends Component {
     constructor(props) {
         super(props);
     }
@@ -12,11 +12,8 @@ class Product_slider extends Component {
         return (
           <React.Fragment>
             <div className="p_slider_wrap container d-flex align-items-center">
-                <div className="category_pic">
-                    <img src={require("./images/category.jpg")}/>
-                </div>
                 <div className="category_wrap container">
-                    <div className="category_title title1">家庭料理</div>
+                    <div className="category_title title1">情侶料理</div>
                     <div className="cards d-flex">
                         <div className="p_card">
                             <div className="upper_card">
@@ -56,7 +53,9 @@ class Product_slider extends Component {
                         </div>
                     </div>
                 </div>
-                
+                <div className="category_pic">
+                    <img src={require("./images/category.jpg")}/>
+                </div>
                 
                 
             </div>
@@ -65,4 +64,4 @@ class Product_slider extends Component {
       }
     }
 
-export default Product_slider;
+export default Product_slider_right;

@@ -12,6 +12,7 @@ class My_recipe extends Component {
                 {/* blog食譜清單標題 */}
                 <div className="recipe_header">
                     <h1>My Recipe</h1>
+                    <div className="line"></div>
                     <p>最新食譜</p>
                 </div>
             </React.Fragment>

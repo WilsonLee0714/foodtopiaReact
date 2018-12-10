@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -7,9 +8,9 @@ import "./recipe_list.scss";
 // import Head_slider from './head_slider/head_slider.js';
 import Recommend from './recommend/recommend.js';
 import Day_rank from './rank/day_rank.js';
-import Product_slider from './recipe_filter/recipe_list_difficult/product_slider.js';
-import Product_slider_right from './recipe_filter/recipe_list_difficult/product_slider_right.js';
-import Product_slider_buttom from './recipe_filter/recipe_list_difficult/product_slider_buttom.js';
+import Product_slider from './recipe_filter/recipe_list_serving/product_slider.js';
+import Product_slider_right from './recipe_filter/recipe_list_serving/product_slider_right.js';
+import Product_slider_buttom from './recipe_filter/recipe_list_serving/product_slider_buttom.js';
 // import Search_bar from './search_bar/search_bar';
 import Recipe_page from '../recipe_page/recipe_page.js';
 import Recipe_category from "../recipe_category/recipe_category"
@@ -64,15 +65,16 @@ class Recipe_list extends Component {
             
           </div >
           <main className="subCate_nav container d-flex justify-content-center">
-            <div className="m-3 sub_link" to="/difficult/1" onClick={this.on_subRecipe_lists}  key="1" data-recipe_sub="1">簡單</div>
-            <div className="m-3 sub_link" to="/difficult/3" onClick={this.on_subRecipe_lists}  key="2" data-recipe_sub="2">中等</div>
-            <div className="m-3 sub_link" to="/difficult/2" onClick={this.on_subRecipe_lists}  key="3" data-recipe_sub="3">困難</div>
-            
+            <div className="m-3 sub_link" to="/serving/1" onClick={this.on_subRecipe_lists}  key="1" data-recipe_sub="1">1人份</div>
+            <div className="m-3 sub_link" to="/serving/2" onClick={this.on_subRecipe_lists}  key="2" data-recipe_sub="2">2人份</div>
+            <div className="m-3 sub_link" to="/serving/3" onClick={this.on_subRecipe_lists}  key="3" data-recipe_sub="3">3人份</div>
+            <div className="m-3 sub_link" to="/serving/4" onClick={this.on_subRecipe_lists}  key="4" data-recipe_sub="4">4人份</div>
           </main>
           {/* <div className="container d-flex justify-content-center mt-5">
             {CategoryList.map((category)=>{
                 return <Link className="category_link col-2" to={`/recipe_category/${category.category_id}`}  key={category.category_id}>{category.category}</Link>
-            })}      
+            })}         
+            
           </div> */}
           {/* 單一食譜 */}
           <div className="subRecipes_wrap container d-flex flex-wrap">
@@ -100,9 +102,11 @@ class Recipe_list extends Component {
           </div>
           <div className="product_slider">
           <Product_slider_buttom/>
+          
           </div> */}
           {/* <SimpleSlider/> */}
         </React.Fragment>
+      // </BrowserRouter>
     );
   }
 }

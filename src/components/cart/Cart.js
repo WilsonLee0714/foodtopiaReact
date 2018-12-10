@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {Button, Container, Row, Col} from 'reactstrap';
 import './Cart.scss';
+import $ from 'jquery';
+
 
 class Cart extends Component {
   constructor(props) {
@@ -12,7 +14,7 @@ class Cart extends Component {
   modify = (evt) => {
     evt.preventDefault();
     let sid = evt.target.dataset.sid,
-      type = evt.target.dataset.type;
+       type = evt.target.dataset.type; 
     fetch('http://localhost:3000/cart/cart/', {
       method: 'PUT',
       mode: 'cors',
@@ -27,17 +29,36 @@ class Cart extends Component {
       .then(() => this.props.getCart());
   }
 
+  toOrder = (evt) => {
+    evt.preventDefault();
+    if (!this.props.products.length) {
+      alert('購物車內沒有商品')
+    } else {
+      this.props.cartToggle();
+      window
+            .location
+            .assign('/order');
+    }
+  }
+
   render() {
+    const cartOpen = () => {
+      if (this.props.cartOpen) {
+        return 'cart cartOpen'
+      } else{
+        return 'cart'
+      }
+    }
     return (
       <React.Fragment>
-        <div id='cart' className='cart'>
+        <div id='cart' className={cartOpen()}>
           <div className='title'>購物車</div>
-          <div>
+          <div className='cartContent'>
             {this
               .props
               .products
-              .map(product => <Row key={product.sid} className='pt-2'>
-                <Col sm={5}>
+              .map(product => <Row key={product.sid} className='pt-2 productContent'>
+                <Col xs={5}>
                   <Col>
                     <img
                       className='productImg'
@@ -63,14 +84,14 @@ class Cart extends Component {
                     </Button>
                   </Col>
                 </Col>
-                <Col className='productInfo' sm={5}>
+                <Col className='productInfo' xs={5}>
                   <Col className='productName'>{product.product_name}</Col>
                   <Col className='productSpec'>{product.spec}</Col>
                   <Col className='productPrice'>NT$ {product.price * product.qty}</Col>
                 </Col>
                 <Col
                   className='btnDelete'
-                  sm={2}
+                  xs={2}
                   data-sid={product.sid}
                   data-type='del'
                   onClick={this.modify}>
@@ -87,13 +108,12 @@ class Cart extends Component {
             總計: NT$ {this.props.amount}
           </Col>
           <Row>
-            <Col sm={{
+            <Col xs={{
               size: 6,
               offset: 3
             }}>
-              <Link to='/order'>
-                <Button color='danger' onClick={this.props.cartToggle} className='btnCheckOut'>結帳</Button>
-              </Link>
+
+                <Button color='danger' onClick={this.toOrder} className='btnCheckOut'>結帳</Button>
             </Col>
           </Row>
         </div>

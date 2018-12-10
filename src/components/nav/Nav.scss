@@ -4,7 +4,7 @@ $mainColor : #FF4343;
     // background: linear-gradient(to top,rgba(255, 255, 255, 0), rgba(255, 255, 255, .3),rgba(255, 255, 255, .4), rgba(255, 255, 255, .6) );
 // }
 nav {
-    font-family: '微軟正黑體';
+    font-family: 'Roboto', 'Noto sans CJK TC';
     user-select: none;
     transition: .5s;
 
@@ -21,7 +21,7 @@ nav {
         }
     }
     li {
-        margin-left:35px; 
+        margin-left:25px; 
         font-size: .9em;
     }
     a {
@@ -63,6 +63,64 @@ nav {
             margin-top: 5px;
             font-weight: 600;
         }
+    }
+    .cartBox{
+        position: relative;
+        .cartNum{
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        text-align: center;
+        line-height: 18px;
+        font-size: 8px;
+        font-weight: bold;
+        border-radius: 100%;
+        background: #ff4343;
+        color: #F8F9FA;
+        right: 12px;
+        top: -3px;
+        }
+        @keyframes rubberBandNum {
+            from {
+              -webkit-transform: scale3d(1, 1, 1);
+              transform: scale3d(1, 1, 1);
+            }
+          
+            30% {
+              -webkit-transform: scale3d(1.25, 0.75, 1);
+              transform: scale3d(1.25, 0.75, 1);
+            }
+          
+            40% {
+              -webkit-transform: scale3d(0.75, 1.25, 1);
+              transform: scale3d(0.75, 1.25, 1);
+            }
+          
+            50% {
+              -webkit-transform: scale3d(1.15, 0.85, 1);
+              transform: scale3d(1.15, 0.85, 1);
+            }
+          
+            65% {
+              -webkit-transform: scale3d(0.95, 1.05, 1);
+              transform: scale3d(0.95, 1.05, 1);
+            }
+          
+            75% {
+              -webkit-transform: scale3d(1.05, 0.95, 1);
+              transform: scale3d(1.05, 0.95, 1);
+            }
+          
+            to {
+              -webkit-transform: scale3d(1, 1, 1);
+              transform: scale3d(1, 1, 1);
+            }
+          }
+          
+          .rubberBandNum {
+            animation: 1s rubberBandNum;
+            // animation-fill-mode: forwards;
+          }
     }
 } 
 .bg-emptyNav {

@@ -35,9 +35,9 @@ import Vegetable_board from './components/igr_listpage/Vegetable/Vegetable_board
 //食譜元件匯入
 import Recipe_list from './components/recipe_list/recipe_list.js';
 import Recipe_page from './components/recipe_page/recipe_page';
-// import Recipe_category from './components/recipe_category/recipe_category';
+import Recipe_category from './components/recipe_category/recipe_category';
 import Recipe_category_country from './components/recipe_list/recipe_list_country';
-import Recipe_category_method from './components/recipe_list/recipe_list_people';
+import Recipe_category_method from './components/recipe_list/recipe_list_serving';
 import Recipe_category_occasion from './components/recipe_list/recipe_list_occasion';
 import Recipe_category_screening from './components/recipe_list/recipe_list_difficult';
 import Recipe_category_time from './components/recipe_list/recipe_list_time';
@@ -54,7 +54,8 @@ class App extends Component {
     super(props);
     this.state = {
       products: [],
-      amount: ''
+      amount: '',
+      cartOpen: false
     }
   }
 
@@ -68,43 +69,34 @@ class App extends Component {
       .then(cart => {
         let amount = cart.reduce((amount, product) => (amount += product.price * product.qty), 0)
         this.setState({products: cart, amount: amount})
-        console.log(cart)
       })
   }
 
   addCart = (evt) => {
     evt.preventDefault();
     let product_id = evt.target.dataset.product_id
-
     fetch('http://localhost:3000/cart/addCart/' + product_id, {
         method: 'GET',
         mode: 'cors',
         credentials: 'include'
       })
       .then(res => res.json())
-      .then(message => console.log(message))
-      .then(() => this.getCart())
-  }
-
-  cartToggle = () => {
-    fetch('http://localhost:3000/session/info', {
-        method: 'GET',
-        mode: 'cors',
-        credentials: 'include'
-      })
-      .then(res => res.json())
-      .then(session => {
-        if (session.login == 1) {
-          let cart = document.querySelector('#cart');
-          cart
-            .classList
-            .toggle('openCart');
-        } else {
+      .then(message => {
+        if (message.message == '未登入') {
+          console.log(message.message)
           window
             .location
             .assign('/login');
+        } else {
+          console.log(message.message)
+          this.getCart()
         }
       })
+  }
+
+  cartToggle = () => {
+    let cartOpen = !this.state.cartOpen;
+    this.setState({cartOpen})
   }
 
   componentDidMount = () => {
@@ -116,8 +108,9 @@ class App extends Component {
     return (
       <BrowserRouter>
         <React.Fragment>
-          <Nav cartToggle={this.cartToggle} getCart={this.getCart}/>
+          <Nav cartToggle={this.cartToggle} getCart={this.getCart} products={this.state.products}/>
           <Cart
+            cartOpen={this.state.cartOpen}
             cartToggle={this.cartToggle}
             getCart={this.getCart}
             products={this.state.products}
@@ -142,59 +135,41 @@ class App extends Component {
             <Route path='/memberCenter/myService' component={MyService}/>
           </div>
           {/* 食材 */}
-          <Route path='/ingridient_hompage' component={Ingridient_homepage}/>
-          <Route path='/ingridient_listpage' component={Ingridient_listpage}/>
-          <Route
-            path='/ingridient_listpage/fruit'
-            render={(props) => <Fruit {...props} addCart={this.addCart}/>}/>
-          <Route
-            path='/ingridient_listpage/meat'
-            render={(props) => <Meat {...props} addCart={this.addCart}/>}/>
-          <Route
-            path='/ingridient_listpage/vegetable'
-            render={(props) => <Vegetable {...props} addCart={this.addCart}/>}/>
-          <Route
-            path='/ingridient_listpage/other'
-            render={(props) => <Other {...props} addCart={this.addCart}/>}/>
-          <Route
-            path='/ingridient_listpage/seafood'
-            render={(props) => <Seafood {...props} addCart={this.addCart}/>}/>
-          <Route
-            path='/ingridient_listpage/dairy'
-            render={(props) => <Dairy {...props} addCart={this.addCart}/>}/>
-          <Route
-            path='/ingridient_listpage/dairy_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?'
-            component={Dairy_board}/>
-          <Route
-            path='/ingridient_listpage/fruit_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?'
-            component={Fruit_board}/>
-          <Route
-            path='/ingridient_listpage/meat_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?'
-            component={Meat_board}/>
-          <Route
-            path='/ingridient_listpage/other_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?'
-            component={Other_board}/>
-          <Route
-            path='/ingridient_listpage/seafood_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?'
-            component={Seafood_board}/>
-          <Route
-            path='/ingridient_listpage/vegetable_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?'
-            component={Vegetable_board}/> {/* 食譜 */}
-          <Route path='/recipe_head' component={Recipe_head}/>
-          <Route path='/recipe_head/recipe_list' component={Recipe_list}/>
-          <Route path='/recipe_category/1' component={Recipe_category_country}/>
-          <Route path='/recipe_category/2' component={Recipe_category_method}/>
-          <Route path='/recipe_category/3' component={Recipe_category_occasion}/>
-          <Route path='/recipe_category/4' component={Recipe_category_screening}/>
-          <Route path='/recipe_category/5' component={Recipe_category_time}/> {/* <Route path='/recipe_head/recipe_category' component={Recipe_category} /> */}
+          <Route path="/ingridient_hompage" component={Ingridient_homepage} />
+          <Route path="/ingridient_listpage" component={Ingridient_listpage} />
+          <Route path="/ingridient_listpage/fruit" render={(props) => <Fruit {...props} addCart={this.addCart} />}/>
+          <Route path="/ingridient_listpage/meat" render={(props) => <Meat {...props} addCart={this.addCart} />}/>
+          <Route path="/ingridient_listpage/vegetable" render={(props) => <Vegetable {...props} addCart={this.addCart} />}/>
+          <Route path="/ingridient_listpage/other" render={(props) => <Other {...props} addCart={this.addCart} />}/>
+          <Route path="/ingridient_listpage/seafood" render={(props) => <Seafood {...props} addCart={this.addCart} />}/>
+          <Route path="/ingridient_listpage/dairy" render={(props) => <Dairy {...props} addCart={this.addCart} />}/>
+          <Route path="/ingridient_listpage/dairy_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?" render={(props) => <Dairy_board {...props} addCart={this.addCart} />}/>
+          <Route path="/ingridient_listpage/fruit_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?" render={(props) => <Fruit_board {...props} addCart={this.addCart} />}/>
+          <Route path="/ingridient_listpage/meat_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?" render={(props) => <Meat_board {...props} addCart={this.addCart} />}/>
+          <Route path="/ingridient_listpage/other_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?" render={(props) => <Other_board {...props} addCart={this.addCart} />}/>
+          <Route path="/ingridient_listpage/seafood_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?" render={(props) => <Seafood_board {...props} addCart={this.addCart} />}/>
+          <Route path="/ingridient_listpage/vegetable_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?" render={(props) => <Vegetable_board {...props} addCart={this.addCart} />}/>
+          {/* 食譜 */}
+          <Route path="/recipe_head" component={Recipe_head} />
+          <Route path="/recipe_head/recipe_list" component={Recipe_list} />
+          <Route path="/recipe_category" component={Recipe_category} />
+          <Route exact path="/country" component={Recipe_category_country} />
+          {/* QQQQQQQ 需要:id嗎?因為我們最後一層是直接用setstate改變fetch */}
+          <Route path="/country/:id" component={Recipe_category_country} /> 
+          <Route exact path="/serving" component={Recipe_category_method} />
+          <Route path="/serving/:id" component={Recipe_category_method} />
+          <Route exact path="/occasion" component={Recipe_category_occasion} />
+          <Route path="/occasion/:id" component={Recipe_category_occasion} />
+          <Route exact path="/difficult" component={Recipe_category_screening} />
+          <Route path="/difficult/:id" component={Recipe_category_screening} />
+          <Route exact path="/time" component={Recipe_category_time} />
+          <Route path="/time/:id" component={Recipe_category_time} />
+          {/* <Route path="/recipe_head/recipe_category" component={Recipe_category} /> */}
+          {/* <Route path="/recipe_page" render={(props) => <Recipe_page {...props} getCart={this.getCart} />}/> */}
 
-          <Route
-            path='/recipe_page'
-            render={(props) => <Recipe_page {...props} getCart={this.getCart}/>}/> {/* 部落格 */}
+          <Route path='/recipe_page' render={(props) => <Recipe_page {...props} getCart={this.getCart}/>}/> {/* 部落格 */}
           <Route path='/up_load' component={Up_load}/>
-          <Route
-            path='/page/:id'
-            render={(props) => <Recipe_page {...props} getCart={this.getCart}/>}/>
+          <Route path='/page/:id' render={(props) => <Recipe_page {...props} getCart={this.getCart}/>}/>
           <Route path='/new_blog' component={New_blog}/>
           <Route path='/month/:id' component={Month_blog}/>
           <Footer/>

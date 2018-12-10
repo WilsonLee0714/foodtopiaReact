@@ -53,7 +53,7 @@ class OrderStep1 extends Component {
   }
   handleChange = (evt) => {
     let key = evt.target.id,
-    value = evt.target.value,
+      value = evt.target.value,
       fields = this.state.fields;
     fields[key] = value;
     this.setState({fields});
@@ -179,8 +179,8 @@ class OrderStep1 extends Component {
             <div className='titleBackground'></div>
 
             <FormGroup row>
-              <Label for='name' className='inputLabel' sm={2}>*姓名 :</Label>
-              <Col className='colPadding' sm={10}>
+              <Label for='name' className='inputLabel' md={2} sm={3}>*姓名 :</Label>
+              <Col className='colPadding' md={10} sm={9}>
                 <Input
                   id='name'
                   className='inputContent'
@@ -190,17 +190,21 @@ class OrderStep1 extends Component {
               </Col>
               <Col
                 className='colPadding'
-                sm={{
+                md={{
                 size: 10,
                 offset: 2
+              }}
+                sm={{
+                size: 9,
+                offset: 3
               }}>
                 <span className='errorTip'>{this.state.errors['name']}</span>
               </Col>
             </FormGroup>
 
             <FormGroup row>
-              <Label for='tel' className='inputLabel' sm={2}>市話 :</Label>
-              <Col className='colPadding' sm={10}>
+              <Label for='tel' className='inputLabel' md={2} sm={3}>市話 :</Label>
+              <Col className='colPadding' md={10} sm={9}>
                 <Input
                   id='tel'
                   className='inputContent'
@@ -210,17 +214,21 @@ class OrderStep1 extends Component {
               </Col>
               <Col
                 className='colPadding'
-                sm={{
+                md={{
                 size: 10,
                 offset: 2
+              }}
+                sm={{
+                size: 9,
+                offset: 3
               }}>
                 <span className='errorTip'>{this.state.errors['tel']}</span>
               </Col>
             </FormGroup>
 
             <FormGroup row>
-              <Label for='mobile' className='inputLabel' sm={2}>*手機 :</Label>
-              <Col className='colPadding' sm={10}>
+              <Label for='mobile' className='inputLabel' md={2} sm={3}>*手機 :</Label>
+              <Col className='colPadding' md={10} sm={9}>
                 <Input
                   id='mobile'
                   className='inputContent'
@@ -230,58 +238,80 @@ class OrderStep1 extends Component {
               </Col>
               <Col
                 className='colPadding'
-                sm={{
+                md={{
                 size: 10,
                 offset: 2
+              }}
+                sm={{
+                size: 9,
+                offset: 3
               }}>
                 <span className='errorTip'>{this.state.errors['mobile']}</span>
               </Col>
             </FormGroup>
 
             <FormGroup className='addressSelect' row>
-              <Label for='county' className='inputLabel' sm={2}>*地址 :</Label>
-              <ZipCodeTW
-                displayType='text'
-                countyValue={this.state.fields.county}
-                districtValue={this.state.fields.district}
-                zipCodeValue={this.state.fields.zipCode}
-                countyStyle={{
-                width: '100px',
-                display: 'inline'
+              <Label for='county' className='inputLabel' md={2} sm={3}>*地址 :</Label>
+              <Col className='colPadding d-flex' md='auto' sm={9}>
+                <ZipCodeTW
+                  displayType='text'
+                  countyValue={this.state.fields.county}
+                  districtValue={this.state.fields.district}
+                  zipCodeValue={this.state.fields.zipCode}
+                  countyStyle={{
+                  width: '85px',
+                  display: 'flex'
+                }}
+                  districtStyle={{
+                  width: '85px',
+                  display: 'flex'
+                }}
+                  zipStyle={{
+                  width: '63px',
+                  display: 'flex',
+                  textAlign: 'center'
+                }}
+                  zipCodePositionLast={false}
+                  handleChangeCounty={this.handleZipCodeChange}
+                  handleChangeDistrict={this.handleZipCodeChange}
+                  handleChangeZipCode={this.handleZipCodeChange}
+                  handleBlurZipCode={this.handleZipCodeChange}
+                  handleZipCodeNotExists={this.handleZipCodeChange}/>
+              </Col>
+              <Col
+                className='colPadding addressInput'
+                md={{
+                size: 'auto',
+                offset: 0
               }}
-                districtStyle={{
-                width: '100px',
-                display: 'inline'
-              }}
-                zipStyle={{
-                width: '70px',
-                display: 'inline'
-              }}
-                zipCodePositionLast={false}
-                handleChangeCounty={this.handleZipCodeChange}
-                handleChangeDistrict={this.handleZipCodeChange}
-                handleChangeZipCode={this.handleZipCodeChange}
-                handleBlurZipCode={this.handleZipCodeChange}
-                handleZipCodeNotExists={this.handleZipCodeChange}/>
-              <Input
-                id='address'
-                className='inputContent'
-                type='text'
-                onChange={this.handleChange}
-                value={this.state.fields.address}/>
+                sm={{
+                size: 9,
+                offset: 3
+              }}>
+                <Input
+                  id='address'
+                  className='inputContent '
+                  type='text'
+                  onChange={this.handleChange}
+                  value={this.state.fields.address}/>
+              </Col>
               <Col
                 className='colPadding'
-                sm={{
+                md={{
                 size: 10,
                 offset: 2
+              }}
+                sm={{
+                size: 9,
+                offset: 3
               }}>
                 <span className='errorTip'>{this.state.errors['address']}</span>
               </Col>
             </FormGroup>
 
             <FormGroup row>
-              <Label className='inputLabel' sm={2}>*寄送方式 :</Label>
-              <Label className='' check sm={10}>
+              <Label className='inputLabel' md={2} sm={3}>*寄送方式 :</Label>
+              <Label className='' check md={10} sm={9}>
                 <Input
                   id='home'
                   className='ship'
@@ -294,8 +324,8 @@ class OrderStep1 extends Component {
             </FormGroup>
 
             <FormGroup className='' row>
-              <Label for='shipTime' className='inputLabel' sm={2}>*送達時間 :</Label>
-              <Col className='colPadding' sm={10}>
+              <Label for='shipTime' className='inputLabel' md={2} sm={3}>*送達時間 :</Label>
+              <Col className='colPadding' md={10} sm={9}>
                 <DatePicker
                   className='timeSelect'
                   selected={this.state.fields.date}
@@ -321,20 +351,24 @@ class OrderStep1 extends Component {
               </Col>
               <Col
                 className='colPadding'
-                sm={{
+                md={{
                 size: 10,
                 offset: 2
+              }}
+                sm={{
+                size: 9,
+                offset: 3
               }}>
                 <span className='errorTip'>{this.state.errors['date']}</span>
               </Col>
             </FormGroup>
 
             <FormGroup row className='my-0'>
-              <Label for='note' className='inputLabel noteLabel' sm={2}>備註事項 :</Label>
-              <Col className='colPadding' sm={10}>
+              <Label for='note' className='inputLabel noteLabel' md={2} sm={3}>備註事項 :</Label>
+              <Col className='colPadding' md={10} sm={9}>
                 <Input
                   id='note'
-                  className='inputContent noteContent'
+                  className='inputContent noteInput'
                   type='textarea'
                   onChange={this.handleChange}
                   value={this.state.fields.note}/>
@@ -396,9 +430,14 @@ class OrderStep1 extends Component {
 
           </div>
           <FormGroup row>
-            <Col sm={{
+            <Col 
+            lg={{
               size: 3,
               offset: 9
+            }}
+            md={{
+              size: 5,
+              offset: 7
             }}>
               <Button className='btnNext' color='danger' onClick={this.save}>下一步</Button>
             </Col>
