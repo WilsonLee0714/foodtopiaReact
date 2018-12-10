@@ -12,6 +12,9 @@ import Day_rank from './rank/day_rank.js';
 
 
 class Recipe_list extends Component {
+  componentWillMount(){
+    window.scrollTo(0, 400);
+  }
   constructor(props) {
     super(props);
     this.state = {
@@ -75,7 +78,9 @@ class Recipe_list extends Component {
               {this.state.recipe_lists.map(recipe_list =>  //menu -> 資料庫名稱
                 <div className="p_card">
                     <div className="upper_card">
+                    <Link to={`/page/${recipe_list.id}`} >
                         <img className="card_pic" src ={require(`./product_slider/images/${recipe_list.menu_img}.jpg`)} alt="" />
+                    </Link>
                         <div className="rate title2">{recipe_list.rating}</div>
                     </div>
                     <div className="lower_card">
@@ -97,7 +102,9 @@ class Recipe_list extends Component {
                   {this.state.menus.map(menu =>  
                       <div className="p_card">
                           <div className="upper_card">
-                              <img className="card_pic" src ={require(`../recipe_list/product_slider/images/${menu.menu_img}.jpg`)} alt="" />
+                          <Link to={`/page/${menu.id}`} >
+                            <img className="card_pic" src ={require(`./product_slider/images/${menu.menu_img}.jpg`)} alt="" />
+                          </Link>
                               <div className="rate title2">{menu.rating}</div>
                           </div>
                           <div className="lower_card">
@@ -127,7 +134,7 @@ class Recipe_list extends Component {
     );
   }
   componentDidMount(){
-    // window.scrollTo(0, 250);
+    // window.scrollTo(0, 100);
     // this.getCountry_subs();
     this.getMenus();
   }

@@ -12,7 +12,8 @@ class Recommend extends Component {
         return (
           <React.Fragment>
                 <div className="recm_wrap">
-                  <h2 className="recm_title">每日推薦</h2>
+                  <img className="recm_star" src={require(`./images/star.svg`)} />
+                  <span className="recm_title">每日推薦</span>
                   <Link to="/page/3">
                     <div className="recipe_wrap">
                       <div className="hover_black">

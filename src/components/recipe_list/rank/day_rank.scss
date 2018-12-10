@@ -17,6 +17,11 @@ $title_fontWeight: 700;
     border-radius: 10px;
     box-shadow: 2px 3px 5px 0 $color_light_grey;
     margin-left: 80px;
+    .rank_crown{
+        height: 40px;
+        vertical-align: middle;
+        margin-right: 10px;
+    }
     .rank_title{
         margin: 15px 15px 0px 15px;
         font-size: $title_size1;
@@ -36,11 +41,11 @@ $title_fontWeight: 700;
         // border: 1px solid $color_light_grey;
         margin: 10px;
         display: flex;
-        cursor: pointer;
+        // cursor: pointer;
         transition: .3s;
-        &:hover{
-            color: $color_light_blue;
-        }
+        // &:hover{
+        //     color: $color_light_blue;
+        // }
         .rank_num{
             font-size: $title_size1;
             line-height: 80px;
@@ -67,9 +72,9 @@ $title_fontWeight: 700;
             height: 100%;
             object-fit: cover;
             transition: .5s;
-            // &:hover{
-            //     opacity:.7;
-            // }
+            &:hover{
+                opacity:.7;
+            }
         } 
     }
 }

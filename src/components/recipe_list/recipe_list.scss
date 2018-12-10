@@ -57,9 +57,16 @@ $title_fontWeight: 700;
   .fadeIn {
     animation: 1s fadeIn;
   }
+.cate_nav{
+  padding-bottom: 10px;
+  
+}
 .category_link{
   color: grey;
-  
+  border-bottom: 2px solid $color_light_grey;
+  // padding-bottom: 5px;
+  padding: 5px 0px 5px 5px;
+  margin-right: 20px;
   &:hover{
     color: $color_red;
     font-weight: 700;

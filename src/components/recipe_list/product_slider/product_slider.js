@@ -30,7 +30,9 @@ class Product_slider extends Component {
                             {this.state.menus.map(menu =>  //menu -> 資料庫名稱
                                 <div className="p_card">
                                     <div className="upper_card">
-                                        <img className="card_pic" src ={require(`./images/${menu.menu_img}.jpg`)} alt="" />
+                                        <Link to={`/page/${menu.id}`} >
+                                            <img className="card_pic" src ={require(`./images/${menu.menu_img}.jpg`)} alt="" />
+                                        </Link>
                                         <div className="rate title1">{menu.rating}</div>
                                     </div>
                                     <div className="lower_card">

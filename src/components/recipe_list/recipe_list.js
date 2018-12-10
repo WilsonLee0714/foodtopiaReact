@@ -30,7 +30,7 @@ class Recipe_list extends Component {
             <Recommend />
             <Day_rank />
           </div>
-          <div  className="container d-flex justify-content-center mt-5">
+          <div  className="cate_nav container d-flex justify-content-center mt-5">
             <Link to="/country" className="category_link col-2" id={this.props.match.params.id}>異國料理</Link>
             <Link to="/serving" className="category_link col-2">選擇人數</Link>
             <Link to="/occasion" className="category_link col-2">場合料理</Link>
