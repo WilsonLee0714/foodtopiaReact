@@ -6,13 +6,22 @@
         position: absolute;
     }
     .backImg1{
+        width: 100%;
         top: 0vh;
     }
     .backImg2{
+        width: 100%;
         top: 100vh;
     }
     .backImg3{
+        width: 100%;
         top: 200vh;
+    }
+    h2{
+        font-family: "微軟正黑體";
+        font-weight: 700;
+        font-size: 2e;
+        margin-left: -1.5%;
     }
 }
 .love{
