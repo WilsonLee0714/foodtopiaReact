@@ -56,7 +56,7 @@ body{
 .hover_black{
     // opacity: 0;
     // background-color: #000000;
-    background-image: linear-gradient(#ffffff00 5%, black);
+    background-image: linear-gradient(rgba(255, 255, 255, 0) 5%, black);
     z-index: 99;
 }
 .recipe_wrap{

@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Link } from "react-router-dom";
+import SearchInput, {createFilter} from 'react-search-input';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import "./recipe_list.scss";
-
+import "./search_bar/react_search.scss";
+import $ from 'jquery';
 // import Head_slider from './head_slider/head_slider.js';
 import Recommend from './recommend/recommend.js';
 import Day_rank from './rank/day_rank.js';
@@ -25,8 +27,11 @@ class Recipe_list extends Component {
       recipe_subs:[],
       recipe_lists:[],
       menus: [],
+      searchTerm: '',
+      filteredRecipes:[],  
       id: this.props.id
     }
+    this.searchUpdated = this.searchUpdated.bind(this)
     console.log(this.state)
   }
   componentDidMount(){
@@ -45,6 +50,14 @@ class Recipe_list extends Component {
   on_subRecipe_lists =(evt) =>{
       var id = evt.target.dataset.recipe_sub
       this.subRecipe_lists(id);
+  }
+  keyUp = (evt) => {
+    let recipe_lists = this.state.menus.filter(function (product) {
+      return product.menu.indexOf(evt.target.value) !== -1;
+    });
+    this.setState({
+      recipe_lists: recipe_lists
+    })
   }
   render() {
     let random_rate= (Math.random() * 5)+4;
@@ -79,6 +92,17 @@ class Recipe_list extends Component {
             })}         
             
           </div> */}
+          <div className="container">
+            <SearchInput
+                type="text"
+                className="form-control search-input"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default"
+                onFocus={this.searchUpdated}
+                onKeyUp = {this.keyUp}
+                placeholder="請輸入食譜關鍵字"
+                />
+          </div>
           {/* 單一食譜 */}
           <div className="category_wrap container">
             <div className="cards d-flex flex-wrap">
@@ -103,7 +127,7 @@ class Recipe_list extends Component {
               </div>
             </div>
             {/* 全部食譜 */}
-            <div className="category_wrap container">
+            <div className="all_recipies container">
             {/* <div className="c_category_title ">異國料理</div> */}
               <div className="cards d-flex flex-wrap">
                   {this.state.menus.map(menu =>  
@@ -141,15 +165,24 @@ class Recipe_list extends Component {
       // </BrowserRouter>
     );
   }
+  searchUpdated (term) {
+    this.setState({
+      searchTerm: term      
+    })
+  }
   componentDidMount(){
     // window.scrollTo(0, 250);
     this.getMenus();
+    $(".sub_link").click(function(){
+      $(".all_recipies").css("display", "none");
+    });
   }
   getMenus(){
     fetch("http://localhost:3000/api/recipe")
     .then(res=>res.json())
     .then(menus => this.setState({
-        menus: menus
+        menus: menus,
+        filteredRecipes: menus
     }))
   }
 }
