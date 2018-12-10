@@ -103,6 +103,21 @@ cartToggle = () => {
     }
   })
 }
+//收藏登入判定
+love = () => {
+  fetch('http://localhost:3000/session/info', {
+    method: 'GET',
+    credentials: 'include'
+  }).then(function (res) {
+    return res.json();
+  }).then((session) => {
+    if (session.login == 1) {
+      window.location.assign('/love');
+    } else {
+      window.location.assign('/login');
+    }
+  })
+}
 
 componentDidMount = () => {
   this.getCart();
@@ -115,7 +130,7 @@ componentDidUpdate = () => {
     return (
       <BrowserRouter>
         <React.Fragment>
-          <Nav cartToggle={this.cartToggle} getCart={this.getCart} />
+          <Nav cartToggle={this.cartToggle} getCart={this.getCart} love={this.love}/>
           <Cart cartToggle={this.cartToggle} getCart={this.getCart} products={this.state.products} amount={this.state.amount}/>
           <Route path="/homePage" component={HomePage} />
           <Route path="/login" component={Login} />
