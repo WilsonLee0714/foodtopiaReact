@@ -9,14 +9,16 @@ class Upload_Introduction extends Component {
         super(props)
         this.state = {
             id: 1,
-            valueins:"",
             numbers:"",
+            value1: "",
+            value2: "",
         }
     }
     //上傳食材項目
     change = (change) => {
         this.setState({
-            valueins: change.value,
+            value1:change.value1,
+            value2:change.value2,
         }, () => {
             this.props.change(this.state);
         })

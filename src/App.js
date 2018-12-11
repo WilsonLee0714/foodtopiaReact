@@ -96,21 +96,6 @@ class App extends Component {
       })
   }
       
-//收藏登入判定
-love = () => {
-  fetch('http://localhost:3000/session/info', {
-    method: 'GET',
-    credentials: 'include'
-  }).then(function (res) {
-    return res.json();
-  }).then((session) => {
-    if (session.login == 1) {
-      window.location.assign('/love');
-    } else {
-      window.location.assign('/login');
-    }
-  })
-}
 
   cartToggle = () => {
     let cartOpen = !this.state.cartOpen;

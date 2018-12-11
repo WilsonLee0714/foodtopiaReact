@@ -6,15 +6,21 @@ class Select_filter_box extends Component {
         super(props);
         this.state = {
             upload_ingredients: [],
-            value: "",
             categoryId: this.props.categoryId,
-
+            value1: "",
+            value2: "",
         }
     }
     //食材上傳
     change = (evt) => {
+        //拆select的值
+        var value = evt.target.value;
+        var split = value.split(",");
+        var value1 = split[0];
+        var value2 = split[1];
         this.setState({
-            value: evt.target.value,
+            value1: value1,
+            value2: value2,
         }, ()=> {
             this.props.change(this.state);
         })
@@ -51,10 +57,10 @@ class Select_filter_box extends Component {
     render() {
         return (
             <React.Fragment>
-                <select onChange={this.change} value={this.state.value} className="select_box select_items_box">
+                <select onChange={this.change} value={this.state.value}  className="select_box select_items_box">
                     <option value="0">請選擇</option>
                     {this.state.upload_ingredients.map((upload_ingredient) => {
-                        let opt = <option key={upload_ingredient.id} value={upload_ingredient.ingredients_data}>
+                        let opt = <option key={upload_ingredient.id} value={`${upload_ingredient.ingredients_small_filter}`+","+`${upload_ingredient.ingredients_data}`}>
                             {upload_ingredient.ingredients_small_filter}
                         </option>;
                         return opt;

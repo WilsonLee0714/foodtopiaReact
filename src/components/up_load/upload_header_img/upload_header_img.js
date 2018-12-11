@@ -53,6 +53,14 @@ class Upload_header_img extends Component {
             changeNum5:"",
             changeNum6:"",
             changeNum7:"",
+            //購物車抓取編碼
+            dataCar1:"",
+            dataCar2:"",
+            dataCar3:"",
+            dataCar4:"",
+            dataCar5:"",
+            dataCar6:"",
+            dataCar7:"",
         }
     }
     //上傳
@@ -123,37 +131,44 @@ class Upload_header_img extends Component {
     //食材
     change1 =(change)=>{
         this.setState({
-            ingredients_1:change.valueins,
+            ingredients_1:change.value1,
+            dataCar1:change.value2
         })
     }
     change2 =(change)=>{
         this.setState({
-            ingredients_2:change.valueins,
+            ingredients_2:change.value1,
+            dataCar2:change.value2
         })
     }
     change3 =(change)=>{
         this.setState({
-            ingredients_3:change.valueins,
+            ingredients_3:change.value1,
+            dataCar3:change.value2
         })
     }
     change4 =(change)=>{
         this.setState({
-            ingredients_4:change.valueins,
+            ingredients_4:change.value1,
+            dataCar4:change.value2
         })
     }
     change5 =(change)=>{
         this.setState({
-            ingredients_5:change.valueins,
+            ingredients_5:change.value1,
+            dataCar5:change.value2
         })
     }
     change6 =(change)=>{
         this.setState({
-            ingredients_6:change.valueins,
+            ingredients_6:change.value1,
+            dataCar6:change.value2
         })
     }
     change7 =(change)=>{
         this.setState({
-            ingredients_7:change.valueins,
+            ingredients_7:change.value1,
+            dataCar7:change.value2
         })
     }
     //份量
@@ -221,17 +236,26 @@ class Upload_header_img extends Component {
             step_4:this.state.stepText_4,
             step_5:this.state.stepText_5,
             step_6:this.state.stepText_6,
-            name_1:this.state.changeNum1+"單位"+this.state.ingredients_1,
-            name_2:this.state.changeNum2+"單位"+this.state.ingredients_2,
-            name_3:this.state.changeNum3+"單位"+this.state.ingredients_3,
-            name_4:this.state.changeNum4+"單位"+this.state.ingredients_4,
-            name_5:this.state.changeNum5+"單位"+this.state.ingredients_5,
-            name_6:this.state.changeNum6+"單位"+this.state.ingredients_6,
-            name_7:this.state.changeNum7+"單位"+this.state.ingredients_7,
+            name_1:this.state.changeNum1+"單位的"+this.state.ingredients_1,
+            name_2:this.state.changeNum2+"單位的"+this.state.ingredients_2,
+            name_3:this.state.changeNum3+"單位的"+this.state.ingredients_3,
+            name_4:this.state.changeNum4+"單位的"+this.state.ingredients_4,
+            name_5:this.state.changeNum5+"單位的"+this.state.ingredients_5,
+            name_6:this.state.changeNum6+"單位的"+this.state.ingredients_6,
+            name_7:this.state.changeNum7+"單位的"+this.state.ingredients_7,
+            name_8:this.state.changeNum8+"單位的"+this.state.ingredients_8,
+            dataCar1:this.state.dataCar1,
+            dataCar2:this.state.dataCar2,
+            dataCar3:this.state.dataCar3,
+            dataCar4:this.state.dataCar4,
+            dataCar5:this.state.dataCar5,
+            dataCar6:this.state.dataCar6,
+            dataCar7:this.state.dataCar7,
+            dataCar8:this.state.dataCar8,
         }),
         }).then(() => {
            alert("上傳成功");
-           
+           window.location.assign('/new_blog')
         })
         //傳圖片
         const formdata = new FormData();
@@ -393,6 +417,7 @@ class Upload_header_img extends Component {
                         <Upload_introduction change={this.change5} changeNum={this.changeNum5} />
                         <Upload_introduction change={this.change6} changeNum={this.changeNum6} />
                         <Upload_introduction change={this.change7} changeNum={this.changeNum7} />
+                        <Upload_introduction change={this.change8} changeNum={this.changeNum8} />
                     </div>
                 </div>
                 {/* 步驟 */}

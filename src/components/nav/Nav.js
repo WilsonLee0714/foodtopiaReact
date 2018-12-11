@@ -73,6 +73,24 @@ class Nav extends Component {
     //   sMenu.style.height = '0px';
     // },500)
   }
+  //收藏登入判定
+  love = () => {
+    console.log("123")
+    fetch('http://localhost:3000/session/info', {
+      method: 'GET',
+      mode: 'cors',
+      credentials: 'include'
+    }).then(function (res) {
+      return res.json();
+    }).then((a) => {
+      if (a.login == 1) {
+        window.location.assign('/love');
+      } else {
+        window.location.assign('/login');
+      }
+    })
+  }
+
   render() {
     fetch('http://localhost:3000/session/info', {
       method: 'GET',
@@ -130,7 +148,7 @@ class Nav extends Component {
                 </li>
 
               </ul>
-              <img src={require('./icons/like.png')} onClick={this.props.love}/>
+              <img src={require('./icons/like.png')} onClick={this.love}/>
               <div>
                 <a href="http://localhost:3000/session/login">
                   <img
