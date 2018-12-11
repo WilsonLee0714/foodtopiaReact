@@ -9,8 +9,29 @@ class Upload_Introduction extends Component {
         super(props)
         this.state = {
             id: 1,
+            valueins:"",
+            numbers:"",
         }
     }
+    //上傳食材項目
+    change = (change) => {
+        this.setState({
+            valueins: change.value,
+        }, () => {
+            this.props.change(this.state);
+        })
+    }
+    //上傳分量
+    changeNum = (evt)=>{
+        var key = evt.target.id
+        var value = evt.target.value
+        this.setState({
+            [key]:value
+        },()=>{
+            this.props.changeNum(this.state)
+        })
+    }
+    //篩選
     categoryChangeHandler = (id) => {
         this.setState({
             id: id
@@ -25,9 +46,9 @@ class Upload_Introduction extends Component {
                     {/* 類別 */}
                     <Select_filter_box changeHandler={this.categoryChangeHandler} />
                     {/* 項目 */}
-                    <Select_items_box categoryId={this.state.id} />
+                    <Select_items_box categoryId={this.state.id} change={this.change}/>
                     {/* 數量 */}
-                    <input className="introduction_number" type="text" />
+                    <input className="introduction_number" type="text" onChange={this.changeNum} value={this.state.value} id="numbers"/>
                 </div>
             </React.Fragment>
         );

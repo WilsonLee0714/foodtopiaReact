@@ -8,13 +8,17 @@ class Select_filter_box extends Component {
             upload_ingredients: [],
             value: "",
             categoryId: this.props.categoryId,
+
         }
     }
-    change = (event) => {
-
+    //食材上傳
+    change = (evt) => {
         this.setState({
-            value: event.target.value,
+            value: evt.target.value,
+        }, ()=> {
+            this.props.change(this.state);
         })
+        evt.preventDefault();
     }
     //取小分類
     getUpload_ingredients(sid) {
@@ -27,7 +31,7 @@ class Select_filter_box extends Component {
     //第一筆
     componentDidMount() {
         var sid = this.state.categoryId;
-        this.getUpload_ingredients(sid)
+        this.getUpload_ingredients(sid);
     }
     //更新 -> this.state.categoryId
     static getDerivedStateFromProps(props, state) {
@@ -50,7 +54,7 @@ class Select_filter_box extends Component {
                 <select onChange={this.change} value={this.state.value} className="select_box select_items_box">
                     <option value="0">請選擇</option>
                     {this.state.upload_ingredients.map((upload_ingredient) => {
-                        let opt = <option key={upload_ingredient.id} value={upload_ingredient.id}>
+                        let opt = <option key={upload_ingredient.id} value={upload_ingredient.ingredients_data}>
                             {upload_ingredient.ingredients_small_filter}
                         </option>;
                         return opt;

@@ -89,6 +89,14 @@ class Nav extends Component {
         console.log('未登入');
       }
     })
+
+    const cartNum = () => {
+      if (this.props.products.length < 1){
+        return 'cartNum d-none'
+      } else {
+        return 'cartNum'
+      }
+    }
     return (
       <React.Fragment>
         <nav id='nav' className="navbar navbar-expand-lg navbar-light bg-emptyNav fixed-top">
@@ -140,8 +148,10 @@ class Nav extends Component {
                   <p><a href='http://localhost:3000/session/logout' >登出</a></p>
                 </div>
               </div>
-
+              <div className='cartBox'>
               <img src={require('./icons/shopping-bag.png')} onClick={this.props.cartToggle} />
+              <div key={this.props.products} id='cartNum' className={cartNum()} >{this.props.products.length}</div>
+              </div>
               <form className="form-inline my-2 my-lg-0">
                 <input
                   className="form-control mr-sm-2"
@@ -208,6 +218,18 @@ class Nav extends Component {
     // })
     // nav特效結束
   }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.products.length !== this.props.products.length) {
+      let cartNum = document.querySelector('#cartNum');
+    }}
+    componentWillUpdate(){
+      
+    }
+    componentDidUpdate() {
+      let cartNum = document.querySelector('#cartNum');
+      cartNum.classList.remove('rubberBandNum');
+      cartNum.classList.add('rubberBandNum');
+    }
 }
 
 export default Nav;

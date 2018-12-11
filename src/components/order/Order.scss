@@ -19,6 +19,10 @@ $bgColor: #707070;
             white-space: nowrap;
         }
 
+        .stepBox{
+            padding: 0;
+        }
+
         .step {
             width: 100px;
             opacity: 0.25;
@@ -45,6 +49,7 @@ $bgColor: #707070;
                 margin: 10px 0;
                 font-size: 1.25rem;
                 font-weight: bold; // color: #707070;
+                white-space: nowrap;
             }
 
             .stepIcon i {
@@ -72,6 +77,7 @@ $bgColor: #707070;
 
             .stepText {
                 color: #ff4343;
+            
             }
 
             .stepIcon i {
@@ -104,6 +110,17 @@ $bgColor: #707070;
                 border-color: #707070;
             }
         }
+
+        @media screen and (max-width:991px) {
+            .stepTitle{
+                line-height: 5rem;
+            }
+            .stepBox{
+                padding: 0px 20px;
+            }
+        }
+
+        @media screen and (max-width:767px) {}
     }
 
     .formContent {
@@ -139,10 +156,14 @@ $bgColor: #707070;
         padding-left: 0px;
         font-weight: bold;
         text-align: right;
+        white-space: nowrap;
+
     }
 
     .noteLabel {
         line-height: 48px;
+        white-space: nowrap;
+
     }
 
     .colPadding {
@@ -161,18 +182,26 @@ $bgColor: #707070;
         }
     }
 
-    .noteContent {
+    .addressInput{
+
+        
+    }
+
+    .noteInput {
         width: 400px;
         resize: none;
     }
 
     .addressSelect {
-        select,input {
+
+        select,
+        input {
             background-color: #fff;
             margin: 0 5px 0 0;
             border-color: #707070;
             border-radius: 5px;
-            color: #707070; 
+            color: #707070;
+
             &:focus {
                 outline: 0px;
                 box-shadow: 0 0 0 .25rem rgba(255, 67, 67, 0.25);
@@ -227,16 +256,23 @@ $bgColor: #707070;
         height: 1.5rem;
     }
 
-    .checkInfo {
+    .infoRow {
         font-weight: bold;
         padding: 5px 0;
     }
-    .productTitle{
+
+    .productContent{
+
+    }
+
+    .productTitle {
         margin: 0 0 15px 0;
         padding: 0px;
         font-size: 18px;
         text-align: center;
+        white-space: nowrap;
     }
+
     .productImg {
         border: 1px solid rgba(255, 255, 255, 0);
         border-radius: 5px;
@@ -266,89 +302,151 @@ $bgColor: #707070;
     }
 
     .line1 {
-        border-top: 2px solid ;
+        border-top: 2px solid;
         border-radius: 5px;
-      }
+    }
 
-    .amountTitle{
+    .amountTitle {
         padding: 0;
         text-align: right;
         color: #ff4343;
         font-size: 20px;
+        white-space: nowrap;
     }
-    
-    .amount{
+
+    .amount {
         padding: 0;
         text-align: center;
         color: #ff4343;
         font-size: 20px;
+        white-space: nowrap;
     }
-}
-.orderSuccess{
-    font-family: 'Roboto', 'Noto sans CJK TC';
-    color: #707070;
-    margin: 20px 0 55px 0;
-    h3{
-        color: #ff4343;
-        font-size: 3em;
-        font-weight: bold;
-    }
-    p {
-        letter-spacing: 3px;
-    }
-    button {
-        width: 180px;
-    }
- }
- @media screen and (max-width: 768px) {
-     .orderSuccess{
+
+    .orderSuccess {
         font-family: 'Roboto', 'Noto sans CJK TC';
         color: #707070;
-         h3{
-             font-size: 3em;
-             font-weight: bold;
-         }
-         p {
-             letter-spacing: 0;
-         }
-         button {
-             width: 300px;
-         }
-      }
- }
- @keyframes tada {
-     from {
-       -webkit-transform: scale3d(1, 1, 1);
-       transform: scale3d(1, 1, 1);
-     }
-   
-     10%,
-     20% {
-       -webkit-transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
-       transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
-     }
-   
-     30%,
-     50%,
-     70%,
-     90% {
-       -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
-       transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
-     }
-   
-     40%,
-     60%,
-     80% {
-       -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
-       transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
-     }
-   
-     to {
-       -webkit-transform: scale3d(1, 1, 1);
-       transform: scale3d(1, 1, 1);
-     }
-   }
-   
-   .tada {
-     animation: 1s tada;
-   }
+        margin: 20px 0 55px 0;
+
+        h3 {
+            color: #ff4343;
+            font-size: 3em;
+            font-weight: bold;
+        }
+
+        p {
+            letter-spacing: 3px;
+        }
+
+        button {
+            width: 180px;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .productContent{
+            padding: 30px 20px;
+        }
+        .noteInput {
+            width: 300px;
+            resize: none;
+        }
+        .addressInput{
+            padding: 7px 0;
+        }
+        .amount{
+            text-align: left;
+        }
+        .orderSuccess {
+            font-family: 'Roboto', 'Noto sans CJK TC';
+            color: #707070;
+
+            h3 {
+                font-size: 3em;
+                font-weight: bold;
+            }
+
+            p {
+                letter-spacing: 0;
+            }
+
+            button {
+                width: 300px;
+            }
+        }
+    }
+    @media (max-width:575px) {
+        .inputLabel{
+            text-align: left;
+        }
+        .amountTitle{
+            font-size: 16px;
+        }
+        .amount{
+            font-size: 16px;
+        }
+        .checkInfo{
+            padding: 10px 0;
+        }
+        .orderInfo{
+            font-weight: normal;
+        }
+        .productTitle{
+            margin: 0;
+        }
+        .productImg{
+            height: 50px;
+        }
+        .productName{
+            line-height: 25px;
+            font-size: 14px;
+        }
+        .productSpec{
+            line-height: 25px;
+            font-size: 12px;
+        }
+        .productDetail{
+            line-height: 50px;
+            font-size: 14px;
+        }
+    }
+
+    @media screen and (max-width:991px) {}
+
+}
+
+@keyframes tada {
+    from {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+
+    10%,
+    20% {
+        -webkit-transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+        transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+    }
+
+    30%,
+    50%,
+    70%,
+    90% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    }
+
+    40%,
+    60%,
+    80% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    }
+
+    to {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+.tada {
+    animation: 1s tada;
+}
