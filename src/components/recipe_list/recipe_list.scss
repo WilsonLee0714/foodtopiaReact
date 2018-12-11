@@ -32,6 +32,8 @@ $title_fontWeight: 700;
 .text{
     font-size: $p_size_S;
 }
+
+
 .head_slider{
   margin-bottom: 10px;
   
@@ -73,6 +75,11 @@ $title_fontWeight: 700;
     border-bottom: 2px solid $color_red;
     text-decoration: none;
   }
+  
+}
+.link_active{
+  color: $color_red;
+  border-bottom: 2px solid $color_red;
 }
 .subCate_nav{
   .sub_link{
@@ -146,5 +153,11 @@ $title_fontWeight: 700;
   opacity: 0;
   &:hover{
     opacity: 1;
+  }
+}
+
+@media screen and (max-width:990px){
+  .middle_part{
+    display: block !important;
   }
 }
