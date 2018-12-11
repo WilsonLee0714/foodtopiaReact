@@ -25,7 +25,7 @@ class Ingredient_recipes extends Component {
           <div className="sec7_card_item">
             <img src={require('./image/meat2.jpg')} alt />
             <h3>節慶食材</h3>
-            <p>堅持嚴選好食材，應景各種文化特色節慶。</p>
+            <p>邀請好友家人共享堅持嚴選好食材，應景各種文化特色節慶。</p>
             <button type="button" class="btn btn-info">toggle</button>
           </div>
         </div>

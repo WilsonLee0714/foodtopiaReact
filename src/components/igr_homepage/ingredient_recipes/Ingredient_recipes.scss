@@ -19,8 +19,11 @@
         .sec7_card_item{
             width: 30%;
             text-align: center;
+            background-color: rgba(171, 192, 194, 0.671);
+            border-radius: 5%;
             img{
-                width: 55%;
+                width: 100%;
+                border-radius: 5%;
             }
         }
     }

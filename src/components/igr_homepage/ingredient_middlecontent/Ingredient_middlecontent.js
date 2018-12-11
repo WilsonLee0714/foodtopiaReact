@@ -75,15 +75,15 @@ class Ingredient_middlecontent extends Component {
       <div className="sec4">
         <div className="sec4_event1">
           <a href>
-            <h3>活動項目</h3>
-            <p>活動內容</p>
+            <h3>Fresh</h3>
+            <p></p>
           </a>
         </div>
 
         <div className="sec4_event2">
           <a href>
-            <h3>活動項目</h3>
-            <p>活動內容</p>    
+            <h3></h3>
+            <p></p>    
           </a>
         </div>
       </div>

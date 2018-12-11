@@ -6,19 +6,13 @@ class Ingredient_main extends Component {
     return (
       <React.Fragment>
         <div className="b_container container">
-        <div className="topicSec">
-            <div className="daily_active">
-              <h3>搶鮮活動</h3>
-              <p>此為搶先活動內容</p>
-            </div>
-            <div className="daily_recipies">
-              <h3>本日推薦食譜</h3>
-            </div>
-            <div className="ingridient_promo">
-              <h3>搶鮮特價食材</h3>
+          <div className="main_img">
+            <div className="main_logo">
+                <h1>Foodtopia</h1>
+                <h2>生鮮食材</h2>
+                <h5>蔬菜、肉、水產、豆、蛋、米麵、水果等優質自然食材，讓您不必出門就可以在家輕鬆享受。</h5>
             </div>
           </div>
-          <img className="bmain_img" src={require('./image/igr_main.jpg')} alt=""/>
         </div>
       </React.Fragment>
     )
