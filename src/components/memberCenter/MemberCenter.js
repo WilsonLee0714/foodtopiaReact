@@ -40,6 +40,10 @@ class MemberCenter extends Component {
             method: 'GET',
         })
     }
+    handleError = (e) => {
+        // alert('wrong');
+        e.target.src = 'http://localhost:3000/uploads/chef.png';
+    }
     handleChange = (e) => {
         var uploadForm = document.getElementById('uploadForm');
         uploadForm.submit();
@@ -54,7 +58,7 @@ class MemberCenter extends Component {
                         <form id='uploadForm' enctype="multipart/form-data" action='http://localhost:3000/upload' method='post'>
                             <input name='file' onChange={this.handleChange} type='file' style={{ position: 'absolute', height: '60px',transform:'transLateX(-100px)', width: '200px', opacity: '0',cursor:'pointer' }}></input>
                         </form>
-                        <img className='my-2 mr-2' style={{ width: '60px',height:'60px',borderRadius:'50%' }} src={this.state.source+this.state.profile}/>
+                        <img className='my-2 mr-2' style={{ width: '60px',height:'60px',borderRadius:'50%' }} src={this.state.source+this.state.profile} onError={this.handleError}/>
                         <span id='userName' className='text-primary' style={{ fontWeight: '600' }}>{this.state.userName}</span>
                     </div>
                     <div>
