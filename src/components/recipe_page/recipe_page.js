@@ -236,6 +236,11 @@ componentDidMount(){
     $(".like_btn").on("click",function(){
       $(".loved").toggleClass("close");
     });
+    // 步驟
+    $(".step").click(function(){
+      $(this).toggleClass("step_clicked");
+    });
+
 }
   
   render() {
@@ -348,7 +353,7 @@ componentDidMount(){
                 <div className="ingredient row">
                   {this.state.ingredients.map(ingredient=>
                   <div key={ingredient.id} className="ingredient_total d-flex col-4">
-                      <img className="ingredient_pic col-7" src={require(`./images/${ingredient.ingredients_img}.jpg`)}/>
+                      <img className="ingredient_pic " src={require(`./images/${ingredient.ingredients_img}.jpg`)}/>
                       <p className="i_qty col-5">{ingredient.ingredients_name}</p>
                   </div>
                   )}
@@ -358,8 +363,12 @@ componentDidMount(){
             {/* ---生成食材清單add2cart--- */}
             <main className="add2cart flex-row align-items-center">
               <p className="add2cart_title">購買食譜相關食材</p>
-              <div className="btn btn-info add2cart_btn" onClick={this.allAddCart}>所有食材加入購物車</div>
-              <p className="add2cart_24h">新鮮食材24小時送達</p>
+              <div className="btn btn-danger add2cart_btn" onClick={this.allAddCart}>所有食材加入購物車</div>
+              {/* <div calssname="d-flex"> */}
+                <p className="add2cart_24h">新鮮食材24小時送達</p>
+                {/* <img className="add2cart_img" src={require("./images/shipping.png")}/> */}
+              {/* </div> */}
+              
             </main>
           </section>
 
