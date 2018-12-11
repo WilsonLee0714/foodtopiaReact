@@ -1,55 +1,41 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import "./day_rank.scss";
-
+import menus from "./rank.json";
 
 
 class Day_rank extends Component {
     constructor(props) {
         super(props);
+        this.state={
+            menus: menus
+        }
     }
     render() {
         return (
             <React.Fragment>
                 <div className="rank_wrap">
                     <div className="rank_title">
+                        <img className="rank_crown" src={require(`./images/crown.svg`)} />
                         <span>熱門排行榜</span>
                     </div>
-                
                     <div className="rank_items d-flex flex-column justify-content-center align-items-center">
-                        <div className="rank_item">
-                            <span className="rank_num ">01</span>
-                            <div className="rank_item_txt">
-                                <div className="rank_item_title">蒜香牛小排</div>
-                                <div className="item_text">15分鐘完成一道健康美味又簡單的料理!</div>
-                            </div>
-                            <div>
-                                <img className="rank_thumbnail" src={require('./images/rank_thumbnail.jpg')}/>
-                            </div>
-                        </div>
-                        <div className="rank_item">
-                            <span className="rank_num ">02</span>
-                            <div className="rank_item_txt">
-                                <div className="rank_item_title">蒜香牛小排</div>
-                                <div className="item_text">15分鐘完成一道健康美味又簡單的料理!</div>
-                            </div>
+                        {this.state.menus.map(menu => 
+                            <div className="rank_item">
+                                {/* <img className="rank_crown" src={require(`./images/crown.svg`)} /> */}
+                                <span className="rank_num ">{menu.rank}</span>
+                                    <div className="rank_item_txt">
+                                        <div className="rank_item_title">{menu.menu}</div>
+                                        <div className="item_text">{menu.Introduction}</div>
+                                    </div>
                                 <div>
-                                    <img className="rank_thumbnail" src={require('./images/rank_thumbnail.jpg')}/>
+                                <Link to={`/page/${menu.id}`} >
+                                    <img className="rank_thumbnail" src={require(`../product_slider/images/${menu.menu_img}.jpg`)}/>
+                                </Link>
                                 </div>
-                        </div>
-                        <div className="rank_item">
-                            <span className="rank_num ">03</span>
-                            <div className="rank_item_txt">
-                                <div className="rank_item_title">蒜香牛小排</div>
-                                <div className="item_text">15分鐘完成一道健康美味又簡單的料理!</div>
                             </div>
-                                <div>
-                                    <img className="rank_thumbnail" src={require('./images/rank_thumbnail.jpg')}/>
-                                </div>
-                        </div>
-                        
+                        )}
                     </div>
-
                 </div>
             </React.Fragment>
         );

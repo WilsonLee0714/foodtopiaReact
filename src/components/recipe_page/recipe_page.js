@@ -7,6 +7,9 @@ import $ from "jquery";
 import { getDate } from 'date-fns';
 
 class Recipe_page extends Component {
+  componentWillMount(){
+    window.scrollTo(0, 0);
+  }
   constructor(props) {
     super(props)
     this.state = {
@@ -32,6 +35,10 @@ class Recipe_page extends Component {
       recipe_rands:[],
       //食譜作者
       recipe_members:[],
+      //會員頭貼
+      profile: 'chef.png',
+      //頭貼來源
+      source: 'http://localhost:3000/uploads/',
     }
   }
   //食譜內頁各筆資訊
@@ -182,12 +189,35 @@ class Recipe_page extends Component {
         body: JSON.stringify({products: this.state.ingredients})
       })
       .then(res => res.json())
-      .then(message => console.log(message))
-      .then(message => this.props.getCart())
-      
+      .then(message => {
+        if (message.message == '未登入') {
+          console.log(message.message)
+          window
+            .location
+            .assign('/login');
+        } else {
+          console.log(message.message)
+          this.props.getCart()
+        }
+      })
   }
 
 componentDidMount(){
+    //讀會員頭貼
+    fetch('http://localhost:3000/session/info', {
+            method: 'GET',
+            credentials: 'include'
+        }).then(function (res) {
+            console.log(res);
+            return res.json();
+        }).then((a) => {
+            this.setState({ userName: a.nickname });
+            if(a.profile!=null){
+                this.setState({ profile: a.profile });
+            } else {
+                this.setState({ profile: 'chef.png' });
+            }
+        })
     //食譜單筆資料
     let id = this.props.match.params.id
     this.setState({recipe_id:this.props.match.params.id})
@@ -206,8 +236,13 @@ componentDidMount(){
     $(".like_btn").on("click",function(){
       $(".loved").toggleClass("close");
     });
-}
+    // 步驟
+    $(".step").click(function(){
+      $(this).toggleClass("step_clicked");
+    });
 
+}
+  
   render() {
     //評論會員名稱判定
     fetch('http://localhost:3000/session/info', {
@@ -230,7 +265,7 @@ componentDidMount(){
           <main className="head_bg">
             <div className=" container d-flex header1">
               {this.state.menus.map(menu =>
-                  <img key={menu.id} className="main_pic" src={require(`./images/${menu.menu_img}.jpg`)}/>
+                  <img key={menu.id} className="main_pic" src={require(`./images/${menu.menu_img}`)}/>
                 )}
                 <div className="main_text">
                   <div className="main_title d-flex">
@@ -318,7 +353,7 @@ componentDidMount(){
                 <div className="ingredient row">
                   {this.state.ingredients.map(ingredient=>
                   <div key={ingredient.id} className="ingredient_total d-flex col-4">
-                      <img className="ingredient_pic col-7" src={require(`./images/${ingredient.ingredients_img}.jpg`)}/>
+                      <img className="ingredient_pic " src={require(`./images/${ingredient.ingredients_img}.jpg`)}/>
                       <p className="i_qty col-5">{ingredient.ingredients_name}</p>
                   </div>
                   )}
@@ -328,62 +363,67 @@ componentDidMount(){
             {/* ---生成食材清單add2cart--- */}
             <main className="add2cart flex-row align-items-center">
               <p className="add2cart_title">購買食譜相關食材</p>
-              <div className="btn btn-info add2cart_btn" onClick={this.allAddCart}>所有食材加入購物車</div>
-              <p className="add2cart_24h">新鮮食材24小時送達</p>
+              <div className="btn btn-danger add2cart_btn" onClick={this.allAddCart}>所有食材加入購物車</div>
+              {/* <div calssname="d-flex"> */}
+                <p className="add2cart_24h">新鮮食材24小時送達</p>
+                {/* <img className="add2cart_img" src={require("./images/shipping.png")}/> */}
+              {/* </div> */}
+              
             </main>
           </section>
 
           {/* ---步驟 steps--- */}
-          <main className="steps-wrap">
-            <div className="step d-flex justify-content-center">
+          <main className="steps-wrap container">
+            <div className="steps_title title1 ">食譜步驟</div>
+            <div className="step d-flex ">
               <span className="step_num">01</span>
               {this.state.step_imgs.map(step_img=>
-                <span className="step_pic"><img src={require(`./images/${step_img.step_img_1}.jpg`)}/></span>
+                <span className="step_pic"><img src={require(`./images/${step_img.step_img_1}`)}/></span>
               )}
               {this.state.steps.map(step=>
                 <span className="detail">{step.step_1}</span>
               )}
             </div> 
-            <div className="step d-flex justify-content-center">
+            <div className="step d-flex ">
               <span className="step_num">02</span>
               {this.state.step_imgs.map(step_img=>
-                <span className="step_pic"><img src={require(`./images/${step_img.step_img_2}.jpg`)}/></span>
+                <span className="step_pic"><img src={require(`./images/${step_img.step_img_2}`)}/></span>
               )}
               {this.state.steps.map(step=>
                 <span className="detail">{step.step_2}</span>
               )}            
             </div> 
-            <div className="step d-flex justify-content-center">
+            <div className="step d-flex ">
               <span className="step_num">03</span>
               {this.state.step_imgs.map(step_img=>
-                <span className="step_pic"><img src={require(`./images/${step_img.step_img_3}.jpg`)}/></span>
+                <span className="step_pic"><img src={require(`./images/${step_img.step_img_3}`)}/></span>
               )}
               {this.state.steps.map(step=>
                 <span className="detail">{step.step_3}</span>
               )}            
             </div> 
-            <div className="step d-flex justify-content-center">
+            <div className="step d-flex ">
               <span className="step_num">04</span>
               {this.state.step_imgs.map(step_img=>
-                <span className="step_pic"><img src={require(`./images/${step_img.step_img_4}.jpg`)}/></span>
+                <span className="step_pic"><img src={require(`./images/${step_img.step_img_4}`)}/></span>
               )}
               {this.state.steps.map(step=>
                 <span className="detail">{step.step_4}</span>
               )}
             </div> 
-            <div className="step d-flex justify-content-center">
+            <div className="step d-flex ">
               <span className="step_num">05</span>
               {this.state.step_imgs.map(step_img=>
-                <span className="step_pic"><img src={require(`./images/${step_img.step_img_5}.jpg`)}/></span>
+                <span className="step_pic"><img src={require(`./images/${step_img.step_img_5}`)}/></span>
               )}
               {this.state.steps.map(step=>
                 <span className="detail">{step.step_5}</span>
               )}
             </div> 
-            <div className="step d-flex justify-content-center">
+            <div className="step d-flex ">
               <span className="step_num">06</span>
               {this.state.step_imgs.map(step_img=>
-                <span className="step_pic"><img src={require(`./images/${step_img.step_img_6}.jpg`)}/></span>
+                <span className="step_pic"><img src={require(`./images/${step_img.step_img_6}`)}/></span>
               )}
               {this.state.steps.map(step=>
                 <span className="detail">{step.step_6}</span>
@@ -412,13 +452,15 @@ componentDidMount(){
                         <div key={recipe_rand.id} className="p_card">
                           <div className="upper_card">
                               <img className="card_pic" src ={require(`./images/${recipe_rand.menu_img}.jpg`)}/>
-                              <div className="rate">4.2</div>
+                              <div className="rate">{recipe_rand.rating}</div>
                           </div>
                           <div className="lower_card">
                               <div className="card_title ">{recipe_rand.menu}</div>
                               <div className="card_text ">{recipe_rand.Introduction}</div>
-                              <img className="like_btn" src={require("./images/like.svg")}/>
-                              <img className="share_btn" src={require("./images/share.svg")}/>
+                              <img className="like_btn1" src={require("./images/like.svg")}/>
+                              <img className="share_btn1" src={require("./images/share.svg")}/>
+                              <img className="liked_btn1" src={require("./images/liked.svg")}/>
+                              <img className="shared_btn1" src={require("./images/shared.svg")}/>
                           </div>
                         </div> 
                       )}
@@ -432,7 +474,8 @@ componentDidMount(){
           {this.state.recipe_comments.map(recipe_comment=>
             <div className="comment_recipe">
               <main className="comment_wrap d-flex container">
-                <img className="profile_pic" src={require("./images/foodtopia_profile_pic.png")} />
+                <img className="profile_pic" style={{ width: '60px',height:'60px',borderRadius:'50%' }} src={this.state.source+recipe_comment.profile} onError={(e)=>e.target.src='http://localhost:3000/uploads/chef.png'} />
+                {/* <img className="profile_pic" src={require("./images/foodtopia_profile_pic.png")} /> */}
                 <div className="comment_area">
                   <span className="user_name">{recipe_comment.comment_name}</span>
                   <div className="comment_text">{recipe_comment.comment}</div>
@@ -441,7 +484,7 @@ componentDidMount(){
             </div>
           )}
             <main className="comment_wrap d-flex container">
-              <img className="profile_pic" src={require("./images/foodtopia_profile_pic.png")} />
+              <img className="profile_pic" style={{ width: '60px',height:'60px',borderRadius:'50%' }} src={this.state.source+this.state.profile} />
               <div className="comment_area">
               {/* 抓會員暱稱 */}
               {this.state.nicknames.map(nickname=>
@@ -459,6 +502,7 @@ componentDidMount(){
         </React.Fragment>
     );
   }
+  
 }
 
 export default Recipe_page;

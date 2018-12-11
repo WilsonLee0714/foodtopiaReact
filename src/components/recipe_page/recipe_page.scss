@@ -1,6 +1,7 @@
 $color_red: #FF4343;
 $color_grey: #404040;
 $color_light_grey: #c7c7c7;
+$color_dark_blue: #1e3353;
 
 $title_size1: 26px;
 $title_size2: 20px;
@@ -16,7 +17,7 @@ $title_fontWeight: 700;
 }
 .head_bg{
     width: 100%;
-    height: 360px;
+    height: 380px;
     background-color: #eeeeee;
     // position: absolute;
     top: 50px;
@@ -138,17 +139,21 @@ $title_fontWeight: 700;
             
         }
         .ingredient{
-            width: 150%;
+            width: 700px;
             margin: 0;
             // margin: 10px 0 0px 10px;
             .ingredient_total{
                 .i_qty{
                     width: 100%;
                     font-size: $p_size_S;
+                    margin-top: 20px;
                 }
                 .ingredient_pic{
-                    width: 100%;
-                    height: 80px;
+                    width: 60px;
+                    height: 60px;
+                    border-radius: 50%;
+                    border: 1px solid $color_light_grey;
+                    margin: 10px;
                 }
             }
         }
@@ -156,10 +161,13 @@ $title_fontWeight: 700;
     .add2cart{
         width: 300px;
         height: 200px;
-        border: 1px solid #ff9012;
+        // border: 1px solid #ff9012;
         padding: 20px;
         text-align: center;
         margin-top: 100px;
+        background: url("./images/food_BG_ss.png") repeat;
+        background-size: 300px 200px;
+        // background-color: #555555;
         .add2cart_title, .add2cart_24h, .add2cart_btn{
             margin: 10px;
         }
@@ -170,35 +178,51 @@ $title_fontWeight: 700;
             font-size: 16px;
         }
         .add2cart_24h{
-            font-size: $p_size_L;
+            font-size: $p_size_M;
+            color: #2c5ca5;
+        }
+        .add2cart_img{
+            width:40px;
         }
     }
     
 }
-.step{
-    .step_num{
-        font-size: 70px;
-        font-weight: 700;
-        margin: 10px;
-        color: $color_red;
+.steps-wrap{
+    margin-top: 40px;
+    .steps_title{
+        margin: 10px 0;
     }
-    .step_pic {
-        margin: 10px;
-        img{
-            width: 250px;
+    .step_clicked{
+        opacity: .5;
+    }
+    .step{
+        .step_num{
+            font-size: 70px;
+            font-weight: 700;
+            margin: 10px;
+            color: $color_red;
         }
-    }    
-    .detail{
-        width: 400px;
-        height: 200px;
-        font-size: 16px;
-        margin: 10px;
-        }
-
+        .step_pic {
+            margin: 10px;
+            img{
+                width: 250px;
+            }
+        }    
+        .detail{
+            width: 450px;
+            height: 200px;
+            font-size: 16px;
+            margin: 10px;
+            color: $color_grey;
+            }
+    
+    }
 }
 .recommendation_wrap{
+    margin-top: 30px;
     .category_title{
         font-size: $title_size1;
+        font-weight: 700;
     }
 }
 .author_wrap{

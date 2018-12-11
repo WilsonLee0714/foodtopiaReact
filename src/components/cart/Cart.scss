@@ -4,10 +4,10 @@ $mainColor : #FF4343;
   z-index: 9999;
   font-family: 'Roboto', 'Noto sans CJK TC';
   font-weight: bold;
-  width: 300px;
+  width: 270px;
   min-height: 100vh;
   height: 100%;
-  overflow: auto;
+  overflow: hidden;
   position: fixed;
   top: 0px;
   right: -300px;
@@ -16,6 +16,32 @@ $mainColor : #FF4343;
   transition: 0.5s;
   text-align: center;
 
+  
+
+  @media screen and (max-width:767px) {}
+
+  .cartContent {
+    max-height: 580px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    transition: .5s;
+  }
+
+  .productContent{
+    transition: .5s;
+  }
+  .prductDelete{
+    opacity: 0;
+    height: 0;
+    font-size: 0;
+    img{
+      height: 0;
+      width: 0;
+    }
+    i{
+      font-size: 0;
+    }
+  }
 
   .title {
     line-height: 62px;
@@ -32,8 +58,11 @@ $mainColor : #FF4343;
     border: 1px solid rgba(255, 255, 255, 0);
     border-radius: 5px;
     height: 60px;
+    width: 60px;
+    object-fit: cover;
   }
-  .btnDelete{
+
+  .btnDelete {
     margin: -8px 0 0 0;
     background-color: #dc3545;
     padding: 0;
@@ -41,11 +70,13 @@ $mainColor : #FF4343;
     transition: .5s;
     opacity: 0;
     cursor: pointer;
-    i{
+
+    i {
       font-size: 1.25rem;
       margin: 0 15px 0 0;
     }
-    &:hover{
+
+    &:hover {
       opacity: 1;
     }
   }
@@ -55,8 +86,8 @@ $mainColor : #FF4343;
     text-align: left;
     padding: 0;
     text-overflow: ellipsis;
-white-space: nowrap;
-overflow: hidden;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   .productSpec {
@@ -64,6 +95,8 @@ overflow: hidden;
     text-align: left;
     color: #f0f0f0;
     padding: 0;
+    white-space: nowrap;
+    // overflow: hidden;
   }
 
   .productPrice {
@@ -98,7 +131,8 @@ overflow: hidden;
 
 
   .line1 {
-    border-top: 1px solid #f8f9fa;
+    margin-top: 0px;
+    border-top: 2px solid #f8f9fa;
     border-radius: 5px;
   }
 
@@ -114,9 +148,19 @@ overflow: hidden;
     font-weight: bold;
     padding: 3px 0;
   }
+
+  @media screen and (max-width: 991px) {
+    // z-index: 999;
+    min-height: calc(100vh - 62px);
+    top: 62px;
+    
+  .cartContent{
+    max-height: 518px;
+  }
+}
 }
 
-.openCart {
+.cartOpen {
   right: 0px;
 }
 

@@ -1,6 +1,27 @@
 $secondColor:#707070;
 $thirdColor:#EFEDE8;
-
+.blackLight{
+    background: rgba(0,0,0,.5);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9000;
+    display: none;
+    .sbox{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+                // align-items: center;
+        table{
+            margin-top: 50px;
+            width: 20%;
+            border-radius: 5px;
+        }
+    }
+}
 .orderWrap{
     width: 80%;
     font-family: '微軟正黑體';
@@ -36,6 +57,10 @@ $thirdColor:#EFEDE8;
     }
     .content {
         // min-height: 60vh;
+        .shover:hover{
+            color: red;
+            cursor: pointer;
+        }
     }
 
 }
