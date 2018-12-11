@@ -12,8 +12,15 @@ body{
     font-family: '微軟正黑體';
 }
 .recm_wrap{
-    width: 500px;
+    width: 400px;
     margin: 10px 20px;
+    position: relative;
+    .recm_star{
+        height: 40px;
+        vertical-align: middle;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
 }
 .recm_title{
     font-size: $title_size1;
@@ -21,13 +28,52 @@ body{
     margin: 10px 0;
     font-weight: 700;
     color: $color_grey;
+    cursor: pointer;
+}
+.recm_recipe_title{
+    position: absolute;
+    top: 200px;
+    left: 20px;
+    color: #ffffff;
+    
+    // opacity: 0;
+    font-size: $title_size2;
+    width: 100%;
+    height: 20%;
+    .recm_recipe_h{
+       font-weight: 600; 
+    }
+    p{
+        margin: 0;
+    }
+    &:hover{
+        opacity: 1;
+    }
+    .recm_recipe_text{
+        font-size: $p_size_S;
+    }
+}
+.hover_black{
+    // opacity: 0;
+    // background-color: #000000;
+    background-image: linear-gradient(rgba(255, 255, 255, 0) 5%, black);
+    z-index: 99;
 }
 .recipe_wrap{
-    width: 500px;
+    width: 400px;
+    position: relative;
     img{
-        width: 500px;
+        width: 400px;
         // height: 200px;
         cursor: pointer;
+        transition: .5s;
+        
+        &:hover{
+            opacity: 0.6;
+            
+            
+        }
+
     }
     
 }

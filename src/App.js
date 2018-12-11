@@ -146,7 +146,6 @@ class App extends Component {
           <Route path="/recipe_head/recipe_list" component={Recipe_list} />
           <Route path="/recipe_category" component={Recipe_category} />
           <Route exact path="/country" component={Recipe_category_country} />
-          {/* QQQQQQQ 需要:id嗎?因為我們最後一層是直接用setstate改變fetch */}
           <Route path="/country/:id" component={Recipe_category_country} /> 
           <Route exact path="/serving" component={Recipe_category_method} />
           <Route path="/serving/:id" component={Recipe_category_method} />

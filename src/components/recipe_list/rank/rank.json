@@ -1,0 +1,6 @@
+[
+    {"id":61,"rank": "01" ,"menu":"奶油鮮蝦寬麵","menu_img":"western_show_14","Introduction":"彈指之間!你可以用義大利賽車的閃電速度製作這個食譜。", "rating": 4.8},
+    {"id":47,"rank": "02" ,"menu":"韓式雞腿","menu_img":"korean_show_10","Introduction":"韓國料理並不羞於使用大而大膽的口味。", "rating": 4.8},
+    {"id":25,"rank": "03" ,"menu":"烤鮭魚","menu_img":"japan_show_11","Introduction":"對於這個食譜，我們的廚師想出了一種烤鮭魚的方法。", "rating": 4.7}
+    
+]

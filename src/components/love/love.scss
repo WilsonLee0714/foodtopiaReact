@@ -34,6 +34,8 @@
         border-radius: 10px;
         margin: 20px;
         box-shadow: 5px 5px 20px #e0e0e0;
+        background-color: rgba(255, 255, 255, 0.6);
+        z-index: 99;
         cursor: pointer;
         .upper_card{
             position: relative;
@@ -58,6 +60,7 @@
         .lower_card{
             padding: 10px;
             position: relative;
+           
             .card_title{
                 line-height: 3rem;
             }

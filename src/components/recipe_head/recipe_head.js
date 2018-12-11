@@ -18,10 +18,10 @@ class Recipe_head extends Component {
           <div className="fadeIn head_slider">
             <Head_slider />   
           </div>
-          <div className="search_bar">
+          {/* <div className="search_bar">
             <Search_bar />
             
-          </div>
+          </div> */}
           {/* <React_search/> */}
           
           
