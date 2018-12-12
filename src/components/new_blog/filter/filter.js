@@ -85,6 +85,49 @@ componentDidMount(){
                             </ul>
                         </div>
                     </div>
+                    {/* RWD-block */}
+                    <div className="filter_option1 col-md-4 col-sm-12 col-12">
+                        <div className="ani_line">
+                            <h2>近期食譜</h2>
+                            <br />
+                            <h3>Recent Recipes</h3>
+                        </div>
+                        <div className="filter_option_content">
+                            <ul className="content_menu">
+                                {this.state.new_recipes.map(new_recipe=>
+                                    <Link className="anone" key={new_recipe.id} to={(`/page/${new_recipe.id}`)}><li>{new_recipe.menu}</li></Link>
+                                )}
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="filter_option1 filter_option_line col-md-4 col-sm-12 col-12">
+                        <div className="ani_line">
+                            <h2>食譜彙整</h2>
+                            <br />
+                            <h3>Recipe Collection</h3>
+                        </div>
+                        <div className="filter_option_content">
+                            <ul className="content_menu">
+                                {this.state.filter_months.map(filter_month=>                          
+                                    <Link className="anone" key={filter_month.id} to={{pathname:`/month/${filter_month.id}`}}><li>{filter_month.total_time}</li></Link>
+                                )}                                                       {/* this.props.location.state, state: 'aaa' */}
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="filter_option1 filter_option_line col-md-4 col-sm-12 col-12">
+                        <div className="ani_line">
+                            <h2>熱烈迴響</h2>
+                            <br />
+                            <h3>Recent repercussions</h3>
+                        </div>
+                        <div className="filter_option_content">
+                            <ul className="content_menu">
+                                <li>123</li>
+                                <li>456</li>
+                                <li>789</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </React.Fragment>
         )

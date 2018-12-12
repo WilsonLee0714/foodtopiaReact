@@ -1,4 +1,6 @@
 /* sec5 */
+$mainColor : #FF4343;
+$secondColor : #707070;
 .b_container{
     h2{
         text-align: center;
@@ -12,7 +14,7 @@
         .sec5_card_item{
             display: flex;
             flex-direction: column;
-            border:1px rgb(214, 213, 211) solid;
+            // border:1px rgb(214, 213, 211) solid;
             border-radius: 2%;
             &:hover{
                 transform: translateY(-5%);
@@ -31,10 +33,16 @@
                 background-color: rgb(227, 235, 238);
             }
             display: flex;
-            .icon{
-                width: 10%;
-                height: 10%;
-            }  
+            flex-direction: column;
+            text-align: end;
+            color:$mainColor;
+            .line_bar{
+                display: flex;
+                justify-content:space-between;
+                border-bottom: 1px $mainColor solid;
+                padding-bottom: 2px;
+    
+            }      
         }
     }
 }

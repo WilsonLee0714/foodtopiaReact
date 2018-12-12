@@ -484,7 +484,7 @@ componentDidMount(){
             </div>
           )}
             <main className="comment_wrap d-flex container">
-              <img className="profile_pic" style={{ width: '60px',height:'60px',borderRadius:'50%' }} src={this.state.source+this.state.profile} />
+              <img className="profile_pic" style={{ width: '60px',height:'60px',borderRadius:'50%' }} src={this.state.source+this.state.profile} onError={(e)=>e.target.src='http://localhost:3000/uploads/chef.png'}/>
               <div className="comment_area">
               {/* 抓會員暱稱 */}
               {this.state.nicknames.map(nickname=>

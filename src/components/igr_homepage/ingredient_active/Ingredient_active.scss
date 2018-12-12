@@ -5,6 +5,7 @@
             flex-basis: 50%;
             text-align: center;
             background-color: #DDE0F1;
+            border-radius: 20px;            
             button{
                 text-align: center;
             }
@@ -13,9 +14,7 @@
             flex-basis: 50%;
             background:  url(./image/test12.jpg) no-repeat;
             background-size: cover;            
-            // img{
-            //     width: 100%;
-            // }
+            border-radius: 20px; 
         }
     }
 

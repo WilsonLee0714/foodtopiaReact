@@ -1,7 +1,8 @@
 .footer_background{
     width: 100%;
     height: 30vh;
-    margin-top: 13%;
+    margin: 10% auto 0;
+    text-align: center;
     background: url(./img/re12.png) center center no-repeat;
     h2{
         font-weight: 700;
@@ -14,7 +15,8 @@
 .blog_footer_icon{
     position: relative;
     width: 60%;
-    margin: 0 auto;
+    margin-top: 1%;
+    margin-left: 18.5%;
     .footer_icon{
         width: 40%;
         margin: 80px auto 0;
@@ -39,8 +41,8 @@
         h2{
             font-weight: 700;
             font-size: 2em;
-            padding-top: 7%;
-            margin-bottom: -7%;
+            padding-top: 5%;
+            margin-bottom: -5%;
             color: #000;
         }
     }
@@ -49,7 +51,7 @@
         width: 80%;
         margin: 0 auto;
         .footer_icon{
-            width: 40%;
+            width: 50%;
             margin: 80px auto 0;
             .icon{
                 margin: 0;
@@ -71,7 +73,7 @@
             font-weight: 700;
             font-size: 2em;
             padding-top: 7%;
-            margin-bottom: -8%;
+            margin-bottom: -6%;
             color: #000;
         }
     }
@@ -80,7 +82,7 @@
         width: 80%;
         margin: 0 auto;
         .footer_icon{
-            width: 50%;
+            width: 60%;
             margin: 80px auto 0;
             .icon{
                 margin: 0;
@@ -92,11 +94,19 @@
         }
     }
 }
+@media screen and (min-width:750px){
+    .footer_background{
+        width: 100%;
+        height: 30vh;
+        margin-top: 13%;
+        background: url(./img/re12.png) center center no-repeat;
+    }
+}
 @media screen and (max-width:768px){
     .footer_background{
         width: 100%;
         height: 30vh;
-        margin-top: 25%;
+        margin-top: 15%;
         background: url(./img/re12.png) center center no-repeat;
         h2{
             font-weight: 700;

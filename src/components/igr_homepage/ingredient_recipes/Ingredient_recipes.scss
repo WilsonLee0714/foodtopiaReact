@@ -8,6 +8,7 @@
     .b_container{
         width: 85%;
         margin: 0 auto;
+        background-color: rgba(244, 244, 248, 0.658);
         h2{
             text-align: center;
         }
@@ -18,9 +19,11 @@
         .sec7_card_item{
             width: 30%;
             text-align: center;
+            background-color: rgba(171, 192, 194, 0.671);
+            border-radius: 5%;
             img{
                 width: 100%;
-                height: 70%;
+                border-radius: 5%;
             }
         }
     }
