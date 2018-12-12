@@ -459,7 +459,7 @@ componentDidMount(){
           {this.state.recipe_comments.map(recipe_comment=>
             <div className="comment_recipe">
               <main className="comment_wrap d-flex container">
-                <img className="profile_pic" style={{ width: '60px',height:'60px',borderRadius:'50%' }} src={this.state.source+recipe_comment.profile} />
+                <img className="profile_pic" style={{ width: '60px',height:'60px',borderRadius:'50%' }} src={this.state.source+recipe_comment.profile} onError={(e)=>e.target.src='http://localhost:3000/uploads/chef.png'}/>
                 {/* <img className="profile_pic" src={require("./images/foodtopia_profile_pic.png")} /> */}
                 <div className="comment_area">
                   <span className="user_name">{recipe_comment.comment_name}</span>
