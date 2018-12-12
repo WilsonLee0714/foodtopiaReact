@@ -49,6 +49,8 @@ import Up_load from "./components/up_load/up_load";
 import New_blog from "./components/new_blog/new_blog";
 import Month_blog from "./components/new_blog/month_blog";
 import Love from "./components/love/love";
+import New_blog_no_member from "./components/new_blog/new_blog_no_member";
+
 require('slick-carousel');
 
 class App extends Component {
@@ -145,16 +147,16 @@ class App extends Component {
           <Route path="/recipe_head" component={Recipe_head} />
           <Route path="/recipe_head/recipe_list" component={Recipe_list} />
           <Route path="/recipe_category" component={Recipe_category} />
-          <Route exact path="/country" component={Recipe_category_country} />
-          <Route path="/country/:id" component={Recipe_category_country} /> 
-          <Route exact path="/serving" component={Recipe_category_method} />
-          <Route path="/serving/:id" component={Recipe_category_method} />
-          <Route exact path="/occasion" component={Recipe_category_occasion} />
-          <Route path="/occasion/:id" component={Recipe_category_occasion} />
-          <Route exact path="/difficult" component={Recipe_category_screening} />
-          <Route path="/difficult/:id" component={Recipe_category_screening} />
-          <Route exact path="/time" component={Recipe_category_time} />
-          <Route path="/time/:id" component={Recipe_category_time} />
+          <Route exact path="/country"  render={(props) => <Recipe_category_country {...props}  />}/>
+          <Route path="/country/:id"  render={(props) => <Recipe_category_country {...props}  />}/> 
+          <Route exact path="/serving"  render={(props) => <Recipe_category_method {...props}  />}/>
+          <Route path="/serving/:id"  render={(props) => <Recipe_category_method {...props}  />}/>
+          <Route exact path="/occasion"  render={(props) => <Recipe_category_occasion {...props}  />}/>
+          <Route path="/occasion/:id"  render={(props) => <Recipe_category_occasion {...props}  />}/>
+          <Route exact path="/difficult" render={(props) => <Recipe_category_screening {...props}  />}/>
+          <Route path="/difficult/:id" render={(props) => <Recipe_category_time {...props}  />}/>
+          <Route exact path="/time"  render={(props) => <Recipe_category_country {...props}  />}/>
+          <Route path="/time/:id" render={(props) => <Recipe_category_time {...props}  />}/>
           {/* <Route path="/recipe_head/recipe_category" component={Recipe_category} /> */}
           {/* <Route path="/recipe_page" render={(props) => <Recipe_page {...props} getCart={this.getCart} />}/> */}
 
@@ -164,6 +166,7 @@ class App extends Component {
           <Route path="/new_blog" component={New_blog} />
           <Route path="/month/:id" component={Month_blog} />
           <Route path="/love" component={Love} />
+          <Route path="/new_blog_member/:sid" component={New_blog_no_member} />
           <Footer/>
         </React.Fragment>
       </BrowserRouter>

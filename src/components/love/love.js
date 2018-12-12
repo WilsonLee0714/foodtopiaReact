@@ -36,7 +36,7 @@ class Login extends Component {
                         {this.state.loves.map(love=>
                             <div key={love.id} className="p_card">
                                 <div className="upper_card">
-                                    <Link to={`/page/${love.id}`} ><img className="card_pic" src ={require(`./img/${love.menu_img}.jpg`)} alt="" /></Link>
+                                    <Link to={`/page/${love.id}`}><img className="card_pic" src ={require(`./img/${love.menu_img}`)} alt="" />  </Link>
                                 </div>
                                 <div className="lower_card">
                                     <div className="card_title title2">{love.menu}</div>

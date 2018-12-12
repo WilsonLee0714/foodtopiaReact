@@ -17,7 +17,6 @@ import SimpleSlider from '../SimpleSlider/simpleSlider';
 import CategoryList from './search_bar/category.json';
 
 
-
 class Recipe_list extends Component {
   componentDidMount(){
     // window.scrollTo(0, 0);
@@ -26,8 +25,8 @@ class Recipe_list extends Component {
     return (
         <React.Fragment>
           <div className="middle_part container d-flex justify-content-center ">
-            <Recommend />
-            <Day_rank />
+            <Recommend className="recommend"/>
+            <Day_rank className="rankk"/>
           </div>
           <div  className="cate_nav container d-flex justify-content-center mt-5">
             <Link to="/country" className="category_link col-2" id={this.props.match.params.id}>異國料理</Link>
