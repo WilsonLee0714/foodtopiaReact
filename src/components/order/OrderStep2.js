@@ -65,7 +65,7 @@ class OrderStep2 extends Component {
                   size: 2,
                   offset: 1
                 }}
-                xs={{
+                  xs={{
                   size: 2,
                   offset: 0
                 }}
@@ -77,7 +77,7 @@ class OrderStep2 extends Component {
                 <Col xs={3} className='px-0'>
                   <Col className='productName'>{product.product_name}</Col>
                   <Col className='productSpec'>{product.spec}</Col>
-                </Col >
+                </Col>
                 <Col sm={2} xs={1} className='productDetail'>{product.qty}</Col>
                 <Col sm={2} xs={3} className='productDetail'>NT$ {product.price}</Col>
                 <Col sm={2} xs={3} className='productDetail'>NT$ {product.qty * product.price}</Col >
@@ -89,7 +89,7 @@ class OrderStep2 extends Component {
                 size: 3,
                 offset: 7
               }}
-              xs={{
+                xs={{
                 size: 6,
                 offset: 3
               }}
@@ -147,12 +147,12 @@ class OrderStep2 extends Component {
           <Col lg={3} xs={5}>
             <Button className='btnNext' color='primary' onClick={this.lastStep}>上一步</Button>
           </Col>
-          <Col 
-          lg={{
+          <Col
+            lg={{
             size: 3,
             offset: 6
           }}
-          xs={{
+            xs={{
             size: 5,
             offset: 2
           }}>

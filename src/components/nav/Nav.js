@@ -14,23 +14,6 @@ class Nav extends Component {
   // clickHandler(){   var lightBox = document.getElementById('lightBox');
   // lightBox.style.display = 'flex';     setTimeout(function(){
   // lightBox.style.opacity = '1';     },100) }
-  // cartToggle = () => {
-  //   // session 使否已經登入判斷 用來讀取資料用
-  //   fetch('http://localhost:3000/session/info', {
-  //     method: 'GET',
-  //     credentials: 'include'
-  //   }).then(function (res) {
-  //     console.log(res);
-  //     return res.json();
-  //   }).then((session) => {
-  //     if (session.login == 1) {
-  //       const cart = document.querySelector('#cart');
-  //       cart.classList.toggle("openCart");
-  //     } else {
-  //       window.location.assign('/login');
-  //     }
-  //   })
-  // }
   handleHover = () => {
     fetch('http://localhost:3000/session/info', {
       method: 'GET',

@@ -82,7 +82,6 @@ getProducts(page) {
     credentials: 'include'})
       .then(res => res.json())
       .then(menus => {
-          console.log(menus)
         this.setState({
           menus: menus.datas ,
           totalPage: Math.ceil(menus.TotalCount / this.state.perPage), //計算出總共幾頁
@@ -156,6 +155,7 @@ getProducts(page) {
         }
 
 
+        
         return (
             <React.Fragment>
                 <div className="recipe_diary row d-flex">
@@ -163,7 +163,7 @@ getProducts(page) {
                         <div key={menu.id} className="col-lg-4 col-sm-6 col-12">
                             <div className="food_recipe">
                                 <div className="recipe_img">
-                                    <Link to={`/page/${menu.id}`} ><img src={require(`./img/${menu.menu_img}.jpg`)} alt="" /></Link>
+                                    <Link to={`/page/${menu.id}`} ><img src={require(`./img/${menu.menu_img}`)} alt="" /></Link>
                                 </div>
                                 <h6>{menu.menu}</h6>
                                 <p className="line"></p>

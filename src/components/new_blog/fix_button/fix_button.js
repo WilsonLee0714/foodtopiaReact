@@ -20,8 +20,7 @@ class Fix_button extends Component {
         welcome:"",
         introduction:"",
         //修改食譜
-        filter_months:[],
-        
+        // filter_months:[],
     }
 }
 //修改按鈕特效
@@ -98,17 +97,17 @@ getCommunitys()  {
 
 componentDidMount(){
     this.getCommunitys()
-    this.getfilter_months(); 
+    // this.getfilter_months(); 
     window.scrollTo(0,0);
 }
 //修改食譜
-getfilter_months(){
-    fetch("http://localhost:3000/upload/upload_date/")
-    .then(res => res.json())
-    .then(filter_months => this.setState({ 
-        filter_months: filter_months,
-    }))
-}
+// getfilter_months(){
+//     fetch("http://localhost:3000/upload/upload_date/")
+//     .then(res => res.json())
+//     .then(filter_months => this.setState({ 
+//         filter_months: filter_months,
+//     }))
+// }
 
     render() {
         return (
@@ -122,13 +121,13 @@ getfilter_months(){
                         <textarea type="text" onChange={this.introductionVal} className="header_modify" placeholder="請編輯部落格簡介" /><br />
                         <div className="btn_modify" onClick={this.introduction}>修改</div>
                     </div>
-                    <div className="btn_3 d-flex ">
+                    <div className="btn_3 d-flex buttonAll">
                         <Link className="btn_modify_3" to="/up_load">上傳食譜</Link>
-                        <button className="btn_modify_3" data-toggle="modal" data-target="#exampleModal2" to="#">更換圖片</button>
+                        <Link className="btn_modify_3" data-toggle="modal" data-target="#exampleModal2" to="#">更換圖片</Link>
                     </div>
-                    <div className="btn_3 d-flex ">
-                        <button type="button" className="btn btn-primary btn_modify_3" data-toggle="modal" data-target=".bd-example-modal-lg">修改食譜</button>
-                        <button type="button" className="btn_modify_3" data-toggle="modal" data-target="#exampleModal">設定社群</button>
+                    <div className="btn_3 d-flex buttonOne">
+                        {/* <button type="button" className="btn btn-primary btn_modify_3" data-toggle="modal" data-target=".bd-example-modal-lg">修改食譜</button> */}
+                        <Link className="btn_modify_3" data-toggle="modal" data-target="#exampleModal" to="#">設定社群</Link>
                     </div>
                 </div>
                 <div className="fix_button" onClick={this.click}>
@@ -203,7 +202,7 @@ getfilter_months(){
                     </div>
                 </div> 
                 {/* 修改食譜 */}
-                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                {/* <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             {this.state.filter_months.map(filter_month=>
@@ -214,7 +213,7 @@ getfilter_months(){
                             )}
                         </div>
                     </div>
-                </div>
+                </div> */}
             </React.Fragment>
         )
     }

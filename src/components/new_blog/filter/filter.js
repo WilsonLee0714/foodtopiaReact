@@ -7,13 +7,17 @@ class Filter extends Component {
       super(props)
       this.state = {
         new_recipes: [],
-        filter_months:[]
+        filter_months:[],
+        filter_comments:[],
       }
 }
 
 //食譜map function
 getnew_recipes() {
-    fetch("http://localhost:3000/update/menu")
+    fetch("http://localhost:3000/update/menu",{  
+        method: 'GET',
+        mode:"cors",
+        credentials: 'include',})
         .then(res => res.json())
         .then(new_recipes => this.setState({
             new_recipes: new_recipes,
@@ -21,12 +25,23 @@ getnew_recipes() {
 };
 //月份 map function
 getfilter_months(){
-    fetch("http://localhost:3000/upload/upload_date/")
+    fetch("http://localhost:3000/upload/upload_date")
     .then(res => res.json())
     .then(filter_months => this.setState({ 
         filter_months: filter_months,
     }))
-}
+};
+//評論篩選
+getfilter_comment(){
+    fetch("http://localhost:3000/foodtopia/member_comment",{  
+        method: 'GET',
+        mode:"cors",
+        credentials: 'include',})
+    .then(res => res.json())
+    .then(filter_comments => this.setState({ 
+        filter_comments: filter_comments,
+    }))
+};
 
 componentDidMount(){
     //hover特效
@@ -36,7 +51,9 @@ componentDidMount(){
     //月份 map function
     this.getfilter_months();
     //食譜map function
-    this.getnew_recipes(); 
+    this.getnew_recipes();
+    //評論篩選
+    this.getfilter_comment();
 }
 
     render() {     
@@ -66,7 +83,7 @@ componentDidMount(){
                         <div className="filter_option_content">
                             <ul className="content_menu">
                                 {this.state.filter_months.map(filter_month=>
-                                    <a key={filter_month.id} href={(`/month/${filter_month.id}`)}><li>{filter_month.total_time}</li></a>
+                                    <Link key={filter_month.id} to={(`/month/${filter_month.id}`)}><li>{filter_month.total_time}</li></Link>
                                 )}
                             </ul>
                         </div>
@@ -78,10 +95,53 @@ componentDidMount(){
                             <h3>Recent repercussions</h3>
                         </div>
                         <div className="filter_option_content">
+                            <ul className="content_menu comment">
+                                {this.state.filter_comments.map(filter_comment=>
+                                    <Link key={filter_comment.id} to={(`/page/${filter_comment.recipe_id}`)}><li>{filter_comment.comment_name}在您的{filter_comment.menu}上留言</li></Link>
+                                )}
+                            </ul>
+                        </div>
+                    </div>
+                    {/* RWD-block */}
+                    <div className="filter_option1 col-md-4 col-sm-12 col-12">
+                        <div className="ani_line">
+                            <h2>近期食譜</h2>
+                            <br />
+                            <h3>Recent Recipes</h3>
+                        </div>
+                        <div className="filter_option_content">
                             <ul className="content_menu">
-                                <li>123</li>
-                                <li>456</li>
-                                <li>789</li>
+                                {this.state.new_recipes.map(new_recipe=>
+                                    <Link className="anone" key={new_recipe.id} to={(`/page/${new_recipe.id}`)}><li>{new_recipe.menu}</li></Link>
+                                )}
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="filter_option1 filter_option_line col-md-4 col-sm-12 col-12">
+                        <div className="ani_line">
+                            <h2>食譜彙整</h2>
+                            <br />
+                            <h3>Recipe Collection</h3>
+                        </div>
+                        <div className="filter_option_content">
+                            <ul className="content_menu">
+                                {this.state.filter_months.map(filter_month=>
+                                    <Link className="anone" key={filter_month.id} to={(`/month/${filter_month.id}`)}><li>{filter_month.total_time}</li></Link>
+                                )}
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="filter_option1 filter_option_line col-md-4 col-sm-12 col-12">
+                        <div className="ani_line">
+                            <h2>熱烈迴響</h2>
+                            <br />
+                            <h3>Recent repercussions</h3>
+                        </div>
+                        <div className="filter_option_content">
+                            <ul className="content_menu comment">
+                                {this.state.filter_comments.map(filter_comment=>
+                                    <Link className="anone" key={filter_comment.id} to={(`/page/${filter_comment.recipe_id}`)}><li>{filter_comment.comment_name}在您的{filter_comment.menu}上留言</li></Link>
+                                )}
                             </ul>
                         </div>
                     </div>

@@ -31,7 +31,7 @@ class Login extends Component {
             } else if(res=="inactive") {
                 alert('信箱還未激活');
             } else {
-                registerFrom.submit();
+                    registerFrom.submit();
             }
         })
         

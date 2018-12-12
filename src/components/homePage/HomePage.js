@@ -71,9 +71,15 @@ class HomePage extends Component {
                         <h3 className='rubberBand3' style={{ opacity: '0' }}>Foodtopia 服務最便利的線上超市</h3>
                     </div>
                     <div className='firstMenu d-flex justify-content-center align-items-center homeRDW1'>
-                        <Link to='/recipe_head/recipe_list'><img className='i i1' src={require('./images/Group125.png')} /></Link>
-                        <Link to='/ingridient_hompage'><img className='mx-5 i i2' src={require('./images/Group127.png')} /></Link>
-                        <Link to='/'><img className='i i3' src={require('./images/Group777.png')} /></Link>
+                        <Link to='/recipe_head/recipe_list'>
+                            <img className='i i1' src={require('./images/Group125.png')} />
+                        </Link>
+                        <Link to='/ingridient_hompage'>
+                            <img className='mx-5 i i2' src={require('./images/Group127.png')} />
+                        </Link>
+                        <Link to='/'>
+                            <img className='i i3' src={require('./images/Group777.png')} />
+                        </Link>
                     </div>
                 </header>
                     <div className='home'>
@@ -97,9 +103,9 @@ class HomePage extends Component {
                         </div>
                     </div>
                 </div>
-                <div className='toTop' onClick={this.smoothscroll}>
+                {/* <div className='toTop' onClick={this.smoothscroll}>
                     <img src={require('./images/toTop.png')} />
-                </div>
+                </div> */}
 
             </React.Fragment>
         )

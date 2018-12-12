@@ -16,7 +16,8 @@ import Footer from './components/footer/Footer.js';
 import HomePage from './components/homePage/HomePage.js';
 import Login from './components/login/Login.js';
 import Cart from './components/cart/Cart.js';
-
+//toTop匯入
+import Top from './components/toTop/Top.js';
 //食材元件匯入
 import Ingridient_homepage from './components/igr_homepage/Ingridient_homepage';
 import Ingridient_listpage from './components/igr_listpage/Ingridient_listpage';
@@ -37,9 +38,9 @@ import Recipe_list from './components/recipe_list/recipe_list.js';
 import Recipe_page from './components/recipe_page/recipe_page';
 import Recipe_category from './components/recipe_category/recipe_category';
 import Recipe_category_country from './components/recipe_list/recipe_list_country';
-import Recipe_category_method from './components/recipe_list/recipe_list_serving';
+import Recipe_category_serving from './components/recipe_list/recipe_list_serving';
 import Recipe_category_occasion from './components/recipe_list/recipe_list_occasion';
-import Recipe_category_screening from './components/recipe_list/recipe_list_difficult';
+import Recipe_category_difficult from './components/recipe_list/recipe_list_difficult';
 import Recipe_category_time from './components/recipe_list/recipe_list_time';
 import Recipe_head from './components/recipe_head/recipe_head';
 // import SimpleSlider from './components/SimpleSlider/simpleSlider';
@@ -49,6 +50,8 @@ import Up_load from "./components/up_load/up_load";
 import New_blog from "./components/new_blog/new_blog";
 import Month_blog from "./components/new_blog/month_blog";
 import Love from "./components/love/love";
+import New_blog_no_member from "./components/new_blog/new_blog_no_member";
+
 require('slick-carousel');
 
 class App extends Component {
@@ -111,6 +114,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <React.Fragment>
+          <Top component={Top}/>
           <Nav cartToggle={this.cartToggle} getCart={this.getCart} products={this.state.products}/>
           <Cart cartOpen={this.state.cartOpen} cartToggle={this.cartToggle} getCart={this.getCart} products={this.state.products} amount={this.state.amount}/>
           <Route path='/homePage' component={HomePage}/>
@@ -145,25 +149,25 @@ class App extends Component {
           <Route path="/recipe_head" component={Recipe_head} />
           <Route path="/recipe_head/recipe_list" component={Recipe_list} />
           <Route path="/recipe_category" component={Recipe_category} />
-          <Route exact path="/country" component={Recipe_category_country} />
-          <Route path="/country/:id" component={Recipe_category_country} /> 
-          <Route exact path="/serving" component={Recipe_category_method} />
-          <Route path="/serving/:id" component={Recipe_category_method} />
-          <Route exact path="/occasion" component={Recipe_category_occasion} />
-          <Route path="/occasion/:id" component={Recipe_category_occasion} />
-          <Route exact path="/difficult" component={Recipe_category_screening} />
-          <Route path="/difficult/:id" component={Recipe_category_screening} />
-          <Route exact path="/time" component={Recipe_category_time} />
-          <Route path="/time/:id" component={Recipe_category_time} />
+          <Route exact path="/country"  render={(props) => <Recipe_category_country {...props}  />}/>
+          <Route path="/country/:id"  render={(props) => <Recipe_category_country {...props}  />}/> 
+          <Route exact path="/serving"  render={(props) => <Recipe_category_serving {...props}  />}/>
+          <Route path="/serving/:id"  render={(props) => <Recipe_category_serving {...props}  />}/>
+          <Route exact path="/occasion"  render={(props) => <Recipe_category_occasion {...props}  />}/>
+          <Route path="/occasion/:id"  render={(props) => <Recipe_category_occasion {...props}  />}/>
+          <Route exact path="/difficult" render={(props) => <Recipe_category_difficult {...props}  />}/>
+          <Route path="/difficult/:id" render={(props) => <Recipe_category_difficult {...props}  />}/>
+          <Route exact path="/time"  render={(props) => <Recipe_category_time {...props}  />}/>
+          <Route path="/time/:id" render={(props) => <Recipe_category_time {...props}  />}/>
           {/* <Route path="/recipe_head/recipe_category" component={Recipe_category} /> */}
           {/* <Route path="/recipe_page" render={(props) => <Recipe_page {...props} getCart={this.getCart} />}/> */}
-
           {/* 部落格 */}
           <Route path="/up_load" component={Up_load} />
           <Route path="/page/:id" render={(props) => <Recipe_page {...props} getCart={this.getCart} />}/>
           <Route path="/new_blog" component={New_blog} />
           <Route path="/month/:id" component={Month_blog} />
           <Route path="/love" component={Love} />
+          <Route path="/new_blog_member/:sid" component={New_blog_no_member} />
           <Footer/>
         </React.Fragment>
       </BrowserRouter>

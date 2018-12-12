@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './BasicInfo.scss';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import $ from 'jquery';
 import {
   Form,
@@ -11,7 +11,7 @@ import {
   Input,
   Button
 } from 'reactstrap';
-import {ZipCodeTW} from "zipcode-tw-react";
+import { ZipCodeTW } from "zipcode-tw-react";
 
 class BasicInfo extends Component {
   constructor(prop) {
@@ -23,7 +23,7 @@ class BasicInfo extends Component {
       sid: '',
       mobile: '',
       county: '',
-      zipCode:'',
+      zipCode: '',
       district: '',
       address: '',
       password: '',
@@ -33,13 +33,14 @@ class BasicInfo extends Component {
     console.log(this);
   }
   componentDidMount = () => {
+
     var name = document.getElementById('name');
     var email = document.getElementById('email');
     var nickname = document.getElementById('nickname');
     fetch('http://localhost:3000/session/info', {
-        method: 'GET',
-        credentials: 'include'
-      }).then(function (res) {
+      method: 'GET',
+      credentials: 'include'
+    }).then(function (res) {
       console.log(res);
       return res.json();
     }).then((a) => {
@@ -69,7 +70,7 @@ class BasicInfo extends Component {
   handleChange = (evt) => {
     let key = evt.target.id;
     let data = evt.target.value;
-    this.setState({[key]: data});
+    this.setState({ [key]: data });
     console.log(this.state);
   }
   handleChangeNotNull = (evt) => {
@@ -83,7 +84,7 @@ class BasicInfo extends Component {
       alert('密碼不能空值');
       return false;
     }
-    this.setState({[key]: data});
+    this.setState({ [key]: data });
   }
 
   // handleClick = (event) => {     // alert(this.state.nickname);
@@ -94,7 +95,7 @@ class BasicInfo extends Component {
   //    }); }
   handleClick = (e) => {
     //   var rPw = document.getElementById('rPw');
-    this.setState({display: ''});
+    this.setState({ display: '' });
     e.target.style.display = 'none';
     //   rPw.style.display = 'block !important';
   }
@@ -104,63 +105,76 @@ class BasicInfo extends Component {
   // }
 
   handleZipCodeChange = (e) => {
-    const {countyValue, districtValue, zipValue} = e;
-    this.setState({zipCode: zipValue, county: countyValue, district: districtValue});
+    const { countyValue, districtValue, zipValue } = e;
+    this.setState({ zipCode: zipValue, county: countyValue, district: districtValue });
   }
-
   render() {
+    // if (document.referrer === 'http://localhost:3001/login') {
+    //   window.history.go(-2);
+    //   alert(document.referrer)
+    //   return false; 
+    // }
     return (
       <React.Fragment>
         <div className='basicWrap'>
           <div className='infoWrap mt-3 mx-5 p-3 '>
             <h4 className='infoTitle p-3 text-dark'>基本資料</h4>
-            <img src={require('./images/photo1.jpg')}/>
+            <img src={require('./images/photo1.jpg')} />
             <Form
               action='http://localhost:3000/session/info'
               method='post'
               style={{
-              borderRadius: '5px',
-              height:'85%',
-              background: 'rgba(0,0,0,.5)',
-            }}>
-              <Row className='' style={{height:'80%'}}>
+                borderRadius: '5px',
+                height: '80%',
+                background: 'rgba(0,0,0,.5)',
+              }}>
+              <Row className='fRow' style={{ height: '60%' }}>
                 <Col
-                  sm={6}
-                  className='p-5'
+                  lg={12} xl={6}
+                  className='p-5 colBorder'
                   style={{
-                  borderRight: '3px dashed #707070'
-                }}>
+                    borderRight: '3px dashed #707070'
+                  }}>
                   <h4 className='sideTitle'>基本資料</h4>
-                  <Input name='sid' value={this.state.sid} className='d-none'/> {/* sid用來給後端的 不要刪掉 */}
+                  <Input name='sid' value={this.state.sid} className='d-none' /> {/* sid用來給後端的 不要刪掉 */}
                   <FormGroup row>
-                    <Label className='leftLabel' sm={3}>信箱 :</Label>
-                    <Col className='colPadding emailText' style={{letterSpacing:'3px'}} sm={9}>
-                      {this.state.email}
+                    <Col sm={3} className='pos'>
+                      <Label className='leftLabel' >信箱 :</Label>
+                    </Col>
+                    <Col className='' sm={9}>
+                        <Input disabled style={{ filter: 'brightness(50%)', letterSpacing: '1px', width: '200px' }} value={this.state.email}></Input>
                     </Col>
                   </FormGroup>
                   <FormGroup row>
-                    <Label className='leftLabel' sm={3}>暱稱 :</Label>
-                    <Col className='colPadding' sm={9}>
+                    <Col sm={3} className='pos'>
+                      <Label className='leftLabel' >暱稱 :</Label>
+                    </Col>
+                    <Col className='' sm={9}>
                       <Input
                         id='nickname'
-                        className='leftInput'
+                        className=''
                         type='text'
                         name='nick_name'
+                        maxlength='5'
+                        style={{ width: '150px' }}
                         onChange={this.handleChangeNotNull}
-                        value={this.state.nickname}/>
+                        value={this.state.nickname} />
                     </Col>
                   </FormGroup>
 
                   <FormGroup row>
-                    <Label className='leftLabel' sm={3}>密碼 :</Label>
-                    <Col className='colPadding' sm={9}>
+                    <Col sm={3} className='pos'>
+                      <Label className='leftLabel' >密碼 :</Label>
+                    </Col>
+                    <Col className='' sm={9}>
                       <Input
                         id='password'
                         className={this.state.display + ' leftInput'}
                         type='password'
                         name='password'
+                        style={{position:'absolute',left:'15px'}}
                         onChange={this.handleChangeNotNull}
-                        value={this.state.password}/>
+                        value={this.state.password} />
                       <Button
                         type='button'
                         color='danger'
@@ -168,86 +182,93 @@ class BasicInfo extends Component {
                         id='rBtn'
                         onClick={this.handleClick}
                         style={{
-                        borderRadius: '5px w-100'
-                      }}>修改密碼</Button>
+                          borderRadius: '5px w-100',position:'absolute',left:'15px'
+                        }}>修改密碼</Button>
                     </Col>
                   </FormGroup>
 
                 </Col>
-                <Col className='py-5 pl-2' sm={6} style={{flex:'2'}}>
+                <Col className='p-5' lg={12} xl={6}>
                   <h4 className='sideTitle'>收件資訊</h4>
                   <FormGroup row>
-                    <Label className='rightLabel' sm={3}>姓名 :</Label>
+                    <Col sm={3} className='pos'>
+                      <Label className='text-right rightLabel' >姓名 :</Label>
+                    </Col>
                     <Col className='colPadding' sm={9}>
                       <Input
                         id='name'
                         className='rightInput'
                         type='text'
                         name='name'
-                        maxlength= '5'
+                        maxlength='5'
                         onChange={this.handleChange}
-                        value={this.state.name}/>
-                        
+                        value={this.state.name} />
+
                     </Col>
                   </FormGroup>
 
                   <FormGroup row>
-                    <Label className='rightLabel' sm={3}>手機 :</Label>
+                    <Col sm={3} className='pos'>
+                      <Label className='text-right rightLabel' >手機 :</Label>
+                    </Col>
                     <Col className='colPadding' sm={9}>
                       <Input
                         id='mobile'
                         className='rightInput'
                         type='text'
-                        maxlength= '10'
+                        maxlength='10'
                         name='mobile'
                         onChange={this.handleChange}
-                        value={this.state.mobile}/>
+                        value={this.state.mobile} />
                     </Col>
                   </FormGroup>
 
-                      <FormGroup className='' row>
-                    <Label className='addressLabel' sm={3}>地址 :</Label>
-                        <Col className='colPadding' sm={9}>
-                        <Col sm={12} style={{}} className='colPadding addressSelect d-flex'>
-                          <ZipCodeTW
-                            displayType='text'
-                            countyValue={this.state.county}
-                            districtValue={this.state.district}
-                            zipCodeValue={this.state.zipCode}
-                            countyStyle={{
-                            width: '95px',fontSize:'12px'
+                  <FormGroup className='' row>
+                    <Col sm={3} className='pos'>
+                      <Label className='text-right addressLabel' >地址 :</Label>
+                    </Col>
+                    <Col className='colPadding' sm={9}>
+                      <Col sm={12} style={{}} className='colPadding addressSelect d-flex'>
+                        <ZipCodeTW
+                          displayType='text'
+                          countyValue={this.state.county}
+                          districtValue={this.state.district}
+                          zipCodeValue={this.state.zipCode}
+                          countyStyle={{
+                            width: '95px', fontSize: '12px'
                           }}
-                            districtStyle={{
-                            width: '95px',fontSize:'12px'
+                          districtStyle={{
+                            width: '95px', fontSize: '12px'
                           }}
-                            zipStyle={{
-                            width: '50px',fontSize:'12px',
-                            padding:0
+                          zipStyle={{
+                            width: '50px', fontSize: '12px',
+                            padding: 0, display: 'none'
                           }}
-                            handleChangeCounty={this.handleZipCodeChange}
-                            handleChangeDistrict={this.handleZipCodeChange}
-                            handleChangeZipCode={this.handleZipCodeChange}
-                            handleBlurZipCode={this.handleZipCodeChange}
-                            handleZipCodeNotExists={this.handleZipCodeChange}/>
-                            </Col>
-                        <Col sm={12} className='colPadding'>
-                          <Input
-                            id='address'
-                            name='address'
-                            className='addressInput'
-                            type='text'
-                            onChange={this.handleChange}
-                            value={this.state.address}/>
-                        </Col>
-                        </Col>
-                      </FormGroup>
+                          handleChangeCounty={this.handleZipCodeChange}
+                          handleChangeDistrict={this.handleZipCodeChange}
+                          handleChangeZipCode={this.handleZipCodeChange}
+                          handleBlurZipCode={this.handleZipCodeChange}
+                          handleZipCodeNotExists={this.handleZipCodeChange} />
+                      </Col>
+                      <Col sm={12} className='colPadding'>
+                        <Input
+                          id='address'
+                          name='address'
+                          className='addressInput'
+                          type='text'
+                          style={{ width: '150px' }}
+                          onChange={this.handleChange}
+                          value={this.state.address} />
+                      </Col>
+                    </Col>
+                  </FormGroup>
                 </Col>
               </Row>
               <Row
                 className='align-items-center justify-content-center m-auto'
                 style={{
-                borderTop: '3px dashed #707070',height:'20%',width:'100%'
-              }}>
+                  borderTop: '3px dashed #707070', height: '20%', width: '100%'
+                }}>
                 <Button color='danger' type='submit' className='btnSave'>儲存變更</Button>
               </Row>
             </Form>
@@ -256,6 +277,7 @@ class BasicInfo extends Component {
         </div>
       </React.Fragment>
     )
+
   }
 }
 

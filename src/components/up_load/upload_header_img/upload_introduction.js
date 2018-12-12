@@ -22,6 +22,7 @@ class Upload_Introduction extends Component {
         }, () => {
             this.props.change(this.state);
         })
+        
     }
     //上傳分量
     changeNum = (evt)=>{
@@ -50,7 +51,7 @@ class Upload_Introduction extends Component {
                     {/* 項目 */}
                     <Select_items_box categoryId={this.state.id} change={this.change}/>
                     {/* 數量 */}
-                    <input className="introduction_number" type="text" onChange={this.changeNum} value={this.state.value} id="numbers"/>
+                    <input className="introduction_number" type="number" onChange={this.changeNum} value={this.state.value} id="numbers"/>
                 </div>
             </React.Fragment>
         );

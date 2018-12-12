@@ -28,14 +28,14 @@ class Recipe_list extends Component {
       id: this.props.id
     }
     this.searchUpdated = this.searchUpdated.bind(this)
-    console.log(this.state)
+    // console.log(this.state)
   }
 
   subRecipe_lists = (id) => {
     fetch('http://localhost:3000/api/country/'+id)
         .then(res=>res.json())
         .then(recipe_lists=>{
-            console.log(recipe_lists)
+            // console.log(recipe_lists)
             this.setState({
                 recipe_lists: recipe_lists
             })
@@ -65,7 +65,7 @@ class Recipe_list extends Component {
             <Day_rank />
           </div>
           <div  className="container d-flex justify-content-center mt-5">
-            <Link to="/country" className="category_link col-2">異國料理</Link>
+            <Link to="/country" className="category_link col-2 link_active">異國料理</Link>
             <Link to="/serving" className="category_link col-2" >選擇人數</Link>
             <Link to="/occasion" className="category_link col-2" >場合料理</Link>
             <Link to="/difficult" className="category_link col-2" >烹飪難度</Link>
@@ -109,6 +109,7 @@ class Recipe_list extends Component {
                     <div className="lower_card">
                         <div className="recipe_title">{recipe_list.menu}</div>
                         <div className="recipe_text ">{recipe_list.Introduction}</div>
+                        <Link to={`/new_blog_member/${recipe_list.member_id}`} className="card_author">作者: {recipe_list.nick_name}</Link>
                         <img className="like_btn1" src={require("./product_slider/images/like.svg")}/>
                         <img className="share_btn1" src={require("./product_slider/images/share.svg")}/>
                         <img className="liked_btn1" src={require("./product_slider/images/liked.svg")}/>
@@ -126,13 +127,14 @@ class Recipe_list extends Component {
                       <div className="p_card">
                           <div className="upper_card">
                           <Link to={`/page/${menu.id}`} >
-                            <img className="card_pic" src ={require(`./product_slider/images/${menu.menu_img}.jpg`)} alt="" />
+                            <img className="card_pic" src ={require(`./product_slider/images/${menu.menu_img}`)} alt="" />
                           </Link>
                               <div className="rate title2">{menu.rating}</div>
                           </div>
                           <div className="lower_card">
                               <div className="recipe_title">{menu.menu}</div>
                               <div className="recipe_text">{menu.Introduction}</div>
+                              <Link to={`/new_blog_member/${menu.member_id}`} className="card_author">作者: {menu.nick_name}</Link>
                               <img className="like_btn1" src={require("./product_slider/images/like.svg")}/>
                               <img className="share_btn1" src={require("./product_slider/images/share.svg")}/>
                               <img className="liked_btn1" src={require("./product_slider/images/liked.svg")}/>
@@ -170,20 +172,13 @@ class Recipe_list extends Component {
     })
     $(".sub_link").click(function(){
       $(".all_recipies").css("display", "none");
-      $(this).css("font-weight", "900")
+      // $(this).css("font-weight", "900")
     });
     // $(".sub_link").toggle(function(){
       
     // })
   }
-  // getCountry_subs(){
-  //   fetch("http://localhost:3000/api/country/:id")
-  //   .then(res=>res.json())
-  //   .then(console.log(this.state.recipe_subs))
-  //   .then(recipe_subs => this.setState({
-  //     recipe_subs: recipe_subs
-  //   }))
-  // }
+
   //call restful api
   getMenus(){
     fetch("http://localhost:3000/api/recipe")
