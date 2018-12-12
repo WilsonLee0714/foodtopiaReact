@@ -37,9 +37,9 @@ import Recipe_list from './components/recipe_list/recipe_list.js';
 import Recipe_page from './components/recipe_page/recipe_page';
 import Recipe_category from './components/recipe_category/recipe_category';
 import Recipe_category_country from './components/recipe_list/recipe_list_country';
-import Recipe_category_method from './components/recipe_list/recipe_list_serving';
+import Recipe_category_serving from './components/recipe_list/recipe_list_serving';
 import Recipe_category_occasion from './components/recipe_list/recipe_list_occasion';
-import Recipe_category_screening from './components/recipe_list/recipe_list_difficult';
+import Recipe_category_difficult from './components/recipe_list/recipe_list_difficult';
 import Recipe_category_time from './components/recipe_list/recipe_list_time';
 import Recipe_head from './components/recipe_head/recipe_head';
 // import SimpleSlider from './components/SimpleSlider/simpleSlider';
@@ -149,13 +149,13 @@ class App extends Component {
           <Route path="/recipe_category" component={Recipe_category} />
           <Route exact path="/country"  render={(props) => <Recipe_category_country {...props}  />}/>
           <Route path="/country/:id"  render={(props) => <Recipe_category_country {...props}  />}/> 
-          <Route exact path="/serving"  render={(props) => <Recipe_category_method {...props}  />}/>
-          <Route path="/serving/:id"  render={(props) => <Recipe_category_method {...props}  />}/>
+          <Route exact path="/serving"  render={(props) => <Recipe_category_serving {...props}  />}/>
+          <Route path="/serving/:id"  render={(props) => <Recipe_category_serving {...props}  />}/>
           <Route exact path="/occasion"  render={(props) => <Recipe_category_occasion {...props}  />}/>
           <Route path="/occasion/:id"  render={(props) => <Recipe_category_occasion {...props}  />}/>
-          <Route exact path="/difficult" render={(props) => <Recipe_category_screening {...props}  />}/>
-          <Route path="/difficult/:id" render={(props) => <Recipe_category_time {...props}  />}/>
-          <Route exact path="/time"  render={(props) => <Recipe_category_country {...props}  />}/>
+          <Route exact path="/difficult" render={(props) => <Recipe_category_difficult {...props}  />}/>
+          <Route path="/difficult/:id" render={(props) => <Recipe_category_difficult {...props}  />}/>
+          <Route exact path="/time"  render={(props) => <Recipe_category_time {...props}  />}/>
           <Route path="/time/:id" render={(props) => <Recipe_category_time {...props}  />}/>
           {/* <Route path="/recipe_head/recipe_category" component={Recipe_category} /> */}
           {/* <Route path="/recipe_page" render={(props) => <Recipe_page {...props} getCart={this.getCart} />}/> */}

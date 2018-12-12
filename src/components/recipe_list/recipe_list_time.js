@@ -9,14 +9,7 @@ import $ from 'jquery';
 // import Head_slider from './head_slider/head_slider.js';
 import Recommend from './recommend/recommend.js';
 import Day_rank from './rank/day_rank.js';
-import Product_slider from './recipe_filter/recipe_list_time/product_slider.js';
-import Product_slider_right from './recipe_filter/recipe_list_time/product_slider_right.js';
-import Product_slider_buttom from './recipe_filter/recipe_list_time/product_slider_buttom.js';
-// import Search_bar from './search_bar/search_bar';
-import Recipe_page from '../recipe_page/recipe_page.js';
-import Recipe_category from "../recipe_category/recipe_category"
-import SimpleSlider from '../SimpleSlider/simpleSlider';
-import CategoryList from './search_bar/category.json';
+
 
 
 
@@ -38,7 +31,7 @@ class Recipe_list extends Component {
   //   // 
   // }
   subRecipe_lists = (id) => {
-    fetch('http://localhost:3000/api/country/'+id)
+    fetch('http://localhost:3000/api/time/'+id)
         .then(res=>res.json())
         .then(recipe_lists=>{
             console.log(recipe_lists)
@@ -114,6 +107,7 @@ class Recipe_list extends Component {
                     <div className="lower_card">
                         <div className="recipe_title">{recipe_list.menu}</div>
                         <div className="recipe_text ">{recipe_list.Introduction}</div>
+                        <Link to={`/new_blog_member/${recipe_list.member_id}`}>{recipe_list.nick_name}</Link>
                         <img className="like_btn1" src={require("./product_slider/images/like.svg")}/>
                         <img className="share_btn1" src={require("./product_slider/images/share.svg")}/>
                         <img className="liked_btn1" src={require("./product_slider/images/liked.svg")}/>
@@ -147,17 +141,7 @@ class Recipe_list extends Component {
                   )}
               </div>
           </div>
-          {/* <div className="product_slider">
-            <Product_slider/>
-          </div>
-          <div className="product_slider">
-            <Product_slider_right/>
-          </div>
-          <div className="product_slider">
-            <Product_slider_buttom/>
-          
-          </div> */}
-          {/* <SimpleSlider/> */}
+
         </React.Fragment>
     );
   }

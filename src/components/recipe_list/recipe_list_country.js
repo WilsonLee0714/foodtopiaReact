@@ -169,22 +169,15 @@ class Recipe_list extends Component {
     $(".category_link").click(function(){
       $(this).css({"border-bottom": "2px solid #FF4343", "color": "#FF4343", "font-weight": "700"});
     })
-    $(".sub_link").click(function(){
-      $(".all_recipies").css("display", "none");
-      $(this).css("font-weight", "900")
-    });
+    // $(".sub_link").click(function(){
+    //   $(".all_recipies").css("display", "none");
+    //   $(this).css("font-weight", "900")
+    // });
     // $(".sub_link").toggle(function(){
       
     // })
   }
-  // getCountry_subs(){
-  //   fetch("http://localhost:3000/api/country/:id")
-  //   .then(res=>res.json())
-  //   .then(console.log(this.state.recipe_subs))
-  //   .then(recipe_subs => this.setState({
-  //     recipe_subs: recipe_subs
-  //   }))
-  // }
+
   //call restful api
   getMenus(){
     fetch("http://localhost:3000/api/recipe")

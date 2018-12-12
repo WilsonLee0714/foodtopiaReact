@@ -9,14 +9,7 @@ import $ from 'jquery';
 // import Head_slider from './head_slider/head_slider.js';
 import Recommend from './recommend/recommend.js';
 import Day_rank from './rank/day_rank.js';
-import Product_slider from './recipe_filter/recipe_list_difficult/product_slider.js';
-import Product_slider_right from './recipe_filter/recipe_list_difficult/product_slider_right.js';
-import Product_slider_buttom from './recipe_filter/recipe_list_difficult/product_slider_buttom.js';
-// import Search_bar from './search_bar/search_bar';
-import Recipe_page from '../recipe_page/recipe_page.js';
-import Recipe_category from "../recipe_category/recipe_category"
-import SimpleSlider from '../SimpleSlider/simpleSlider';
-import CategoryList from './search_bar/category.json';
+
 
 
 
@@ -34,11 +27,9 @@ class Recipe_list extends Component {
     this.searchUpdated = this.searchUpdated.bind(this)
     console.log(this.state)
   }
-  // componentDidMount(){
-  //   //
-  // }
+
   subRecipe_lists = (id) => {
-    fetch('http://localhost:3000/api/country/'+id)
+    fetch('http://localhost:3000/api/difficult/'+id)
         .then(res=>res.json())
         .then(recipe_lists=>{
             console.log(recipe_lists)
@@ -60,8 +51,8 @@ class Recipe_list extends Component {
     })
   }
   render() {
-    let random_rate= (Math.random() * 5)+4;
-    let final_rate= random_rate.toFixed(1);
+    // let random_rate= (Math.random() * 5)+4;
+    // let final_rate= random_rate.toFixed(1);
     return (
         <React.Fragment>
           <div className="middle_part container d-flex justify-content-center ">
@@ -112,6 +103,7 @@ class Recipe_list extends Component {
                     <div className="lower_card">
                         <div className="recipe_title">{recipe_list.menu}</div>
                         <div className="recipe_text ">{recipe_list.Introduction}</div>
+                        <Link to={`/new_blog_member/${recipe_list.member_id}`}>{recipe_list.nick_name}</Link>
                         <img className="like_btn1" src={require("./product_slider/images/like.svg")}/>
                         <img className="share_btn1" src={require("./product_slider/images/share.svg")}/>
                         <img className="liked_btn1" src={require("./product_slider/images/liked.svg")}/>
@@ -136,6 +128,7 @@ class Recipe_list extends Component {
                           <div className="lower_card">
                               <div className="recipe_title">{menu.menu}</div>
                               <div className="recipe_text">{menu.Introduction}</div>
+                              {/* <Link to={`/new_blog_member/${menu.member_id}`}>{menu.nick_name}</Link> */}
                               <img className="like_btn1" src={require("./product_slider/images/like.svg")}/>
                               <img className="share_btn1" src={require("./product_slider/images/share.svg")}/>
                               <img className="liked_btn1" src={require("./product_slider/images/liked.svg")}/>
