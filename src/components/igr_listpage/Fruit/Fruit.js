@@ -32,9 +32,6 @@ componentDidMount() {
       <React.Fragment>
       <div className="container">
       <h2>新鮮水果</h2>
-      <div className="fruit_bar">
-      <p>為您推薦各式精采台式調味醬料</p> 
-      </div>
       <div className="sec5_card_sec">
       {this.state.fruit.map(food =>
           <div className="sec5_card_item">

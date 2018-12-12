@@ -1,8 +1,20 @@
 /* sec7 */
+$color_red: #FF4343;
+$color_grey: #404040;
+$color_light_grey: #c7c7c7;
+$color_dark_blue: #1e3353;
+
+$title_size1: 26px;
+$title_size2: 20px;
+$p_size_L: 18px;
+$p_size_M: 16px;
+$p_size_S: 14px;
+$p_size_XS: 12px;
+
+$title_fontWeight: 700;
+
 .sec7{
     width: 100%;
-    height: 500px;
-    //排版測試 background-color: $mainColor;
     box-sizing: border-box;
     margin: 5px;
     .b_container{
@@ -11,20 +23,52 @@
         background-color: rgba(244, 244, 248, 0.658);
         h2{
             text-align: center;
+            font-size: $title_size1;
+            font-weight: $title_fontWeight;
+            color: $color_grey;
         }
         .sec7_flex{
             display: flex;
             justify-content: space-around;
-        }
-        .sec7_card_item{
-            width: 30%;
-            text-align: center;
-            background-color: rgba(171, 192, 194, 0.671);
-            border-radius: 5%;
-            img{
-                width: 100%;
+            .sec7_card_item{
+                width: 30%;
+                text-align: center;
+                background-color: rgba(171, 192, 194, 0.671);
                 border-radius: 5%;
+                h3{
+                    font-size: $title_size2;
+                    font-weight: $title_fontWeight;
+                    color: $color_light_grey;
+                }
+                p{
+                    font-size: $p_size_S;
+                    line-height: 1.6rem;
+                }
+                img{
+                    width: 100%;
+                    border-radius: 5%;
+                }
+            }
+        }
+
+    }
+}
+
+
+
+
+@media screen and (max-width:576px){
+    .sec7{
+        .b_container{
+            width: 100%;
+            .sec7_flex{
+                display: flex;
+                flex-direction: column;
+                padding-left: 25%;
+                .sec7_card_item{
+                    width: 70%;
+                }
             }
         }
     }
-}
+}    

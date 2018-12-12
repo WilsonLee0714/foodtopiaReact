@@ -14,30 +14,30 @@ class Ingredient_nav extends Component {
             <Link className="bnav-link" to="/ingridient_listpage/fruit">
               <img src={require('./image/test117.jpg')} alt='oops' />
               {/* 圖檔要讀在App.js那層的圖檔資料夾 不同其他子元件才有辦法共用 */}
-              新鮮水果
+              <span>新鮮水果</span>
             </Link>
 
             <Link className="bnav-link" to="/ingridient_listpage/vegetable">
               <img src={require('./image/test117.jpg')} alt='oops' />
-              新鮮蔬菜
+              <span>新鮮蔬菜</span>
             </Link>
            
             <Link className="bnav-link" to="/ingridient_listpage/meat">
               <img src={require('./image/test117.jpg')} alt='oops' />
-              肉類
+              <span>肉類</span>
             </Link>
             
             <Link className="bnav-link" to="/ingridient_listpage/dairy">
               <img src={require('./image/test117.jpg')} alt='oops' />
-               乳製品
+              <span>乳製品</span>
             </Link>            
             <Link className="bnav-link" to="/ingridient_listpage/seafood">
               <img src={require('./image/test117.jpg')} alt='oops' />
-                海鮮
+              <span>海鮮</span>
             </Link>            
             <Link className="bnav-link" to="/ingridient_listpage/other">
               <img src={require('./image/test117.jpg')} alt='oops' />
-                食物櫃
+              <span>食物櫃</span>
             </Link>             
           </nav>
       </div>
