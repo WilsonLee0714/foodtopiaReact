@@ -345,7 +345,7 @@ componentDidMount(){
                 <div className="ingredient row">
                   {this.state.ingredients.map(ingredient=>
                   <div key={ingredient.id} className="ingredient_total d-flex col-4">
-                      <img className="ingredient_pic col-7" src={require(`./images/${ingredient.ingredients_img}.jpg`)}/>
+                      <img className="ingredient_pic" src={require(`./images/${ingredient.ingredients_img}.jpg`)}/>
                       <p className="i_qty col-5">{ingredient.ingredients_name}</p>
                   </div>
                   )}

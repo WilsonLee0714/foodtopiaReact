@@ -25,7 +25,7 @@ class Recipe_list extends Component {
       id: this.props.id
     }
     this.searchUpdated = this.searchUpdated.bind(this)
-    console.log(this.state)
+    
   }
   // componentDidMount(){
   //   // 
@@ -55,6 +55,7 @@ class Recipe_list extends Component {
   render() {
     let random_rate= (Math.random() * 5)+4;
     let final_rate= random_rate.toFixed(1);
+    console.log(this.state.menus) //menu01
     return (
       // <BrowserRouter>
         <React.Fragment>
@@ -107,7 +108,7 @@ class Recipe_list extends Component {
                     <div className="lower_card">
                         <div className="recipe_title">{recipe_list.menu}</div>
                         <div className="recipe_text ">{recipe_list.Introduction}</div>
-                        <Link to={`/new_blog_member/${recipe_list.member_id}`}>{recipe_list.nick_name}</Link>
+                        <Link to={`/new_blog_member/${recipe_list.member_id}`}className="card_author">作者: {recipe_list.nick_name}</Link>
                         <img className="like_btn1" src={require("./product_slider/images/like.svg")}/>
                         <img className="share_btn1" src={require("./product_slider/images/share.svg")}/>
                         <img className="liked_btn1" src={require("./product_slider/images/liked.svg")}/>
@@ -125,13 +126,14 @@ class Recipe_list extends Component {
                       <div className="p_card">
                           <div className="upper_card">
                           <Link to={`/page/${menu.id}`} >
-                            <img className="card_pic" src ={require(`./product_slider/images/${menu.menu_img}.jpg`)} alt="" />
+                            <img className="card_pic" src ={require(`./product_slider/images/${menu.menu_img}`)} alt="" />
                           </Link>
                               <div className="rate title2">{menu.rating}</div>
                           </div>
                           <div className="lower_card">
                               <div className="recipe_title">{menu.menu}</div>
                               <div className="recipe_text">{menu.Introduction}</div>
+                              <Link to={`/new_blog_member/${menu.member_id}`} className="card_author">作者: {menu.nick_name}</Link>
                               <img className="like_btn1" src={require("./product_slider/images/like.svg")}/>
                               <img className="share_btn1" src={require("./product_slider/images/share.svg")}/>
                               <img className="liked_btn1" src={require("./product_slider/images/liked.svg")}/>
@@ -151,6 +153,7 @@ class Recipe_list extends Component {
     })
   }
   componentDidMount(){
+    // console.log(this.state.menus)
     this.getMenus();
     // window.scrollTo(0, 250);
     $(".category_link").click(function(){
