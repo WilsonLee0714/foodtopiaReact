@@ -265,7 +265,7 @@ componentDidMount(){
           <main className="head_bg">
             <div className=" container d-flex header1">
               {this.state.menus.map(menu =>
-                  <img key={menu.id} className="main_pic" src={require(`./images/${menu.menu_img}.jpg`)}/>
+                  <img key={menu.id} className="main_pic" src={require(`./images/${menu.menu_img}`)}/>
                 )}
                 <div className="main_text">
                   <div className="main_title d-flex">
