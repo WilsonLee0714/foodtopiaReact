@@ -122,7 +122,10 @@ update = (update) => {
 
 //篩選月份食譜
 getMonthMenus(upload_time_sid) {
-    fetch("http://localhost:3000/month/menu/"+upload_time_sid)
+    fetch("http://localhost:3000/month/menu/"+upload_time_sid,{
+            method: 'GET',
+            credentials: 'include'
+        })
         .then(res => res.json())
         .then(menus => this.setState({
             menus: menus,
@@ -147,6 +150,7 @@ componentDidMount() {
     this.getfilter_months(id);
     //讀取社群
     this.getCommunitys();
+    
 }
     render() {
         return (
