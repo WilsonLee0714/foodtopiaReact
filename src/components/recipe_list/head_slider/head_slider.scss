@@ -71,3 +71,12 @@ body{
 .arrow_area_right{
   right: 0;
 }
+
+@media screen and (max-width:690px){
+  .wrapper{
+    width: 100% !important;
+    #slider{
+      width: 450% !important;
+    }
+  }
+}

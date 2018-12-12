@@ -65,7 +65,7 @@ class Recipe_list extends Component {
             <Day_rank />
           </div>
           <div  className="container d-flex justify-content-center mt-5">
-            <Link to="/country" className="category_link col-2">異國料理</Link>
+            <Link to="/country" className="category_link col-2 link_active">異國料理</Link>
             <Link to="/serving" className="category_link col-2" >選擇人數</Link>
             <Link to="/occasion" className="category_link col-2" >場合料理</Link>
             <Link to="/difficult" className="category_link col-2" >烹飪難度</Link>
@@ -109,6 +109,7 @@ class Recipe_list extends Component {
                     <div className="lower_card">
                         <div className="recipe_title">{recipe_list.menu}</div>
                         <div className="recipe_text ">{recipe_list.Introduction}</div>
+                        <Link to={`/new_blog_member/${recipe_list.member_id}`}>{recipe_list.nick_name}</Link>
                         <img className="like_btn1" src={require("./product_slider/images/like.svg")}/>
                         <img className="share_btn1" src={require("./product_slider/images/share.svg")}/>
                         <img className="liked_btn1" src={require("./product_slider/images/liked.svg")}/>
