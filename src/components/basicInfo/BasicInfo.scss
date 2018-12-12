@@ -9,32 +9,15 @@ $thirdColor:#EFEDE8;
 
     overflow: hidden;
     width: 80%;
-    height: 100vh;
+    height: 100%;
     font-family: 'Roboto', 'Noto sans CJK TC';
     color: #fff;
     user-select: none;
-
-    .profileImg {
-        width: 200px;
-        height: 200px;
-        -webkit-clip-path: circle(50% at 50% 50%);
-        border: 3px solid #707070;
-        border-radius: 50%;
-        padding: 50px;
-
-        img {
-            object-fit: contain;
-            width: 100%;
-            height: 100%;
-        }
-    }
-
     .infoWrap {
         position: relative;
         border: 10px solid $thirdColor;
-        height: 520px;
+        // height: 520px;
         margin: 0;
-
         img {
             position: absolute;
             z-index: -1;
@@ -45,34 +28,14 @@ $thirdColor:#EFEDE8;
             left: 0;
             top: 0;
         }
-
-        .infoForm {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 600px;
-            height: 300px;
-            font-size: 1rem;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 0 auto;
-            // margin-top: 60px;
-            background: rgba(0, 0, 0, .5);
-        }
-        // .infoContent{
-        //     padding: 20px 5px;
-        // }
         .sideTitle{
             text-align: center;
             margin: 10px 0 30px 0;
         }
-
         .emailText {
             font-weight: bold;
             line-height: 2rem;
         }
-
         .rightLabel {
             line-height: 2rem;
             padding: 0px;
@@ -85,7 +48,6 @@ $thirdColor:#EFEDE8;
             font-weight: bold;
             text-align: right;
         }
-
         .colPadding {
             padding: 0;
             text-align: center;
@@ -99,13 +61,11 @@ $thirdColor:#EFEDE8;
             border-color: #707070;
             border-radius: 5px;
             color: #707070;
-
             &:focus {
                 box-shadow: 0 0 0 0.2rem rgba(255, 67, 67, 1);
                 border-color: rgba(255, 255, 255, 0);
             }
         }
-
         .btnPassword {
             font-weight: bold;
             line-height: 2rem;
@@ -113,7 +73,6 @@ $thirdColor:#EFEDE8;
             height: 2rem;
             width: 150px;
         }
-
         .rightInput {
             height: 2rem;
             text-align: center;
@@ -121,13 +80,11 @@ $thirdColor:#EFEDE8;
             border-color: #707070;
             border-radius: 5px;
             color: #707070;
-
             &:focus {
                 box-shadow: 0 0 0 0.2rem rgba(255, 67, 67, 1);
                 border-color: rgba(255, 255, 255, 0);
             }
         }
-
         .colPadding {
             padding: 0;
         }
@@ -195,124 +152,31 @@ $thirdColor:#EFEDE8;
     }
 }
 
-// 3d
-.bodyWrap {
-    padding: 0;
-    // height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    // background: #aaa;
-    perspective: 5500px;
-
+// RWD
+@media screen and (max-width:1200px){
+    .basicWrap {
+        margin: auto;
+        width: 100%;
+        font-size: .8em;
+        .emailText{
+            letter-spacing: 1px !important;
+        }
+        .infoWrap{
+            text-align: right;
+            margin: 20px !important;
+        }
+        .infoTitle {
+            background: $thirdColor;
+            text-align: left;
+        }
+    }
+    .colBorder {
+        border-right: none !important;
+        border-bottom: 3px dashed #707070 !important;
+    }
 }
-
-.wrap91 {
-    /* animation: ani9 10s infinite linear; */
-    transform-style: preserve-3d;
-    width: 600px;
-    height: 300px;
-    position: relative;
-    transform: translateZ(-100px) rotateX(0deg) rotateY(0deg);
-    margin: 0 auto;
-    transition: .5s;
+@media screen and (max-width:768px){
+            .pos {
+                text-align: left;
+            }
 }
-
-.box91 {
-    width: 600px;
-    height: 300px;
-    background: rgba(255, 255, 255, .1);
-    // background: #000;
-    text-align: center;
-    // line-height: 150px;
-    color: #fff;
-    // opacity: .3;
-    position: absolute;
-    font-size: 3rem;
-    border: 1px solid #fff;
-    transition: .5s;
-}
-
-.front91 {
-    transform: rotateY(0deg) translateZ(300px);
-}
-
-.back91 {
-    transform: rotateY(180deg) translateZ(300px);
-}
-
-.left91 {
-    transform: rotateY(-90deg) translateZ(300px);
-}
-
-.right91 {
-    transform: rotateY(90deg) translateZ(300px);
-}
-
-.top91 {
-    transform: rotateX(90deg) translateZ(75px);
-}
-
-.bottom91 {
-    transform: rotateX(-90deg) translateZ(75px);
-}
-
-/* 方向按鈕開始 */
-.controlLeft {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 5px solid #707070;
-    /* position: fixed; */
-    /* bottom: 20px; */
-    /* right: 80px; */
-    text-align: center;
-    line-height: 35px;
-    font-size: 2rem;
-    font-weight: 800;
-    cursor: pointer;
-    user-select: none;
-    /* transition: .5s; */
-}
-
-.controlRight {
-    /* transition: .5s; */
-    cursor: pointer;
-    font-weight: 800;
-    text-align: center;
-    line-height: 35px;
-    font-size: 2rem;
-    /* position: fixed; */
-    /* bottom: 20px; */
-    /* right: 20px; */
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 5px solid #707070;
-    user-select: none;
-}
-
-.controlLeft:active {
-    transform: scale(1.2, 1.2);
-}
-
-.controlRight:active {
-    transform: scale(1.2, 1.2);
-}
-
-/* 方向按鈕結束 */
-.opacity1 {
-    opacity: 1;
-}
-
-/* 圖片控制大小 */
-.imgInside {
-    object-fit: contain;
-    display: block;
-    width: 100%;
-    height: 100%;
-}
-
-/* 圖片控制大小 */
-// 3d

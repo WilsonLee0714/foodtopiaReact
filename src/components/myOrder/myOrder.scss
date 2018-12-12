@@ -10,15 +10,24 @@ $thirdColor:#EFEDE8;
     z-index: 9000;
     display: none;
     .sbox{
+        display: flex;
+        justify-content: flex-end;
         width: 100%;
         height: 100%;
-        display: flex;
-        justify-content: center;
-                // align-items: center;
+        .ssbox{
+            width: 30%;
+            overflow-y: scroll;
+        }
         table{
-            margin-top: 50px;
-            width: 20%;
+            // margin-top: 20px;
+            // margin-right: 50px;
+            width: 100%;
+            height: 100%;
             border-radius: 5px;
+            overflow: auto;
+            tr{
+                height: 30px;
+            }
         }
     }
 }
@@ -63,4 +72,21 @@ $thirdColor:#EFEDE8;
         }
     }
 
+}
+@media screen and (max-width:'1200px'){
+    .orderWrap{
+        width: 100%;
+        margin: auto !important;
+    }
+    .non {
+        display: none;
+    }
+    .ssbox{
+        width: 300px !important;
+    }
+}
+@media screen and (max-width:'768px'){
+    .non2 {
+        display: none;
+    }
 }
