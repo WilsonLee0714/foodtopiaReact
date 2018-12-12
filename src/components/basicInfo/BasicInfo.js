@@ -125,45 +125,54 @@ class BasicInfo extends Component {
               method='post'
               style={{
                 borderRadius: '5px',
-                height: '85%',
+                height: '80%',
                 background: 'rgba(0,0,0,.5)',
               }}>
-              <Row className='' style={{ height: '80%' }}>
+              <Row className='fRow' style={{ height: '60%' }}>
                 <Col
-                  sm={6}
-                  className='p-5'
+                  lg={12} xl={6}
+                  className='p-5 colBorder'
                   style={{
                     borderRight: '3px dashed #707070'
                   }}>
                   <h4 className='sideTitle'>基本資料</h4>
                   <Input name='sid' value={this.state.sid} className='d-none' /> {/* sid用來給後端的 不要刪掉 */}
                   <FormGroup row>
-                    <Label className='leftLabel' sm={3}>信箱 :</Label>
-                    <Col className='colPadding emailText' style={{ letterSpacing: '3px' }} sm={9}>
-                      {this.state.email}
+                    <Col sm={3} className='pos'>
+                      <Label className='leftLabel' >信箱 :</Label>
+                    </Col>
+                    <Col className='' sm={9}>
+                        <Input disabled style={{ filter: 'brightness(50%)', letterSpacing: '1px', width: '200px' }} value={this.state.email}></Input>
                     </Col>
                   </FormGroup>
                   <FormGroup row>
-                    <Label className='leftLabel' sm={3}>暱稱 :</Label>
-                    <Col className='colPadding' sm={9}>
+                    <Col sm={3} className='pos'>
+                      <Label className='leftLabel' >暱稱 :</Label>
+                    </Col>
+                    <Col className='' sm={9}>
                       <Input
                         id='nickname'
-                        className='leftInput'
+                        className=''
                         type='text'
                         name='nick_name'
+                        maxlength='5'
+                        style={{ width: '150px' }}
                         onChange={this.handleChangeNotNull}
                         value={this.state.nickname} />
                     </Col>
                   </FormGroup>
 
                   <FormGroup row>
-                    <Label className='leftLabel' sm={3}>密碼 :</Label>
-                    <Col className='colPadding' sm={9}>
+                    <Col sm={3} className='pos'>
+                      <Label className='leftLabel' >密碼 :</Label>
+                    </Col>
+                    <Col className='' sm={9}>
                       <Input
                         id='password'
                         className={this.state.display + ' leftInput'}
                         type='password'
                         name='password'
+                        style={{position:'absolute',left:'15px'}}
                         onChange={this.handleChangeNotNull}
                         value={this.state.password} />
                       <Button
@@ -173,16 +182,18 @@ class BasicInfo extends Component {
                         id='rBtn'
                         onClick={this.handleClick}
                         style={{
-                          borderRadius: '5px w-100'
+                          borderRadius: '5px w-100',position:'absolute',left:'15px'
                         }}>修改密碼</Button>
                     </Col>
                   </FormGroup>
 
                 </Col>
-                <Col className='py-5 pl-2' sm={6} style={{ flex: '2' }}>
+                <Col className='p-5' lg={12} xl={6}>
                   <h4 className='sideTitle'>收件資訊</h4>
                   <FormGroup row>
-                    <Label className='rightLabel' sm={3}>姓名 :</Label>
+                    <Col sm={3} className='pos'>
+                      <Label className='text-right rightLabel' >姓名 :</Label>
+                    </Col>
                     <Col className='colPadding' sm={9}>
                       <Input
                         id='name'
@@ -197,7 +208,9 @@ class BasicInfo extends Component {
                   </FormGroup>
 
                   <FormGroup row>
-                    <Label className='rightLabel' sm={3}>手機 :</Label>
+                    <Col sm={3} className='pos'>
+                      <Label className='text-right rightLabel' >手機 :</Label>
+                    </Col>
                     <Col className='colPadding' sm={9}>
                       <Input
                         id='mobile'
@@ -211,7 +224,9 @@ class BasicInfo extends Component {
                   </FormGroup>
 
                   <FormGroup className='' row>
-                    <Label className='addressLabel' sm={3}>地址 :</Label>
+                    <Col sm={3} className='pos'>
+                      <Label className='text-right addressLabel' >地址 :</Label>
+                    </Col>
                     <Col className='colPadding' sm={9}>
                       <Col sm={12} style={{}} className='colPadding addressSelect d-flex'>
                         <ZipCodeTW
@@ -227,7 +242,7 @@ class BasicInfo extends Component {
                           }}
                           zipStyle={{
                             width: '50px', fontSize: '12px',
-                            padding: 0
+                            padding: 0, display: 'none'
                           }}
                           handleChangeCounty={this.handleZipCodeChange}
                           handleChangeDistrict={this.handleZipCodeChange}
@@ -241,6 +256,7 @@ class BasicInfo extends Component {
                           name='address'
                           className='addressInput'
                           type='text'
+                          style={{ width: '150px' }}
                           onChange={this.handleChange}
                           value={this.state.address} />
                       </Col>

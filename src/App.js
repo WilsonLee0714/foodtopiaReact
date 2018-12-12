@@ -159,7 +159,6 @@ class App extends Component {
           <Route path="/time/:id" render={(props) => <Recipe_category_time {...props}  />}/>
           {/* <Route path="/recipe_head/recipe_category" component={Recipe_category} /> */}
           {/* <Route path="/recipe_page" render={(props) => <Recipe_page {...props} getCart={this.getCart} />}/> */}
-
           {/* 部落格 */}
           <Route path="/up_load" component={Up_load} />
           <Route path="/page/:id" render={(props) => <Recipe_page {...props} getCart={this.getCart} />}/>

@@ -56,6 +56,7 @@ class MyOrder extends Component {
             <React.Fragment>
                 <div id='blackLight' className='blackLight' onClick={this.handleClick2}>
                     <div className='sbox'>
+                    <div className='ssbox'>
                         <table class="table table-dark">
                             <thead>
                                 <tr>
@@ -65,15 +66,17 @@ class MyOrder extends Component {
                                 </tr>
                             </thead>
                             <tbody>
-                                {this.state.orderDetail.map((item) => 
-                                    <tr>
+                                {this.state.orderDetail.map((item,index) => 
+                                    <tr key={index} >
                                         <th scope="row">{item.product_name}</th>
                                         <td>{item.price}</td>
                                         <td>{item.qty}</td>
                                     </tr>
                                 )}
+                                <tr style={{height:'100%'}}></tr>
                             </tbody>
                         </table>
+                    </div>
                     </div>
                 </div>
                 <div className='orderWrap'>
@@ -84,24 +87,24 @@ class MyOrder extends Component {
                                 <thead>
                                     <tr>
                                         <th scope="col">訂單編號</th>
-                                        <th scope="col">姓名</th>
-                                        <th scope="col">手機</th>
-                                        <th scope="col">地址</th>
-                                        <th scope="col">寄送方式</th>
-                                        <th scope="col">送達時間</th>
-                                        <th scope="col">付款方式</th>
+                                        <th className='non3' scope="col">姓名</th>
+                                        <th className='non2' scope="col">手機</th>
+                                        <th className='non' scope="col">地址</th>
+                                        <th className='non' scope="col">寄送方式</th>
+                                        <th className='non' scope="col">送達時間</th>
+                                        <th className='non' scope="col">付款方式</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {this.state.order.map((item, i) =>
                                         <tr className='shover' style={{ fontSize: '.8em' }} onClick={this.handleClick}>
                                             <th data-id={item.order_num} style={{ width: '10%' }} scope="row">{item.order_num}<br />{item.created_at}</th>
-                                            <td data-id={item.order_num} style={{ width: '10%' }}>{item.name}</td>
-                                            <td data-id={item.order_num} style={{ width: '10%' }}>{item.mobile}</td>
-                                            <td data-id={item.order_num} style={{ width: '20%' }}>{item.zipCode + item.county + item.district}<br />{item.address}</td>
-                                            <td data-id={item.order_num} style={{ width: '10%' }}>{item.ship}</td>
-                                            <td data-id={item.order_num} style={{ width: '10%' }}>{item.ship_date}<br />{item.ship_time}</td>
-                                            <td data-id={item.order_num} style={{ width: '10%' }}>{item.pay}</td>
+                                            <td className='non3' data-id={item.order_num} style={{ width: '10%' }}>{item.name}</td>
+                                            <td className='non2' data-id={item.order_num} style={{ width: '10%' }}>{item.mobile}</td>
+                                            <td className='non' data-id={item.order_num} style={{ width: '20%' }}>{item.zipCode + item.county + item.district}<br />{item.address}</td>
+                                            <td className='non' data-id={item.order_num} style={{ width: '10%' }}>{item.ship}</td>
+                                            <td className='non' data-id={item.order_num} style={{ width: '10%' }}>{item.ship_date}<br />{item.ship_time}</td>
+                                            <td className='non' data-id={item.order_num} style={{ width: '10%' }}>{item.pay}</td>
                                         </tr>
                                     )}
                                 </tbody>

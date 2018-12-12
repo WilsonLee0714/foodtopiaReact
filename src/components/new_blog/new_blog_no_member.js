@@ -18,7 +18,7 @@ class New_blog_no_member extends Component {
 
 //communitys讀取
 getCommunitys = (sid) => {
-    fetch("http://localhost:3000/imgup/upload_community"+ sid, {  
+    fetch("http://localhost:3000/imgup/upload_community/"+ sid, {  
         method: 'GET',
         mode:"cors",
         credentials: 'include',})
@@ -28,14 +28,11 @@ getCommunitys = (sid) => {
     }))
 }
 
-componentDidMount(evt){
+componentDidMount(){
     let sid = this.props.match.params.sid 
-    this.setState({
-        sid:sid
-    })
     window.scrollTo(0,0);
     //讀取社群
-    this.getCommunitys(this.state.sid);
+    this.getCommunitys(sid);
 }
     render() {
         
@@ -43,7 +40,7 @@ componentDidMount(evt){
             <React.Fragment>
                 <Blog_slider communitys={this.state.communitys} />
                 <My_recipe />
-                <Food_recipe_no_member sid={this.state.sid}/>
+                <Food_recipe_no_member sid={this.props.match.params.sid}/>
                 <Filter />
                 <Footer communitys={this.state.communitys} />
             </React.Fragment>
