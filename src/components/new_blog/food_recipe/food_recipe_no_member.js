@@ -3,13 +3,13 @@ import "./food_recipe.scss";
 import { Link } from "react-router-dom";
 import $ from 'jquery';
 
-
-class Food_recipe extends Component {
+class Food_recipe_no_member extends Component {
     constructor(props) {
         super(props);
         this.state = {
             menus: [],
             id:"",
+            sid:this.props.sid,
             totalPage: 0,
             currentPage: 1,
             perPage: 6,  //一次6筆資料
@@ -78,7 +78,7 @@ paging = e => {  //顯示頁數資料
 }
 
 getProducts(page) {
-    fetch("http://localhost:3000/foodtopia/menu/" + page, {method: 'GET',mode: "cors",
+    fetch("http://localhost:3000/foodtopia/member_menu/"`${this.state.sid}`+ "/" + page, {method: 'GET',mode: "cors",
     credentials: 'include'})
       .then(res => res.json())
       .then(menus => {
@@ -187,4 +187,4 @@ getProducts(page) {
     }
 }
 
-export default Food_recipe;
+export default Food_recipe_no_member;
