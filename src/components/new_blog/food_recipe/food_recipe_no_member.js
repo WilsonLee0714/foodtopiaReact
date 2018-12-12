@@ -20,8 +20,8 @@ class Food_recipe_no_member extends Component {
             }))
     }
     componentDidMount(){
-        let sid=this.props.sid
-        this.getMemberMenu(sid)
+        let sid=this.props.sid;
+        this.getMemberMenu(sid);
     }
 
     render() {
@@ -32,7 +32,7 @@ class Food_recipe_no_member extends Component {
                         <div key={menu.id} className="col-lg-4 col-sm-6 col-12">
                             <div className="food_recipe">
                                 <div className="recipe_img">
-                                    <Link to={`/page/${menu.id}`} ><img src={require(`./img/${menu.menu_img}.jpg`)} alt="" /></Link>
+                                    <Link to={`/page/${menu.id}`} ><img src={require(`./img/${menu.menu_img}`)} alt="" /></Link>
                                 </div>
                                 <h6>{menu.menu}</h6>
                                 <p className="line"></p>

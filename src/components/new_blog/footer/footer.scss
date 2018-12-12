@@ -58,6 +58,7 @@
                 font-size: 30px;
             }
             .link_black{
+                margin-left: -1%;
                 color: black;
             }
         }
@@ -89,17 +90,10 @@
                 font-size: 30px;
             }
             .link_black{
+                margin-left: -2%;
                 color: black;
             }
         }
-    }
-}
-@media screen and (min-width:750px){
-    .footer_background{
-        width: 100%;
-        height: 30vh;
-        margin-top: 13%;
-        background: url(./img/re12.png) center center no-repeat;
     }
 }
 @media screen and (max-width:768px){
@@ -128,9 +122,18 @@
                 font-size: 30px;
             }
             .link_black{
+                margin-left: -3%;
                 color: black;
             }
         }
+    }
+}
+@media screen and (min-width:750px){
+    .footer_background{
+        width: 100%;
+        height: 30vh;
+        margin-top: 13%;
+        background: url(./img/re12.png) center center no-repeat;
     }
 }
 @media screen and (max-width:576px){
@@ -159,6 +162,7 @@
                 font-size: 30px;
             }
             .link_black{
+                margin-left: -3.5%;
                 color: black;
             }
         }
