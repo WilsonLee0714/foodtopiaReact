@@ -58,11 +58,11 @@ class MemberCenter extends Component {
                         <form id='uploadForm' enctype="multipart/form-data" action='http://localhost:3000/upload' method='post'>
                             <input name='file' onChange={this.handleChange} type='file' style={{ position: 'absolute', height: '60px',transform:'transLateX(-100px)', width: '200px', opacity: '0',cursor:'pointer' }}></input>
                         </form>
-                        <img className='my-2 mr-2' style={{ width: '60px',height:'60px',borderRadius:'50%' }} src={this.state.source+this.state.profile} onError={this.handleError}/>
+                        <img className='profile my-2 mr-2' style={{ width: '60px',height:'60px',borderRadius:'50%' }} src={this.state.source+this.state.profile} onError={this.handleError}/>
                         <span id='userName' className='text-primary' style={{ fontWeight: '600' }}>{this.state.userName}</span>
                     </div>
                     <div>
-                        <h3 className='py-3 rubberBand' style={{fontWeight:'600'}}>帳號管理</h3>
+                        <h3 className='py-3 rubberBand acTitle' style={{fontWeight:'600'}}>帳號管理</h3>
                         <div className='bb'></div>
                     </div>
                     <div>
