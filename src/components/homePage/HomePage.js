@@ -103,9 +103,9 @@ class HomePage extends Component {
                         </div>
                     </div>
                 </div>
-                <div className='toTop' onClick={this.smoothscroll}>
+                {/* <div className='toTop' onClick={this.smoothscroll}>
                     <img src={require('./images/toTop.png')} />
-                </div>
+                </div> */}
 
             </React.Fragment>
         )
