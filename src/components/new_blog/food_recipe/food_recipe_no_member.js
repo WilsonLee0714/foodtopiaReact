@@ -12,7 +12,7 @@ class Food_recipe_no_member extends Component {
           }
     }
 
-    getMemberMenu=(sid)=> {
+    getMemberMenu(sid) {
         fetch("http://localhost:3000/foodtopia/member_menu/"+sid)
             .then(res => res.json())
             .then(menus => this.setState({

@@ -45,6 +45,7 @@ class Upload_header_img extends Component {
             ingredients_5:"",
             ingredients_6:"",
             ingredients_7:"",
+            ingredients_8:"",
             //份量
             changeNum1:"",
             changeNum2:"",
@@ -53,6 +54,7 @@ class Upload_header_img extends Component {
             changeNum5:"",
             changeNum6:"",
             changeNum7:"",
+            changeNum8:"",
             //購物車抓取編碼
             dataCar1:"",
             dataCar2:"",
@@ -61,6 +63,7 @@ class Upload_header_img extends Component {
             dataCar5:"",
             dataCar6:"",
             dataCar7:"",
+            dataCar8:"",
         }
     }
     //上傳
@@ -171,6 +174,12 @@ class Upload_header_img extends Component {
             dataCar7:change.value2
         })
     }
+    change8 =(change)=>{
+        this.setState({
+            ingredients_8:change.value1,
+            dataCar8:change.value2
+        })
+    }
     //份量
     changeNum1=(changeNum)=>{
         this.setState({
@@ -205,6 +214,11 @@ class Upload_header_img extends Component {
     changeNum7=(changeNum)=>{
         this.setState({
             changeNum7:changeNum.numbers,
+        })
+    }
+    changeNum8=(changeNum)=>{
+        this.setState({
+            changeNum8:changeNum.numbers,
         })
     }
     //送出上傳
