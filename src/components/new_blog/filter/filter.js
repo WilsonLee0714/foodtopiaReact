@@ -112,7 +112,7 @@ componentDidMount(){
                         <div className="filter_option_content">
                             <ul className="content_menu">
                                 {this.state.new_recipes.map(new_recipe=>
-                                    <Link className="anone" key={new_recipe.id} to={(`/page/${new_recipe.id}`)}><li>{new_recipe.menu}</li></Link>
+                                    <Link key={new_recipe.id} to={(`/page/${new_recipe.id}`)}><li>{new_recipe.menu}</li></Link>
                                 )}
                             </ul>
                         </div>
@@ -125,9 +125,9 @@ componentDidMount(){
                         </div>
                         <div className="filter_option_content">
                             <ul className="content_menu">
-                                {this.state.filter_months.map(filter_month=>                          
-                                    <Link className="anone" key={filter_month.id} to={{pathname:`/month/${filter_month.id}`}}><li>{filter_month.total_time}</li></Link>
-                                )}                                                       {/* this.props.location.state, state: 'aaa' */}
+                                {this.state.filter_months.map(filter_month=>
+                                    <a key={filter_month.id} href={(`/month/${filter_month.id}`)}><li>{filter_month.total_time}</li></a>
+                                )}
                             </ul>
                         </div>
                     </div>
@@ -138,8 +138,10 @@ componentDidMount(){
                             <h3>Recent repercussions</h3>
                         </div>
                         <div className="filter_option_content">
-                            <ul className="content_menu">
-                                    
+                            <ul className="content_menu comment">
+                                {this.state.filter_comments.map(filter_comment=>
+                                    <a key={filter_comment.id} href={(`/page/${filter_comment.recipe_id}`)}><li>{filter_comment.comment_name}在您的{filter_comment.menu}上留言</li></a>
+                                )}
                             </ul>
                         </div>
                     </div>

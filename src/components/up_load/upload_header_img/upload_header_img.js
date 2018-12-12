@@ -8,7 +8,10 @@ class Upload_header_img extends Component {
         super(props)
         this.state = {
             n: 1,
-            menu:"",//食譜名稱
+            //食譜名稱
+            menu:"",
+            //上傳時間
+            date:"",
             //圖片檔案
             selectedFile:null,
             selectedFile1:null,
@@ -233,6 +236,7 @@ class Upload_header_img extends Component {
         }),
         body: JSON.stringify({
             menu:this.state.menu,
+            upload_time_sid:new Date().getMonth()+1,
             menu_img:this.state.img_name,
             Introduction:this.state.introduction,
             difficult:this.state.recipe_difficult,

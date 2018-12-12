@@ -25,9 +25,6 @@ class New_blog extends Component {
         youtube:"",
         welcome:"",
         introduction:"",
-        //修改食譜
-        // filter_months:[],
-        // menus:[],
     }
 }
 
@@ -56,7 +53,7 @@ fileUploadHandler = (fileUploadHandler) =>{
         this.getCommunitys();
     })
 }
-//communitys讀取
+//讀取blog個人資料
 getCommunitys = () => {
     fetch("http://localhost:3000/imgup/upload_community", {  
         method: 'GET',

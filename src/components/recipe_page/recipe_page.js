@@ -257,7 +257,7 @@ componentDidMount(){
           <main className="head_bg">
             <div className=" container d-flex header1">
               {this.state.menus.map(menu =>
-                  <img key={menu.id} className="main_pic" src={require(`./images/${menu.menu_img}.jpg`)}/>
+                  <img key={menu.id} className="main_pic" src={require(`./images/${menu.menu_img}`)}/>
                 )}
                 <div className="main_text">
                   <div className="main_title d-flex">
@@ -365,7 +365,7 @@ componentDidMount(){
             <div className="step d-flex justify-content-center">
               <span className="step_num">01</span>
               {this.state.step_imgs.map(step_img=>
-                <span className="step_pic"><img src={require(`./images/${step_img.step_img_1}.jpg`)}/></span>
+                <span className="step_pic"><img src={require(`./images/${step_img.step_img_1}`)}/></span>
               )}
               {this.state.steps.map(step=>
                 <span className="detail">{step.step_1}</span>
@@ -374,7 +374,7 @@ componentDidMount(){
             <div className="step d-flex justify-content-center">
               <span className="step_num">02</span>
               {this.state.step_imgs.map(step_img=>
-                <span className="step_pic"><img src={require(`./images/${step_img.step_img_2}.jpg`)}/></span>
+                <span className="step_pic"><img src={require(`./images/${step_img.step_img_2}`)}/></span>
               )}
               {this.state.steps.map(step=>
                 <span className="detail">{step.step_2}</span>
@@ -383,7 +383,7 @@ componentDidMount(){
             <div className="step d-flex justify-content-center">
               <span className="step_num">03</span>
               {this.state.step_imgs.map(step_img=>
-                <span className="step_pic"><img src={require(`./images/${step_img.step_img_3}.jpg`)}/></span>
+                <span className="step_pic"><img src={require(`./images/${step_img.step_img_3}`)}/></span>
               )}
               {this.state.steps.map(step=>
                 <span className="detail">{step.step_3}</span>
@@ -392,7 +392,7 @@ componentDidMount(){
             <div className="step d-flex justify-content-center">
               <span className="step_num">04</span>
               {this.state.step_imgs.map(step_img=>
-                <span className="step_pic"><img src={require(`./images/${step_img.step_img_4}.jpg`)}/></span>
+                <span className="step_pic"><img src={require(`./images/${step_img.step_img_4}`)}/></span>
               )}
               {this.state.steps.map(step=>
                 <span className="detail">{step.step_4}</span>
@@ -401,7 +401,7 @@ componentDidMount(){
             <div className="step d-flex justify-content-center">
               <span className="step_num">05</span>
               {this.state.step_imgs.map(step_img=>
-                <span className="step_pic"><img src={require(`./images/${step_img.step_img_5}.jpg`)}/></span>
+                <span className="step_pic"><img src={require(`./images/${step_img.step_img_5}`)}/></span>
               )}
               {this.state.steps.map(step=>
                 <span className="detail">{step.step_5}</span>
@@ -410,7 +410,7 @@ componentDidMount(){
             <div className="step d-flex justify-content-center">
               <span className="step_num">06</span>
               {this.state.step_imgs.map(step_img=>
-                <span className="step_pic"><img src={require(`./images/${step_img.step_img_6}.jpg`)}/></span>
+                <span className="step_pic"><img src={require(`./images/${step_img.step_img_6}`)}/></span>
               )}
               {this.state.steps.map(step=>
                 <span className="detail">{step.step_6}</span>
