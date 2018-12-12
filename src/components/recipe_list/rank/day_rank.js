@@ -24,10 +24,10 @@ class Day_rank extends Component {
                             <div className="rank_item">
                                 {/* <img className="rank_crown" src={require(`./images/crown.svg`)} /> */}
                                 <span className="rank_num ">{menu.rank}</span>
-                                    <div className="rank_item_txt">
-                                        <div className="rank_item_title">{menu.menu}</div>
-                                        <div className="item_text">{menu.Introduction}</div>
-                                    </div>
+                                <div className="rank_item_txt">
+                                    <div className="rank_item_title">{menu.menu}</div>
+                                    <div className="item_text">{menu.Introduction}</div>
+                                </div>
                                 <div>
                                 <Link to={`/page/${menu.id}`} >
                                     <img className="rank_thumbnail" src={require(`../product_slider/images/${menu.menu_img}.jpg`)}/>

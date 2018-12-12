@@ -184,7 +184,7 @@ $title_fontWeight: 700;
     .p_slider_wrap{
         // height: 500px !important;
         .category_wrap{
-            // display: block !important;
+            // margin: 0 10% !important;
             .cards{
                 // max-width: 500px !important;
                 display: block !important;
@@ -200,11 +200,12 @@ $title_fontWeight: 700;
     }
 }
 
-@media screen and (max-width:510px){
+@media screen and (max-width:515px){
     .p_slider_wrap{
         .cards{
             // display: block !important;
-            justify-content: center !important;
+            // justify-content: center !important;
+            margin: 10px 10%;
 
             .p_card{
                 display: block !important;
