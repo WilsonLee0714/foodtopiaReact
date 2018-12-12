@@ -74,7 +74,7 @@ class Recipe_list extends Component {
             <Link to="/serving" className="category_link col-2">選擇人數</Link>
             <Link to="/occasion" className="category_link col-2">場合料理</Link>
             <Link to="/difficult" className="category_link col-2">烹飪難度</Link>
-            <Link to="/time" className="category_link col-2">烹調時間</Link>
+            <Link to="/time" className="category_link col-2 link_active">烹調時間</Link>
             
           </div >
           <main className="subCate_nav container d-flex justify-content-center">

@@ -39,3 +39,9 @@ nav {
         }
     }
 } 
+
+@media screen and (max-width:540px){
+    .navbar{
+      width: 100% !important;
+    }
+  }
