@@ -16,7 +16,8 @@ import Footer from './components/footer/Footer.js';
 import HomePage from './components/homePage/HomePage.js';
 import Login from './components/login/Login.js';
 import Cart from './components/cart/Cart.js';
-
+//toTop匯入
+import Top from './components/toTop/Top.js';
 //食材元件匯入
 import Ingridient_homepage from './components/igr_homepage/Ingridient_homepage';
 import Ingridient_listpage from './components/igr_listpage/Ingridient_listpage';
@@ -113,6 +114,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <React.Fragment>
+          <Top component={Top}/>
           <Nav cartToggle={this.cartToggle} getCart={this.getCart} products={this.state.products}/>
           <Cart cartOpen={this.state.cartOpen} cartToggle={this.cartToggle} getCart={this.getCart} products={this.state.products} amount={this.state.amount}/>
           <Route path='/homePage' component={HomePage}/>
