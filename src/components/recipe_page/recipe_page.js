@@ -438,7 +438,7 @@ componentDidMount(){
                       {this.state.recipe_rands.map(recipe_rand=>
                         <div key={recipe_rand.id} className="p_card">
                           <div className="upper_card">
-                              <img className="card_pic" src ={require(`./images/${recipe_rand.menu_img}.jpg`)}/>
+                              <img className="card_pic" src ={require(`./images/${recipe_rand.menu_img}`)}/>
                               <div className="rate">4.2</div>
                           </div>
                           <div className="lower_card">
