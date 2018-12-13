@@ -16,9 +16,11 @@ class Ingredient_list extends Component {
             <div className="cardprice_bar">
                 <div className="line_bar">
                   <p>59元</p>
-                  <Link className="link_h" to={`/ingridient_listpage/fruit`}><h5>查看更多</h5></Link>               
+                  <Link className="link_h" to={`/ingridient_listpage/dairy_board/紅肉火龍果/5113/59/PG5113/658g`}>
+                    <h5>查看更多</h5>
+                  </Link>               
                 </div>
-                <p>新鮮直送，嚴格把關，果肉甜美</p>      
+                <span>新鮮直送，嚴格把關，果肉甜美</span>      
               </div>
           </div>
           <div className="sec5_card_item">
@@ -29,18 +31,20 @@ class Ingredient_list extends Component {
                   <p>89元</p>
                   <Link className="link_h" to={`/ingridient_listpage/vegetable`}><h5>查看更多</h5></Link>               
                 </div>
-                <p>口感清脆新鮮</p>      
+                <span>口感清脆新鮮</span>      
             </div>
           </div>
           <div className="sec5_card_item">
             <img src={require('./image/PG4116.jpg')} alt />
             <h3>吻仔魚</h3>
             <div className="cardprice_bar">
-            <div className="line_bar">
-                  <p>79元</p>
-                  <Link className="link_h" to={`/ingridient_listpage/seafood`}><h5>查看更多</h5></Link>               
-                </div>
-                <p>保最鮮海味肉質鮮甜，Q彈好嚼勁</p>      
+              <div className="line_bar">
+                <p>79元</p>
+                <Link className="link_h" to={`/ingridient_listpage/seafood`}>
+                  <h5>查看更多</h5>
+                </Link>               
+              </div>
+              <span>保最鮮海味肉質鮮甜，Q彈好嚼勁</span>      
             </div>
           </div>
         </div> 
@@ -56,7 +60,7 @@ class Ingredient_list extends Component {
                   <p>65元</p>
                   <Link className="link_h" to={`/ingridient_listpage/vegetable`}><h5>查看更多</h5></Link>               
                 </div>
-                <p>口感清脆，低熱量又高纖的高飽足</p>      
+                <span>口感清脆，低熱量又高纖的高飽足</span>      
               </div>
           </div>
           <div className="sec5_card_item">
@@ -67,7 +71,7 @@ class Ingredient_list extends Component {
                   <p>67元</p>
                   <Link className="link_h" to={`/ingridient_listpage/meat`}><h5>查看更多</h5></Link>               
                 </div>
-                <p>慢活自然熟成，屠宰衛生，肉質鮮美</p>      
+                <span>慢活自然熟成，屠宰衛生，肉質鮮美</span>      
             </div>
           </div>
           <div className="sec5_card_item">
@@ -78,7 +82,7 @@ class Ingredient_list extends Component {
                   <p>23元</p>
                   <Link className="link_h" to={`/ingridient_listpage/other`}><h5>查看更多</h5></Link>               
                 </div>
-                <p>非基改，堅持真材實料</p>      
+                <span>非基改，堅持真材實料</span>      
             </div>
           </div>
         </div>
@@ -96,7 +100,7 @@ class Ingredient_list extends Component {
                   <p>250元</p>
                   <Link className="link_h" to={`/ingridient_listpage/meat`}><h5>查看更多</h5></Link>               
                 </div>
-                <p>肉質軟嫩富彈性,口感鮮嫩多汁</p>      
+                <span>肉質軟嫩富彈性,口感鮮嫩多汁</span>      
               </div>
           </div>
 
@@ -108,7 +112,7 @@ class Ingredient_list extends Component {
                   <p>425元</p>
                   <Link className="link_h" to={`/ingridient_listpage/meat`}><h5>查看更多</h5></Link>               
                 </div>
-                <p>無生長激素，慢活自然熟成</p>      
+                <span>無生長激素，慢活自然熟成</span>      
             </div>
           </div>
           <div className="sec5_card_item">
@@ -119,7 +123,7 @@ class Ingredient_list extends Component {
                   <p>1988元</p>
                   <Link className="link_h" to={`/ingridient_listpage/seafood`}><h5>查看更多</h5></Link>               
                 </div>
-                <p>肉質結實且富有彈性</p>      
+                <span>肉質結實且富有彈性</span>      
             </div>
           </div>
         </div> 

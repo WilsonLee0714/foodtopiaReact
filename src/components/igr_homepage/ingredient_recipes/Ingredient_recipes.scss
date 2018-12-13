@@ -19,7 +19,7 @@ $title_fontWeight: 700;
     margin: 5px;
     .b_container{
         width: 85%;
-        margin: 0 auto;
+        margin: 30px auto;
         h2{
             text-align: center;
             font-size: $title_size1;
@@ -31,21 +31,32 @@ $title_fontWeight: 700;
             justify-content: space-around;
             .sec7_card_item{
                 width: 30%;
+                // height: 320px;
                 text-align: center;
                 background-color: rgba(171, 192, 194, 0.671);
-                border-radius: 5%;
+                border-radius: 10px;
+                // overflow: hidden;
+                // transition: .5s;
+                cursor:pointer;
                 h3{
                     font-size: $title_size2;
                     font-weight: $title_fontWeight;
                     color: $color_grey;
+                    padding-top: 10px;
                 }
                 p{
                     font-size: $p_size_S;
                     line-height: 1.6rem;
+                    padding: 0 10px;
                 }
                 img{
                     width: 100%;
-                    border-radius: 5%;
+                    border-radius: 10px 10px 0 0;
+                    transition: .5s;
+                    &:hover{
+                        // transform: scale(1.2);
+                        opacity: .8;
+                    }
                 }
             }
         }
