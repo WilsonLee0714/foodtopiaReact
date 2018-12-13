@@ -275,7 +275,7 @@ class Upload_header_img extends Component {
            alert("上傳成功");
            window.location.assign('/new_blog')
         })
-        //傳圖片
+        //上傳圖片
         const formdata = new FormData();
         formdata.append('image',this.state.selectedFile,this.state.img_name);
         fetch("http://localhost:3000/upload/upload",{
@@ -391,7 +391,7 @@ class Upload_header_img extends Component {
                             <img className="chicken_img" src={require("./img/th.png")} alt="" />
                             <div className="upload_chicken"></div>
                             <img className="line_img" src={require("./img/line_img.png")} alt="" />
-                            <img className="img" src={(`http://localhost:3000/imgup/${this.state.img_name}`)} alt="" />
+                            <img className="img" src={(`http://localhost:3000/upload/${this.state.img_name}`)} alt="" />
                             <input type="file" onChange={this.fileSelectedHandler} id="menu_img" className="recipe_header_img" />
                             {/* 食譜時間,份量,難度 */}
                             <div className="recipe_dropdowns container d-flex">
@@ -449,7 +449,7 @@ class Upload_header_img extends Component {
                             <form className="input_step_form col-4">
                                 <i className="fas fa-camera-retro camera_icon"></i>
                                 <div className="upload_camera"></div>
-                                <img className="imgti" src={(`http://localhost:3000/imgup/${this.state.img_name_1}`)} alt="" />
+                                <img className="imgti" src={(`http://localhost:3000/upload/${this.state.img_name_1}`)} alt="" />
                                 <input type="file" onChange={this.fileSelectedHandler1}  id="stepImg_1" className="step_img" />
                             </form>
                             <div className="upload_number_step d-flex col-8 ">
@@ -468,7 +468,7 @@ class Upload_header_img extends Component {
                             <form className="input_step_form col-4">
                                 <i className="fas fa-camera-retro camera_icon"></i>
                                 <div className="upload_camera"></div>
-                                <img className="imgti" src={(`http://localhost:3000/imgup/${this.state.img_name_2}`)} alt="" />
+                                <img className="imgti" src={(`http://localhost:3000/upload/${this.state.img_name_2}`)} alt="" />
                                 <input type="file" onChange={this.fileSelectedHandler2} id="stepImg_2" className="step_img" />
                             </form>
                             <div className="upload_number_step d-flex col-8 ">
@@ -487,7 +487,7 @@ class Upload_header_img extends Component {
                             <form className="input_step_form col-4">
                                 <i className="fas fa-camera-retro camera_icon"></i>
                                 <div className="upload_camera"></div>
-                                <img className="imgti" src={(`http://localhost:3000/imgup/${this.state.img_name_3}`)} alt="" />
+                                <img className="imgti" src={(`http://localhost:3000/upload/${this.state.img_name_3}`)} alt="" />
                                 <input type="file" onChange={this.fileSelectedHandler3} id="stepImg_3" className="step_img" />
                             </form>
                             <div className="upload_number_step d-flex col-8 ">
@@ -506,7 +506,7 @@ class Upload_header_img extends Component {
                             <form className="input_step_form col-4">
                                 <i className="fas fa-camera-retro camera_icon"></i>
                                 <div className="upload_camera"></div>
-                                <img className="imgti" src={(`http://localhost:3000/imgup/${this.state.img_name_4}`)} alt="" />
+                                <img className="imgti" src={(`http://localhost:3000/upload/${this.state.img_name_4}`)} alt="" />
                                 <input type="file" onChange={this.fileSelectedHandler4} id="stepImg_4" className="step_img" />
                             </form>
                             <div className="upload_number_step d-flex col-8 ">
@@ -525,7 +525,7 @@ class Upload_header_img extends Component {
                             <form className="input_step_form col-4">
                                 <i className="fas fa-camera-retro camera_icon"></i>
                                 <div className="upload_camera"></div>
-                                <img className="imgti" src={(`http://localhost:3000/imgup/${this.state.img_name_5}`)} alt="" />
+                                <img className="imgti" src={(`http://localhost:3000/upload/${this.state.img_name_5}`)} alt="" />
                                 <input type="file" onChange={this.fileSelectedHandler5} id="stepImg_5" className="step_img" />
                             </form>
                             <div className="upload_number_step d-flex col-8 ">
@@ -544,7 +544,7 @@ class Upload_header_img extends Component {
                             <form className="input_step_form col-4">
                                 <i className="fas fa-camera-retro camera_icon"></i>
                                 <div className="upload_camera"></div>
-                                <img className="imgti" src={(`http://localhost:3000/imgup/${this.state.img_name_6}`)} alt="" />
+                                <img className="imgti" src={(`http://localhost:3000/upload/${this.state.img_name_6}`)} alt="" />
                                 <input type="file" onChange={this.fileSelectedHandler6} id="stepImg_6" className="step_img" />
                             </form>
                             <div className="upload_number_step d-flex col-8 ">
