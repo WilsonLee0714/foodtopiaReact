@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import './Other.scss';
+import '../Ingridient_listpage.scss';
 
 
 class Other extends Component {

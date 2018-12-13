@@ -20,7 +20,6 @@ $title_fontWeight: 700;
     .b_container{
         width: 85%;
         margin: 0 auto;
-        background-color: rgba(244, 244, 248, 0.658);
         h2{
             text-align: center;
             font-size: $title_size1;
@@ -38,7 +37,7 @@ $title_fontWeight: 700;
                 h3{
                     font-size: $title_size2;
                     font-weight: $title_fontWeight;
-                    color: $color_light_grey;
+                    color: $color_grey;
                 }
                 p{
                     font-size: $p_size_S;

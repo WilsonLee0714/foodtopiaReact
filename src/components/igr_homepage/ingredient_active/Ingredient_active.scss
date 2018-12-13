@@ -29,20 +29,23 @@ $title_fontWeight: 700;
             }
             p{
                 font-size: $p_size_S;
+                margin-bottom: 25px;
             }
             .link_sec6{
                 color:$color_dark_blue;
-                color:$color_red;
+                // color:$color_red;
                 text-decoration: none;
                 
                 .cta_btn{
+                    // display: block;
+                    // width: 50%;
                     // margin-top: 10px;
                     padding: 10px;
-                    border: 1px solid $color_red;
+                    border: 1px solid $color_dark_blue;
                     border-radius: 20px;
                     font-size: $p_size_S;
                     &:hover{
-                        background-color: $color_red;  
+                        background-color: $color_dark_blue;  
                         color: white;
                     }
                 }

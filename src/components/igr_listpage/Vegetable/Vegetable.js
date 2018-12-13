@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import './Vegetable.scss';
+import '../Ingridient_listpage.scss';
 
 class Vegetable extends Component {
   constructor(props) {
