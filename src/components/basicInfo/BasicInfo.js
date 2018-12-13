@@ -33,6 +33,11 @@ class BasicInfo extends Component {
     console.log(this);
   }
   componentDidMount = () => {
+    // if (document.referrer === 'http://localhost:3001/login') {
+    //   window.history.go(-2);
+    //   // alert(document.referrer)
+    //   return false; 
+    // }
 
     var name = document.getElementById('name');
     var email = document.getElementById('email');
@@ -109,11 +114,7 @@ class BasicInfo extends Component {
     this.setState({ zipCode: zipValue, county: countyValue, district: districtValue });
   }
   render() {
-    // if (document.referrer === 'http://localhost:3001/login') {
-    //   window.history.go(-2);
-    //   alert(document.referrer)
-    //   return false; 
-    // }
+    
     return (
       <React.Fragment>
         <div className='basicWrap'>
