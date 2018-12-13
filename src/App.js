@@ -117,6 +117,7 @@ class App extends Component {
           <Top component={Top}/>
           <Nav cartToggle={this.cartToggle} getCart={this.getCart} products={this.state.products}/>
           <Cart cartOpen={this.state.cartOpen} cartToggle={this.cartToggle} getCart={this.getCart} products={this.state.products} amount={this.state.amount}/>
+          <Route exact path='/' component={HomePage}/>
           <Route path='/homePage' component={HomePage}/>
           <Route path='/login' component={Login}/>
           <Route path='/register' component={Register}/>
