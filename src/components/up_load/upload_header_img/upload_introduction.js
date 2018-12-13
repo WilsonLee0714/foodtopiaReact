@@ -22,6 +22,7 @@ class Upload_Introduction extends Component {
         }, () => {
             this.props.change(this.state);
         })
+        
     }
     //上傳分量
     changeNum = (evt)=>{

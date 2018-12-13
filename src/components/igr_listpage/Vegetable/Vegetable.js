@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import './Vegetable.scss';
+import '../Ingridient_listpage.scss';
 
 class Vegetable extends Component {
   constructor(props) {
@@ -30,10 +30,6 @@ componentDidMount() {
       <React.Fragment>
       <div className="container">
       <h2>新鮮蔬菜</h2>
-        <div className="vegetable_bar"> 
-          <p>為您推薦各式精采台式調味醬料</p>
-        </div>
-
         <div className="sec5_card_sec">
         {this.state.vegetable.map(food =>
             <div className="sec5_card_item">

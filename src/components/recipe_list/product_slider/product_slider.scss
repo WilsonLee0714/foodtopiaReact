@@ -1,6 +1,8 @@
 $color_red: #FF4343;
 $color_grey: #404040;
 $color_light_grey: #c7c7c7;
+$color_dark_blue: #1e3353;
+$color_light_blue: #2c4b79;
 
 $title_size1: 26px;
 $title_size2: 20px;
@@ -75,6 +77,8 @@ $title_fontWeight: 700;
                         }
                     }
                     .rate{
+                        width: 50px !important;
+                        height: 50px !important;
                         position: absolute;
                         bottom: 10px;
                         right: 10px;
@@ -83,11 +87,13 @@ $title_fontWeight: 700;
                         background-color: rgba(255, 255, 255, 0.45);
                         border-radius: 50%;
                         padding: 10px;
+                        text-align: center;
                     }
                 }
                 .lower_card{
                     padding: 10px;
                     position: relative;
+                    
                     .card_title{
                         line-height: 2.2rem;
                         font-size: $p_size_M;
@@ -107,6 +113,7 @@ $title_fontWeight: 700;
                         // text-overflow : ellipsis;
                         // white-space : nowrap;              
                     }
+                    
                     .like_btn{
                         height: 20px;
                         position: absolute;
@@ -146,6 +153,17 @@ $title_fontWeight: 700;
             }
         }
     }
+}
+.card_author{
+    color: $color_light_blue;
+    font-size: 12px;
+    display: block;
+    margin-top: 10px;
+    &:hover{
+        color: rgb(47, 172, 149);
+        text-decoration: none;
+    }
+
 }
 
 @media screen and (max-width:1120px){

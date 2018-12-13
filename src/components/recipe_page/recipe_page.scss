@@ -12,31 +12,37 @@ $p_size_XS: 12px;
 
 $title_fontWeight: 700;
 
-.body{
+.body {
     position: relative;
 }
-.head_bg{
+
+.head_bg {
     width: 100%;
     height: 380px;
     background-color: #eeeeee;
     // position: absolute;
     top: 50px;
-    .header1{
-        .main_pic{
+
+    .header1 {
+        .main_pic {
             // width: 200px;
             height: 300px;
             margin: 20px 0;
-        } 
-        .main_text{
+        }
+
+        .main_text {
             margin: 20px;
-            .recipe_tittle{
+
+            .recipe_tittle {
                 font-size: $title_size1;
                 line-height: 3rem;
             }
-            .recipe_intro{
+
+            .recipe_intro {
                 font-size: $p_size_S;
             }
-            .like_btn{
+
+            .like_btn {
                 position: relative;
                 margin: 0 10px 0px 50px;
                 border: 1px solid $color_red;
@@ -46,65 +52,76 @@ $title_fontWeight: 700;
                 border-radius: 5px;
                 background-color: #fff;
                 cursor: pointer;
-                .love{
+
+                .love {
                     width: 100%;
                     height: 100%;
                     margin-left: -1%;
-                    .like_img{
+
+                    .like_img {
                         margin-left: 10px;
                         width: 25px;
                     }
-                    .like_text{
+
+                    .like_text {
                         font-size: 18px;
                         line-height: 25px;
                         margin-left: 10px;
                         margin-top: 3px;
                     }
                 }
-                .loved{
+
+                .loved {
                     position: absolute;
                     height: 100%;
                     top: 14%;
                     left: 4.23%;
-                    .liked_img{
+
+                    .liked_img {
                         margin-left: 10px;
                         width: 25px;
                     }
                 }
-                .close{
+
+                .close {
                     display: none;
                 }
             }
-            
-            .cook_info{
+
+            .cook_info {
                 width: 100px;
                 height: 100px;
                 border-radius: 50%;
                 background-color: #fff;
                 color: $color_red;
                 margin: 10px;
-                .info_icon{
+
+                .info_icon {
                     width: 55px;
                     display: block;
                     transform: translate(40%, 0);
                     margin-top: 7px;
                     margin-bottom: 5px;
                 }
-                .info_text{
+
+                .info_text {
                     text-align: center;
                     font-size: $title_size2;
                 }
             }
         }
-        .nutrition_table{
+
+        .nutrition_table {
             width: 660px;
             margin: 30px 0;
-            .n_th{
+
+            .n_th {
                 font-size: 14px;
                 text-align: center;
                 background-color: #adadad;
             }
-            td{
+
+            td {
                 font-size: 12px;
                 text-align: center;
                 background-color: #fff;
@@ -112,7 +129,8 @@ $title_fontWeight: 700;
         }
     }
 }
-.middle_part{
+
+.middle_part {
     // display: flex;
     // justify-content: space-around;
     // width: 1900px;
@@ -120,10 +138,10 @@ $title_fontWeight: 700;
     // top: 420px;
     // left: 5%;
     margin-top: 10px;
-    
-    .ingredients_wrap{
+
+    .ingredients_wrap {
         // display: none;
-        max-width: 500px; 
+        max-width: 500px;
         // height: 500px;
         // border: 1px solid $color_light_grey;
         // border-radius: 15px;
@@ -131,24 +149,28 @@ $title_fontWeight: 700;
         // position: absolute;
         // top: 420px;
         padding: 20px;
-        .i_title{
+
+        .i_title {
             // margin: 20px 0 10px 20px;  
             line-height: 40px;
             font-size: $title_size1;
             font-weight: 700;
-            
+
         }
-        .ingredient{
+
+        .ingredient {
             width: 700px;
             margin: 0;
+
             // margin: 10px 0 0px 10px;
-            .ingredient_total{
-                .i_qty{
+            .ingredient_total {
+                .i_qty {
                     width: 100%;
                     font-size: $p_size_S;
                     margin-top: 20px;
                 }
-                .ingredient_pic{
+
+                .ingredient_pic {
                     width: 60px;
                     height: 60px;
                     border-radius: 50%;
@@ -158,7 +180,8 @@ $title_fontWeight: 700;
             }
         }
     }
-    .add2cart{
+
+    .add2cart {
         width: 300px;
         height: 200px;
         // border: 1px solid #ff9012;
@@ -167,99 +190,129 @@ $title_fontWeight: 700;
         margin-top: 100px;
         background: url("./images/food_BG_ss.png") repeat;
         background-size: 300px 200px;
+
         // background-color: #555555;
-        .add2cart_title, .add2cart_24h, .add2cart_btn{
+        .add2cart_title,
+        .add2cart_24h,
+        .add2cart_btn {
             margin: 10px;
         }
-        .add2cart_title{
+
+        .add2cart_title {
             font-size: $title_size1;
         }
-        .add2cart_btn{
+
+        .add2cart_btn {
             font-size: 16px;
+
+            &:active {
+                box-shadow: 0 0 0 0.2rem rgba(23, 162, 184, .5);
+                background-color: #117a8b;
+                border-color: #10707f;
+            }
         }
-        .add2cart_24h{
+
+        .add2cart_24h {
             font-size: $p_size_M;
             color: #2c5ca5;
         }
-        .add2cart_img{
-            width:40px;
+
+        .add2cart_img {
+            width: 40px;
         }
     }
-    
+
 }
-.steps-wrap{
+
+.steps-wrap {
     margin-top: 40px;
-    .steps_title{
+
+    .steps_title {
         margin: 10px 0;
     }
-    .step_clicked{
+
+    .step_clicked {
         opacity: .5;
     }
-    .step{
-        .step_num{
+
+    .step {
+        .step_num {
             font-size: 70px;
             font-weight: 700;
             margin: 10px;
             color: $color_red;
         }
+
         .step_pic {
             margin: 10px;
-            img{
+
+            img {
                 width: 250px;
             }
-        }    
-        .detail{
+        }
+
+        .detail {
             width: 450px;
             height: 200px;
             font-size: 16px;
             margin: 10px;
             color: $color_grey;
-            }
-    
+        }
+
     }
 }
-.recommendation_wrap{
+
+.recommendation_wrap {
     margin-top: 30px;
-    .category_title{
+
+    .category_title {
         font-size: $title_size1;
         font-weight: 700;
     }
 }
-.author_wrap{
+
+.author_wrap {
     // margin: 20px 50px;
     padding: 20px;
     // background-color:  $color_light_grey;
     border: 1px solid $color_light_grey;
     border-radius: 5px;
-    .profile_pic{
+
+    .profile_pic {
         width: 100px;
         height: 100px;
-        
+
     }
-    .author_text{
+
+    .author_text {
         margin: 20px;
-        .author_name{
+
+        .author_name {
             font-size: $p_size_L;
             font-weight: $title_fontWeight;
             // margin-top: 20px;
         }
-        .author_intro{
+
+        .author_intro {
             font-size: $p_size_S;
             margin: 5px 0;
         }
     }
-    
+
 }
 
-.comment_wrap{
+.comment_wrap {
     margin-top: 50px;
-    .profile_pic{
+
+    .profile_pic {
         width: 60px;
         height: 60px;
     }
-    .comment_area{
+
+    .comment_area {
         margin: 10px;
-        .comment_input{
+
+        .comment_input {
             border: 1px solid $color_light_grey;
             border-radius: 5px;
             font-size: $p_size_S;
@@ -268,26 +321,30 @@ $title_fontWeight: 700;
             padding: 10px;
             width: 500px;
             height: 100px;
-            resize:none;
+            resize: none;
             // color: $color_light_grey;
         }
-        .comment_send{
+
+        .comment_send {
             // width: 60px;
             // height: 40px;
             font-size: 14px;
             padding: 5px 20px;
             // background-color: $color_red;
-            
+
         }
-        .user_name{
+
+        .user_name {
             font-size: $p_size_M;
             font-weight: 700;
             margin-right: 20px;
         }
-        .comment_time{
+
+        .comment_time {
             font-size: $p_size_XS;
         }
-        .comment_text{
+
+        .comment_text {
             font-size: $p_size_S;
             margin: 10px 0;
             // border: 1px solid #000;
@@ -295,7 +352,5 @@ $title_fontWeight: 700;
             // height: 200px;
         }
     }
-    
+
 }
-
-
