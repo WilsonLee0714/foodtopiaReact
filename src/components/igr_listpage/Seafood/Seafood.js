@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import './Seafood.scss';
+import '../Ingridient_listpage.scss';
 
 class Seafood extends Component {
   constructor(props) {

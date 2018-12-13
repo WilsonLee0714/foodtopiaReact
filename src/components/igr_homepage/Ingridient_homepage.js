@@ -7,8 +7,6 @@ import Ingredient_middlecontent from "./ingredient_middlecontent/Ingredient_midd
 import Ingredient_list from "./ingredient_list/Ingredient_list";
 import Ingredient_active from "./ingredient_active/Ingredient_active";
 import Ingredient_recipes from "./ingredient_recipes/Ingredient_recipes";
-import Ingredient_finalimg from "./ingredient_finalimg/Ingredient_finalimg";
-
 
 class Ingridient_homepage extends Component {
   render() {
@@ -19,8 +17,7 @@ class Ingridient_homepage extends Component {
             <Ingredient_middlecontent/>
             <Ingredient_active/>
             <Ingredient_recipes/>
-            <Ingredient_list/>
-            <Ingredient_finalimg/>                
+            <Ingredient_list/>              
         </React.Fragment>
     );
   }
