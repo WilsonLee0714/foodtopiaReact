@@ -102,7 +102,7 @@ class Recipe_list extends Component {
                 <div className="p_card">
                     <div className="upper_card">
                     <Link to={`/page/${recipe_list.id}`} >
-                        <img className="card_pic" src ={require(`./product_slider/images/${recipe_list.menu_img}.jpg`)} alt="" />
+                        <img className="card_pic" src ={(`http://localhost:3000/upload/${recipe_list.menu_img}`)} alt="" />
                     </Link>
                         <div className="rate title2">{recipe_list.rating}</div>
                     </div>
@@ -127,7 +127,7 @@ class Recipe_list extends Component {
                       <div className="p_card">
                           <div className="upper_card">
                           <Link to={`/page/${menu.id}`} >
-                            <img className="card_pic" src ={require(`./product_slider/images/${menu.menu_img}`)} alt="" />
+                            <img className="card_pic" src ={(`http://localhost:3000/upload/${menu.menu_img}`)} alt="" />
                           </Link>
                               <div className="rate title2">{menu.rating}</div>
                           </div>
