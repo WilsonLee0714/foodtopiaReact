@@ -386,7 +386,7 @@ class Upload_header_img extends Component {
                 <div className="container d-flex">
                     <div className="upload_header container">
                         {/* 食譜名稱,食譜照上傳 */}
-                        <form className="input_form">
+                        <form className="input_form_1">
                             <input className="form-control header" onChange={this.change} value={this.state.value} id="menu" type="text" placeholder="食譜名稱" aria-label="Search" />
                             <img className="chicken_img" src={require("./img/th.png")} alt="" />
                             <div className="upload_chicken"></div>
