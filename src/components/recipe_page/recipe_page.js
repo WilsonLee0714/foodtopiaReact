@@ -217,6 +217,7 @@ componentDidMount(){
     //食譜單筆資料
     let id = this.props.match.params.id
     this.setState({recipe_id:this.props.match.params.id})
+    console.log(id)
     //導入
     this.getMenus(id);
     this.getNutritional_value(id);
@@ -231,6 +232,10 @@ componentDidMount(){
     // 收藏
     $(".like_btn").on("click",function(){
       $(".loved").toggleClass("close");
+    });
+    // 步驟
+    $(".step").on("click",function(){
+      $(this).css("opacity", ".7");
     });
 }
 
