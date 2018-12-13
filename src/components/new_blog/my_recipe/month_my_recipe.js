@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./my_recipe.scss";
-import { BrowserRouter, Route, Link } from "react-router-dom";
 
 class Month_my_recipe extends Component {
     constructor(props) {

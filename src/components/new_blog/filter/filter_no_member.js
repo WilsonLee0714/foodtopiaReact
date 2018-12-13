@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./filter.scss";
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { BrowserRouter, Route, Link, NavLink } from "react-router-dom";
 import $ from 'jquery';
 class Filter extends Component {
     constructor(props) {
@@ -13,8 +13,8 @@ class Filter extends Component {
 }
 
 //食譜map function
-getnew_recipes() {
-    fetch("http://localhost:3000/update/menu",{  
+getnew_recipes(sid) {
+    fetch("http://localhost:3000/update/member_menu/"+sid,{  
         method: 'GET',
         mode:"cors",
         credentials: 'include',})
@@ -32,8 +32,8 @@ getfilter_months(){
     }))
 };
 //評論篩選
-getfilter_comment(){
-    fetch("http://localhost:3000/foodtopia/member_comment",{  
+getfilter_comment(sid){
+    fetch("http://localhost:3000/foodtopia/member_comment/"+sid,{  
         method: 'GET',
         mode:"cors",
         credentials: 'include',})
@@ -51,9 +51,9 @@ componentDidMount(){
     //月份 map function
     this.getfilter_months();
     //食譜map function
-    this.getnew_recipes();
+    this.getnew_recipes(this.props.sid);
     //評論篩選
-    this.getfilter_comment();
+    this.getfilter_comment(this.props.sid);
 }
 
     render() {     
@@ -83,7 +83,7 @@ componentDidMount(){
                         <div className="filter_option_content">
                             <ul className="content_menu">
                                 {this.state.filter_months.map(filter_month=>
-                                    <Link key={filter_month.id} to={`/month/${filter_month.id}`}><li>{filter_month.total_time}</li></Link>
+                                    <a key={filter_month.id} href={`/month_no_member/${this.props.sid}/${filter_month.id}`}><li>{filter_month.total_time}</li></a>
                                 )}
                             </ul>
                         </div>
@@ -126,7 +126,7 @@ componentDidMount(){
                         <div className="filter_option_content">
                             <ul className="content_menu">
                                 {this.state.filter_months.map(filter_month=>
-                                    <a className="anone" key={filter_month.id} href={`/month/${filter_month.id}`}><li>{filter_month.total_time}</li></a>
+                                    <Link className="anone" key={filter_month.id} to={`/month_no_member/${this.props.sid}/${filter_month.id}`}><li>{filter_month.total_time}</li></Link>
                                 )}
                             </ul>
                         </div>
