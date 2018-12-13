@@ -18,15 +18,26 @@ $p_size_XS: 12px;
     
     .sec3{
         width: 75%;
-        margin-right: 2px;
-        padding: 2px;
+        // margin-right: 2px;
+        // padding: 2px;
         background-color: rgba(244, 244, 248, 0.658);
-        h2{
-            padding: 5px;
-            color: $color_grey;
-            font-size: $title_size1;
-            font-weight: 700;
+        .sec3_title{
+            width: 100%;
+            margin: 0 30%;
+            .sec3_title_txt{
+                font-size: $title_size1;
+                font-weight: 700;
+                padding: 5px;
+                color: $color_grey;
+                margin-top: 10px;
+                display: inline-block;
+            }
+            .priceTag{
+                height: 50px;
+                margin: 5px;
+            }
         }
+        
         .sec3_card_sec{
             display: flex;
             justify-content: space-around;
@@ -35,6 +46,9 @@ $p_size_XS: 12px;
                 width: 40%;
                 display: flex;
                 padding: 5px;
+                .sec3_card_txt{
+                    padding: 20px 5px;
+                }
                 .link_sec3{
                     text-decoration: none;
                 }
@@ -51,6 +65,7 @@ $p_size_XS: 12px;
                 img{
                     width: 100px;
                     height: 100px;
+                    border-radius: 50%;
                 }
             }
             .cardprice_bar{
@@ -73,14 +88,47 @@ $p_size_XS: 12px;
         flex-direction: column;
         margin: 2px;
         .sec4_event1{
-            height: 50%;
-            background: url(./image/test4.jpg) no-repeat;
+            height: 60%;
+            background: url(../images/event_xmas.jpg) no-repeat;
             background-size: cover;
+            width: 100%;
+            cursor: pointer;
+            &:hover{
+                // opacity: .7;
+                .event_title, .event_intro{
+                    color: #ffd3c8;
+                }
+            }
+        }
+        .event_title{
+            padding: 30% 10% 0 5%;
+            font-size: $title_size2;
+            font-weight: 700;
+            color: white;
+        }
+        .event_intro{
+            padding: 0% 10% 0 5%;
+            font-size: $p_size_S;
+            color: white;
+        }
+        .event_pic{
+            width: 100%;
         }
         .sec4_event2{
-            height: 50%;
-            background: url(./image/test5.jpg) no-repeat;
+            height: 40%;
+            background: url(../images/event_fruit.jpg) no-repeat;
             background-size: cover;
+            width: 100%;
+            cursor: pointer;
+            .event_title{
+                padding: 20% 10% 0 5%;
+            }
+            &:hover{
+                // opacity: .7;
+                .event_title, .event_intro{
+                    color: #d9ff92;
+                }
+            }
         }
     }
 }

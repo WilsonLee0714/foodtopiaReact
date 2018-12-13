@@ -31,7 +31,8 @@ class Login extends Component {
             } else if(res=="inactive") {
                 alert('信箱還未激活');
             } else {
-                    registerFrom.submit();
+              
+                     registerFrom.submit();
             }
         })
         
@@ -51,6 +52,7 @@ class Login extends Component {
                                     <h3 className='pb-4 text-center'>會員登入</h3>
                                     <div class="form-group  py-1">
                                         <label>Email :</label>
+                                        <input type="hidden" value={document.referrer} name="theUrl" />
                                         <input id='email' name='email' type="email" class="w-100 form-control w-75" aria-describedby="emailHelp" placeholder="請輸入信箱" />
                                     </div>
                                     <div class="form-group  py-1">
