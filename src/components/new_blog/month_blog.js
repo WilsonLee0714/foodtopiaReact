@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./new_blog.scss";
-import { BrowserRouter, Route, Link } from "react-router-dom";
 import Blog_slider from "./blog_slider/blog_slider"
 import Month_my_recipe from "./my_recipe/month_my_recipe"
 import Food_recipe_month from "./food_recipe/food_recipe_month"
