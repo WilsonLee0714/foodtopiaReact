@@ -132,13 +132,14 @@ class App extends Component {
           </div>
           {/* 食材 */}
           <Route path="/ingridient_hompage" component={Ingridient_homepage} />
-          <Route path="/ingridient_listpage" component={Ingridient_listpage} />
+          <Route path="/ingridient_listpage/:category?/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?" render={(props) => <Ingridient_listpage {...props} addCart={this.addCart} />}/>
+          {/* <Route path="/ingridient_listpage" component={Ingridient_listpage} />
           <Route path="/ingridient_listpage/fruit" render={(props) => <Fruit {...props} addCart={this.addCart} />}/>
           <Route path="/ingridient_listpage/meat" render={(props) => <Meat {...props} addCart={this.addCart} />}/>
           <Route path="/ingridient_listpage/vegetable" render={(props) => <Vegetable {...props} addCart={this.addCart} />}/>
           <Route path="/ingridient_listpage/other" render={(props) => <Other {...props} addCart={this.addCart} />}/>
           <Route path="/ingridient_listpage/seafood" render={(props) => <Seafood {...props} addCart={this.addCart} />}/>
-          <Route path="/ingridient_listpage/dairy" render={(props) => <Dairy {...props} addCart={this.addCart} />}/>
+          <Route path="/ingridient_listpage/dairy" render={(props) => <Dairy {...props} addCart={this.addCart} />}/> */}
           <Route path="/ingridient_listpage/dairy_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?" render={(props) => <Dairy_board {...props} addCart={this.addCart} />}/>
           <Route path="/ingridient_listpage/fruit_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?" render={(props) => <Fruit_board {...props} addCart={this.addCart} />}/>
           <Route path="/ingridient_listpage/meat_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?" render={(props) => <Meat_board {...props} addCart={this.addCart} />}/>
