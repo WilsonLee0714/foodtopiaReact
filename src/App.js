@@ -172,7 +172,7 @@ class App extends Component {
           <Route path="/month_no_member/:sid/:id" component={Month_blog_no_member} />
           <Route path="/love" component={Love} />
           <Route path="/new_blog_member/:sid" component={New_blog_no_member} />
-          <Footer/>
+          <Footer cartToggle={this.cartToggle} getCart={this.getCart} products={this.state.products}/>
         </React.Fragment>
       </BrowserRouter>
     )
