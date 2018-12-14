@@ -44,7 +44,7 @@ class Order_successful extends Component {
               </Link>
               <Link to='/memberCenter/myOrder'>
                 <button
-                  className='btn btn1 btn-lg text-danger btn-outline-danger mx-3 my-1'
+                  className='btn btn1 btn-lg btn-outline-danger mx-3 my-1'
                   type='button'>查看訂單紀錄</button>
               </Link>
             </div>

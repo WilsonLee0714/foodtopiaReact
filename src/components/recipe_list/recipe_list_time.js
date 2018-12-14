@@ -111,7 +111,7 @@ class Recipe_list extends Component {
                         <Link to={`/new_blog_member/${recipe_list.member_id}`}className="card_author">作者: {recipe_list.nick_name}</Link>
                         <img className="like_btn1" src={require("./product_slider/images/like.svg")}/>
                         <img className="share_btn1" src={require("./product_slider/images/share.svg")}/>
-                        <img className="liked_btn1" src={require("./product_slider/images/liked.svg")}/>
+                        <img className="liked_btn" src={require("./product_slider/images/liked.svg")}/>
                         <img className="shared_btn1" src={require("./product_slider/images/shared.svg")}/>
                     </div> 
                 </div> 
@@ -136,7 +136,7 @@ class Recipe_list extends Component {
                               <Link to={`/new_blog_member/${menu.member_id}`} className="card_author">作者: {menu.nick_name}</Link>
                               <img className="like_btn1" src={require("./product_slider/images/like.svg")}/>
                               <img className="share_btn1" src={require("./product_slider/images/share.svg")}/>
-                              <img className="liked_btn1" src={require("./product_slider/images/liked.svg")}/>
+                              <img className="liked_btn" src={require("./product_slider/images/liked.svg")}/>
                               <img className="shared_btn1" src={require("./product_slider/images/shared.svg")}/>
                           </div> 
                       </div>
