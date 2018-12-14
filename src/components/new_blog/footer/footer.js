@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./footer.scss";
-import { BrowserRouter, Route, Link } from "react-router-dom";
 import $ from 'jquery';
 
 class Footer extends Component {

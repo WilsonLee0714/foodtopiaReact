@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./blog_slider.scss";
-import { BrowserRouter, Route, Link } from "react-router-dom";
+
 
 class New_blog extends Component {
     constructor(props) {

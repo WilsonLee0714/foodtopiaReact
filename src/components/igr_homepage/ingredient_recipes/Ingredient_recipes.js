@@ -8,7 +8,7 @@ class Ingredient_recipes extends Component {
       <React.Fragment>
       <div className="sec7">
       <div className="b_container">
-        <h2>主題食材</h2>
+        <h2 className='mt-5 mb-4'>主題食材</h2>
         <div className="sec7_flex">
           <div className="sec7_card_item">
             <img src={require('./image/vegetable2.jpg')} alt />

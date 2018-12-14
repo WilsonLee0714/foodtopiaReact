@@ -22,8 +22,7 @@ $p_size_XS: 12px;
         // padding: 2px;
         background-color: rgba(244, 244, 248, 0.658);
         .sec3_title{
-            width: 100%;
-            margin: 0 30%;
+            text-align: center;
             .sec3_title_txt{
                 font-size: $title_size1;
                 font-weight: 700;
@@ -93,6 +92,12 @@ $p_size_XS: 12px;
             background-size: cover;
             width: 100%;
             cursor: pointer;
+            &:hover{
+                // opacity: .7;
+                .event_title, .event_intro{
+                    color: #ffd3c8;
+                }
+            }
         }
         .event_title{
             padding: 30% 10% 0 5%;
@@ -118,8 +123,9 @@ $p_size_XS: 12px;
                 padding: 20% 10% 0 5%;
             }
             &:hover{
+                // opacity: .7;
                 .event_title, .event_intro{
-                    color: #3b3b3b;
+                    color: #d9ff92;
                 }
             }
         }

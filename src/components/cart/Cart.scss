@@ -1,8 +1,7 @@
 $mainColor : #FF4343;
 
 .cart {
-  z-index: 9999;
-  font-family: 'Roboto', 'Noto sans CJK TC';
+  z-index: 10001;
   font-weight: bold;
   width: 270px;
   min-height: 100vh;
@@ -60,6 +59,7 @@ $mainColor : #FF4343;
     height: 60px;
     width: 60px;
     object-fit: cover;
+    cursor: pointer;
   }
 
   .btnDelete {

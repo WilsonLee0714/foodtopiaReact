@@ -11,100 +11,105 @@ $p_size_S: 14px;
 $p_size_XS: 12px;
 $title_fontWeight: 700;
 
-.container {
+.bg_container {
     h2 {
         text-align: center;
         font-size: $title_size1;
-        font-weight: $title_fontWeight;
-        color: $color_grey;
-        margin: 5px;
-        padding: 10px 0px;
+        font-weight: bold;
+        color: #404040;
+        margin: 48px 0 24px 0;
     }
 
-    .sec5_card_sec {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        text-align: center;
-        padding: 5px;
-        margin: 0 auto;
+    .card_sec {
+        justify-content: space-around;
 
-        .sec5_card_item {
-            flex-basis: 30%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            padding: 5px;
+        .card_item {
+            cursor: pointer;
+            min-width: 220px;
+            max-width: 300px;
+            padding: 15px;
+            border-radius: .25rem;
+            margin: 10px;
+            transition: .5s;
 
-            h3 {
-                padding: 5px;
-                font-size: $title_size2;
-                font-weight: 600;
-                color: $color_grey;
+            &:hover {
+                box-shadow: 5px 5px 20px rgb(197, 197, 197);
+            }
 
-                .link_c {
-                    text-decoration: none;
+            .card_img {
+                height: 140px;
+                text-align: center;
+
+                img {
+                    object-fit: cover;
+                    height: 100%;
                 }
             }
 
-            img {
-                margin: 0 auto;
-                width: 45%;
-                height: 45%;
+            .card_name {
+                min-height: 48px;
+                padding: 0;
+                margin: 10px auto;
+
+                h3 {
+                    text-align: center;
+                    font-size: 1.25rem;
+                    font-weight: bold;
+                    color: #404040;
+                }
             }
 
-        }
-
-        .cardprice_bar {
-            display: flex;
-            flex-direction: column;
-            text-align: end;
-
-            p {
-                color: $color_grey;
-                font-weight: 700;
-            }
-
-            .line_bar {
+            .card_linebar {
+                padding: 0;
                 display: flex;
                 justify-content: space-between;
-                border-bottom: 1px $color_red solid;
+                border-bottom: 1px solid #ff4343;
                 padding-bottom: 2px;
+
+                .card_price {
+                    font-size: 1.25rem;
+                    white-space: nowrap;
+                    font-weight: bold;
+                    color: #404040
+                }
+
+                h5 {
+                    transition: .3s;
+                    margin: 0;
+                    line-height: 30px;
+                    font-size: 1.25rem;
+                    color: #ff4343;
+                    text-decoration: none;
+                    font-weight: bold;
+                    transition: .5;
+
+                    &:hover {
+                        transform: scale(1.2);
+                    }
+                }
+                .card_icon {
+                    display: block;
+                    height: 30px;
+                    transition: .3s;
+    
+                    &:hover {
+                        transform: scale(1.2);
+                    }
+                }
+           
+            }
+
+            .card_spec {
+                padding: 0;
+                text-align: left;
+                color: #707070;
+                font-size: .8rem;
             }
         }
-    }
-}
-
-
-.board_sec {
-    display: flex;
-    margin: 0 auto;
-
-    h2 {
-        font-weight: 600;
-    }
-
-    img {
-        margin: 0 auto;
-        width: 30%;
-        height: 30%;
-    }
-
-    .icon {
-        width: 25px;
-        height: 30px;
-        margin: 2px;
-    }
-
-    .board_right {
-        width: 45%;
     }
 }
 
 .product_modal {
-    font-family: 'Roboto', 'Noto sans CJK TC';
-
-
     .modal_header {
         .close {
             width: 30px;
@@ -120,10 +125,6 @@ $title_fontWeight: 700;
 
             &:active {
                 box-shadow: 0px 0px 5px #000;
-            }
-
-            &:focus {
-                // background-color: #707070;
             }
 
             span {
@@ -166,10 +167,68 @@ $title_fontWeight: 700;
     }
 
     .btn_addCart {
-        margin: 0 auto;
         color: #f8f9fa;
         font-weight: bold;
     }
+}
+
+.alert_modal{
+    text-align: center;
+    .modal_header {
+        border: 0;
+        .modal-title{
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 20px auto 0 auto;
+        }
+        .close {
+            position: fixed;
+            right: 32px;
+            top: 16px;
+            width: 30px;
+            height: 30px;
+            padding: 0;
+            margin: 0;
+            margin-right: -16px;
+            border-radius: 100%;
+            outline: 0;
+            border: 0;
+            background-color: #707070;
+            text-shadow: 0 0px 0 #f8f9fa;
+
+            &:active {
+                box-shadow: 0px 0px 5px #000;
+            }
+
+            span {
+                text-shadow: 0 0px 0 #f8f9fa;
+                font-weight: bold;
+                color: #f8f9fa;
+                margin-top: -3px;
+                display: block;
+                line-height: 30px;
+                text-shadow: 0;
+
+            }
+        }
+    }
+    .tada {
+        width: 100px;
+        animation: 2s tada infinite;
+    }
+    .alert_content{
+        font-weight: bold;
+        margin-top: 20px;
+    }
+    .modal_footer{
+        border: 0;
+        .btn_alert {
+            width: 100px;
+            color: #f8f9fa;
+            font-weight: bold;
+        }
+    }
+
 }
 
 

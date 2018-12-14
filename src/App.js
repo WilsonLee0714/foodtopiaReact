@@ -49,6 +49,7 @@ import Recipe_head from './components/recipe_head/recipe_head';
 import Up_load from "./components/up_load/up_load";
 import New_blog from "./components/new_blog/new_blog";
 import Month_blog from "./components/new_blog/month_blog";
+import Month_blog_no_member from "./components/new_blog/month_blog_no_member";
 import Love from "./components/love/love";
 import New_blog_no_member from "./components/new_blog/new_blog_no_member";
 
@@ -113,10 +114,11 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <React.Fragment>
+        <React.Fragment className='body'>
           <Top component={Top}/>
           <Nav cartToggle={this.cartToggle} getCart={this.getCart} products={this.state.products}/>
           <Cart cartOpen={this.state.cartOpen} cartToggle={this.cartToggle} getCart={this.getCart} products={this.state.products} amount={this.state.amount}/>
+          <Route exact path='/' component={HomePage}/>
           <Route path='/homePage' component={HomePage}/>
           <Route path='/login' component={Login}/>
           <Route path='/register' component={Register}/>
@@ -132,7 +134,7 @@ class App extends Component {
           </div>
           {/* 食材 */}
           <Route path="/ingridient_hompage" component={Ingridient_homepage} />
-          <Route path="/ingridient_listpage/:category?/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?" render={(props) => <Ingridient_listpage {...props} addCart={this.addCart} />}/>
+          <Route path="/ingridient_listpage/:category?/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?" render={(props) => <Ingridient_listpage {...props} addCart={this.addCart} cartToggle={this.cartToggle} />}/>
           {/* <Route path="/ingridient_listpage" component={Ingridient_listpage} />
           <Route path="/ingridient_listpage/fruit" render={(props) => <Fruit {...props} addCart={this.addCart} />}/>
           <Route path="/ingridient_listpage/meat" render={(props) => <Meat {...props} addCart={this.addCart} />}/>
@@ -167,9 +169,10 @@ class App extends Component {
           <Route path="/page/:id" render={(props) => <Recipe_page {...props} getCart={this.getCart} />}/>
           <Route path="/new_blog" component={New_blog} />
           <Route path="/month/:id" component={Month_blog} />
+          <Route path="/month_no_member/:sid/:id" component={Month_blog_no_member} />
           <Route path="/love" component={Love} />
           <Route path="/new_blog_member/:sid" component={New_blog_no_member} />
-          <Footer/>
+          <Footer cartToggle={this.cartToggle} getCart={this.getCart} products={this.state.products}/>
         </React.Fragment>
       </BrowserRouter>
     )

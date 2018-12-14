@@ -27,7 +27,8 @@ class Ingridient_listpage extends React.Component {
         spec: '',
         description: ''
       },
-      modal: false
+      modal: false,
+      alert: false
     }
   }
 
@@ -49,12 +50,19 @@ class Ingridient_listpage extends React.Component {
       this
         .props
         .addCart(evt);
+      this.alertToggle();
     }
   }
 
   modalToggle = () => {
     this.setState({
       modal: !this.state.modal
+    });
+  }
+
+  alertToggle = () => {
+    this.setState({
+      alert: !this.state.alert
     });
   }
 
@@ -97,59 +105,119 @@ class Ingridient_listpage extends React.Component {
     }
     return (
       <React.Fragment>
-        <div className="container">
-          <Ingredient_nav/>
-          <h2>{category()}</h2>
-          <div className="sec5_card_sec">
+        <Ingredient_nav/>
+        <Container className='bg_container'>
+          <hr/>
+          <h2 className=''>{category()}</h2>
+          <Row className="card_sec">
             {this
               .state
               .products
-              .map(product => <div className="sec5_card_item">
-                <img
+              .map(product => <Col
+                xs={2}
+                className="card_item"
+                data-product_id={product.product_id}
+                data-product_name={product.product_name}
+                data-product_img={product.product_img}
+                data-price={product.price}
+                data-spec={product.spec}
+                data-description={product.description}
+                onClick={this.product}>
+                <Col
+                className='card_img'
                   data-product_id={product.product_id}
                   data-product_name={product.product_name}
                   data-product_img={product.product_img}
                   data-price={product.price}
                   data-spec={product.spec}
-                  data-description={product.description}
-                  onClick={this.product}
-                  src={require(`./igr_img/${product.product_img}.jpg`)}
-                  alt="oops"/>
-                <h3>
-                  <Link
-                    className="link_c"
-                    to={`/ingridient_listpage/dairy_board/${product.product_name}/${product.product_id}/${product.price}/${product.product_img}/${product.spec}`}
-                    key={product.product_name + product.product_id + product.price + product.product_img}>{product.product_name}</Link>
-                </h3>
-                <div className="cardprice_bar">
-                  <div className="line_bar">
-                    <p>{product.price}元</p>
-                    <button
-                      type="button"
-                      class="btn btn-info"
-                      data-product_id={product.product_id}
-                      onClick={this.props.addCart}>加入購物車</button>
-                  </div>
-                  <p>規格: {product.spec}</p>
-                </div>
-              </div>)}
-          </div>
-        </div>
-        <Modal isOpen={this.state.modal} className='product_modal'>
+                  data-description={product.description}>
+                  <img
+                    className='img-fluid'
+                    data-product_id={product.product_id}
+                    data-product_name={product.product_name}
+                    data-product_img={product.product_img}
+                    data-price={product.price}
+                    data-spec={product.spec}
+                    data-description={product.description}
+                    src={require(`./igr_img/${product.product_img}.jpg`)}
+                    alt="oops"/>
+                </Col>
+                <Col
+                  className='card_name'
+                  data-product_id={product.product_id}
+                  data-product_name={product.product_name}
+                  data-product_img={product.product_img}
+                  data-price={product.price}
+                  data-spec={product.spec}
+                  data-description={product.description}>
+                  <h3
+                    data-product_id={product.product_id}
+                    data-product_name={product.product_name}
+                    data-product_img={product.product_img}
+                    data-price={product.price}
+                    data-spec={product.spec}
+                    data-description={product.description}>
+                    {product.product_name}
+                  </h3>
+                </Col>
+                <Col
+                  className="card_linebar"
+                  data-product_id={product.product_id}
+                  data-product_name={product.product_name}
+                  data-product_img={product.product_img}
+                  data-price={product.price}
+                  data-spec={product.spec}
+                  data-description={product.description}>
+                  <span
+                    className='card_price'
+                    data-product_id={product.product_id}
+                    data-product_name={product.product_name}
+                    data-product_img={product.product_img}
+                    data-price={product.price}
+                    data-spec={product.spec}
+                    data-description={product.description}>NT$ {product.price}</span>
+                  <span><img
+                    className='card_icon'
+                    src={require('./images/addCart.svg')}
+                    data-product_id={product.product_id}
+                    data-product_name={product.product_name}
+                    data-product_img={product.product_img}
+                    data-price={product.price}
+                    data-spec={product.spec}
+                    data-description={product.description}/></span>
+
+                </Col>
+                <Col
+                  className='card_spec'
+                  data-product_id={product.product_id}
+                  data-product_name={product.product_name}
+                  data-product_img={product.product_img}
+                  data-price={product.price}
+                  data-spec={product.spec}
+                  data-description={product.description}>
+                  規格: {product.spec}
+                </Col>
+              </Col>)}
+          </Row>
+        </Container>
+
+        <Modal isOpen={this.state.modal} toggle={this.modalToggle} className='product_modal'>
           <Container>
             <ModalHeader toggle={this.modalToggle} className='modal_header'>產品詳情：</ModalHeader>
             <ModalBody>
               <Row>
                 <Col xs={5}>
-                    <img
-                      src={require(`./igr_img/${this.state.product.product_img}.jpg`)}
-                      className="img-fluid img-thumbnail product_img"
-                      alt=""/>
+                  <img
+                    src={require(`./igr_img/${this.state.product.product_img}.jpg`)}
+                    className="img-fluid img-thumbnail product_img"
+                    alt=""/>
                 </Col>
                 <Col className='px-0' xs={7}>
                   <Col className='product_name'>{this.state.product.product_name}</Col>
                   <Col className='product_spec'>{this.state.product.spec}</Col>
-                  <Col className='product_price'>平台優惠價： <span>NT$ {this.state.product.price}</span></Col>
+                  <Col className='product_price'>平台優惠價：
+                    <span>NT$ {this.state.product.price}</span>
+                  </Col>
                   <hr/>
                   <Col>{this.state.product.description}</Col>
                 </Col>
@@ -161,9 +229,29 @@ class Ingridient_listpage extends React.Component {
                 color='danger'
                 data-product_id={this.state.product.product_id}
                 onClick={this.addCart}>加入購物車</Button>
-
             </ModalFooter>
           </Container>
+        </Modal>
+
+        <Modal isOpen={this.state.alert} toggle={this.alertToggle} className='alert_modal'>
+        <Container>
+          <ModalHeader toggle={this.alertToggle} className='modal_header'>商品已加入購物車</ModalHeader>
+          <ModalBody>
+            <Col>
+              <img
+                className='tada'
+                src={require('../registerSuccessful/images/checkOK.png')}/>
+            </Col>
+            <Col className='alert_content'>
+                如要調整數量請至購物車修改
+            </Col>
+          </ModalBody>
+          <ModalFooter className='modal_footer'>
+            <Button className='btn_alert' color='danger' onClick={this.props.cartToggle}>購物車</Button>{' '}
+            <Button className='btn_alert' color="primary" onClick={this.alertToggle}>關閉</Button>
+          </ModalFooter>
+        </Container>
+
         </Modal>
       </React.Fragment>
     )
