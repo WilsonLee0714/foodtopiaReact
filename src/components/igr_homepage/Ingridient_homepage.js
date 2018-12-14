@@ -9,6 +9,9 @@ import Ingredient_active from "./ingredient_active/Ingredient_active";
 import Ingredient_recipes from "./ingredient_recipes/Ingredient_recipes";
 
 class Ingridient_homepage extends Component {
+  componentDidMount(){
+    window.scrollTo(0,0);
+  }
   render() {
     return (
         <React.Fragment>

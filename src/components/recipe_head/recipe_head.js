@@ -11,6 +11,9 @@ import Search_bar from '../recipe_list/search_bar/search_bar';
 
 
 class Recipe_head extends Component {
+  componentDidMount(){
+    window.scrollTo(0, 0);
+  }
   render() {
     return (
       // <BrowserRouter>
