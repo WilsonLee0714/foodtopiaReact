@@ -2,6 +2,18 @@ $mainColor : #FF4343;
 $secondColor : #707070;
 
 footer {
+    a {
+        color: #707070;
+        &:hover{
+            text-decoration: none;
+            color: #FF4343;
+        }
+    }
+    .c:hover{
+        text-decoration: none;
+            color: #FF4343;
+            cursor: pointer;
+    }
     border-top: 2px solid $mainColor;
     font-family: '微軟正黑體';
     color: $secondColor;

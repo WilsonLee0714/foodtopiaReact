@@ -53,6 +53,7 @@ import Month_blog_no_member from "./components/new_blog/month_blog_no_member";
 import Love from "./components/love/love";
 import New_blog_no_member from "./components/new_blog/new_blog_no_member";
 
+
 require('slick-carousel');
 
 class App extends Component {
@@ -172,7 +173,7 @@ class App extends Component {
           <Route path="/month_no_member/:sid/:id" component={Month_blog_no_member} />
           <Route path="/love" component={Love} />
           <Route path="/new_blog_member/:sid" component={New_blog_no_member} />
-          <Footer/>
+          <Footer cartToggle={this.cartToggle} getCart={this.getCart} products={this.state.products}/>
         </React.Fragment>
       </BrowserRouter>
     )
