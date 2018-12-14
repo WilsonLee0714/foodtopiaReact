@@ -53,6 +53,7 @@ import Month_blog_no_member from "./components/new_blog/month_blog_no_member";
 import Love from "./components/love/love";
 import New_blog_no_member from "./components/new_blog/new_blog_no_member";
 
+
 require('slick-carousel');
 
 class App extends Component {
