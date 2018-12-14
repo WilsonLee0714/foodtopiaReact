@@ -239,7 +239,7 @@ componentDidMount(){
     });
     // 步驟
     $(".step").on("click",function(){
-      $(this).css("opacity", ".7");
+      $(this).toggleClass("step_clicked");
     });
     // // 收藏
     // $(".header1").click(function(){
