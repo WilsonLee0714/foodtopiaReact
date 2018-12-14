@@ -197,6 +197,10 @@ class Recipe_page extends Component {
         }
       })
   }
+componentWillMount(){
+  //置頂
+  window.scrollTo(0, 100);
+}
 
 componentDidMount(){
     //讀會員頭貼
@@ -217,6 +221,7 @@ componentDidMount(){
     //食譜單筆資料
     let id = this.props.match.params.id
     this.setState({recipe_id:this.props.match.params.id})
+    console.log(id)
     //導入
     this.getMenus(id);
     this.getNutritional_value(id);
@@ -232,6 +237,16 @@ componentDidMount(){
     $(".like_btn").on("click",function(){
       $(".loved").toggleClass("close");
     });
+    // 步驟
+    $(".step").on("click",function(){
+      $(this).css("opacity", ".7");
+    });
+    // // 收藏
+    // $(".header1").click(function(){
+    //   // $(this).toggleClass("open_liked");
+    //   // console.log('hi like w r u!!!')
+    //   alert('hi liked w r u!!!')
+    // });
 }
 
   render() {

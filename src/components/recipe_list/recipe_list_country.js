@@ -31,6 +31,7 @@ class Recipe_list extends Component {
     // console.log(this.state)
   }
 
+  // 抓單一食譜
   subRecipe_lists = (id) => {
     fetch('http://localhost:3000/api/country/'+id)
         .then(res=>res.json())
@@ -45,6 +46,8 @@ class Recipe_list extends Component {
       var id = evt.target.dataset.recipe_sub
       this.subRecipe_lists(id);
   }
+
+  // 搜尋功能
   keyUp = (evt) => {
     let recipe_lists = this.state.menus.filter(function (product) {
       return product.menu.indexOf(evt.target.value) !== -1;
@@ -53,11 +56,47 @@ class Recipe_list extends Component {
       recipe_lists: recipe_lists
     })
   }
+
+  //確認收藏
+  getConfirmLove =(id)=>{
+    fetch("http://localhost:3000/love/love/"+id, {  
+      method: 'GET',
+      mode:"cors",
+      credentials: 'include',})
+      .then(res => res.json())
+      .then(function(confirmloves){
+        if(!confirmloves.length){
+          $(`.liked_btn${id}`).removeClass("open_liked");
+        }else{
+          $(`.liked_btn${id}`).addClass("open_liked");
+        }
+    })
+  }
+  //加入收藏
+  getLove =(evt)=>{
+    evt.preventDefault();
+    var id= evt.target.dataset.menuid
+    console.log(id)
+    fetch("http://localhost:3000/love/love", {  
+      method: 'POST',
+      mode:"cors",
+      credentials: 'include',
+      headers: new Headers({
+          'Content-Type': 'application/json'
+      }),
+      body: JSON.stringify({recipe_id: id}) 
+    })
+    .then(res => res.json())
+    // .then(this.getConfirmLove(this.state.recipe_id))
+    
+    // console.log(id)
+  }
   
-  render() {
+  render(evt) {
     let random_rate= (Math.random() * 5)+4;
     let final_rate= random_rate.toFixed(1);
     
+    // console.log(id)
     return (
         <React.Fragment>
           <div className="middle_part container d-flex justify-content-center ">
@@ -109,11 +148,18 @@ class Recipe_list extends Component {
                     <div className="lower_card">
                         <div className="recipe_title">{recipe_list.menu}</div>
                         <div className="recipe_text ">{recipe_list.Introduction}</div>
-                        <Link to={`/new_blog_member/${recipe_list.member_id}`} className="card_author">作者: {recipe_list.nick_name}</Link>
-                        <img className="like_btn1" src={require("./product_slider/images/like.svg")}/>
-                        <img className="share_btn1" src={require("./product_slider/images/share.svg")}/>
-                        <img className="liked_btn1" src={require("./product_slider/images/liked.svg")}/>
-                        <img className="shared_btn1" src={require("./product_slider/images/shared.svg")}/>
+                         <div className="card_bottom d-flex  ">
+                          <Link to={`/new_blog_member/${recipe_list.member_id}`} className="card_author">作者: {recipe_list.nick_name}</Link>
+                          {/* 收藏 */}
+                          <div onClick={this.getLove} className="like_wrap" data-menuid={recipe_list.id} >
+                            {/* <div id="likeeed"> */}
+                              <img className="like_btn1" src={require("./product_slider/images/like.svg")} data-menuid={recipe_list.id}/>
+                              <img className={`liked_btn${recipe_list.id} liked_btn`} src={require("./product_slider/images/liked.svg")} data-menuid={recipe_list.id}/>
+                            {/* </div> */}
+                          </div>
+                          <img className="share_btn1" src={require("./product_slider/images/share.svg")}/>
+                          <img className="shared_btn1" src={require("./product_slider/images/shared.svg")}/>
+                        </div>
                     </div> 
                 </div> 
               )}
@@ -123,8 +169,9 @@ class Recipe_list extends Component {
             <div className="all_recipies category_wrap container">
               {/* <div className="c_category_title ">全部料理</div> */}
               <div className="cards d-flex flex-wrap">
-                  {this.state.menus.map(menu =>  
+                  {this.state.menus.map(menu => 
                       <div className="p_card">
+                        {this.getConfirmLove(menu.id)}
                           <div className="upper_card">
                           <Link to={`/page/${menu.id}`} >
                             <img className="card_pic" src ={(`http://localhost:3000/upload/${menu.menu_img}`)} alt="" />
@@ -134,16 +181,25 @@ class Recipe_list extends Component {
                           <div className="lower_card">
                               <div className="recipe_title">{menu.menu}</div>
                               <div className="recipe_text">{menu.Introduction}</div>
-                              <Link to={`/new_blog_member/${menu.member_id}`} className="card_author">作者: {menu.nick_name}</Link>
-                              <img className="like_btn1" src={require("./product_slider/images/like.svg")}/>
-                              <img className="share_btn1" src={require("./product_slider/images/share.svg")}/>
-                              <img className="liked_btn1" src={require("./product_slider/images/liked.svg")}/>
-                              <img className="shared_btn1" src={require("./product_slider/images/shared.svg")}/>
+                              
+                              <div className="card_bottom d-flex  ">
+                                <Link to={`/new_blog_member/${menu.member_id}`} className="card_author">作者: {menu.nick_name}</Link>
+                                {/* 收藏 */}
+                                <div onClick={this.getLove} className="like_wrap" data-menuid={menu.id} >
+                                  {/* <div id="likeeed"> */}
+                                    <img className="like_btn1" src={require("./product_slider/images/like.svg")} data-menuid={menu.id}/>
+                                    <img className={`liked_btn${menu.id} liked_btn`} src={require("./product_slider/images/liked.svg")} data-menuid={menu.id}/>
+                                  {/* </div> */}
+                                </div>
+                                <img className="share_btn1" src={require("./product_slider/images/share.svg")}/>
+                                <img className="shared_btn1" src={require("./product_slider/images/shared.svg")}/>
+                              </div>
                           </div> 
                       </div>
                   )}
                 </div>
               </div>
+              
           
           {/* <div className="product_slider">
             <Product_slider/>
@@ -167,16 +223,34 @@ class Recipe_list extends Component {
     // window.scrollTo(0, 100);
     // this.getCountry_subs();
     this.getMenus();
+
+    //食譜單筆資料
+    let id = this.props.match.params.id
+    this.setState({recipe_id:this.props.match.params.id})
+    this.getConfirmLove();
+    // console.log(id)
+
+    // 收藏
+    // $("liked_btn").on("click",function(){
+    //   // $(this).toggleClass("open_liked");
+    //   // console.log(this)
+    //   alert('hi liked w r u!!!')
+    // });
+    $(document).ready(function(){
+      $(".liked_btn").click(function(){
+      // alert("add to love list!");
+      $(this).toggleClass("open_liked");
+     });
+    });
+    
+    //食譜隱藏
     $(".category_link").click(function(){
       $(this).css({"border-bottom": "2px solid #FF4343", "color": "#FF4343", "font-weight": "700"});
     })
     $(".sub_link").click(function(){
       $(".all_recipies").css("display", "none");
-      // $(this).css("font-weight", "900")
     });
-    // $(".sub_link").toggle(function(){
-      
-    // })
+    
   }
 
   //call restful api
