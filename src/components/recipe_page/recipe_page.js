@@ -197,11 +197,12 @@ class Recipe_page extends Component {
         }
       })
   }
+componentWillMount(){
+  //置頂
+  window.scrollTo(0, 100);
+}
 
 componentDidMount(){
-    //置頂
-    window.scrollTo(0, 100);
-
     //讀會員頭貼
     fetch('http://localhost:3000/session/info', {
             method: 'GET',

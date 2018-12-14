@@ -148,11 +148,18 @@ class Recipe_list extends Component {
                     <div className="lower_card">
                         <div className="recipe_title">{recipe_list.menu}</div>
                         <div className="recipe_text ">{recipe_list.Introduction}</div>
-                        <Link to={`/new_blog_member/${recipe_list.member_id}`} className="card_author">作者: {recipe_list.nick_name}</Link>
-                        <img className="like_btn1" src={require("./product_slider/images/like.svg")}/>
-                        <img className="share_btn1" src={require("./product_slider/images/share.svg")}/>
-                        <img className="liked_btn1" src={require("./product_slider/images/liked.svg")}/>
-                        <img className="shared_btn1" src={require("./product_slider/images/shared.svg")}/>
+                         <div className="card_bottom d-flex  ">
+                          <Link to={`/new_blog_member/${recipe_list.member_id}`} className="card_author">作者: {recipe_list.nick_name}</Link>
+                          {/* 收藏 */}
+                          <div onClick={this.getLove} className="like_wrap" data-menuid={recipe_list.id} >
+                            {/* <div id="likeeed"> */}
+                              <img className="like_btn1" src={require("./product_slider/images/like.svg")} data-menuid={recipe_list.id}/>
+                              <img className={`liked_btn${recipe_list.id} liked_btn`} src={require("./product_slider/images/liked.svg")} data-menuid={recipe_list.id}/>
+                            {/* </div> */}
+                          </div>
+                          <img className="share_btn1" src={require("./product_slider/images/share.svg")}/>
+                          <img className="shared_btn1" src={require("./product_slider/images/shared.svg")}/>
+                        </div>
                     </div> 
                 </div> 
               )}
@@ -174,21 +181,25 @@ class Recipe_list extends Component {
                           <div className="lower_card">
                               <div className="recipe_title">{menu.menu}</div>
                               <div className="recipe_text">{menu.Introduction}</div>
-                              <Link to={`/new_blog_member/${menu.member_id}`} className="card_author">作者: {menu.nick_name}</Link>
-                              {/* 收藏 */}
-                              <div onClick={this.getLove} className="" >
-                                <img className="like_btn1" src={require("./product_slider/images/like.svg")} />
-                                {/* <div id="likeeed"> */}
-                                  <img className={`liked_btn${menu.id} liked_btn `} src={require("./product_slider/images/liked.svg")} data-menuid={menu.id}/>
-                                {/* </div> */}
+                              
+                              <div className="card_bottom d-flex  ">
+                                <Link to={`/new_blog_member/${menu.member_id}`} className="card_author">作者: {menu.nick_name}</Link>
+                                {/* 收藏 */}
+                                <div onClick={this.getLove} className="like_wrap" data-menuid={menu.id} >
+                                  {/* <div id="likeeed"> */}
+                                    <img className="like_btn1" src={require("./product_slider/images/like.svg")} data-menuid={menu.id}/>
+                                    <img className={`liked_btn${menu.id} liked_btn`} src={require("./product_slider/images/liked.svg")} data-menuid={menu.id}/>
+                                  {/* </div> */}
+                                </div>
+                                <img className="share_btn1" src={require("./product_slider/images/share.svg")}/>
+                                <img className="shared_btn1" src={require("./product_slider/images/shared.svg")}/>
                               </div>
-                              <img className="share_btn1" src={require("./product_slider/images/share.svg")}/>
-                              <img className="shared_btn1" src={require("./product_slider/images/shared.svg")}/>
                           </div> 
                       </div>
                   )}
                 </div>
               </div>
+              
           
           {/* <div className="product_slider">
             <Product_slider/>
@@ -220,10 +231,16 @@ class Recipe_list extends Component {
     // console.log(id)
 
     // 收藏
-    $(".lower_card").on("click",function(){
-      // $(this).toggleClass("open_liked");
-      // console.log(this)
-      alert('hi liked w r u!!!')
+    // $("liked_btn").on("click",function(){
+    //   // $(this).toggleClass("open_liked");
+    //   // console.log(this)
+    //   alert('hi liked w r u!!!')
+    // });
+    $(document).ready(function(){
+      $(".liked_btn").click(function(){
+      // alert("add to love list!");
+      $(this).toggleClass("open_liked");
+     });
     });
     
     //食譜隱藏
