@@ -1,11 +1,24 @@
 import React, {Component} from 'react';
-import {Button, Container, Row, Col} from 'reactstrap';
+import {Button, Container, Row, Col, Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter} from 'reactstrap';
 import './Order.scss';
 
 class OrderStep2 extends Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+      product: {
+        product_id: '',
+        product_name: '',
+        product_img: 'PG1101',
+        price: '',
+        spec: '',
+        description: ''
+      },
+      modal: false
+    }
   }
 
   checkout = (evt) => {
@@ -30,6 +43,24 @@ class OrderStep2 extends Component {
       .props
       .step(1);
 
+  }
+
+  product = (evt) => {
+    let product = this.state.product
+    product['product_id'] = evt.target.dataset.product_id
+    product['product_name'] = evt.target.dataset.product_name
+    product['product_img'] = evt.target.dataset.product_img
+    product['price'] = evt.target.dataset.price
+    product['spec'] = evt.target.dataset.spec
+    product['description'] = evt.target.dataset.description
+    this.setState({product})
+    this.modalToggle()
+  }
+
+  modalToggle = () => {
+    this.setState({
+      modal: !this.state.modal
+    });
   }
 
   render() {
@@ -72,6 +103,13 @@ class OrderStep2 extends Component {
                   className='productDetail'>
                   <img
                     className='productImg'
+                      data-product_id={product.product_id}
+                      data-product_name={product.product_name}
+                      data-product_img={product.product_img}
+                      data-price={product.price}
+                      data-spec={product.spec}
+                      data-description={product.description}
+                      onClick={this.product}
                     src={require(`../igr_listpage/igr_img/${product.product_img}.jpg`)}/>
                 </Col>
                 <Col xs={3} className='px-0'>
@@ -159,6 +197,31 @@ class OrderStep2 extends Component {
             <Button className='btnNext' color='danger' onClick={this.checkout}>確認結帳</Button>
           </Col>
         </Row>
+        <Modal isOpen={this.state.modal} toggle={this.modalToggle} className='product_modal'>
+          <Container>
+            <ModalHeader toggle={this.modalToggle} className='modal_header'>產品詳情：</ModalHeader>
+            <ModalBody>
+              <Row>
+                <Col xs={5}>
+                  <img
+                    src={require(`../igr_listpage/igr_img/${this.state.product.product_img}.jpg`)}
+                    className="img-fluid img-thumbnail product_img"
+                    alt=""/>
+                </Col>
+                <Col className='px-0' xs={7}>
+                  <Col className='product_name'>{this.state.product.product_name}</Col>
+                  <Col className='product_spec'>{this.state.product.spec}</Col>
+                  <Col className='product_price'>平台優惠價：
+                    <span>NT$ {this.state.product.price}</span>
+                  </Col>
+                  <Col>{this.state.product.description}</Col>
+                </Col>
+              </Row>
+            </ModalBody>
+            <ModalFooter>
+            </ModalFooter>
+          </Container>
+        </Modal>
       </React.Fragment>
     )
   }
