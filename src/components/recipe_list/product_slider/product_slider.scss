@@ -11,6 +11,9 @@ $p_size_M: 16px;
 $p_size_S: 14px;
 $p_size_XS: 12px;
 $title_fontWeight: 700;
+.close {
+    display: none;
+}
 
 .c_category_title{
     font-size: $title_size1;
