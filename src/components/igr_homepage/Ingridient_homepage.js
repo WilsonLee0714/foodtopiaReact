@@ -10,7 +10,7 @@ import Ingredient_recipes from "./ingredient_recipes/Ingredient_recipes";
 
 class Ingridient_homepage extends Component {
   componentDidMount(){
-    window.scrollTo(0,0);
+    window.scrollTo(0,0)
   }
   render() {
     return (
