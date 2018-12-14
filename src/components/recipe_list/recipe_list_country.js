@@ -66,9 +66,9 @@ class Recipe_list extends Component {
       .then(res => res.json())
       .then(function(confirmloves){
         if(!confirmloves.length){
-          $(".liked_btn1").css("close");
+          $(`.liked_btn${id}`).removeClass("open_liked");
         }else{
-          $(".liked_btn1").removeClass("close");
+          $(`.liked_btn${id}`).addClass("open_liked");
         }
     })
   }
@@ -176,9 +176,11 @@ class Recipe_list extends Component {
                               <div className="recipe_text">{menu.Introduction}</div>
                               <Link to={`/new_blog_member/${menu.member_id}`} className="card_author">作者: {menu.nick_name}</Link>
                               {/* 收藏 */}
-                              <div onClick={this.getLove}>
-                                <img className="like_btn1 " src={require("./product_slider/images/like.svg")} />
-                                <img className="liked_btn1 " src={require("./product_slider/images/liked.svg")} data-menuId={menu.id}/>
+                              <div onClick={this.getLove} className="" >
+                                <img className="like_btn1" src={require("./product_slider/images/like.svg")} />
+                                {/* <div id="likeeed"> */}
+                                  <img className={`liked_btn${menu.id} liked_btn `} src={require("./product_slider/images/liked.svg")} data-menuid={menu.id}/>
+                                {/* </div> */}
                               </div>
                               <img className="share_btn1" src={require("./product_slider/images/share.svg")}/>
                               <img className="shared_btn1" src={require("./product_slider/images/shared.svg")}/>
@@ -215,11 +217,13 @@ class Recipe_list extends Component {
     let id = this.props.match.params.id
     this.setState({recipe_id:this.props.match.params.id})
     this.getConfirmLove();
-    console.log(id)
+    // console.log(id)
 
     // 收藏
-    $(".like_btn1").on("click",function(){
-      $(".loved_btn1").toggleClass("close");
+    $(".lower_card").on("click",function(){
+      // $(this).toggleClass("open_liked");
+      // console.log(this)
+      alert('hi liked w r u!!!')
     });
     
     //食譜隱藏

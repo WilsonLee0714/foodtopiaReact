@@ -141,7 +141,14 @@ $title_fontWeight: 700;
   right: 50px;
   top: 125px
 }
-.liked_btn1{
+.likeeed{
+  // width: 100px;
+  // height: 100px;
+  // position: absolute;
+  // right: 50px;
+  // top: 125px;
+}
+.liked_btn{
   height: 20px;
   position: absolute;
   right: 50px;
@@ -171,8 +178,8 @@ $title_fontWeight: 700;
     opacity: 1;
   }
 }
-.close {
-  display: none;
+.open_liked {
+  opacity: 1;
 }
 
 @media screen and (max-width:990px){

@@ -199,6 +199,9 @@ class Recipe_page extends Component {
   }
 
 componentDidMount(){
+    //置頂
+    window.scrollTo(0, 100);
+
     //讀會員頭貼
     fetch('http://localhost:3000/session/info', {
             method: 'GET',
@@ -237,6 +240,12 @@ componentDidMount(){
     $(".step").on("click",function(){
       $(this).css("opacity", ".7");
     });
+    // // 收藏
+    // $(".header1").click(function(){
+    //   // $(this).toggleClass("open_liked");
+    //   // console.log('hi like w r u!!!')
+    //   alert('hi liked w r u!!!')
+    // });
 }
 
   render() {
