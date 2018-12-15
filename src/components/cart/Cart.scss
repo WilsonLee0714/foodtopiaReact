@@ -4,7 +4,6 @@ $mainColor : #FF4343;
   z-index: 10001;
   font-weight: bold;
   width: 270px;
-  min-height: 100vh;
   height: 100%;
   overflow: hidden;
   position: fixed;
@@ -20,7 +19,7 @@ $mainColor : #FF4343;
   @media screen and (max-width:767px) {}
 
   .cartContent {
-    max-height: 580px;
+    max-height: 550px;
     overflow-x: hidden;
     overflow-y: scroll;
     transition: .5s;
