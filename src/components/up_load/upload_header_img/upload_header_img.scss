@@ -27,7 +27,7 @@ h1{
         }
         .upload_chicken{
             width: 80%;
-            height: 30vh;
+            height: 35vh;
             position: absolute;
             margin-top: 5%;
             margin-left: 10%;
@@ -38,7 +38,7 @@ h1{
         .chicken_img{
             position: absolute;
             width: 30%;
-            height: 15vh;
+            height: 20vh;
             opacity: .5;
             left: 37.5%;
             top: 8vh;
@@ -46,7 +46,7 @@ h1{
         .recipe_header_img{
             position: absolute;
             width: 80%;
-            height: 30vh;
+            height: 35vh;
             opacity: 0;
             top: 3vh;
             left: 10%;
@@ -54,22 +54,22 @@ h1{
         }
         .line_img{
             position: absolute;
-            top: 20vh;
+            top: 23vh;
             left: 10%;
             width:80%;
         }
         .img{
             position: absolute;
-            width: 27.2%;
-            height: 41%;
+            width: 80%;
+            height: 35vh;
             opacity: 1;
-            left: 0%;
-            top: 0%;
+            left: 10%;
+            top: 3vh;
             border-radius: 15px;
         }
         //食譜時間,份量,難度
         .recipe_dropdowns{
-            margin: 57.5% 0 -3% 9.5%;
+            margin: 65% 0 -3% 9.5%;
             width: 70%;
         }
         //食譜簡介
@@ -103,7 +103,7 @@ h1{
         }
     }
     .upload_Introduction_title{
-        margin-top: 5%;
+        margin-top: 6.5%;
         .select_filter_box{
             margin-left: 2.5%;    
         }
