@@ -119,7 +119,7 @@ class Footer extends Component {
               <div>
                 <ul>
                   <li className='c' onClick={this.props.cartToggle}>購物車</li>
-                  <div key={this.props.products} id='cartNum' className={cartNum()} >{this.props.products.length}</div>
+                  {/* <div key={this.props.products} id='cartNum' className={cartNum()} >{this.props.products.length}</div> */}
                   <li onClick={this.blog}><a href=''>部落格</a></li>
                 </ul>
               </div>

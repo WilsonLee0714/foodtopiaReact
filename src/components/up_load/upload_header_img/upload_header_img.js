@@ -388,11 +388,13 @@ class Upload_header_img extends Component {
                         {/* 食譜名稱,食譜照上傳 */}
                         <form className="input_form_1">
                             <input className="form-control header" onChange={this.change} value={this.state.value} id="menu" type="text" placeholder="食譜名稱" aria-label="Search" />
-                            <img className="chicken_img" src={require("./img/th.png")} alt="" />
-                            <div className="upload_chicken"></div>
-                            <img className="line_img" src={require("./img/line_img.png")} alt="" />
-                            <img className="img" src={(`http://localhost:3000/upload/${this.state.img_name}`)} alt="" />
-                            <input type="file" onChange={this.fileSelectedHandler} id="menu_img" className="recipe_header_img" />
+                            <div className="totallll_img">
+                                <img className="chicken_img" src={require("./img/th.png")} alt="" />
+                                <div className="upload_chicken"></div>
+                                <img className="line_img" src={require("./img/line_img.png")} alt="" />
+                                <img className="img" src={(`http://localhost:3000/upload/${this.state.img_name}`)} alt="" />
+                                <input type="file" onChange={this.fileSelectedHandler} id="menu_img" className="recipe_header_img" />
+                            </div>
                             {/* 食譜時間,份量,難度 */}
                             <div className="recipe_dropdowns container d-flex">
                                 <select onChange={this.change} value={this.state.value} id="recipe_time" className="select_box select_time_box col-4">

@@ -83,7 +83,7 @@ componentDidMount(){
                         <div className="filter_option_content">
                             <ul className="content_menu">
                                 {this.state.filter_months.map(filter_month=>
-                                    <Link key={filter_month.id} to={`/month/${filter_month.id}`}><li>{filter_month.total_time}</li></Link>
+                                    <a key={filter_month.id} href={`/month/${filter_month.id}`}><li>{filter_month.total_time}</li></a>
                                 )}
                             </ul>
                         </div>
