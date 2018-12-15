@@ -4,6 +4,16 @@ import React, { Component } from 'react';
 import "./recipe_page.scss";
 import $ from "jquery";
 import { getDate } from 'date-fns';
+import {
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Container,
+  Row,
+  Col
+} from 'reactstrap';
 
 class Recipe_page extends Component {
   constructor(props) {
@@ -35,6 +45,9 @@ class Recipe_page extends Component {
       profile: 'chef.png',
       //頭貼來源
       source: 'http://localhost:3000/uploads/',
+      //光箱
+      alert: false
+
     }
   }
   //食譜內頁各筆資訊
@@ -194,6 +207,7 @@ class Recipe_page extends Component {
         } else {
           console.log(message.message)
           this.props.getCart()
+          this.alertToggle();
         }
       })
   }
@@ -239,7 +253,7 @@ componentDidMount(){
     });
     // 步驟
     $(".step").on("click",function(){
-      $(this).css("opacity", ".7");
+      $(this).toggleClass("step_clicked");
     });
     // // 收藏
     // $(".header1").click(function(){
@@ -247,7 +261,13 @@ componentDidMount(){
     //   // console.log('hi like w r u!!!')
     //   alert('hi liked w r u!!!')
     // });
-}
+
+  }
+    alertToggle = () => {
+      this.setState({
+        alert: !this.state.alert
+      });
+    }
 
   render() {
     //評論會員名稱判定
@@ -498,6 +518,27 @@ componentDidMount(){
               </div>
             </main>
           </div>
+
+          <Modal isOpen={this.state.alert} toggle={this.alertToggle} className='alert_modal'>
+        <Container>
+          <ModalHeader toggle={this.alertToggle} className='modal_header'>商品已加入購物車</ModalHeader>
+          <ModalBody>
+            <Col>
+              <img
+                className='tada'
+                src={require('../registerSuccessful/images/checkOK.png')}/>
+            </Col>
+            <Col className='alert_content'>
+                如要調整數量請至購物車修改
+            </Col>
+          </ModalBody>
+          <ModalFooter className='modal_footer'>
+            <Button className='btn_alert' color='danger' onClick={this.props.cartToggle}>購物車</Button>{' '}
+            <Button className='btn_alert' color="primary" onClick={this.alertToggle}>關閉</Button>
+          </ModalFooter>
+        </Container>
+
+        </Modal>
         </React.Fragment>
     );
   }
