@@ -25,7 +25,7 @@ class Fix_button extends Component {
 }
 //修改按鈕特效
 click(){
-    $(".fix_div").toggleClass("open");
+    $(".fix_div").toggleClass("fadeIn");
     $(".fix_div").toggleClass("close");
 }
 
@@ -108,28 +108,28 @@ componentDidMount(){
 //         filter_months: filter_months,
 //     }))
 // }
-
     render() {
         return (
             <React.Fragment>
-                <div className="fix_div close">
-                    <div className="fix_div_modify ">
-                        <input type="text" onChange={this.welcomeVal} className="header_modify" placeholder="請編輯歡迎用語" /><br />
-                        <div className="btn_modify" onClick={this.welcome}>修改</div>
+                
+                    <div className="fix_div close">
+                        <div className="fix_div_modify ">
+                            <input type="text" onChange={this.welcomeVal} className="header_modify" placeholder="請編輯歡迎用語" /><br />
+                            <div className="btn_modify" onClick={this.welcome}>修改</div>
+                        </div>
+                        <div className="fix_div_modify_2 ">
+                            <textarea type="text" onChange={this.introductionVal} className="header_modify" placeholder="請編輯部落格簡介" /><br />
+                            <div className="btn_modify" onClick={this.introduction}>修改</div>
+                        </div>
+                        <div className="btn_3 d-flex buttonAll">
+                            <Link className="btn_modify_3" to="/up_load">上傳食譜</Link>
+                            <Link className="btn_modify_3" data-toggle="modal" data-target="#exampleModal2" to="#">更換圖片</Link>
+                        </div>
+                        <div className="btn_3 d-flex buttonOne">
+                            {/* <button type="button" className="btn btn-primary btn_modify_3" data-toggle="modal" data-target=".bd-example-modal-lg">修改食譜</button> */}
+                            <Link className="btn_modify_3" data-toggle="modal" data-target="#exampleModal" to="#">設定社群</Link>
+                        </div>
                     </div>
-                    <div className="fix_div_modify_2 ">
-                        <textarea type="text" onChange={this.introductionVal} className="header_modify" placeholder="請編輯部落格簡介" /><br />
-                        <div className="btn_modify" onClick={this.introduction}>修改</div>
-                    </div>
-                    <div className="btn_3 d-flex buttonAll">
-                        <Link className="btn_modify_3" to="/up_load">上傳食譜</Link>
-                        <Link className="btn_modify_3" data-toggle="modal" data-target="#exampleModal2" to="#">更換圖片</Link>
-                    </div>
-                    <div className="btn_3 d-flex buttonOne">
-                        {/* <button type="button" className="btn btn-primary btn_modify_3" data-toggle="modal" data-target=".bd-example-modal-lg">修改食譜</button> */}
-                        <Link className="btn_modify_3" data-toggle="modal" data-target="#exampleModal" to="#">設定社群</Link>
-                    </div>
-                </div>
                 <div className="fix_button" onClick={this.click}>
                     <p>管理</p>
                 </div>
