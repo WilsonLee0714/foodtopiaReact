@@ -31,7 +31,14 @@ class Login extends Component {
             } else if(res=="inactive") {
                 alert('信箱還未激活');
             } else {
+                if(email.value=='foodtopia@gmail.com'){
+                    registerFrom.action = 'http://localhost/foodtopia/ab_list.php';
+                    setTimeout(function(){
+                        registerFrom.submit();
+                    },100)
+                } else {
                     registerFrom.submit();
+                }
             }
         })
         

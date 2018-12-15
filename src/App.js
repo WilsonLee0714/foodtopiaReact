@@ -115,7 +115,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <React.Fragment>
+        <React.Fragment className='body'>
           <Top component={Top}/>
           <Nav cartToggle={this.cartToggle} getCart={this.getCart} products={this.state.products}/>
           <Cart cartOpen={this.state.cartOpen} cartToggle={this.cartToggle} getCart={this.getCart} products={this.state.products} amount={this.state.amount}/>
@@ -135,7 +135,7 @@ class App extends Component {
           </div>
           {/* 食材 */}
           <Route path="/ingridient_hompage" component={Ingridient_homepage} />
-          <Route path="/ingridient_listpage/:category?/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?" render={(props) => <Ingridient_listpage {...props} addCart={this.addCart} />}/>
+          <Route path="/ingridient_listpage/:category?/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?" render={(props) => <Ingridient_listpage {...props} addCart={this.addCart} cartToggle={this.cartToggle} />}/>
           {/* <Route path="/ingridient_listpage" component={Ingridient_listpage} />
           <Route path="/ingridient_listpage/fruit" render={(props) => <Fruit {...props} addCart={this.addCart} />}/>
           <Route path="/ingridient_listpage/meat" render={(props) => <Meat {...props} addCart={this.addCart} />}/>
@@ -143,12 +143,12 @@ class App extends Component {
           <Route path="/ingridient_listpage/other" render={(props) => <Other {...props} addCart={this.addCart} />}/>
           <Route path="/ingridient_listpage/seafood" render={(props) => <Seafood {...props} addCart={this.addCart} />}/>
           <Route path="/ingridient_listpage/dairy" render={(props) => <Dairy {...props} addCart={this.addCart} />}/> */}
-          <Route path="/ingridient_listpage/dairy_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?" render={(props) => <Dairy_board {...props} addCart={this.addCart} />}/>
+          {/* <Route path="/ingridient_listpage/dairy_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?" render={(props) => <Dairy_board {...props} addCart={this.addCart} />}/>
           <Route path="/ingridient_listpage/fruit_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?" render={(props) => <Fruit_board {...props} addCart={this.addCart} />}/>
           <Route path="/ingridient_listpage/meat_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?" render={(props) => <Meat_board {...props} addCart={this.addCart} />}/>
           <Route path="/ingridient_listpage/other_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?" render={(props) => <Other_board {...props} addCart={this.addCart} />}/>
           <Route path="/ingridient_listpage/seafood_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?" render={(props) => <Seafood_board {...props} addCart={this.addCart} />}/>
-          <Route path="/ingridient_listpage/vegetable_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?" render={(props) => <Vegetable_board {...props} addCart={this.addCart} />}/>
+          <Route path="/ingridient_listpage/vegetable_board/:ipname?/:ipid?/:iprice?/:ipimg?/:ispec?" render={(props) => <Vegetable_board {...props} addCart={this.addCart} />}/> */}
           {/* 食譜 */}
           <Route path="/recipe_head" component={Recipe_head} />
           <Route path="/recipe_head/recipe_list" component={Recipe_list} />

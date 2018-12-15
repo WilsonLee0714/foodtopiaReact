@@ -10,7 +10,6 @@ $thirdColor:#EFEDE8;
     overflow: hidden;
     width: 80%;
     height: 100%;
-    font-family: 'Roboto', 'Noto sans CJK TC';
     color: #fff;
     user-select: none;
     .infoWrap {
@@ -56,7 +55,6 @@ $thirdColor:#EFEDE8;
         .leftInput {
             height: 2rem;
             text-align: center;
-            margin: auto;
             width: 150px;
             border-color: #707070;
             border-radius: 5px;
@@ -119,7 +117,7 @@ $thirdColor:#EFEDE8;
             margin: 5px 0;
             height: 2rem;
             text-align: left;
-            width: 210px;
+            width: 205px !important;
             border-color: #707070;
             border-radius: 5px;
             color: #707070;

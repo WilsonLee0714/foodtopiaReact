@@ -3,7 +3,6 @@ $fontColor: #fff;
 $bgColor: #707070;
 
 .orderPage {
-    font-family: 'Roboto', 'Noto sans CJK TC';
     color: #707070;
 
     .orderStep {
@@ -270,6 +269,7 @@ $bgColor: #707070;
         height: 70px;
         display: block;
         margin: 0 auto;
+        cursor: pointer;
     }
 
     .productName {
@@ -314,7 +314,6 @@ $bgColor: #707070;
     }
 
     .orderSuccess {
-        font-family: 'Roboto', 'Noto sans CJK TC';
         color: #707070;
         margin: 20px 0 55px 0;
 
@@ -348,7 +347,6 @@ $bgColor: #707070;
             text-align: left;
         }
         .orderSuccess {
-            font-family: 'Roboto', 'Noto sans CJK TC';
             color: #707070;
 
             h3 {
@@ -439,5 +437,5 @@ $bgColor: #707070;
 }
 
 .tada {
-    animation: 1s tada;
+    animation: 1s tada infinite;
 }

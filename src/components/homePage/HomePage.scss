@@ -42,7 +42,6 @@ header {
         width: 600px;
         text-align: center;
         font-weight: 600;
-        font-family: 'Noto sans CJK TC', 微軟正黑體;
         position: absolute;
         color: #393939;
         left: calc(50% - 300px);
@@ -64,7 +63,6 @@ header {
     }
 }
 .home {
-    font-family: '微軟正黑體';
     color: $secondColor;
     overflow: hidden;
     .secondMenu {
