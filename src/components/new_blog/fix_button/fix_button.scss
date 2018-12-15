@@ -14,8 +14,6 @@
     }
 }
 .fix_div{
-    width: 50px;
-    height: 50px;
     background-color: #fff;
     border: 2px solid #F53643;
     border-radius: 50%;
@@ -95,25 +93,27 @@
         }
     }
 }
-.open{
+.fadein{
     width: 250px;
     height: 400px;
     background-color: #fff;
     border: 2px solid #F53643;
     border-radius: 25px;
-    transition: .5s ease-in;
+	animation-duration: .5s;		
+	animation-timing-function: ease-in-out;			
+	visibility: visible !important;		
 }
 .close{
     width: 50px;
     height: 50px;
     background-color: #fff;
     border: 2px solid #F53643;
-    transition: .5s ease-out;
+    transition: .5s;
 }
 //修改食譜
-.edit_month{
-    margin: 2% 0 0 2%;
-}
+// .edit_month{
+//     margin: 2% 0 0 2%;
+// }
 @media screen and (max-width:576px){
     .fix_button{
         width: 40px;
