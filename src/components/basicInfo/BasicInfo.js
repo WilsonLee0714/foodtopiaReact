@@ -143,7 +143,7 @@ class BasicInfo extends Component {
                       <Label className='leftLabel' >信箱 :</Label>
                     </Col>
                     <Col className='' sm={9}>
-                        <Input disabled style={{ filter: 'brightness(50%)', letterSpacing: '1px', width: '200px' }} value={this.state.email}></Input>
+                        <Input disabled className='leftInput' style={{ filter: 'brightness(50%)', letterSpacing: '1px', width: '200px' }} value={this.state.email}></Input>
                     </Col>
                   </FormGroup>
                   <FormGroup row>
@@ -153,7 +153,7 @@ class BasicInfo extends Component {
                     <Col className='' sm={9}>
                       <Input
                         id='nickname'
-                        className=''
+                        className='leftInput'
                         type='text'
                         name='nick_name'
                         maxlength='5'
@@ -236,13 +236,13 @@ class BasicInfo extends Component {
                           districtValue={this.state.district}
                           zipCodeValue={this.state.zipCode}
                           countyStyle={{
-                            width: '95px', fontSize: '12px'
+                            width: '100px', fontSize: '16px'
                           }}
                           districtStyle={{
-                            width: '95px', fontSize: '12px'
+                            width: '100px', fontSize: '16px'
                           }}
                           zipStyle={{
-                            width: '50px', fontSize: '12px',
+                            width: '50px', fontSize: '16px',
                             padding: 0, display: 'none'
                           }}
                           handleChangeCounty={this.handleZipCodeChange}

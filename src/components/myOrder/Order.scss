@@ -3,7 +3,6 @@ $fontColor: #fff;
 $bgColor: #707070;
 
 .orderPage {
-    font-family: 'Roboto', 'Noto sans CJK TC';
     color: #707070;
 
     .orderStep {
@@ -285,7 +284,6 @@ $bgColor: #707070;
     }
 }
 .orderSuccess{
-    font-family: 'Roboto', 'Noto sans CJK TC';
     color: #707070;
     margin: 20px 0 55px 0;
     h3{
@@ -302,7 +300,6 @@ $bgColor: #707070;
  }
  @media screen and (max-width: 768px) {
      .orderSuccess{
-        font-family: 'Roboto', 'Noto sans CJK TC';
         color: #707070;
          h3{
              font-size: 3em;
