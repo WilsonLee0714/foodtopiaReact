@@ -93,15 +93,13 @@
         }
     }
 }
-.fadeIn123{
+.open{
     width: 250px;
     height: 400px;
     background-color: #fff;
     border: 2px solid #F53643;
     border-radius: 25px;
-	animation-duration: .5s;		
-	animation-timing-function: ease-in-out;			
-	visibility: visible !important;		
+    transition: .5s;
 }
 .close{
     width: 50px;
