@@ -25,7 +25,7 @@ class Fix_button extends Component {
 }
 //修改按鈕特效
 click(){
-    $(".fix_div").toggleClass("fadeIn123");
+    $(".fix_div").toggleClass("fadein");
     $(".fix_div").toggleClass("close");
 }
 
