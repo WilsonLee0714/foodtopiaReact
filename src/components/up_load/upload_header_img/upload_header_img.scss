@@ -27,7 +27,7 @@ h1{
         }
         .upload_chicken{
             width: 80%;
-            height: 30vh;
+            height: 320px;
             position: absolute;
             margin-top: 5%;
             margin-left: 10%;
@@ -38,15 +38,15 @@ h1{
         .chicken_img{
             position: absolute;
             width: 30%;
-            height: 15vh;
+            height: 180px;
             opacity: .5;
             left: 37.5%;
-            top: 8vh;
+            top: 60px;
         }
         .recipe_header_img{
             position: absolute;
             width: 80%;
-            height: 30vh;
+            height: 300px;
             opacity: 0;
             top: 3vh;
             left: 10%;
@@ -54,22 +54,22 @@ h1{
         }
         .line_img{
             position: absolute;
-            top: 20vh;
+            top: 210px;
             left: 10%;
             width:80%;
         }
         .img{
             position: absolute;
-            width: 27.2%;
-            height: 41%;
+            width: 80%;
+            height: 330px;
             opacity: 1;
-            left: 0%;
-            top: 0%;
+            left: 10%;
+            top: 3vh;
             border-radius: 15px;
         }
         //食譜時間,份量,難度
         .recipe_dropdowns{
-            margin: 57.5% 0 -3% 9.5%;
+            margin: 65% 0 -3% 9.5%;
             width: 70%;
         }
         //食譜簡介
@@ -86,20 +86,20 @@ h1{
 //食譜食材上傳
 .upload_Introduction{
     width: 50%;
-    margin-top: 3%;
+    margin-top: 2.5%;
     text-align: center;
     font-family: "微軟正黑體";
     .recipe_project{
-        margin: 5% 0 -4% -8%;
+        margin: 5% 0 -7% -5.5%;
         h2{
             font-size: 1.5em;
             font-weight: 700;
         }
         .recipe_project_items{
-            margin-left: -6.5%;
+            margin-left: -4%;
         }
         .recipe_project_number{
-            margin-left: 5%;
+            margin-left: 4.5%;
         }
     }
     .upload_Introduction_title{
@@ -165,9 +165,8 @@ h1{
                     font-size: 80px;
                     opacity: .5;
                     position: absolute;
-                    top: 33%;
-                    left: 41.5%;
-
+                    top: 28%;
+                    left: 39%;
                 }
                 .step_img{
                     opacity: 0;

@@ -135,7 +135,7 @@ class Recipe_list extends Component {
                           <div className="lower_card">
                               <div className="recipe_title">{menu.menu}</div>
                               <div className="recipe_text">{menu.Introduction}</div>
-                              <Link to={`/new_blog_member/${menu.member_id}`} className="card_author">作者: {menu.nick_name}</Link>
+                              <Link to={`/new_blog_member/${menu.member_id}`} className="card_author">作者: Foodtopia</Link>
                               <img className="like_btn1" src={require("./product_slider/images/like.svg")}/>
                               <img className="share_btn1" src={require("./product_slider/images/share.svg")}/>
                               <img className="liked_btn" src={require("./product_slider/images/liked.svg")}/>
