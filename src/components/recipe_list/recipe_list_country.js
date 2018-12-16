@@ -95,6 +95,9 @@ class Recipe_list extends Component {
   render(evt) {
     let random_rate= (Math.random() * 5)+4;
     let final_rate= random_rate.toFixed(1);
+    let random_author=Math.floor((Math.random() * 3)+2);
+    let author=['Yvonne','Wilson','Brain','A-Ming'];
+    // console.log(random_author)
     
     // console.log(id)
     return (
@@ -183,7 +186,7 @@ class Recipe_list extends Component {
                               <div className="recipe_text">{menu.Introduction}</div>
                               
                               <div className="card_bottom d-flex  ">
-                                <Link to={`/new_blog_member/${menu.member_id}`} className="card_author">作者: {menu.nick_name}</Link>
+                                <Link to={`/new_blog_member/${menu.member_id}`} className="card_author">作者: Foodtopia</Link>
                                 {/* 收藏 */}
                                 <div onClick={this.getLove} className="like_wrap" data-menuid={menu.id} >
                                   {/* <div id="likeeed"> */}
