@@ -34,12 +34,12 @@ class Ingridient_listpage extends React.Component {
 
   product = (evt) => {
     let product = this.state.product
-    product['product_id'] = evt.target.dataset.product_id
-    product['product_name'] = evt.target.dataset.product_name
-    product['product_img'] = evt.target.dataset.product_img
-    product['price'] = evt.target.dataset.price
-    product['spec'] = evt.target.dataset.spec
-    product['description'] = evt.target.dataset.description
+    product['product_id'] = evt.currentTarget.dataset.product_id
+    product['product_name'] = evt.currentTarget.dataset.product_name
+    product['product_img'] = evt.currentTarget.dataset.product_img
+    product['price'] = evt.currentTarget.dataset.price
+    product['spec'] = evt.currentTarget.dataset.spec
+    product['description'] = evt.currentTarget.dataset.description
     this.setState({product})
     this.modalToggle()
   }
@@ -124,77 +124,29 @@ class Ingridient_listpage extends React.Component {
                 data-description={product.description}
                 onClick={this.product}>
                 <Col
-                className='card_img'
-                  data-product_id={product.product_id}
-                  data-product_name={product.product_name}
-                  data-product_img={product.product_img}
-                  data-price={product.price}
-                  data-spec={product.spec}
-                  data-description={product.description}>
+                className='card_img'>
                   <img
                     className='img-fluid'
-                    data-product_id={product.product_id}
-                    data-product_name={product.product_name}
-                    data-product_img={product.product_img}
-                    data-price={product.price}
-                    data-spec={product.spec}
-                    data-description={product.description}
                     src={require(`./igr_img/${product.product_img}.jpg`)}
                     alt="oops"/>
                 </Col>
                 <Col
-                  className='card_name'
-                  data-product_id={product.product_id}
-                  data-product_name={product.product_name}
-                  data-product_img={product.product_img}
-                  data-price={product.price}
-                  data-spec={product.spec}
-                  data-description={product.description}>
-                  <h3
-                    data-product_id={product.product_id}
-                    data-product_name={product.product_name}
-                    data-product_img={product.product_img}
-                    data-price={product.price}
-                    data-spec={product.spec}
-                    data-description={product.description}>
+                  className='card_name'>
+                  <h3>
                     {product.product_name}
                   </h3>
                 </Col>
                 <Col
-                  className="card_linebar"
-                  data-product_id={product.product_id}
-                  data-product_name={product.product_name}
-                  data-product_img={product.product_img}
-                  data-price={product.price}
-                  data-spec={product.spec}
-                  data-description={product.description}>
+                  className="card_linebar">
                   <span
-                    className='card_price'
-                    data-product_id={product.product_id}
-                    data-product_name={product.product_name}
-                    data-product_img={product.product_img}
-                    data-price={product.price}
-                    data-spec={product.spec}
-                    data-description={product.description}>NT$ {product.price}</span>
+                    className='card_price'>NT$ {product.price}</span>
                   <span><img
                     className='card_icon'
-                    src={require('./images/addCart.svg')}
-                    data-product_id={product.product_id}
-                    data-product_name={product.product_name}
-                    data-product_img={product.product_img}
-                    data-price={product.price}
-                    data-spec={product.spec}
-                    data-description={product.description}/></span>
+                    src={require('./images/addCart.svg')}/></span>
 
                 </Col>
                 <Col
-                  className='card_spec'
-                  data-product_id={product.product_id}
-                  data-product_name={product.product_name}
-                  data-product_img={product.product_img}
-                  data-price={product.price}
-                  data-spec={product.spec}
-                  data-description={product.description}>
+                  className='card_spec'>
                   規格: {product.spec}
                 </Col>
               </Col>)}

@@ -167,7 +167,7 @@ class App extends Component {
           {/* <Route path="/recipe_page" render={(props) => <Recipe_page {...props} getCart={this.getCart} />}/> */}
           {/* 部落格 */}
           <Route path="/up_load" component={Up_load} />
-          <Route path="/page/:id" render={(props) => <Recipe_page {...props} getCart={this.getCart} />}/>
+          <Route path="/page/:id" render={(props) => <Recipe_page {...props} getCart={this.getCart} cartToggle={this.cartToggle} />}/>
           <Route path="/new_blog" component={New_blog} />
           <Route path="/month/:id" component={Month_blog} />
           <Route path="/month_no_member/:sid/:id" component={Month_blog_no_member} />
