@@ -90,22 +90,36 @@ class MyOrder extends Component {
                                         <th className='non3' scope="col">姓名</th>
                                         <th className='non2' scope="col">手機</th>
                                         <th className='non' scope="col">地址</th>
-                                        <th className='non' scope="col">寄送方式</th>
-                                        <th className='non' scope="col">送達時間</th>
-                                        <th className='non' scope="col">付款方式</th>
+                                        <th className='non text-nowrap' scope="col">寄送方式</th>
+                                        <th className='non text-nowrap' scope="col">送達時間</th>
+                                        <th className='non text-nowrap' scope="col">付款方式</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {this.state.order.map((item, i) =>
-                                        <tr className='shover' style={{ fontSize: '.8em' }} onClick={this.handleClick}>
-                                            <th data-id={item.order_num} style={{ width: '10%' }} scope="row">{item.order_num}<br />{item.created_at}</th>
+                                    {this.state.order.map((item, i) => {
+                                        var dateData = new Date(item.ship_date),
+                                        created_at = new Date(item.created_at),
+                                        shipYear = dateData.getFullYear(),
+                                        shipMonth = dateData.getMonth() + 1,
+                                        shipDate = dateData.getDate(),
+                                        _shipDate = `${shipYear}-${shipMonth}-${shipDate}`,
+                                        createYear = created_at.getFullYear(),
+                                        createMonth = created_at.getMonth() + 1,
+                                        createDate = created_at.getDate(),
+                                        createHours = created_at.getHours(),
+                                        createMinutes = created_at.getMinutes(),
+                                        createSeconds = created_at.getSeconds(),
+                                        _createAt = `${createYear}-${createMonth}-${createDate} ${createHours}:${createMinutes}:${createSeconds}`;
+                                        return <tr className='shover' style={{ fontSize: '.8em' }} onClick={this.handleClick}>
+                                            <th data-id={item.order_num} style={{ width: '10%' }} scope="row">{item.order_num}<br />{_createAt}</th>
                                             <td className='non3' data-id={item.order_num} style={{ width: '10%' }}>{item.name}</td>
                                             <td className='non2' data-id={item.order_num} style={{ width: '10%' }}>{item.mobile}</td>
                                             <td className='non' data-id={item.order_num} style={{ width: '20%' }}>{item.zipCode + item.county + item.district}<br />{item.address}</td>
                                             <td className='non' data-id={item.order_num} style={{ width: '10%' }}>{item.ship}</td>
-                                            <td className='non' data-id={item.order_num} style={{ width: '10%' }}>{item.ship_date}<br />{item.ship_time}</td>
+                                            <td className='non' data-id={item.order_num} style={{ width: '10%' }}>{_shipDate}<br />{item.ship_time}</td>
                                             <td className='non' data-id={item.order_num} style={{ width: '10%' }}>{item.pay}</td>
                                         </tr>
+                                    }
                                     )}
                                 </tbody>
                             </table>
