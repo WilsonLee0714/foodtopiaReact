@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 // import "bootstrap/dist/css/bootstrap.min.css";
 // import "bootstrap/dist/js/bootstrap.bundle";
+
+import { BrowserRouter, Route, Link } from "react-router-dom";
 import "./recipe_page.scss";
 import $ from "jquery";
 import { getDate } from 'date-fns';
@@ -458,7 +460,7 @@ componentDidMount(){
               <img className="profile_pic" src={require(`./images/foodtopia_profile_pic.png`)} />  {/* 會員大頭像讀取 */}
               <div className="author_text">
                 <div className="author_name">作者:</div>
-                <div className="author_name">{recipe_member.nick_name}</div>
+                <Link to={`/new_blog_member/${recipe_member.member_id}`}><div className="author_name">{recipe_member.nick_name}</div></Link>
                 <div className="author_intro">懶得想要吃什麼?來foodtopia找就對了!</div>
               </div>
             </main>
