@@ -10,7 +10,11 @@ $p_size_M: 16px;
 $p_size_S: 14px;
 $p_size_XS: 12px;
 $title_fontWeight: 700;
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC');
 
+body{
+    font-family: 'Noto Sans TC', sans-serif;
+}
 .bg_container {
     h2 {
         text-align: center;
@@ -50,6 +54,7 @@ $title_fontWeight: 700;
                 min-height: 48px;
                 padding: 0;
                 margin: 10px auto;
+                
 
                 h3 {
                     text-align: center;
