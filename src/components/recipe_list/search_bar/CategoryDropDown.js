@@ -14,6 +14,7 @@ class CategoryDropDown extends Component {
         this.setState({value: event.target.value});
     }
   render() {
+      console.log(Categories)
     return (
       <React.Fragment>
         {/* <div className="dropdown">
