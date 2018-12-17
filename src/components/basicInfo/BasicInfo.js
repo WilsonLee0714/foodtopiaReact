@@ -236,13 +236,13 @@ class BasicInfo extends Component {
                           districtValue={this.state.district}
                           zipCodeValue={this.state.zipCode}
                           countyStyle={{
-                            width: '100px', fontSize: '16px'
+                            width: '100px', fontSize: '14px'
                           }}
                           districtStyle={{
-                            width: '100px', fontSize: '16px'
+                            width: '100px', fontSize: '14px'
                           }}
                           zipStyle={{
-                            width: '50px', fontSize: '16px',
+                            width: '50px', fontSize: '14px',
                             padding: 0, display: 'none'
                           }}
                           handleChangeCounty={this.handleZipCodeChange}

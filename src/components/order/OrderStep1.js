@@ -148,7 +148,7 @@ class OrderStep1 extends Component {
         .props
         .step(2);
     } else {
-      return
+      window.scrollTo(0, 0);
     }
   }
 
@@ -259,11 +259,11 @@ class OrderStep1 extends Component {
                   districtValue={this.state.fields.district}
                   zipCodeValue={this.state.fields.zipCode}
                   countyStyle={{
-                  width: '85px',
+                  width: '100px',
                   display: 'flex'
                 }}
                   districtStyle={{
-                  width: '85px',
+                  width: '100px',
                   display: 'flex'
                 }}
                   zipStyle={{

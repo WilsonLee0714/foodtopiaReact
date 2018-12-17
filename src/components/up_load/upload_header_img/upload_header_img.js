@@ -433,11 +433,11 @@ class Upload_header_img extends Component {
                         <Upload_introduction change={this.change1} changeNum={this.changeNum1} />
                         <Upload_introduction change={this.change2} changeNum={this.changeNum2} />
                         <Upload_introduction change={this.change3} changeNum={this.changeNum3} />
-                        <Upload_introduction change={this.change4} changeNum={this.changeNum4} />
-                        <Upload_introduction change={this.change5} changeNum={this.changeNum5} />
-                        <Upload_introduction change={this.change6} changeNum={this.changeNum6} />
-                        <Upload_introduction change={this.change7} changeNum={this.changeNum7} />
-                        <Upload_introduction change={this.change8} changeNum={this.changeNum8} />
+                        <Upload_introduction  changeNum={this.changeNum4} />
+                        <Upload_introduction  changeNum={this.changeNum5} />
+                        <Upload_introduction  changeNum={this.changeNum6} />
+                        <Upload_introduction  changeNum={this.changeNum7} />
+                        <Upload_introduction  changeNum={this.changeNum8} />
                     </div>
                 </div>
                 {/* 步驟 */}
@@ -489,15 +489,15 @@ class Upload_header_img extends Component {
                             <form className="input_step_form col-4">
                                 <i className="fas fa-camera-retro camera_icon"></i>
                                 <div className="upload_camera"></div>
-                                <img className="imgti" src={(`http://localhost:3000/upload/${this.state.img_name_3}`)} alt="" />
-                                <input type="file" onChange={this.fileSelectedHandler3} id="stepImg_3" className="step_img" />
+                                <img className="imgti"  src={(`http://localhost:3000/upload/${this.state.img_name_3}`)} alt="" />
+                                <input type="file"  id="stepImg_3" className="step_img" />
                             </form>
                             <div className="upload_number_step d-flex col-8 ">
                                 <p className="step_number">3</p>
                                 <div className="step_icons">
                                     <i className="step_delete_icon far fa-trash-alt" id="step_delete_icon"></i>
                                     <br />
-                                    <textarea className="step_introduction" value={this.state.value} onChange={this.change} id="stepText_3" placeholder="步驟敘述..." />
+                                    <textarea className="step_introduction" value={this.state.value}  id="stepText_3" placeholder="步驟敘述..." />
                                 </div>
                             </div>
                         </div>
@@ -509,14 +509,14 @@ class Upload_header_img extends Component {
                                 <i className="fas fa-camera-retro camera_icon"></i>
                                 <div className="upload_camera"></div>
                                 <img className="imgti" src={(`http://localhost:3000/upload/${this.state.img_name_4}`)} alt="" />
-                                <input type="file" onChange={this.fileSelectedHandler4} id="stepImg_4" className="step_img" />
+                                <input type="file"  id="stepImg_4" className="step_img" />
                             </form>
                             <div className="upload_number_step d-flex col-8 ">
                                 <p className="step_number">4</p>
                                 <div className="step_icons">
                                     <i className="step_delete_icon far fa-trash-alt" id="step_delete_icon"></i>
                                     <br />
-                                    <textarea className="step_introduction" value={this.state.value} onChange={this.change} id="stepText_4" placeholder="步驟敘述..." />
+                                    <textarea className="step_introduction" value={this.state.value}  id="stepText_4" placeholder="步驟敘述..." />
                                 </div>
                             </div>
                         </div>
@@ -528,14 +528,14 @@ class Upload_header_img extends Component {
                                 <i className="fas fa-camera-retro camera_icon"></i>
                                 <div className="upload_camera"></div>
                                 <img className="imgti" src={(`http://localhost:3000/upload/${this.state.img_name_5}`)} alt="" />
-                                <input type="file" onChange={this.fileSelectedHandler5} id="stepImg_5" className="step_img" />
+                                <input type="file"  id="stepImg_5" className="step_img" />
                             </form>
                             <div className="upload_number_step d-flex col-8 ">
                                 <p className="step_number">5</p>
                                 <div className="step_icons">
                                     <i className="step_delete_icon far fa-trash-alt" id="step_delete_icon"></i>
                                     <br />
-                                    <textarea className="step_introduction" value={this.state.value} onChange={this.change} id="stepText_5" placeholder="步驟敘述..." />
+                                    <textarea className="step_introduction" value={this.state.value}  id="stepText_5" placeholder="步驟敘述..." />
                                 </div>
                             </div>
                         </div>
@@ -547,14 +547,14 @@ class Upload_header_img extends Component {
                                 <i className="fas fa-camera-retro camera_icon"></i>
                                 <div className="upload_camera"></div>
                                 <img className="imgti" src={(`http://localhost:3000/upload/${this.state.img_name_6}`)} alt="" />
-                                <input type="file" onChange={this.fileSelectedHandler6} id="stepImg_6" className="step_img" />
+                                <input type="file" id="stepImg_6" className="step_img" />
                             </form>
                             <div className="upload_number_step d-flex col-8 ">
                                 <p className="step_number">6</p>
                                 <div className="step_icons">
                                     <i className="step_delete_icon far fa-trash-alt" id="step_delete_icon"></i>
                                     <br />
-                                    <textarea className="step_introduction" value={this.state.value} onChange={this.change} id="stepText_6" placeholder="步驟敘述..." />
+                                    <textarea className="step_introduction" value={this.state.value}  id="stepText_6" placeholder="步驟敘述..." />
                                 </div>
                             </div>
                         </div>

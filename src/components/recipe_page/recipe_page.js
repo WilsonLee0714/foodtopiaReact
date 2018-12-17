@@ -271,6 +271,43 @@ componentDidMount(){
       });
     }
 
+    handleError1 = (e) => {
+      // alert('wrong')
+      var e1 = document.getElementById('e1');
+      e1.style.opacity = '0';
+      e1.style.height = '0';
+    }
+    handleError2 = (e) => {
+      // alert('wrong')
+      var e2 = document.getElementById('e2');
+      e2.style.opacity = '0';
+      e2.style.height = '0';
+    }
+    handleError3 = (e) => {
+      // alert('wrong')
+      var e3 = document.getElementById('e3');
+      e3.style.opacity = '0';
+      e3.style.height = '0';
+    }
+    handleError4 = (e) => {
+      // alert('wrong')
+      var e4 = document.getElementById('e4');
+      e4.style.opacity = '0';
+      e4.style.height = '0';
+    }
+    handleError5 = (e) => {
+      // alert('wrong')
+      var e5 = document.getElementById('e5');
+      e5.style.opacity = '0';
+      e5.style.height = '0';
+    }
+    handleError6 = (e) => {
+      // alert('wrong')
+      var e6 = document.getElementById('e6');
+      e6.style.opacity = '0';
+      e6.style.height = '0';
+    }
+
   render() {
     //評論會員名稱判定
     fetch('http://localhost:3000/session/info', {
@@ -398,55 +435,55 @@ componentDidMount(){
 
           {/* ---步驟 steps--- */}
           <main className="steps-wrap">
-            <div className="step d-flex justify-content-center">
+            <div id='e1' className="step d-flex justify-content-center">
               <span className="step_num">01</span>
               {this.state.step_imgs.map(step_img=>
-                <span className="step_pic"><img src={(`http://localhost:3000/upload/${step_img.step_img_1}`)}/></span>
+                <span className="step_pic"><img src={(`http://localhost:3000/upload/${step_img.step_img_1}`)} onError={this.handleError1}/></span>
               )}
               {this.state.steps.map(step=>
                 <span className="detail">{step.step_1}</span>
               )}
             </div> 
-            <div className="step d-flex justify-content-center">
+            <div id='e2' className="step d-flex justify-content-center">
               <span className="step_num">02</span>
               {this.state.step_imgs.map(step_img=>
-                <span className="step_pic"><img src={(`http://localhost:3000/upload/${step_img.step_img_2}`)}/></span>
+                <span className="step_pic"><img src={(`http://localhost:3000/upload/${step_img.step_img_2}`)} onError={this.handleError2}/></span>
               )}
               {this.state.steps.map(step=>
                 <span className="detail">{step.step_2}</span>
               )}            
             </div> 
-            <div className="step d-flex justify-content-center">
+            <div id='e3' className="step d-flex justify-content-center">
               <span className="step_num">03</span>
               {this.state.step_imgs.map(step_img=>
-                <span className="step_pic"><img src={(`http://localhost:3000/upload/${step_img.step_img_3}`)}/></span>
+                <span className="step_pic"><img src={(`http://localhost:3000/upload/${step_img.step_img_3}`)} onError={this.handleError3}/></span>
               )}
               {this.state.steps.map(step=>
                 <span className="detail">{step.step_3}</span>
               )}            
             </div> 
-            <div className="step d-flex justify-content-center">
+            <div id='e4' className="step d-flex justify-content-center">
               <span className="step_num">04</span>
               {this.state.step_imgs.map(step_img=>
-                <span className="step_pic"><img src={(`http://localhost:3000/upload/${step_img.step_img_4}`)}/></span>
+                <span className="step_pic"><img src={(`http://localhost:3000/upload/${step_img.step_img_4}`)} onError={this.handleError4}/></span>
               )}
               {this.state.steps.map(step=>
                 <span className="detail">{step.step_4}</span>
               )}
             </div> 
-            <div className="step d-flex justify-content-center">
+            <div id='e5' className="step d-flex justify-content-center">
               <span className="step_num">05</span>
               {this.state.step_imgs.map(step_img=>
-                <span className="step_pic"><img src={(`http://localhost:3000/upload/${step_img.step_img_5}`)}/></span>
+                <span className="step_pic"><img src={(`http://localhost:3000/upload/${step_img.step_img_5}`)} onError={this.handleError5}/></span>
               )}
               {this.state.steps.map(step=>
                 <span className="detail">{step.step_5}</span>
               )}
             </div> 
-            <div className="step d-flex justify-content-center">
+            <div id='e6' className="step d-flex justify-content-center">
               <span className="step_num">06</span>
               {this.state.step_imgs.map(step_img=>
-                <span className="step_pic"><img src={(`http://localhost:3000/upload/${step_img.step_img_6}`)}/></span>
+                <span className="step_pic"><img src={(`http://localhost:3000/upload/${step_img.step_img_6}`)} onError={this.handleError6}/></span>
               )}
               {this.state.steps.map(step=>
                 <span className="detail">{step.step_6}</span>
